@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 6: Formularios e Inputs - Apuntes HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 6: Formularios e Inputs</h1>
+        <p class="opacity-90">Recoger datos del usuario con formularios</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        HTML
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 6
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#formularios" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Formularios</a>
+            <a href="#tipos-input" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Tipos de Input</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <!-- FORMULARIOS -->
+        <section id="formularios" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10</span>Formularios
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;form&gt;</code>: contenedor del formulario</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;input&gt;</code>: campo de entrada (text, email, password, number, etc.)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;label&gt;</code>: etiqueta asociada al input (accesibilidad)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;textarea&gt;</code>: &aacute;rea de texto multil&iacute;nea</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;select&gt;</code> + <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;option&gt;</code>: lista desplegable</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;button&gt;</code>: bot&oacute;n de acci&oacute;n</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
+                <form onsubmit="return false;" class="space-y-2">
+                    <p>
+                        <label for="nombre" class="font-medium">Nombre:</label>
+                        <input type="text" id="nombre" placeholder="Tu nombre" class="border border-gray-300 rounded px-2 py-1 text-sm">
+                    </p>
+                    <p>
+                        <label for="email" class="font-medium">Email:</label>
+                        <input type="email" id="email" placeholder="tu@email.com" class="border border-gray-300 rounded px-2 py-1 text-sm">
+                    </p>
+                    <p>
+                        <label for="pais" class="font-medium">Pa&iacute;s:</label>
+                        <select id="pais" class="border border-gray-300 rounded px-2 py-1 text-sm">
+                            <option value="">Selecciona...</option>
+                            <option value="es">Espa&ntilde;a</option>
+                            <option value="mx">M&eacute;xico</option>
+                            <option value="ar">Argentina</option>
+                        </select>
+                    </p>
+                    <p><button type="submit" class="bg-amber-900 text-white px-4 py-1.5 rounded text-sm cursor-pointer hover:bg-amber-800">Enviar</button></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- TIPOS DE INPUT -->
+        <section id="tipos-input" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11</span>Tipos de Input
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">text</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">password</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">email</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">number</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">tel</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">url</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">date</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">time</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">checkbox</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">radio</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">file</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">color</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">range</code></li>
+                <li>Atributos: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">required</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">placeholder</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">disabled</code></li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md space-y-2">
+                <p><input type="checkbox" id="check" class="mr-1"> <label for="check">Checkbox</label></p>
+                <p>
+                    <input type="radio" name="opcion" id="r1" class="mr-1"> <label for="r1">Opci&oacute;n A</label>
+                    <input type="radio" name="opcion" id="r2" class="ml-3 mr-1"> <label for="r2">Opci&oacute;n B</label>
+                </p>
+                <p><input type="date" class="border border-gray-300 rounded px-2 py-1 text-sm"></p>
+                <p class="flex items-center gap-3">
+                    <input type="color">
+                    <input type="range" min="0" max="100" class="flex-1">
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema5-tablas.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 5</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema7-semantica.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 7 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes HTML &mdash; Tema 6 de 11</p>
+    </footer>
+</body>
+</html>

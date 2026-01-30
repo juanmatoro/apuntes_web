@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3: Enlaces e Im&aacute;genes - Apuntes HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 3: Enlaces e Im&aacute;genes</h1>
+        <p class="opacity-90">Hiperv&iacute;nculos, contenido visual y formatos de imagen en HTML</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        HTML
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 3
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#enlaces" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Enlaces</a>
+            <a href="#elemento-img" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Elemento img</a>
+            <a href="#formatos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Formatos de imagen</a>
+            <a href="#rasterizado-vectorial" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Rasterizado vs Vectorial</a>
+            <a href="#responsive" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Im&aacute;genes responsive</a>
+            <a href="#figure-figcaption" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Figure y Figcaption</a>
+            <a href="#svg-inline" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">SVG inline</a>
+            <a href="#mapas-imagen" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Mapas de imagen</a>
+            <a href="#favicon" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Favicon e im&aacute;genes especiales</a>
+            <a href="#optimizacion" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Optimizaci&oacute;n</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- ENLACES -->
+        <section id="enlaces" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>Enlaces
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;a href="url"&gt;</code>: crea hiperv&iacute;nculos</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href</code>: URL destino (relativa o absoluta)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">target="_blank"</code>: abre en nueva pesta&ntilde;a</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href="#id"</code>: ancla a elemento en la misma p&aacute;gina</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href="mailto:email"</code>: abre cliente de correo</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href="tel:numero"</code>: llama en m&oacute;viles</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
+                <p><a href="https://www.google.com" target="_blank" class="text-blue-600 hover:underline">Enlace externo</a></p>
+                <p><a href="#elemento-img" class="text-blue-600 hover:underline">Ancla interna (ir a im&aacute;genes)</a></p>
+                <p><a href="mailto:hola@ejemplo.com" class="text-blue-600 hover:underline">Enviar correo</a></p>
+            </div>
+        </section>
+
+        <!-- 6.1 ELEMENTO IMG -->
+        <section id="elemento-img" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6.1</span>El elemento &lt;img&gt;
+            </h2>
+            <p class="mb-3">
+                El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;img&gt;</code> inserta una imagen en el documento. Es un <strong>elemento vac&iacute;o</strong> (no tiene etiqueta de cierre) y requiere como m&iacute;nimo los atributos <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">src</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">alt</code>.
+            </p>
+
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mb-3">
+                <p class="font-semibold text-amber-900 mb-1">Atributos principales</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">src</code> &mdash; ruta de la imagen (<strong>obligatorio</strong>)</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">alt</code> &mdash; texto alternativo para accesibilidad y SEO (<strong>obligatorio</strong>)</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">width</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">height</code> &mdash; dimensiones en p&iacute;xeles (evita layout shift)</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">loading</code> &mdash; <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">lazy</code> (carga diferida) o <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">eager</code> (inmediata, por defecto)</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">decoding</code> &mdash; <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">async</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">sync</code> o <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">auto</code></li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">fetchpriority</code> &mdash; <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">high</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">low</code> o <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">auto</code> (prioridad de descarga)</li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <div class="flex items-start gap-4 flex-wrap">
+                    <img src="../assets/img/web-612x612.jpg" alt="Imagen de ejemplo de desarrollo web" class="w-24 rounded">
+                    <div class="flex-1 min-w-[250px]">
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Uso b&aacute;sico --&gt;
+&lt;img
+  <span class="text-yellow-300">src="foto.jpg"</span>
+  <span class="text-green-400">alt="Descripci&oacute;n de la imagen"</span>
+  width="400"
+  height="300"
+&gt;
+
+&lt;!-- Con carga diferida y prioridad --&gt;
+&lt;img
+  src="hero.webp"
+  alt="Banner principal"
+  width="1200"
+  height="600"
+  <span class="text-yellow-300">loading="lazy"</span>
+  <span class="text-yellow-300">decoding="async"</span>
+  <span class="text-yellow-300">fetchpriority="high"</span>
+&gt;</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h4 class="font-bold text-red-700 mb-1">Mal</h4>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;!-- Sin alt: inaccesible --&gt;
+&lt;img src="foto.jpg"&gt;
+
+&lt;!-- Alt gen&eacute;rico: no aporta --&gt;
+&lt;img src="equipo.jpg" alt="imagen"&gt;
+
+&lt;!-- Sin dimensiones: causa layout shift --&gt;
+&lt;img src="banner.jpg" alt="Banner"&gt;</pre>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h4 class="font-bold text-green-700 mb-1">Bien</h4>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;!-- Alt descriptivo --&gt;
+&lt;img src="foto.jpg"
+  <span class="text-green-400">alt="Equipo de desarrollo en la oficina"</span>&gt;
+
+&lt;!-- Decorativa: alt vac&iacute;o --&gt;
+&lt;img src="adorno.svg" <span class="text-green-400">alt=""</span>&gt;
+
+&lt;!-- Con dimensiones --&gt;
+&lt;img src="banner.jpg" alt="Banner"
+  <span class="text-green-400">width="1200" height="400"</span>&gt;</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6.2 FORMATOS DE IMAGEN -->
+        <section id="formatos" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6.2</span>Formatos de imagen
+            </h2>
+            <p class="mb-3">
+                Elegir el formato correcto es clave para el <strong>rendimiento</strong>, la <strong>calidad visual</strong> y la <strong>compatibilidad</strong>. Cada formato tiene caracter&iacute;sticas que lo hacen ideal para situaciones concretas.
+            </p>
+
+            <div class="overflow-x-auto mb-4">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Formato</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Tipo</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Transparencia</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Animaci&oacute;n</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Peso</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Uso ideal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold">JPEG / JPG</td>
+                            <td class="border border-gray-300 px-3 py-2">Rasterizado</td>
+                            <td class="border border-gray-300 px-3 py-2 text-red-600">No</td>
+                            <td class="border border-gray-300 px-3 py-2 text-red-600">No</td>
+                            <td class="border border-gray-300 px-3 py-2">Medio</td>
+                            <td class="border border-gray-300 px-3 py-2">Fotograf&iacute;as, fondos con degradados</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold">PNG</td>
+                            <td class="border border-gray-300 px-3 py-2">Rasterizado</td>
+                            <td class="border border-gray-300 px-3 py-2 text-green-600">S&iacute; (alfa)</td>
+                            <td class="border border-gray-300 px-3 py-2 text-red-600">No</td>
+                            <td class="border border-gray-300 px-3 py-2">Alto</td>
+                            <td class="border border-gray-300 px-3 py-2">Logos, capturas, im&aacute;genes con transparencia</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold">GIF</td>
+                            <td class="border border-gray-300 px-3 py-2">Rasterizado</td>
+                            <td class="border border-gray-300 px-3 py-2 text-yellow-600">Parcial (1 bit)</td>
+                            <td class="border border-gray-300 px-3 py-2 text-green-600">S&iacute;</td>
+                            <td class="border border-gray-300 px-3 py-2">Variable</td>
+                            <td class="border border-gray-300 px-3 py-2">Animaciones simples, iconos peque&ntilde;os</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold">SVG</td>
+                            <td class="border border-gray-300 px-3 py-2">Vectorial</td>
+                            <td class="border border-gray-300 px-3 py-2 text-green-600">S&iacute;</td>
+                            <td class="border border-gray-300 px-3 py-2 text-green-600">S&iacute; (CSS/JS)</td>
+                            <td class="border border-gray-300 px-3 py-2">Muy bajo</td>
+                            <td class="border border-gray-300 px-3 py-2">Iconos, logos, gr&aacute;ficos, ilustraciones</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold">WebP</td>
+                            <td class="border border-gray-300 px-3 py-2">Rasterizado</td>
+                            <td class="border border-gray-300 px-3 py-2 text-green-600">S&iacute;</td>
+                            <td class="border border-gray-300 px-3 py-2 text-green-600">S&iacute;</td>
+                            <td class="border border-gray-300 px-3 py-2">Bajo</td>
+                            <td class="border border-gray-300 px-3 py-2">Sustituye JPG/PNG con menos peso (25-35%)</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold">AVIF</td>
+                            <td class="border border-gray-300 px-3 py-2">Rasterizado</td>
+                            <td class="border border-gray-300 px-3 py-2 text-green-600">S&iacute;</td>
+                            <td class="border border-gray-300 px-3 py-2 text-green-600">S&iacute;</td>
+                            <td class="border border-gray-300 px-3 py-2">Muy bajo</td>
+                            <td class="border border-gray-300 px-3 py-2">M&aacute;xima compresi&oacute;n, soporte creciente</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Detalle por formato -->
+            <div class="space-y-3">
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-blue-50 border border-blue-200 p-3 rounded-md">
+                        <h3 class="font-bold text-blue-800 mb-1">JPEG / JPG</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>Compresi&oacute;n <strong>con p&eacute;rdida</strong> (lossy): reduce peso sacrificando detalle</li>
+                            <li>Ideal para <strong>fotograf&iacute;as</strong> y fondos con muchos colores</li>
+                            <li>No soporta transparencia</li>
+                            <li>Se puede ajustar la calidad (60-80% es buen equilibrio)</li>
+                            <li>Extensiones: <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">.jpg</code>, <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">.jpeg</code></li>
+                        </ul>
+                    </div>
+                    <div class="bg-purple-50 border border-purple-200 p-3 rounded-md">
+                        <h3 class="font-bold text-purple-800 mb-1">PNG</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>Compresi&oacute;n <strong>sin p&eacute;rdida</strong> (lossless): calidad perfecta</li>
+                            <li>Soporta <strong>transparencia alfa</strong> (256 niveles de opacidad)</li>
+                            <li>Ideal para logos, iconos, capturas de pantalla, texto sobre imagen</li>
+                            <li>Archivos m&aacute;s pesados que JPG para fotos</li>
+                            <li>PNG-8 (256 colores) vs PNG-24 (millones de colores)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                        <h3 class="font-bold text-green-800 mb-1">SVG</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>Formato <strong>vectorial</strong> basado en XML</li>
+                            <li><strong>Escalable sin perder calidad</strong> a cualquier tama&ntilde;o</li>
+                            <li>Se puede editar con CSS y manipular con JavaScript</li>
+                            <li>Peso muy reducido para gr&aacute;ficos simples</li>
+                            <li>Ideal para iconos, logos, ilustraciones, gr&aacute;ficos</li>
+                            <li>Se puede insertar inline en HTML o como <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;img&gt;</code></li>
+                        </ul>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 p-3 rounded-md">
+                        <h3 class="font-bold text-amber-800 mb-1">WebP</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>Creado por Google como sucesor de JPG y PNG</li>
+                            <li>Soporta compresi&oacute;n <strong>con y sin p&eacute;rdida</strong></li>
+                            <li>Soporta transparencia y animaci&oacute;n</li>
+                            <li><strong>25-35% m&aacute;s ligero</strong> que JPG a calidad equivalente</li>
+                            <li>Soporte en todos los navegadores modernos (desde 2020)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                        <h3 class="font-bold text-red-800 mb-1">GIF</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>Limitado a <strong>256 colores</strong></li>
+                            <li>Soporta <strong>animaci&oacute;n</strong> (fotogramas)</li>
+                            <li>Transparencia binaria (s&iacute; o no, sin niveles)</li>
+                            <li>Peso elevado para animaciones largas</li>
+                            <li>Mejor alternativa para animaciones: WebP o <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;video&gt;</code></li>
+                        </ul>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded-md">
+                        <h3 class="font-bold text-indigo-800 mb-1">AVIF</h3>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>Formato de <strong>&uacute;ltima generaci&oacute;n</strong> (basado en AV1)</li>
+                            <li>Compresi&oacute;n superior a WebP y JPG</li>
+                            <li>Soporta transparencia, HDR y animaci&oacute;n</li>
+                            <li>Soporte creciente (Chrome, Firefox, Safari 16.4+)</li>
+                            <li>Usar con <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;picture&gt;</code> como formato preferente con fallback</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mt-4">
+                <p class="font-semibold text-amber-900 mb-1">Gu&iacute;a r&aacute;pida: &iquest;qu&eacute; formato uso?</p>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li><strong>Fotograf&iacute;a</strong> &rarr; WebP (con fallback JPG)</li>
+                    <li><strong>Logo / icono</strong> &rarr; SVG</li>
+                    <li><strong>Imagen con transparencia</strong> &rarr; WebP o PNG</li>
+                    <li><strong>Captura de pantalla</strong> &rarr; PNG</li>
+                    <li><strong>Animaci&oacute;n corta</strong> &rarr; WebP animado o GIF</li>
+                    <li><strong>M&aacute;xima compresi&oacute;n</strong> &rarr; AVIF (con fallback WebP/JPG)</li>
+                    <li><strong>Gr&aacute;fico editable con CSS/JS</strong> &rarr; SVG inline</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6.3 RASTERIZADO VS VECTORIAL -->
+        <section id="rasterizado-vectorial" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6.3</span>Rasterizado vs Vectorial
+            </h2>
+            <p class="mb-3">
+                Es fundamental entender la diferencia entre estos dos tipos de im&aacute;genes para elegir el formato correcto.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-3">
+                <div class="bg-blue-50 border border-blue-200 p-3 rounded-md">
+                    <h3 class="font-bold text-blue-800 mb-2">Rasterizado (mapa de bits)</h3>
+                    <p class="text-sm mb-2">Formado por una <strong>cuadr&iacute;cula de p&iacute;xeles</strong>. Cada p&iacute;xel tiene un color.</p>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Al ampliar se <strong>pixela</strong> (pierde calidad)</li>
+                        <li>Tama&ntilde;o del archivo proporcional a las dimensiones</li>
+                        <li>Ideal para fotograf&iacute;as e im&aacute;genes complejas</li>
+                        <li>Formatos: JPG, PNG, GIF, WebP, AVIF</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h3 class="font-bold text-green-800 mb-2">Vectorial (matem&aacute;tico)</h3>
+                    <p class="text-sm mb-2">Definido por <strong>f&oacute;rmulas matem&aacute;ticas</strong> (puntos, l&iacute;neas, curvas).</p>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><strong>Escalable infinitamente</strong> sin perder calidad</li>
+                        <li>Archivo ligero para formas geom&eacute;tricas</li>
+                        <li>Ideal para logos, iconos, ilustraciones</li>
+                        <li>Formato principal: SVG</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <h3 class="font-semibold text-gray-600 mb-2">Ejemplo visual</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">Rasterizado (JPG 100x100) ampliado a 400x400:
+&#9608;&#9608;&#9608;&#9608;    &larr; Se ven los p&iacute;xeles (borroso)
+&#9608;&#9608;&#9608;&#9608;
+
+Vectorial (SVG) ampliado a 400x400:
+&#9711;         &larr; Se ve n&iacute;tido (recalcula las curvas)
+
+&lt;!-- Por eso los logos SIEMPRE deben ser SVG --&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 6.4 PICTURE Y SRCSET -->
+        <section id="responsive" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6.4</span>Im&aacute;genes responsive: &lt;picture&gt; y srcset
+            </h2>
+            <p class="mb-3">
+                HTML ofrece herramientas para servir <strong>diferentes im&aacute;genes seg&uacute;n el dispositivo</strong>: tama&ntilde;o de pantalla, densidad de p&iacute;xeles o soporte de formatos.
+            </p>
+
+            <!-- srcset -->
+            <div class="mb-4">
+                <h3 class="font-bold text-amber-900 mb-2">srcset &mdash; Diferentes resoluciones</h3>
+                <p class="text-sm mb-2">
+                    El atributo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">srcset</code> permite ofrecer varias versiones de la misma imagen a distintas resoluciones. El navegador elige la m&aacute;s adecuada.
+                </p>
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Por densidad de p&iacute;xeles (x) --&gt;
+&lt;img
+  src="foto-400.jpg"
+  <span class="text-yellow-300">srcset="foto-400.jpg 1x,
+          foto-800.jpg 2x,
+          foto-1200.jpg 3x"</span>
+  alt="Foto del equipo"
+  width="400" height="300"
+&gt;
+
+&lt;!-- Por ancho de imagen (w) + sizes --&gt;
+&lt;img
+  src="foto-400.jpg"
+  <span class="text-yellow-300">srcset="foto-400.jpg 400w,
+          foto-800.jpg 800w,
+          foto-1200.jpg 1200w"</span>
+  <span class="text-green-400">sizes="(max-width: 600px) 100vw,
+         (max-width: 1200px) 50vw,
+         33vw"</span>
+  alt="Foto del equipo"
+&gt;</pre>
+                </div>
+                <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mt-3">
+                    <p class="font-semibold text-amber-900 mb-1">&iquest;C&oacute;mo funciona sizes?</p>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">(max-width: 600px) 100vw</code> &rarr; en pantallas &le;600px, la imagen ocupa el 100% del ancho</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">(max-width: 1200px) 50vw</code> &rarr; en pantallas &le;1200px, ocupa el 50%</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">33vw</code> &rarr; en el resto, ocupa un tercio</li>
+                        <li>El navegador combina <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">sizes</code> con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">srcset</code> para elegir la imagen &oacute;ptima</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- picture -->
+            <div>
+                <h3 class="font-bold text-amber-900 mb-2">&lt;picture&gt; &mdash; Formatos y art direction</h3>
+                <p class="text-sm mb-2">
+                    El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;picture&gt;</code> permite ofrecer <strong>diferentes formatos</strong> (con fallback) y <strong>diferentes im&aacute;genes seg&uacute;n media queries</strong> (art direction).
+                </p>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                        <h4 class="font-semibold text-gray-600 mb-2">Fallback de formatos</h4>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;<span class="text-yellow-300">picture</span>&gt;
+  &lt;!-- AVIF: m&aacute;xima compresi&oacute;n --&gt;
+  &lt;source
+    srcset="foto.avif"
+    <span class="text-green-400">type="image/avif"</span>&gt;
+
+  &lt;!-- WebP: buena compresi&oacute;n --&gt;
+  &lt;source
+    srcset="foto.webp"
+    <span class="text-green-400">type="image/webp"</span>&gt;
+
+  &lt;!-- JPG: fallback universal --&gt;
+  &lt;img src="foto.jpg"
+    alt="Foto del equipo"
+    width="800" height="600"&gt;
+&lt;/picture&gt;</pre>
+                    </div>
+                    <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                        <h4 class="font-semibold text-gray-600 mb-2">Art direction (distinta imagen)</h4>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;<span class="text-yellow-300">picture</span>&gt;
+  &lt;!-- M&oacute;vil: recorte vertical --&gt;
+  &lt;source
+    <span class="text-green-400">media="(max-width: 768px)"</span>
+    srcset="foto-movil.jpg"&gt;
+
+  &lt;!-- Tablet: recorte cuadrado --&gt;
+  &lt;source
+    <span class="text-green-400">media="(max-width: 1024px)"</span>
+    srcset="foto-tablet.jpg"&gt;
+
+  &lt;!-- Desktop: imagen completa --&gt;
+  &lt;img src="foto-desktop.jpg"
+    alt="Paisaje panor&aacute;mico"
+    width="1200" height="600"&gt;
+&lt;/picture&gt;</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6.5 FIGURE Y FIGCAPTION -->
+        <section id="figure-figcaption" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6.5</span>&lt;figure&gt; y &lt;figcaption&gt;
+            </h2>
+            <p class="mb-3">
+                El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;figure&gt;</code> agrupa contenido autoexplicativo (imagen, diagrama, c&oacute;digo...) con su pie de descripci&oacute;n <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;figcaption&gt;</code>. Es sem&aacute;ntico y mejora la accesibilidad.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-600 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;<span class="text-yellow-300">figure</span>&gt;
+  &lt;img
+    src="grafico-ventas.png"
+    alt="Gr&aacute;fico de barras mostrando
+         ventas trimestrales 2024"
+    width="600" height="400"&gt;
+
+  &lt;<span class="text-green-400">figcaption</span>&gt;
+    Fig. 1 &mdash; Ventas trimestrales 2024.
+    Fuente: Departamento de ventas.
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;!-- Tambi&eacute;n funciona con c&oacute;digo --&gt;
+&lt;figure&gt;
+  &lt;pre&gt;&lt;code&gt;console.log('Hola');&lt;/code&gt;&lt;/pre&gt;
+  &lt;figcaption&gt;Ejemplo en JavaScript&lt;/figcaption&gt;
+&lt;/figure&gt;</pre>
+                </div>
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-600 mb-2">Resultado visual</h3>
+                    <figure class="border border-gray-200 rounded p-3 bg-white">
+                        <img src="../assets/img/web-612x612.jpg" alt="Imagen de ejemplo de tecnolog&iacute;as web" class="w-full rounded">
+                        <figcaption class="text-xs text-gray-500 mt-2 text-center italic">
+                            Fig. 1 &mdash; Tecnolog&iacute;as web. Imagen de ejemplo.
+                        </figcaption>
+                    </figure>
+                    <div class="bg-amber-50 border-l-4 border-amber-900 p-2 rounded-r-md mt-3">
+                        <p class="text-xs"><strong>Nota:</strong> <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">figcaption</code> es complementario a <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">alt</code>, no lo sustituye. Ambos son necesarios.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6.6 SVG INLINE -->
+        <section id="svg-inline" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6.6</span>SVG inline en HTML
+            </h2>
+            <p class="mb-3">
+                Los SVG se pueden incrustar directamente en el HTML. Esto permite <strong>estilizar con CSS</strong> y <strong>manipular con JavaScript</strong> cada parte del gr&aacute;fico.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-3 mb-3">
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-600 mb-2">Como &lt;img&gt; (est&aacute;tico)</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- No se puede estilizar con CSS externo --&gt;
+&lt;img src="icono.svg" alt="Icono"
+  width="24" height="24"&gt;</pre>
+                    <p class="text-xs text-gray-500 mt-2">Simple, cacheable, pero sin control CSS/JS.</p>
+                </div>
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-600 mb-2">Inline (manipulable)</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Control total con CSS y JS --&gt;
+&lt;<span class="text-yellow-300">svg</span> width="24" height="24"
+  viewBox="0 0 24 24"
+  fill="none" xmlns="..."&gt;
+  &lt;circle cx="12" cy="12" r="10"
+    <span class="text-green-400">stroke="currentColor"</span>
+    stroke-width="2"/&gt;
+  &lt;path d="M12 6v6l4 2"
+    <span class="text-green-400">stroke="currentColor"</span>/&gt;
+&lt;/svg&gt;</pre>
+                    <p class="text-xs text-gray-500 mt-2">Permite cambiar colores, animar, interactuar.</p>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md">
+                <p class="font-semibold text-amber-900 mb-1">&iquest;Cu&aacute;ndo usar cada m&eacute;todo?</p>
+                <table class="w-full border-collapse text-sm mt-2">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">M&eacute;todo</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Ventajas</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Inconvenientes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">&lt;img src="*.svg"&gt;</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Cacheable, HTML limpio</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Sin control CSS/JS sobre partes internas</td>
+                        </tr>
+                        <tr class="bg-amber-50">
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">SVG inline</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Estilizable, animable, interactivo</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Ensucia el HTML, no cacheable como imagen</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">CSS background</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Decorativo, no ocupa DOM</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Sin accesibilidad (no es contenido)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6.7 MAPAS DE IMAGEN -->
+        <section id="mapas-imagen" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6.7</span>Mapas de imagen (&lt;map&gt;)
+            </h2>
+            <p class="mb-3">
+                Un <strong>mapa de imagen</strong> permite definir zonas clicables dentro de una imagen. Cada zona (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;area&gt;</code>) funciona como un enlace independiente.
+            </p>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- La imagen referencia al mapa con usemap --&gt;
+&lt;img src="plano.jpg" alt="Plano de la oficina"
+  <span class="text-yellow-300">usemap="#mapa-oficina"</span> width="600" height="400"&gt;
+
+&lt;<span class="text-yellow-300">map</span> name="mapa-oficina"&gt;
+  &lt;!-- Rect&aacute;ngulo: x1,y1,x2,y2 --&gt;
+  &lt;<span class="text-green-400">area</span> shape="rect" coords="0,0,200,150"
+    href="sala-reuniones.html" alt="Sala de reuniones"&gt;
+
+  &lt;!-- C&iacute;rculo: centroX,centroY,radio --&gt;
+  &lt;<span class="text-green-400">area</span> shape="circle" coords="300,200,50"
+    href="recepcion.html" alt="Recepci&oacute;n"&gt;
+
+  &lt;!-- Pol&iacute;gono: x1,y1,x2,y2,x3,y3,... --&gt;
+  &lt;<span class="text-green-400">area</span> shape="poly" coords="400,100,500,50,600,100,500,200"
+    href="despacho.html" alt="Despacho director"&gt;
+&lt;/map&gt;</pre>
+            </div>
+
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md">
+                <p class="font-semibold text-amber-900 mb-1">Formas disponibles en &lt;area&gt;</p>
+                <table class="w-full border-collapse text-sm mt-2">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">shape</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">coords</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Descripci&oacute;n</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">rect</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs">x1,y1,x2,y2</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Rect&aacute;ngulo (esquina sup-izq, esquina inf-der)</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">circle</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs">cx,cy,radio</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">C&iacute;rculo (centro y radio en p&iacute;xeles)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">poly</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs">x1,y1,x2,y2,...</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Pol&iacute;gono (pares de coordenadas de v&eacute;rtices)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-xs text-amber-800 mt-2"><strong>Nota:</strong> Los mapas de imagen no son responsive por defecto. Para webs modernas se suele preferir posicionar enlaces con CSS sobre la imagen.</p>
+            </div>
+        </section>
+
+        <!-- 6.8 FAVICON E IMÁGENES ESPECIALES -->
+        <section id="favicon" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6.8</span>Favicon e im&aacute;genes especiales
+            </h2>
+            <p class="mb-3">
+                Adem&aacute;s de las im&aacute;genes visibles en la p&aacute;gina, HTML utiliza im&aacute;genes para <strong>favicons</strong>, <strong>Open Graph</strong> (redes sociales) y <strong>pantallas de inicio</strong> (m&oacute;viles).
+            </p>
+
+            <div class="space-y-3">
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-600 mb-2">Favicon (icono de pesta&ntilde;a)</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;head&gt;
+  &lt;!-- Favicon cl&aacute;sico (ICO, 32x32) --&gt;
+  &lt;link rel="icon" href="/favicon.ico"&gt;
+
+  &lt;!-- Favicon moderno (SVG, escalable) --&gt;
+  &lt;link rel="icon" href="/icon.svg" <span class="text-yellow-300">type="image/svg+xml"</span>&gt;
+
+  &lt;!-- Apple Touch Icon (180x180 PNG) --&gt;
+  &lt;link rel="<span class="text-green-400">apple-touch-icon</span>" href="/apple-touch-icon.png"&gt;
+
+  &lt;!-- Iconos para diferentes tama&ntilde;os --&gt;
+  &lt;link rel="icon" type="image/png" <span class="text-yellow-300">sizes="32x32"</span>
+    href="/favicon-32x32.png"&gt;
+  &lt;link rel="icon" type="image/png" <span class="text-yellow-300">sizes="16x16"</span>
+    href="/favicon-16x16.png"&gt;
+&lt;/head&gt;</pre>
+                </div>
+
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-600 mb-2">Open Graph (redes sociales)</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;head&gt;
+  &lt;!-- Imagen al compartir en redes sociales --&gt;
+  &lt;meta property="<span class="text-yellow-300">og:image</span>"
+    content="https://miweb.com/img/og-image.jpg"&gt;
+  &lt;meta property="og:image:width" content="1200"&gt;
+  &lt;meta property="og:image:height" content="630"&gt;
+  &lt;meta property="og:image:alt"
+    content="Descripci&oacute;n de la imagen"&gt;
+
+  &lt;!-- Twitter Card (imagen grande) --&gt;
+  &lt;meta name="<span class="text-green-400">twitter:card</span>"
+    content="summary_large_image"&gt;
+  &lt;meta name="twitter:image"
+    content="https://miweb.com/img/twitter-card.jpg"&gt;
+&lt;/head&gt;</pre>
+                    <p class="text-xs text-gray-500 mt-2">Tama&ntilde;o recomendado OG: <strong>1200&times;630px</strong>. Twitter Card: <strong>1200&times;675px</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6.9 OPTIMIZACIÓN Y RENDIMIENTO -->
+        <section id="optimizacion" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6.9</span>Optimizaci&oacute;n y rendimiento
+            </h2>
+            <p class="mb-3">
+                Las im&aacute;genes suelen ser el recurso m&aacute;s pesado de una web. Optimizarlas impacta directamente en el <strong>tiempo de carga</strong> y en los <strong>Core Web Vitals</strong> (LCP, CLS).
+            </p>
+
+            <div class="space-y-3 mb-4">
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-700 mb-2">Lazy loading (carga diferida)</h3>
+                    <p class="text-sm mb-2">Solo carga la imagen cuando est&aacute; a punto de entrar en el viewport. Reduce el tiempo de carga inicial.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Nativo en HTML: sin JavaScript --&gt;
+&lt;img src="foto.jpg" alt="Foto"
+  <span class="text-yellow-300">loading="lazy"</span>
+  width="600" height="400"&gt;
+
+&lt;!-- NO usar lazy en im&aacute;genes above the fold (hero, logo...) --&gt;
+&lt;img src="hero.webp" alt="Banner principal"
+  <span class="text-red-400">loading="eager"</span>
+  <span class="text-green-400">fetchpriority="high"</span>&gt;</pre>
+                </div>
+
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-700 mb-2">Evitar Layout Shift (CLS)</h3>
+                    <p class="text-sm mb-2">Si no defines <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">width</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">height</code>, la p&aacute;gina &ldquo;salta&rdquo; cuando la imagen se carga.</p>
+                    <div class="grid md:grid-cols-2 gap-3">
+                        <div class="bg-red-50 border border-red-200 p-2 rounded">
+                            <h4 class="font-bold text-red-700 mb-1 text-xs">Mal &mdash; causa CLS</h4>
+                            <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;img src="foto.jpg" alt="Foto"&gt;
+&lt;!-- Sin dimensiones: el navegador
+     no reserva espacio --&gt;</pre>
+                        </div>
+                        <div class="bg-green-50 border border-green-200 p-2 rounded">
+                            <h4 class="font-bold text-green-700 mb-1 text-xs">Bien &mdash; sin CLS</h4>
+                            <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;img src="foto.jpg" alt="Foto"
+  <span class="text-green-400">width="600" height="400"</span>&gt;
+&lt;!-- O con CSS aspect-ratio --&gt;</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-700 mb-2">Preload de im&aacute;genes cr&iacute;ticas</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;head&gt;
+  &lt;!-- Prioriza la descarga del hero image --&gt;
+  &lt;link rel="<span class="text-yellow-300">preload</span>" as="image"
+    href="hero.webp" type="image/webp"&gt;
+
+  &lt;!-- Con srcset para responsive --&gt;
+  &lt;link rel="preload" as="image"
+    href="hero-800.webp"
+    <span class="text-green-400">imagesrcset="hero-400.webp 400w,
+               hero-800.webp 800w,
+               hero-1200.webp 1200w"</span>
+    imagesizes="100vw"&gt;
+&lt;/head&gt;</pre>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md">
+                <p class="font-semibold text-amber-900 mb-1">Checklist de optimizaci&oacute;n de im&aacute;genes</p>
+                <ul class="space-y-1.5 text-sm">
+                    <li><input type="checkbox" class="mr-1.5" disabled> Usar formatos modernos (WebP/AVIF) con fallback</li>
+                    <li><input type="checkbox" class="mr-1.5" disabled> Siempre definir <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">width</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">height</code></li>
+                    <li><input type="checkbox" class="mr-1.5" disabled> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">loading="lazy"</code> en im&aacute;genes below the fold</li>
+                    <li><input type="checkbox" class="mr-1.5" disabled> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">fetchpriority="high"</code> en el hero / LCP image</li>
+                    <li><input type="checkbox" class="mr-1.5" disabled> Usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">srcset</code> + <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">sizes</code> para servir tama&ntilde;os adecuados</li>
+                    <li><input type="checkbox" class="mr-1.5" disabled> Comprimir im&aacute;genes antes de subir (TinyPNG, Squoosh)</li>
+                    <li><input type="checkbox" class="mr-1.5" disabled> No servir im&aacute;genes mayores de lo que se muestran</li>
+                    <li><input type="checkbox" class="mr-1.5" disabled> SVG para logos e iconos</li>
+                    <li><input type="checkbox" class="mr-1.5" disabled> Alt descriptivo en todas las im&aacute;genes</li>
+                    <li><input type="checkbox" class="mr-1.5" disabled> Preload para la imagen LCP (hero, banner)</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema2-texto.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 2</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema4-listas.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 4 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes HTML &mdash; Tema 3 de 11</p>
+    </footer>
+</body>
+</html>

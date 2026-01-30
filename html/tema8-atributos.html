@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 8: Atributos Globales y Buenas Pr&aacute;cticas - Apuntes HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 8: Atributos Globales y Buenas Pr&aacute;cticas</h1>
+        <p class="opacity-90">Atributos comunes a todos los elementos y convenciones para escribir buen HTML</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        HTML
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 8
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#atributos-globales" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Atributos globales</a>
+            <a href="#id-class" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">id y class</a>
+            <a href="#style-css" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">style / CSS inline</a>
+            <a href="#title-tooltip" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">title / tooltip</a>
+            <a href="#data-personalizados" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">data-*</a>
+            <a href="#internacionalizacion" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Internacionalizaci&oacute;n</a>
+            <a href="#interaccion" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Interacci&oacute;n</a>
+            <a href="#eventos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Eventos (on*)</a>
+            <a href="#buenas-practicas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Buenas pr&aacute;cticas</a>
+            <a href="#checklist" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Checklist</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- 8.1 VISIÓN GENERAL -->
+        <section id="atributos-globales" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8.1</span>&iquest;Qu&eacute; son los atributos globales?
+            </h2>
+            <p class="mb-3">
+                Los <strong>atributos globales</strong> son atributos que pueden aplicarse a <em>cualquier</em> elemento HTML, independientemente de su tipo. A diferencia de los atributos espec&iacute;ficos (como <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">src</code> en <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;img&gt;</code> o <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href</code> en <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;a&gt;</code>), los globales son universales.
+            </p>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mb-3">
+                <p class="font-semibold text-amber-900 mb-1">Atributos globales m&aacute;s utilizados</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">id</code> &mdash; identificador &uacute;nico</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code> &mdash; clase(s) CSS</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">style</code> &mdash; estilos en l&iacute;nea</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">title</code> &mdash; tooltip informativo</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-*</code> &mdash; datos personalizados</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">hidden</code> &mdash; ocultar elemento</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">lang</code> &mdash; idioma del contenido</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dir</code> &mdash; direcci&oacute;n del texto</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">tabindex</code> &mdash; orden de tabulaci&oacute;n</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">contenteditable</code> &mdash; contenido editable</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">draggable</code> &mdash; elemento arrastrable</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">spellcheck</code> &mdash; corrector ortogr&aacute;fico</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">translate</code> &mdash; traducibilidad</li>
+                </ul>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <h3 class="font-semibold text-gray-600 mb-2">Sintaxis general</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;elemento atributo="valor"&gt;Contenido&lt;/elemento&gt;
+
+&lt;!-- Atributos booleanos: solo con estar presentes se activan --&gt;
+&lt;input type="text" <span class="text-green-400">required</span> <span class="text-green-400">disabled</span>&gt;
+
+&lt;!-- Equivale a: --&gt;
+&lt;input type="text" required="required" disabled="disabled"&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 8.2 ID Y CLASS -->
+        <section id="id-class" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8.2</span>id y class
+            </h2>
+            <p class="mb-3">
+                Son los dos atributos m&aacute;s usados en HTML. Permiten <strong>identificar</strong> y <strong>clasificar</strong> elementos para aplicarles estilos CSS o manipularlos con JavaScript.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-blue-50 border border-blue-200 p-3 rounded-md">
+                    <h3 class="font-bold text-blue-800 mb-2">id &mdash; Identificador &uacute;nico</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Debe ser <strong>&uacute;nico</strong> en todo el documento</li>
+                        <li>No puede contener espacios</li>
+                        <li>Debe empezar con una letra (a-z, A-Z)</li>
+                        <li>Se usa como ancla: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href="#id"</code></li>
+                        <li>Se selecciona con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#id</code> en CSS</li>
+                        <li>En JS: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">getElementById("id")</code></li>
+                    </ul>
+                </div>
+                <div class="bg-purple-50 border border-purple-200 p-3 rounded-md">
+                    <h3 class="font-bold text-purple-800 mb-2">class &mdash; Clasificaci&oacute;n</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Puede repetirse en m&uacute;ltiples elementos</li>
+                        <li>Un elemento puede tener <strong>varias clases</strong> separadas por espacio</li>
+                        <li>Se selecciona con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">.clase</code> en CSS</li>
+                        <li>En JS: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">getElementsByClassName()</code></li>
+                        <li>Es la forma principal de aplicar estilos reutilizables</li>
+                        <li>Convenci&oacute;n: usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">kebab-case</code> (ej: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">mi-clase</code>)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <h3 class="font-semibold text-gray-600 mb-2">Ejemplos de uso</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- id: identificador &uacute;nico para ancla y JS --&gt;
+&lt;section <span class="text-yellow-300">id="contacto"</span>&gt;
+  &lt;h2&gt;Cont&aacute;ctanos&lt;/h2&gt;
+&lt;/section&gt;
+&lt;a href="<span class="text-yellow-300">#contacto</span>"&gt;Ir a contacto&lt;/a&gt;
+
+&lt;!-- class: una o varias clases --&gt;
+&lt;div <span class="text-green-400">class="tarjeta destacada"</span>&gt;
+  &lt;p class="tarjeta-titulo"&gt;T&iacute;tulo&lt;/p&gt;
+  &lt;p class="tarjeta-texto"&gt;Contenido&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Combinar id y class --&gt;
+&lt;nav <span class="text-yellow-300">id="menu-principal"</span> <span class="text-green-400">class="nav-horizontal activo"</span>&gt;
+  ...
+&lt;/nav&gt;</pre>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h4 class="font-bold text-red-700 mb-1">Mal</h4>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;!-- id duplicado --&gt;
+&lt;div id="caja"&gt;A&lt;/div&gt;
+&lt;div id="caja"&gt;B&lt;/div&gt;
+
+&lt;!-- id con espacios --&gt;
+&lt;div id="mi caja"&gt;&lt;/div&gt;
+
+&lt;!-- id empieza con n&uacute;mero --&gt;
+&lt;div id="1-seccion"&gt;&lt;/div&gt;</pre>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h4 class="font-bold text-green-700 mb-1">Bien</h4>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;!-- id &uacute;nicos --&gt;
+&lt;div id="caja-a"&gt;A&lt;/div&gt;
+&lt;div id="caja-b"&gt;B&lt;/div&gt;
+
+&lt;!-- id con gui&oacute;n --&gt;
+&lt;div id="mi-caja"&gt;&lt;/div&gt;
+
+&lt;!-- id empieza con letra --&gt;
+&lt;div id="seccion-1"&gt;&lt;/div&gt;</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8.3 STYLE Y CSS INLINE -->
+        <section id="style-css" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8.3</span>style &mdash; CSS en l&iacute;nea
+            </h2>
+            <p class="mb-3">
+                El atributo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">style</code> permite aplicar estilos CSS directamente sobre un elemento. Tiene la <strong>mayor especificidad</strong> en CSS (supera a selectores de clase e id).
+            </p>
+
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mb-3">
+                <p class="font-semibold text-amber-900 mb-1">Especificidad CSS (de menor a mayor)</p>
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Selector</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Especificidad</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5">Elemento</td>
+                            <td class="border border-gray-300 px-3 py-1.5">0-0-1</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">p { }</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5">Clase</td>
+                            <td class="border border-gray-300 px-3 py-1.5">0-1-0</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">.texto { }</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5">ID</td>
+                            <td class="border border-gray-300 px-3 py-1.5">1-0-0</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#titulo { }</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">Inline (style="")</td>
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">1-0-0-0</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">style="color:red"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- CSS inline: se aplica solo a este elemento --&gt;
+&lt;p <span class="text-yellow-300">style="color: red; font-size: 18px; margin-bottom: 10px;"</span>&gt;
+  Texto con estilos en l&iacute;nea
+&lt;/p&gt;
+
+&lt;!-- M&uacute;ltiples propiedades separadas por punto y coma --&gt;
+&lt;div style="<span class="text-green-400">background: #f5f5f5; padding: 20px; border-radius: 8px;</span>"&gt;
+  Caja con estilos
+&lt;/div&gt;</pre>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h4 class="font-bold text-red-700 mb-1">Evitar</h4>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;!-- Repetir estilos inline --&gt;
+&lt;p style="color:blue;font-size:14px"&gt;A&lt;/p&gt;
+&lt;p style="color:blue;font-size:14px"&gt;B&lt;/p&gt;
+&lt;p style="color:blue;font-size:14px"&gt;C&lt;/p&gt;</pre>
+                    <p class="text-xs text-red-600 mt-1">Duplica c&oacute;digo y es dif&iacute;cil de mantener</p>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h4 class="font-bold text-green-700 mb-1">Preferir</h4>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;!-- Usar clases reutilizables --&gt;
+&lt;p class="texto-azul"&gt;A&lt;/p&gt;
+&lt;p class="texto-azul"&gt;B&lt;/p&gt;
+&lt;p class="texto-azul"&gt;C&lt;/p&gt;
+
+/* En CSS */
+.texto-azul { color:blue; font-size:14px }</pre>
+                    <p class="text-xs text-green-600 mt-1">Un solo lugar para cambiar estilos</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8.4 TITLE Y TOOLTIP -->
+        <section id="title-tooltip" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8.4</span>title &mdash; Tooltip informativo
+            </h2>
+            <p class="mb-3">
+                El atributo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">title</code> muestra un <strong>tooltip</strong> (cuadro de texto emergente) al pasar el cursor sobre un elemento. Proporciona informaci&oacute;n adicional sin ocupar espacio en la p&aacute;gina.
+            </p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li>Se muestra al hacer <strong>hover</strong> con el rat&oacute;n</li>
+                <li>En <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;abbr&gt;</code> se usa para mostrar el significado completo de una abreviatura</li>
+                <li>En <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;a&gt;</code> aporta contexto extra sobre el enlace</li>
+                <li><strong>No sustituye</strong> al atributo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">alt</code> en im&aacute;genes ni a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-label</code> para accesibilidad</li>
+                <li>No es accesible por teclado ni en dispositivos t&aacute;ctiles</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <h3 class="font-semibold text-gray-600 mb-2">Ejemplo interactivo</h3>
+                <p class="mb-2">
+                    La <abbr title="World Wide Web Consortium" class="underline decoration-dotted cursor-help font-semibold">W3C</abbr> define los est&aacute;ndares web.
+                </p>
+                <p class="mb-2">
+                    <a href="#" title="Visita la p&aacute;gina oficial del W3C para m&aacute;s informaci&oacute;n" class="text-amber-900 underline cursor-help">Enlace con tooltip</a> &mdash; pasa el rat&oacute;n para ver
+                </p>
+                <p title="Este p&aacute;rrafo tiene un tooltip personalizado" class="cursor-help bg-amber-100 p-2 rounded">Pasa el mouse por encima de este texto</p>
+            </div>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- En abreviaturas --&gt;
+&lt;abbr <span class="text-yellow-300">title="World Wide Web Consortium"</span>&gt;W3C&lt;/abbr&gt;
+
+&lt;!-- En enlaces --&gt;
+&lt;a href="/contacto" <span class="text-yellow-300">title="Ir al formulario de contacto"</span>&gt;Contacto&lt;/a&gt;
+
+&lt;!-- En cualquier elemento --&gt;
+&lt;p <span class="text-yellow-300">title="Informaci&oacute;n adicional"</span>&gt;Texto visible&lt;/p&gt;</pre>
+        </section>
+
+        <!-- 8.5 DATA-* -->
+        <section id="data-personalizados" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8.5</span>data-* &mdash; Atributos personalizados
+            </h2>
+            <p class="mb-3">
+                Los atributos <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-*</code> permiten almacenar <strong>datos personalizados</strong> directamente en los elementos HTML. Son invisibles para el usuario pero accesibles desde CSS y JavaScript.
+            </p>
+
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mb-3">
+                <p class="font-semibold text-amber-900 mb-1">Reglas de nomenclatura</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Siempre empiezan con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-</code></li>
+                    <li>Solo min&uacute;sculas, n&uacute;meros y guiones</li>
+                    <li>M&iacute;nimo un car&aacute;cter despu&eacute;s de <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-</code></li>
+                    <li>Sin may&uacute;sculas (se convierte a camelCase en JS)</li>
+                    <li>Ejemplo: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-user-id</code> &rarr; <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dataset.userId</code> en JS</li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <h3 class="font-semibold text-gray-600 mb-2">En HTML</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Almacenar informaci&oacute;n en elementos --&gt;
+&lt;article
+  <span class="text-yellow-300">data-id="42"</span>
+  <span class="text-yellow-300">data-category="tecnologia"</span>
+  <span class="text-yellow-300">data-author-name="Ana"</span>
+  <span class="text-yellow-300">data-published="true"</span>&gt;
+  &lt;h2&gt;T&iacute;tulo del art&iacute;culo&lt;/h2&gt;
+&lt;/article&gt;
+
+&lt;button <span class="text-yellow-300">data-action="delete"</span> <span class="text-yellow-300">data-target-id="42"</span>&gt;
+  Eliminar
+&lt;/button&gt;</pre>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3 mb-3">
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-600 mb-2">Acceso desde JavaScript</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const art = document.querySelector('article');
+
+// Leer datos con dataset
+art.<span class="text-green-400">dataset</span>.id;          // "42"
+art.<span class="text-green-400">dataset</span>.category;    // "tecnologia"
+art.<span class="text-green-400">dataset</span>.authorName;  // "Ana"
+
+// Modificar datos
+art.dataset.category = "ciencia";
+
+// Alternativa: getAttribute
+art.getAttribute('<span class="text-yellow-300">data-id</span>'); // "42"</pre>
+                </div>
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-600 mb-2">Acceso desde CSS</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Seleccionar por atributo data-* */
+[<span class="text-yellow-300">data-category="tecnologia"</span>] {
+  border-left: 3px solid blue;
+}
+
+/* Mostrar valor en contenido */
+[data-status]::after {
+  content: attr(<span class="text-yellow-300">data-status</span>);
+}
+
+/* Atributo presente */
+[<span class="text-yellow-300">data-published</span>] {
+  opacity: 1;
+}
+
+/* Atributo NO presente */
+:not([data-published]) {
+  opacity: 0.5;
+}</pre>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md">
+                <p class="font-semibold text-amber-900 mb-1">Casos de uso comunes</p>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li><strong>Configuraci&oacute;n de componentes</strong>: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-modal="login"</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-carousel-speed="3000"</code></li>
+                    <li><strong>Identificaci&oacute;n</strong>: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-user-id="123"</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-product-sku="XYZ"</code></li>
+                    <li><strong>Estado</strong>: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-state="open"</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-loading="true"</code></li>
+                    <li><strong>Anal&iacute;tica</strong>: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-track-event="click-cta"</code></li>
+                    <li><strong>Testing</strong>: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">data-testid="submit-button"</code></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 8.6 INTERNACIONALIZACIÓN -->
+        <section id="internacionalizacion" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8.6</span>Internacionalizaci&oacute;n: lang, dir, translate
+            </h2>
+            <p class="mb-3">
+                Estos atributos controlan c&oacute;mo el navegador, los lectores de pantalla y los traductores interpretan el idioma y la direcci&oacute;n del texto.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-3 mb-4">
+                <div class="bg-blue-50 border border-blue-200 p-3 rounded-md">
+                    <h3 class="font-bold text-blue-800 mb-2">lang</h3>
+                    <p class="text-sm mb-2">Define el idioma del contenido. Usa c&oacute;digos <strong>ISO 639-1</strong>.</p>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">es</code> &mdash; Espa&ntilde;ol</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">en</code> &mdash; Ingl&eacute;s</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">fr</code> &mdash; Franc&eacute;s</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">ar</code> &mdash; &Aacute;rabe</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">ca</code> &mdash; Catal&aacute;n</li>
+                    </ul>
+                </div>
+                <div class="bg-purple-50 border border-purple-200 p-3 rounded-md">
+                    <h3 class="font-bold text-purple-800 mb-2">dir</h3>
+                    <p class="text-sm mb-2">Direcci&oacute;n del texto.</p>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">ltr</code> &mdash; Izquierda a derecha (por defecto)</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">rtl</code> &mdash; Derecha a izquierda (&aacute;rabe, hebreo)</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">auto</code> &mdash; El navegador decide</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h3 class="font-bold text-green-800 mb-2">translate</h3>
+                    <p class="text-sm mb-2">Indica si el contenido debe traducirse.</p>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">yes</code> &mdash; Traducir (defecto)</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">no</code> &mdash; No traducir (marcas, c&oacute;digo, nombres propios)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Idioma del documento completo --&gt;
+&lt;html <span class="text-yellow-300">lang="es"</span>&gt;
+
+&lt;!-- Texto en otro idioma dentro del documento --&gt;
+&lt;p&gt;En ingl&eacute;s se dice &lt;span <span class="text-yellow-300">lang="en"</span>&gt;Hello World&lt;/span&gt;&lt;/p&gt;
+
+&lt;!-- Texto en &aacute;rabe (derecha a izquierda) --&gt;
+&lt;p <span class="text-yellow-300">lang="ar" dir="rtl"</span>&gt;&#x645;&#x631;&#x62D;&#x628;&#x627;&lt;/p&gt;
+
+&lt;!-- No traducir nombres de marca --&gt;
+&lt;p&gt;Usamos &lt;span <span class="text-green-400">translate="no"</span>&gt;Google Chrome&lt;/span&gt; para navegar.&lt;/p&gt;
+
+&lt;!-- No traducir c&oacute;digo --&gt;
+&lt;code <span class="text-green-400">translate="no"</span>&gt;console.log("hello")&lt;/code&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 8.7 INTERACCIÓN -->
+        <section id="interaccion" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8.7</span>Atributos de interacci&oacute;n
+            </h2>
+            <p class="mb-3">
+                HTML incluye atributos globales que modifican la <strong>interactividad</strong> de los elementos sin necesidad de JavaScript.
+            </p>
+
+            <div class="space-y-4">
+                <!-- hidden -->
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">hidden</code> &mdash; Ocultar elemento</h3>
+                    <p class="text-sm mb-2">Oculta el elemento del renderizado. El contenido sigue en el DOM pero no es visible ni ocupa espacio.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Elemento oculto (booleano) --&gt;
+&lt;div <span class="text-yellow-300">hidden</span>&gt;Esto no se ve&lt;/div&gt;
+
+&lt;!-- HTML 5.2+: hidden="until-found" (buscable) --&gt;
+&lt;div <span class="text-yellow-300">hidden="until-found"</span>&gt;
+  Se muestra si el usuario busca este texto (Ctrl+F)
+&lt;/div&gt;
+
+&lt;!-- Mostrar/ocultar con JavaScript --&gt;
+&lt;script&gt;
+  elemento.hidden = false; // mostrar
+  elemento.hidden = true;  // ocultar
+&lt;/script&gt;</pre>
+                </div>
+
+                <!-- tabindex -->
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">tabindex</code> &mdash; Orden de tabulaci&oacute;n</h3>
+                    <p class="text-sm mb-2">Controla si un elemento puede recibir foco con la tecla Tab y en qu&eacute; orden.</p>
+                    <table class="w-full border-collapse text-sm mb-2">
+                        <thead>
+                            <tr>
+                                <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Valor</th>
+                                <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Comportamiento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">tabindex="0"</code></td>
+                                <td class="border border-gray-300 px-3 py-1.5">Focusable en orden natural del DOM</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">tabindex="-1"</code></td>
+                                <td class="border border-gray-300 px-3 py-1.5">Focusable solo por JavaScript, no con Tab</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">tabindex="1+"</code></td>
+                                <td class="border border-gray-300 px-3 py-1.5">Orden espec&iacute;fico (evitar, rompe el flujo natural)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Div que puede recibir foco --&gt;
+&lt;div <span class="text-yellow-300">tabindex="0"</span>&gt;Pulsa Tab para llegar aqu&iacute;&lt;/div&gt;
+
+&lt;!-- Solo accesible por JS (para modales, tooltips...) --&gt;
+&lt;div <span class="text-yellow-300">tabindex="-1"</span> id="modal"&gt;Modal&lt;/div&gt;</pre>
+                </div>
+
+                <!-- contenteditable -->
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <h3 class="font-semibold text-gray-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">contenteditable</code> &mdash; Contenido editable</h3>
+                    <p class="text-sm mb-2">Permite al usuario editar el contenido directamente en el navegador.</p>
+                    <div contenteditable="true" class="border-2 border-amber-900 border-dashed p-3 rounded mb-2 bg-white">
+                        Haz clic aqu&iacute; y edita este texto directamente en el navegador.
+                    </div>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;div <span class="text-yellow-300">contenteditable="true"</span>&gt;
+  Texto que el usuario puede modificar
+&lt;/div&gt;
+
+&lt;!-- Hereda del padre --&gt;
+&lt;div contenteditable="true"&gt;
+  &lt;p&gt;Editable&lt;/p&gt;
+  &lt;p <span class="text-red-400">contenteditable="false"</span>&gt;NO editable&lt;/p&gt;
+&lt;/div&gt;</pre>
+                </div>
+
+                <!-- draggable y spellcheck -->
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                        <h3 class="font-semibold text-gray-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">draggable</code></h3>
+                        <p class="text-sm mb-2">Indica si el elemento puede arrastrarse con el rat&oacute;n (drag &amp; drop).</p>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;div <span class="text-yellow-300">draggable="true"</span>&gt;
+  Arr&aacute;strame
+&lt;/div&gt;
+
+&lt;!-- Im&aacute;genes y enlaces son
+     draggable por defecto --&gt;</pre>
+                    </div>
+                    <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                        <h3 class="font-semibold text-gray-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">spellcheck</code></h3>
+                        <p class="text-sm mb-2">Activa o desactiva la revisi&oacute;n ortogr&aacute;fica del navegador.</p>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Activar en un div editable --&gt;
+&lt;div contenteditable="true"
+     <span class="text-green-400">spellcheck="true"</span>&gt;
+  Escrbe mal y ver&aacute;s el subrayado
+&lt;/div&gt;
+
+&lt;!-- Desactivar en campo de c&oacute;digo --&gt;
+&lt;textarea <span class="text-red-400">spellcheck="false"</span>&gt;
+&lt;/textarea&gt;</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8.8 ATRIBUTOS DE EVENTO -->
+        <section id="eventos" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8.8</span>Atributos de evento (on*)
+            </h2>
+            <p class="mb-3">
+                Los atributos <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">on*</code> permiten ejecutar JavaScript cuando ocurre un evento en el elemento. Aunque funcionan, la buena pr&aacute;ctica es usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">addEventListener</code> en JavaScript externo.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-3 mb-4">
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-2">Eventos de rat&oacute;n</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">onclick</code> &mdash; al hacer clic</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ondblclick</code> &mdash; doble clic</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">onmouseover</code> &mdash; cursor entra</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">onmouseout</code> &mdash; cursor sale</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-2">Eventos de teclado y formulario</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">onkeydown</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">onkeyup</code> &mdash; tecla</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">onfocus</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">onblur</code> &mdash; foco</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">onchange</code> &mdash; valor cambia</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">onsubmit</code> &mdash; env&iacute;o de form</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h4 class="font-bold text-red-700 mb-1">Evitar &mdash; JS inline</h4>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;!-- Mezcla HTML y JS --&gt;
+&lt;button <span class="text-red-400">onclick="alert('Hola')"</span>&gt;
+  Clic
+&lt;/button&gt;
+
+&lt;input <span class="text-red-400">onchange="validar(this)"</span>&gt;
+
+&lt;!-- Problemas:
+  - Dif&iacute;cil de depurar
+  - No se puede reutilizar
+  - Riesgo de XSS
+  - Viola separaci&oacute;n de responsabilidades
+--&gt;</pre>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h4 class="font-bold text-green-700 mb-1">Preferir &mdash; addEventListener</h4>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;button <span class="text-green-400">id="btn-saludo"</span>&gt;
+  Clic
+&lt;/button&gt;
+
+&lt;script&gt;
+document
+  .getElementById('btn-saludo')
+  .<span class="text-green-400">addEventListener</span>('click', () =&gt; {
+    alert('Hola');
+  });
+&lt;/script&gt;
+
+&lt;!-- Ventajas:
+  - HTML limpio
+  - F&aacute;cil de mantener
+  - M&uacute;ltiples listeners
+  - M&aacute;s seguro
+--&gt;</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8.9 BUENAS PRÁCTICAS -->
+        <section id="buenas-practicas" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8.9</span>Buenas pr&aacute;cticas para escribir HTML
+            </h2>
+            <p class="mb-4">
+                Un HTML bien escrito es m&aacute;s f&aacute;cil de mantener, m&aacute;s accesible, mejor para SEO y m&aacute;s r&aacute;pido de cargar. Estas son las convenciones fundamentales.
+            </p>
+
+            <!-- Estructura del documento -->
+            <div class="mb-4">
+                <h3 class="font-bold text-amber-900 mb-2">Estructura del documento</h3>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                        <h4 class="font-bold text-red-700 mb-1">Mal</h4>
+                        <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;html&gt;
+&lt;title&gt;Mi p&aacute;gina&lt;/title&gt;
+&lt;h1&gt;Hola&lt;/h1&gt;
+&lt;p&gt;Texto&lt;/p&gt;
+
+&lt;!-- Falta DOCTYPE, head, body,
+     charset, viewport, lang --&gt;</pre>
+                    </div>
+                    <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                        <h4 class="font-bold text-green-700 mb-1">Bien</h4>
+                        <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto"><span class="text-green-400">&lt;!DOCTYPE html&gt;</span>
+<span class="text-green-400">&lt;html lang="es"&gt;</span>
+<span class="text-green-400">&lt;head&gt;</span>
+  <span class="text-green-400">&lt;meta charset="UTF-8"&gt;</span>
+  <span class="text-green-400">&lt;meta name="viewport" ...&gt;</span>
+  &lt;title&gt;Mi p&aacute;gina&lt;/title&gt;
+<span class="text-green-400">&lt;/head&gt;</span>
+<span class="text-green-400">&lt;body&gt;</span>
+  &lt;h1&gt;Hola&lt;/h1&gt;
+  &lt;p&gt;Texto&lt;/p&gt;
+<span class="text-green-400">&lt;/body&gt;</span>
+&lt;/html&gt;</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semántica -->
+            <div class="mb-4">
+                <h3 class="font-bold text-amber-900 mb-2">Sem&aacute;ntica sobre presentaci&oacute;n</h3>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                        <h4 class="font-bold text-red-700 mb-1">Mal &mdash; div para todo</h4>
+                        <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;div class="header"&gt;
+  &lt;div class="nav"&gt;
+    &lt;div class="link"&gt;Inicio&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="main"&gt;
+  &lt;div class="article"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="footer"&gt;...&lt;/div&gt;</pre>
+                    </div>
+                    <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                        <h4 class="font-bold text-green-700 mb-1">Bien &mdash; elementos sem&aacute;nticos</h4>
+                        <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto"><span class="text-green-400">&lt;header&gt;</span>
+  <span class="text-green-400">&lt;nav&gt;</span>
+    <span class="text-green-400">&lt;a&gt;</span>Inicio<span class="text-green-400">&lt;/a&gt;</span>
+  <span class="text-green-400">&lt;/nav&gt;</span>
+<span class="text-green-400">&lt;/header&gt;</span>
+<span class="text-green-400">&lt;main&gt;</span>
+  <span class="text-green-400">&lt;article&gt;</span>...<span class="text-green-400">&lt;/article&gt;</span>
+<span class="text-green-400">&lt;/main&gt;</span>
+<span class="text-green-400">&lt;footer&gt;</span>...<span class="text-green-400">&lt;/footer&gt;</span></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accesibilidad básica -->
+            <div class="mb-4">
+                <h3 class="font-bold text-amber-900 mb-2">Accesibilidad b&aacute;sica</h3>
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Siempre alt en im&aacute;genes --&gt;
+&lt;img src="logo.png" <span class="text-green-400">alt="Logo de la empresa"</span>&gt;
+
+&lt;!-- Siempre label asociado a inputs --&gt;
+&lt;<span class="text-green-400">label for="email"</span>&gt;Email:&lt;/label&gt;
+&lt;input type="email" <span class="text-green-400">id="email"</span>&gt;
+
+&lt;!-- Jerarqu&iacute;a correcta de encabezados --&gt;
+&lt;h1&gt;T&iacute;tulo principal&lt;/h1&gt;       &lt;!-- Solo uno por p&aacute;gina --&gt;
+  &lt;h2&gt;Secci&oacute;n&lt;/h2&gt;
+    &lt;h3&gt;Subsecci&oacute;n&lt;/h3&gt;
+  &lt;h2&gt;Otra secci&oacute;n&lt;/h2&gt;           &lt;!-- No saltar de h1 a h3 --&gt;
+
+&lt;!-- Idioma del documento --&gt;
+&lt;html <span class="text-green-400">lang="es"</span>&gt;</pre>
+                </div>
+            </div>
+
+            <!-- Separación de responsabilidades -->
+            <div class="mb-4">
+                <h3 class="font-bold text-amber-900 mb-2">Separaci&oacute;n de responsabilidades</h3>
+                <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md">
+                    <table class="w-full border-collapse text-sm">
+                        <thead>
+                            <tr>
+                                <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Capa</th>
+                                <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Tecnolog&iacute;a</th>
+                                <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Responsabilidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-300 px-3 py-1.5 font-bold">Estructura</td>
+                                <td class="border border-gray-300 px-3 py-1.5">HTML</td>
+                                <td class="border border-gray-300 px-3 py-1.5">Qu&eacute; es cada cosa (contenido y significado)</td>
+                            </tr>
+                            <tr class="bg-amber-50">
+                                <td class="border border-gray-300 px-3 py-1.5 font-bold">Presentaci&oacute;n</td>
+                                <td class="border border-gray-300 px-3 py-1.5">CSS</td>
+                                <td class="border border-gray-300 px-3 py-1.5">C&oacute;mo se ve (colores, layout, tipograf&iacute;a)</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 px-3 py-1.5 font-bold">Comportamiento</td>
+                                <td class="border border-gray-300 px-3 py-1.5">JavaScript</td>
+                                <td class="border border-gray-300 px-3 py-1.5">Qu&eacute; hace (interactividad, l&oacute;gica)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Formato y convenciones -->
+            <div class="mb-4">
+                <h3 class="font-bold text-amber-900 mb-2">Formato y convenciones de c&oacute;digo</h3>
+                <ul class="list-disc pl-5 space-y-2 text-sm">
+                    <li><strong>Indentaci&oacute;n consistente</strong>: usar 2 o 4 espacios (no mezclar con tabs)</li>
+                    <li><strong>Min&uacute;sculas</strong>: etiquetas y atributos siempre en min&uacute;sculas (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;div&gt;</code>, no <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;DIV&gt;</code>)</li>
+                    <li><strong>Comillas dobles</strong> en atributos: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class="mi-clase"</code></li>
+                    <li><strong>Cerrar todas las etiquetas</strong>: incluso las opcionales como <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;/li&gt;</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;/p&gt;</code></li>
+                    <li><strong>Autocerrables sin barra</strong>: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;img&gt;</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;br&gt;</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;input&gt;</code> (en HTML5 no necesitan <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">/&gt;</code>)</li>
+                    <li><strong>Comentarios &uacute;tiles</strong>: para secciones grandes, no para lo obvio</li>
+                    <li><strong>Un atributo por l&iacute;nea</strong> si el elemento tiene muchos atributos</li>
+                </ul>
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Comentario &uacute;til: marca inicio de secci&oacute;n --&gt;
+&lt;!-- === HERO SECTION === --&gt;
+&lt;section class="hero"&gt;
+  &lt;h1&gt;Bienvenido&lt;/h1&gt;
+&lt;/section&gt;
+
+&lt;!-- Elemento con muchos atributos: uno por l&iacute;nea --&gt;
+&lt;input
+  type="email"
+  id="email"
+  name="email"
+  class="form-input"
+  placeholder="tu@email.com"
+  required
+  autocomplete="email"
+&gt;
+
+<span class="text-red-400">&lt;!-- Evitar comentarios obvios: --&gt;
+&lt;!-- Este es un p&aacute;rrafo --&gt;
+&lt;p&gt;Texto&lt;/p&gt;</span></pre>
+                </div>
+            </div>
+
+            <!-- Validación -->
+            <div>
+                <h3 class="font-bold text-amber-900 mb-2">Validaci&oacute;n del HTML</h3>
+                <p class="mb-3 text-sm">
+                    Siempre valida tu HTML con herramientas autom&aacute;ticas para detectar errores de sintaxis, etiquetas mal cerradas o atributos inv&aacute;lidos.
+                </p>
+                <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md">
+                    <p class="font-semibold text-amber-900 mb-1">Herramientas de validaci&oacute;n</p>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><strong>W3C Validator</strong>: validator.w3.org &mdash; el validador oficial</li>
+                        <li><strong>HTMLHint</strong>: extensi&oacute;n para VS Code</li>
+                        <li><strong>Lighthouse</strong>: auditor&iacute;a integrada en Chrome DevTools (F12 &rarr; Lighthouse)</li>
+                        <li><strong>axe DevTools</strong>: extensi&oacute;n de navegador para accesibilidad</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8.10 CHECKLIST -->
+        <section id="checklist" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8.10</span>Checklist de buenas pr&aacute;cticas
+            </h2>
+            <p class="mb-3">Repasa esta lista antes de dar por terminado cualquier documento HTML:</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-bold text-gray-700 mb-2">Estructura</h3>
+                    <ul class="space-y-1.5 text-sm">
+                        <li><input type="checkbox" class="mr-1.5" disabled> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;!DOCTYPE html&gt;</code> declarado</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">lang</code> en <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;html&gt;</code></li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">charset</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">viewport</code> en <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;head&gt;</code></li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;title&gt;</code> descriptivo</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Elementos sem&aacute;nticos usados correctamente</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Jerarqu&iacute;a de encabezados correcta (h1-h6)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-700 mb-2">Atributos</h3>
+                    <ul class="space-y-1.5 text-sm">
+                        <li><input type="checkbox" class="mr-1.5" disabled> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">alt</code> en todas las im&aacute;genes</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;label&gt;</code> asociado a cada input</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> IDs &uacute;nicos en todo el documento</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Clases con nombres descriptivos (kebab-case)</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Sin CSS inline (salvo excepciones justificadas)</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Sin JS inline (usar addEventListener)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-700 mb-2">Formato</h3>
+                    <ul class="space-y-1.5 text-sm">
+                        <li><input type="checkbox" class="mr-1.5" disabled> Indentaci&oacute;n consistente</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Etiquetas y atributos en min&uacute;sculas</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Comillas dobles en atributos</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Todas las etiquetas cerradas</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Comentarios solo donde aportan valor</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-700 mb-2">Calidad</h3>
+                    <ul class="space-y-1.5 text-sm">
+                        <li><input type="checkbox" class="mr-1.5" disabled> Validado con W3C Validator</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Sin errores en consola del navegador</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Separaci&oacute;n HTML / CSS / JS</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Probado en al menos 2 navegadores</li>
+                        <li><input type="checkbox" class="mr-1.5" disabled> Responsive (viewport + media queries)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema7-semantica.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 7</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema9-accesibilidad.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 9 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes HTML &mdash; Tema 8 de 11</p>
+    </footer>
+</body>
+</html>

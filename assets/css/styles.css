@@ -1,0 +1,55 @@
+/* ── Estilos custom que complementan Tailwind ── */
+
+/* Numeración circular de temas */
+.orden {
+    display: inline-block;
+    background: #8b4513;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    font-size: 0.6em;
+    margin-right: 8px;
+}
+
+/* Ejemplos interactivos */
+.ejemplo h1,
+.ejemplo h2,
+.ejemplo h3,
+.ejemplo h4,
+.ejemplo h5,
+.ejemplo h6 {
+    margin: 2px 0;
+    border: none;
+    padding: 0;
+}
+
+/* Tarjetas del índice */
+.tema-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tema-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tema-card.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    position: relative;
+}
+
+.tema-card.disabled::after {
+    content: 'Próximamente';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #a0522d;
+    color: white;
+    font-size: 0.7em;
+    padding: 3px 8px;
+    border-radius: 10px;
+}

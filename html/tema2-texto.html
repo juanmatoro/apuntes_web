@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 2: Encabezados, P&aacute;rrafos y Texto - Apuntes HTML</title>
+    <meta name="description" content="Aprende a estructurar y formatear el contenido textual en HTML utilizando encabezados, p&aacute;rrafos y diversas etiquetas de texto.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 2: Encabezados, P&aacute;rrafos y Texto</h1>
+        <p class="opacity-90">C&oacute;mo estructurar y formatear el contenido textual</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        HTML
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 2
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#encabezados" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Encabezados</a>
+            <a href="#parrafos-texto" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">P&aacute;rrafos y texto</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <!-- ENCABEZADOS -->
+        <section id="encabezados" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Encabezados
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Definen la jerarqu&iacute;a del contenido</li>
+                <li>6 niveles: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;h1&gt;</code> a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;h6&gt;</code></li>
+                <li>Solo un <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;h1&gt;</code> por p&aacute;gina (SEO)</li>
+                <li>No saltar niveles (h1 &rarr; h2 &rarr; h3...)</li>
+            </ul>
+            <div class="ejemplo bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
+                <h1 class="text-2xl font-bold">H1 - T&iacute;tulo principal</h1>
+                <h2 class="text-xl font-bold">H2 - Secundario</h2>
+                <h3 class="text-lg font-semibold">H3 - Terciario</h3>
+                <h4 class="text-base font-semibold">H4 - Cuarto nivel</h4>
+                <h5 class="text-sm font-medium">H5 - Quinto nivel</h5>
+                <h6 class="text-xs font-medium">H6 - Sexto nivel</h6>
+            </div>
+            <div class="mt-3 text-xs text-gray-500">
+                <hgroup>
+                    <h1>Eto es un titulo principal</h1>
+                    <p>Este es un subtítulo o descripción del título principal.</p>
+                </hgroup>
+                <pre class="mt-2 bg-gray-800 text-gray-100 p-2 rounded text-xs font-mono overflow-x-auto"><code>&lt;hgroup&gt;
+    &lt;h1&gt;Eto es un titulo principal&lt;/h1&gt;
+    &lt;p&gt;Este es un subtítulo o descripción del título principal.&lt;/p&gt;
+&lt;/hgroup&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- PÁRRAFOS Y TEXTO -->
+        <section id="parrafos-texto" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>P&aacute;rrafos y texto
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;p&gt;</code>: p&aacute;rrafo de texto</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;br&gt;</code>: salto de l&iacute;nea</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;hr&gt;</code>: l&iacute;nea horizontal separadora</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;strong&gt;</code>: texto importante (negrita)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;em&gt;</code>: &eacute;nfasis (cursiva)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;mark&gt;</code>: texto resaltado</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;small&gt;</code>: texto peque&ntilde;o</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
+                <p>Este es un p&aacute;rrafo con <strong>texto importante</strong> y con <em>&eacute;nfasis</em>.</p>
+                <p>Tambi&eacute;n puedes <mark>resaltar</mark> o usar <small>texto peque&ntilde;o</small>.</p>
+                <hr class="my-2">
+                <p>Separado por una l&iacute;nea horizontal.</p>
+            </div>
+        </section>
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema1-estructura.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 1</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema3-enlaces-imagenes.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 3 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes HTML &mdash; Tema 2 de 11</p>
+    </footer>
+</body>
+</html>

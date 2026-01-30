@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 4: Listas y Contenedores - Apuntes HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 4: Listas y Contenedores</h1>
+        <p class="opacity-90">Organizar contenido con listas, div y span</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        HTML
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 4
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#seccion-listas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Listas</a>
+            <a href="#contenedores" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Contenedores: Div y Span</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <!-- LISTAS -->
+        <section id="seccion-listas" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">7</span>Listas
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;ul&gt;</code>: lista desordenada (vi&ntilde;etas)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;ol&gt;</code>: lista ordenada (n&uacute;meros)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;li&gt;</code>: elemento de lista</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;dl&gt;</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;dt&gt;</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;dd&gt;</code>: lista de definiciones</li>
+                <li>Las listas pueden anidarse</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md flex gap-8 flex-wrap">
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-1">Desordenada</h3>
+                    <ul class="list-disc pl-5"><li>Item A</li><li>Item B</li><li>Item C</li></ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-1">Ordenada</h3>
+                    <ol class="list-decimal pl-5"><li>Primero</li><li>Segundo</li><li>Tercero</li></ol>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-1">Definiciones</h3>
+                    <dl>
+                        <dt class="font-bold">HTML</dt>
+                        <dd class="ml-4">Lenguaje de marcado</dd>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIV Y SPAN -->
+        <section id="contenedores" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8</span>Contenedores: Div y Span
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;div&gt;</code>: contenedor de bloque (agrupa secciones)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;span&gt;</code>: contenedor en l&iacute;nea (dentro de texto)</li>
+                <li>No tienen significado sem&aacute;ntico</li>
+                <li>&Uacute;tiles para aplicar CSS y JavaScript</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
+                <div class="border-2 border-amber-900 p-2 rounded">
+                    Este es un <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;div&gt;</code> con un <span class="bg-yellow-200 px-1">span resaltado</span> dentro.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema3-enlaces-imagenes.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 3</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema5-tablas.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 5 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes HTML &mdash; Tema 4 de 11</p>
+    </footer>
+</body>
+</html>

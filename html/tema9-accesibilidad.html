@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 9: Accesibilidad Web - Apuntes HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 9: Accesibilidad Web</h1>
+        <p class="opacity-90">Hacer la web utilizable por todas las personas</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        HTML
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 9
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#que-es-accesibilidad" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">&iquest;Qu&eacute; es la accesibilidad?</a>
+            <a href="#html-semantico" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">HTML sem&aacute;ntico</a>
+            <a href="#aria" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">ARIA</a>
+            <a href="#imagenes-accesibles" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Im&aacute;genes accesibles</a>
+            <a href="#formularios-accesibles" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Formularios accesibles</a>
+            <a href="#navegacion-teclado" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Navegaci&oacute;n por teclado</a>
+            <a href="#herramientas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Herramientas</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- 9.1 INTRODUCCIÓN -->
+        <section id="que-es-accesibilidad" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">9.1</span>&iquest;Qu&eacute; es la accesibilidad web?
+            </h2>
+            <p class="mb-3">
+                La accesibilidad web (a11y) garantiza que todas las personas, incluidas aquellas con discapacidades visuales, auditivas, motoras o cognitivas, puedan percibir, entender, navegar e interactuar con la web.
+            </p>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mb-3">
+                <p class="font-semibold text-amber-900 mb-1">Principios POUR (WCAG 2.1)</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li><strong>Perceptible</strong>: la informaci&oacute;n debe ser presentable de formas que el usuario pueda percibir</li>
+                    <li><strong>Operable</strong>: la interfaz debe poder manejarse con distintos dispositivos (teclado, rat&oacute;n, voz...)</li>
+                    <li><strong>Comprensible</strong>: el contenido y la navegaci&oacute;n deben ser f&aacute;ciles de entender</li>
+                    <li><strong>Robusto</strong>: el contenido debe ser interpretable por una amplia variedad de tecnolog&iacute;as, incluyendo lectores de pantalla</li>
+                </ul>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <h3 class="font-semibold text-gray-600 mb-2">Niveles de conformidad WCAG</h3>
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Nivel</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Descripci&oacute;n</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">A</td>
+                            <td class="border border-gray-300 px-3 py-1.5">M&iacute;nimo, requisitos b&aacute;sicos</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Texto alternativo en im&aacute;genes</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">AA</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Recomendado, est&aacute;ndar legal en la UE</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Contraste de color m&iacute;nimo 4.5:1</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">AAA</td>
+                            <td class="border border-gray-300 px-3 py-1.5">&Oacute;ptimo, el m&aacute;s exigente</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Contraste 7:1, lenguaje de signos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 9.2 HTML SEMÁNTICO COMO BASE -->
+        <section id="html-semantico" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">9.2</span>HTML sem&aacute;ntico como base de la accesibilidad
+            </h2>
+            <p class="mb-3">
+                Usar las etiquetas HTML correctas es la forma m&aacute;s efectiva de mejorar la accesibilidad. Los lectores de pantalla y tecnolog&iacute;as de asistencia dependen de la sem&aacute;ntica del HTML para interpretar el contenido.
+            </p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-red-700 mb-2">Mal: HTML no sem&aacute;ntico</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;div class="header"&gt;
+  &lt;div class="nav"&gt;
+    &lt;span onclick="ir()"&gt;Inicio&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="main"&gt;
+  &lt;div class="titulo"&gt;Art&iacute;culo&lt;/div&gt;
+  &lt;div class="texto"&gt;Contenido...&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-green-700 mb-2">Bien: HTML sem&aacute;ntico</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;header&gt;
+  &lt;nav&gt;
+    &lt;a href="/"&gt;Inicio&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h1&gt;Art&iacute;culo&lt;/h1&gt;
+    &lt;p&gt;Contenido...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</pre>
+                </div>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mt-3">
+                <p class="font-semibold text-amber-900 mb-1">Regla de oro</p>
+                <p>Si existe un elemento HTML nativo que describe lo que quieres hacer, &uacute;salo. No reinventes con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;div&gt;</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;span&gt;</code> lo que ya existe como <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;button&gt;</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;nav&gt;</code> o <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;a&gt;</code>.</p>
+            </div>
+        </section>
+
+        <!-- 9.3 ARIA -->
+        <section id="aria" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">9.3</span>Atributos ARIA (Accessible Rich Internet Applications)
+            </h2>
+            <p class="mb-3">
+                ARIA proporciona atributos adicionales para mejorar la accesibilidad cuando el HTML sem&aacute;ntico no es suficiente. Se divide en tres categor&iacute;as:
+            </p>
+
+            <!-- 9.3.1 Roles -->
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">9.3.1 Roles ARIA</h3>
+            <p class="mb-2">Definen qu&eacute; <em>tipo de elemento</em> es para las tecnolog&iacute;as de asistencia.</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Rol</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Prop&oacute;sito</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Equivalente HTML nativo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">role="banner"</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Cabecera principal del sitio</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;header&gt;</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">role="navigation"</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Bloque de navegaci&oacute;n</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;nav&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">role="main"</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Contenido principal</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;main&gt;</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">role="alert"</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Mensaje urgente para el usuario</td>
+                            <td class="border border-gray-300 px-3 py-1.5">No tiene equivalente directo</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">role="button"</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Elemento que act&uacute;a como bot&oacute;n</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;button&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 9.3.2 Propiedades -->
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">9.3.2 Propiedades ARIA</h3>
+            <p class="mb-2">Dan informaci&oacute;n adicional sobre un elemento. No cambian con la interacci&oacute;n del usuario.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-label</code>: etiqueta invisible para lectores de pantalla</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-labelledby</code>: referencia al <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">id</code> de otro elemento que act&uacute;a como etiqueta</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-describedby</code>: referencia a un elemento que da una descripci&oacute;n m&aacute;s detallada</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-required="true"</code>: indica que un campo es obligatorio</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-placeholder</code>: texto indicativo cuando no hay <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">placeholder</code> nativo</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- aria-label: bot&oacute;n sin texto visible --&gt;
+&lt;button aria-label="Cerrar men&uacute;"&gt;
+  &lt;img src="icono-x.svg" alt=""&gt;
+&lt;/button&gt;
+
+&lt;!-- aria-labelledby: reutilizar un t&iacute;tulo existente --&gt;
+&lt;h2 id="seccion-contacto"&gt;Contacto&lt;/h2&gt;
+&lt;form aria-labelledby="seccion-contacto"&gt;
+  ...
+&lt;/form&gt;
+
+&lt;!-- aria-describedby: mensaje de ayuda --&gt;
+&lt;label for="pass"&gt;Contrase&ntilde;a&lt;/label&gt;
+&lt;input type="password" id="pass" aria-describedby="pass-help"&gt;
+&lt;small id="pass-help"&gt;M&iacute;nimo 8 caracteres&lt;/small&gt;</pre>
+            </div>
+
+            <!-- 9.3.3 Estados -->
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">9.3.3 Estados ARIA</h3>
+            <p class="mb-2">Reflejan condiciones din&aacute;micas que cambian con la interacci&oacute;n del usuario.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-expanded="true|false"</code>: indica si un elemento desplegable est&aacute; abierto</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-hidden="true"</code>: oculta un elemento de los lectores de pantalla</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-disabled="true"</code>: indica que un elemento est&aacute; deshabilitado</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-selected="true"</code>: indica la opci&oacute;n seleccionada actualmente</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-live="polite|assertive"</code>: anuncia cambios din&aacute;micos en el contenido</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Men&uacute; desplegable accesible --&gt;
+&lt;button aria-expanded="false" aria-controls="menu-principal"&gt;
+  Men&uacute; &#9660;
+&lt;/button&gt;
+&lt;ul id="menu-principal" aria-hidden="true"&gt;
+  &lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="/about"&gt;Acerca de&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Zona de notificaciones en vivo --&gt;
+&lt;div aria-live="polite" aria-atomic="true"&gt;
+  &lt;!-- Contenido actualizado por JS ser&aacute; anunciado --&gt;
+&lt;/div&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 9.4 IMÁGENES ACCESIBLES -->
+        <section id="imagenes-accesibles" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">9.4</span>Im&aacute;genes accesibles
+            </h2>
+            <p class="mb-3">El atributo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">alt</code> es fundamental pero su contenido debe adaptarse al contexto:</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Tipo de imagen</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Atributo alt</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5"><strong>Informativa</strong></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Describir el contenido</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">alt="Gr&aacute;fico de ventas Q3 2024: +15%"</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5"><strong>Decorativa</strong></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Vac&iacute;o (<code class="text-xs font-mono">alt=""</code>)</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">alt=""</code> (separadores, fondos)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5"><strong>Funcional</strong> (dentro de enlace)</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Describir la acci&oacute;n</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">alt="Ir a la p&aacute;gina de inicio"</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5"><strong>Compleja</strong> (gr&aacute;ficos, diagramas)</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Resumen breve + descripci&oacute;n larga</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Usar <code class="text-xs font-mono">&lt;figure&gt;</code> + <code class="text-xs font-mono">&lt;figcaption&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mt-3">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Imagen compleja con figure --&gt;
+&lt;figure&gt;
+  &lt;img src="organigrama.png"
+       alt="Organigrama de la empresa con 4 departamentos"&gt;
+  &lt;figcaption&gt;
+    La empresa se organiza en: Direcci&oacute;n, Desarrollo,
+    Marketing y Soporte. Cada departamento reporta
+    directamente a Direcci&oacute;n.
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;!-- Imagen decorativa: alt vac&iacute;o --&gt;
+&lt;img src="separador.svg" alt="" role="presentation"&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 9.5 FORMULARIOS ACCESIBLES -->
+        <section id="formularios-accesibles" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">9.5</span>Formularios accesibles
+            </h2>
+            <p class="mb-3">Los formularios son una de las &aacute;reas m&aacute;s cr&iacute;ticas para la accesibilidad. Cada campo debe estar correctamente etiquetado y los errores deben comunicarse de forma clara.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-3">
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-2">Reglas clave</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Siempre usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;label for="id"&gt;</code></li>
+                        <li>Agrupar campos relacionados con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;fieldset&gt;</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;legend&gt;</code></li>
+                        <li>Indicar campos obligatorios con texto, no solo color</li>
+                        <li>Mensajes de error vinculados con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">aria-describedby</code></li>
+                        <li>Usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">autocomplete</code> en campos comunes</li>
+                        <li>Orden l&oacute;gico de tabulaci&oacute;n (no manipular <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">tabindex</code> innecesariamente)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-2">Ejemplo interactivo</h3>
+                    <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                        <form onsubmit="return false;" class="space-y-2">
+                            <fieldset class="border border-gray-300 p-3 rounded">
+                                <legend class="font-semibold px-1">Datos personales</legend>
+                                <p class="mb-1">
+                                    <label for="a11y-nombre" class="font-medium">Nombre <span class="text-red-600">*</span></label><br>
+                                    <input type="text" id="a11y-nombre" required autocomplete="given-name" aria-required="true" class="border border-gray-300 rounded px-2 py-1 text-sm w-full">
+                                </p>
+                                <p>
+                                    <label for="a11y-email" class="font-medium">Email <span class="text-red-600">*</span></label><br>
+                                    <input type="email" id="a11y-email" required autocomplete="email" aria-required="true" aria-describedby="email-help" class="border border-gray-300 rounded px-2 py-1 text-sm w-full">
+                                    <small id="email-help" class="text-gray-500">Nunca compartiremos tu email</small>
+                                </p>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Datos personales&lt;/legend&gt;
+
+    &lt;label for="nombre"&gt;Nombre &lt;span aria-hidden="true"&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;input type="text" id="nombre" required
+           autocomplete="given-name"
+           aria-required="true"&gt;
+
+    &lt;label for="email"&gt;Email &lt;span aria-hidden="true"&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;input type="email" id="email" required
+           autocomplete="email"
+           aria-required="true"
+           aria-describedby="email-error"&gt;
+    &lt;span id="email-error" role="alert"&gt;
+      &lt;!-- Se rellena con JS si hay error --&gt;
+    &lt;/span&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 9.6 NAVEGACIÓN POR TECLADO -->
+        <section id="navegacion-teclado" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">9.6</span>Navegaci&oacute;n por teclado
+            </h2>
+            <p class="mb-3">Todo elemento interactivo debe ser alcanzable y operable &uacute;nicamente con el teclado.</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Tecla</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Acci&oacute;n esperada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-300 px-3 py-1.5"><kbd class="bg-gray-200 px-1.5 py-0.5 rounded text-xs font-mono">Tab</kbd></td><td class="border border-gray-300 px-3 py-1.5">Mover al siguiente elemento interactivo</td></tr>
+                        <tr class="bg-gray-50"><td class="border border-gray-300 px-3 py-1.5"><kbd class="bg-gray-200 px-1.5 py-0.5 rounded text-xs font-mono">Shift+Tab</kbd></td><td class="border border-gray-300 px-3 py-1.5">Mover al anterior</td></tr>
+                        <tr><td class="border border-gray-300 px-3 py-1.5"><kbd class="bg-gray-200 px-1.5 py-0.5 rounded text-xs font-mono">Enter</kbd></td><td class="border border-gray-300 px-3 py-1.5">Activar enlace o bot&oacute;n</td></tr>
+                        <tr class="bg-gray-50"><td class="border border-gray-300 px-3 py-1.5"><kbd class="bg-gray-200 px-1.5 py-0.5 rounded text-xs font-mono">Espacio</kbd></td><td class="border border-gray-300 px-3 py-1.5">Activar bot&oacute;n, marcar checkbox</td></tr>
+                        <tr><td class="border border-gray-300 px-3 py-1.5"><kbd class="bg-gray-200 px-1.5 py-0.5 rounded text-xs font-mono">Esc</kbd></td><td class="border border-gray-300 px-3 py-1.5">Cerrar modal/men&uacute;</td></tr>
+                        <tr class="bg-gray-50"><td class="border border-gray-300 px-3 py-1.5"><kbd class="bg-gray-200 px-1.5 py-0.5 rounded text-xs font-mono">Flechas</kbd></td><td class="border border-gray-300 px-3 py-1.5">Navegar dentro de listas, tabs, radios</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Enlace "Saltar al contenido" para usuarios de teclado --&gt;
+&lt;body&gt;
+  &lt;a href="#contenido-principal" class="skip-link"&gt;
+    Saltar al contenido principal
+  &lt;/a&gt;
+  &lt;header&gt;...navegaci&oacute;n larga...&lt;/header&gt;
+  &lt;main id="contenido-principal" tabindex="-1"&gt;
+    ...contenido...
+  &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;!-- CSS para el skip-link --&gt;
+&lt;style&gt;
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+}
+.skip-link:focus {
+  top: 0; /* Solo visible al recibir foco */
+}
+&lt;/style&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 9.7 HERRAMIENTAS Y TESTING -->
+        <section id="herramientas" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">9.7</span>Herramientas de validaci&oacute;n
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-2">Extensiones de navegador</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><strong>axe DevTools</strong>: auditor&iacute;a autom&aacute;tica de accesibilidad</li>
+                        <li><strong>WAVE</strong>: informe visual de errores</li>
+                        <li><strong>Lighthouse</strong>: integrado en Chrome DevTools</li>
+                        <li><strong>HeadingsMap</strong>: visualiza la jerarqu&iacute;a de encabezados</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-2">Tests manuales imprescindibles</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Navegar toda la p&aacute;gina solo con <kbd class="bg-gray-200 px-1 py-0.5 rounded text-xs">Tab</kbd></li>
+                        <li>Verificar que el foco es visible en todo momento</li>
+                        <li>Probar con un lector de pantalla (NVDA, VoiceOver)</li>
+                        <li>Hacer zoom al 200% y verificar que nada se rompe</li>
+                        <li>Desactivar CSS y comprobar que el contenido tiene sentido</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mt-3">
+                <p class="font-semibold text-amber-900 mb-1">Checklist r&aacute;pido de accesibilidad</p>
+                <ul class="list-none space-y-1 text-sm">
+                    <li>&square; Todas las im&aacute;genes tienen <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">alt</code> apropiado</li>
+                    <li>&square; Todos los inputs tienen <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;label&gt;</code></li>
+                    <li>&square; Contraste de color &ge; 4.5:1 (texto normal) / 3:1 (texto grande)</li>
+                    <li>&square; Se puede navegar completamente con teclado</li>
+                    <li>&square; La jerarqu&iacute;a de encabezados es l&oacute;gica (h1 &rarr; h2 &rarr; h3)</li>
+                    <li>&square; El atributo <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">lang</code> est&aacute; definido en <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;html&gt;</code></li>
+                    <li>&square; Los enlaces tienen texto descriptivo (no &laquo;clic aqu&iacute;&raquo;)</li>
+                    <li>&square; Los v&iacute;deos tienen subt&iacute;tulos</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema8-atributos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 8</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema10-seo.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 10 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes HTML &mdash; Tema 9 de 11</p>
+    </footer>
+</body>
+</html>

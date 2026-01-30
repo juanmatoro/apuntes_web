@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 10: SEO con HTML - Apuntes HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+   <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 10: Buenas pr&aacute;cticas SEO con HTML</h1>
+        <p class="opacity-90">Optimizar el HTML para que los buscadores entiendan tu contenido</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        HTML
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 10
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#que-es-seo" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">&iquest;Qu&eacute; es el SEO?</a>
+            <a href="#etiqueta-title" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Etiqueta title</a>
+            <a href="#meta-description" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Meta description</a>
+            <a href="#encabezados-seo" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Encabezados SEO</a>
+            <a href="#meta-tags" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Meta tags</a>
+            <a href="#enlaces-seo" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Enlaces SEO</a>
+            <a href="#imagenes-seo" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Im&aacute;genes SEO</a>
+            <a href="#datos-estructurados" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Datos estructurados</a>
+            <a href="#rendimiento" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Rendimiento</a>
+            <a href="#checklist-seo" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Checklist SEO</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- 10.1 QUÉ ES EL SEO -->
+        <section id="que-es-seo" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10.1</span>&iquest;Qu&eacute; es el SEO?
+            </h2>
+            <p class="mb-3">
+                SEO (Search Engine Optimization) es el conjunto de t&eacute;cnicas que mejoran la visibilidad de una web en los resultados org&aacute;nicos de los buscadores. Desde el HTML podemos influir en c&oacute;mo Google y otros motores interpretan y muestran nuestro contenido.
+            </p>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mb-3">
+                <p class="font-semibold text-amber-900 mb-1">Los 3 pilares del SEO</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li><strong>SEO T&eacute;cnico</strong>: estructura del HTML, velocidad de carga, indexabilidad</li>
+                    <li><strong>SEO On-page</strong>: contenido, palabras clave, metadatos, estructura sem&aacute;ntica</li>
+                    <li><strong>SEO Off-page</strong>: enlaces externos, autoridad del dominio (no se controla desde HTML)</li>
+                </ul>
+            </div>
+            <p class="text-sm text-gray-600">En este tema nos centramos en los dos primeros pilares: lo que podemos controlar directamente desde el c&oacute;digo HTML.</p>
+        </section>
+
+        <!-- 10.2 ETIQUETA TITLE -->
+        <section id="etiqueta-title" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10.2</span>La etiqueta <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;title&gt;</code>
+            </h2>
+            <p class="mb-3">Es el factor on-page m&aacute;s importante. Aparece en la pesta&ntilde;a del navegador y como t&iacute;tulo azul en los resultados de b&uacute;squeda.</p>
+            <div class="grid md:grid-cols-2 gap-4 mb-3">
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-green-700 mb-2">Buenas pr&aacute;cticas</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>&Uacute;nico por cada p&aacute;gina</li>
+                        <li>50-60 caracteres m&aacute;ximo</li>
+                        <li>Palabra clave principal al inicio</li>
+                        <li>Formato: <em>Palabra clave - Marca</em></li>
+                        <li>Descriptivo y atractivo para el clic</li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-red-700 mb-2">Errores comunes</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>T&iacute;tulo gen&eacute;rico: &laquo;Inicio&raquo; o &laquo;P&aacute;gina 1&raquo;</li>
+                        <li>Repetir el mismo t&iacute;tulo en todas las p&aacute;ginas</li>
+                        <li>Exceder los 60 caracteres (se corta en Google)</li>
+                        <li>Rellenar con palabras clave (keyword stuffing)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Mal --&gt;
+&lt;title&gt;Inicio&lt;/title&gt;
+&lt;title&gt;Venta de zapatos zapatos baratos comprar zapatos&lt;/title&gt;
+
+&lt;!-- Bien --&gt;
+&lt;title&gt;Zapatos de Running para Mujer - TiendaDeporte&lt;/title&gt;
+&lt;title&gt;Gu&iacute;a HTML: Estructura B&aacute;sica - Apuntes del Curso&lt;/title&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 10.3 META DESCRIPTION -->
+        <section id="meta-description" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10.3</span>Meta description
+            </h2>
+            <p class="mb-3">Aparece como texto descriptivo bajo el t&iacute;tulo en los resultados de b&uacute;squeda. No afecta directamente al ranking pero influye enormemente en el CTR (Click Through Rate).</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li>M&aacute;ximo 155-160 caracteres</li>
+                <li>&Uacute;nica por cada p&aacute;gina</li>
+                <li>Incluir la palabra clave de forma natural</li>
+                <li>Incluir una llamada a la acci&oacute;n (CTA)</li>
+                <li>Describir fielmente el contenido de la p&aacute;gina</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;meta name="description"
+      content="Aprende la estructura b&aacute;sica de HTML5 con ejemplos
+               pr&aacute;cticos. Gu&iacute;a completa para principiantes
+               con ejercicios interactivos."&gt;</pre>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md">
+                <p class="font-semibold text-amber-900 mb-1">Simulaci&oacute;n en Google</p>
+                <div class="bg-white p-3 rounded border border-gray-200 font-sans">
+                    <p class="text-blue-700 text-base font-medium hover:underline cursor-pointer">Gu&iacute;a HTML: Estructura B&aacute;sica - Apuntes del Curso</p>
+                    <p class="text-green-700 text-xs">https://ejemplo.com/apuntes/html/estructura</p>
+                    <p class="text-gray-600 text-xs">Aprende la estructura b&aacute;sica de HTML5 con ejemplos pr&aacute;cticos. Gu&iacute;a completa para principiantes con ejercicios interactivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10.4 ENCABEZADOS Y JERARQUÍA -->
+        <section id="encabezados-seo" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10.4</span>Estructura de encabezados para SEO
+            </h2>
+            <p class="mb-3">Los buscadores usan los encabezados para entender la estructura tem&aacute;tica de la p&aacute;gina. Una jerarqu&iacute;a bien definida mejora la indexaci&oacute;n y puede generar <em>rich snippets</em>.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-3">
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-red-700 mb-2">Mal: jerarqu&iacute;a rota</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;h1&gt;Mi blog&lt;/h1&gt;
+&lt;h3&gt;Art&iacute;culo 1&lt;/h3&gt;   &lt;!-- salt&oacute; h2 --&gt;
+&lt;h1&gt;Otro t&iacute;tulo&lt;/h1&gt;  &lt;!-- dos h1 --&gt;
+&lt;h4&gt;Secci&oacute;n&lt;/h4&gt;       &lt;!-- salt&oacute; h2 y h3 --&gt;</pre>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-green-700 mb-2">Bien: jerarqu&iacute;a l&oacute;gica</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;h1&gt;Recetas de Pasta Italiana&lt;/h1&gt;
+  &lt;h2&gt;Carbonara Cl&aacute;sica&lt;/h2&gt;
+    &lt;h3&gt;Ingredientes&lt;/h3&gt;
+    &lt;h3&gt;Preparaci&oacute;n&lt;/h3&gt;
+  &lt;h2&gt;Pesto Genovese&lt;/h2&gt;
+    &lt;h3&gt;Ingredientes&lt;/h3&gt;
+    &lt;h3&gt;Preparaci&oacute;n&lt;/h3&gt;</pre>
+                </div>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md">
+                <p class="font-semibold text-amber-900 mb-1">Reglas clave</p>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Un solo <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;h1&gt;</code> por p&aacute;gina, con la palabra clave principal</li>
+                    <li>No saltar niveles: h1 &rarr; h2 &rarr; h3 (no h1 &rarr; h3)</li>
+                    <li>Los <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;h2&gt;</code> definen las secciones principales</li>
+                    <li>Usar palabras clave secundarias en los <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;h2&gt;</code> y <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;h3&gt;</code></li>
+                    <li>Que los encabezados sean descriptivos, no gen&eacute;ricos</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 10.5 META TAGS ESENCIALES -->
+        <section id="meta-tags" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10.5</span>Meta tags esenciales para SEO
+            </h2>
+            <p class="mb-3">El <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;head&gt;</code> contiene metadatos cr&iacute;ticos para los buscadores y redes sociales.</p>
+
+            <!-- 10.5.1 Meta robots -->
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">10.5.1 Meta robots</h3>
+            <p class="mb-2">Controla c&oacute;mo los buscadores indexan y rastrean la p&aacute;gina.</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Directiva</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Efecto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">index</code></td><td class="border border-gray-300 px-3 py-1.5">Permite indexar (por defecto)</td></tr>
+                        <tr class="bg-gray-50"><td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">noindex</code></td><td class="border border-gray-300 px-3 py-1.5">No indexar esta p&aacute;gina</td></tr>
+                        <tr><td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">follow</code></td><td class="border border-gray-300 px-3 py-1.5">Seguir los enlaces de la p&aacute;gina (por defecto)</td></tr>
+                        <tr class="bg-gray-50"><td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">nofollow</code></td><td class="border border-gray-300 px-3 py-1.5">No seguir los enlaces</td></tr>
+                        <tr><td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">nosnippet</code></td><td class="border border-gray-300 px-3 py-1.5">No mostrar fragmento en resultados</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-4">&lt;!-- P&aacute;gina normal: indexable y rastreable --&gt;
+&lt;meta name="robots" content="index, follow"&gt;
+
+&lt;!-- P&aacute;gina privada: no indexar --&gt;
+&lt;meta name="robots" content="noindex, nofollow"&gt;</pre>
+
+            <!-- 10.5.2 Canonical -->
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">10.5.2 URL can&oacute;nica</h3>
+            <p class="mb-2">Evita contenido duplicado indicando cu&aacute;l es la URL &laquo;oficial&raquo; de una p&aacute;gina.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-4">&lt;!-- Esta p&aacute;gina puede tener par&aacute;metros: ?color=rojo&amp;talla=42 --&gt;
+&lt;!-- Canonical apunta a la URL limpia --&gt;
+&lt;link rel="canonical" href="https://tienda.com/zapatos/modelo-x"&gt;</pre>
+
+            <!-- 10.5.3 Open Graph -->
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">10.5.3 Open Graph (redes sociales)</h3>
+            <p class="mb-2">Controla c&oacute;mo se muestra el enlace cuando se comparte en redes sociales.</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Open Graph (Facebook, LinkedIn, WhatsApp) --&gt;
+&lt;meta property="og:title" content="Gu&iacute;a HTML: Estructura B&aacute;sica"&gt;
+&lt;meta property="og:description" content="Aprende HTML5 desde cero"&gt;
+&lt;meta property="og:image" content="https://ejemplo.com/img/portada.jpg"&gt;
+&lt;meta property="og:url" content="https://ejemplo.com/apuntes/html"&gt;
+&lt;meta property="og:type" content="article"&gt;
+
+&lt;!-- Twitter Card --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:title" content="Gu&iacute;a HTML: Estructura B&aacute;sica"&gt;
+&lt;meta name="twitter:description" content="Aprende HTML5 desde cero"&gt;
+&lt;meta name="twitter:image" content="https://ejemplo.com/img/portada.jpg"&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 10.6 ENLACES Y SEO -->
+        <section id="enlaces-seo" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10.6</span>Enlaces optimizados para SEO
+            </h2>
+            <p class="mb-3">Los enlaces transmiten autoridad (link juice) y ayudan a los buscadores a descubrir y clasificar contenido.</p>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Atributo</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Uso</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">rel="nofollow"</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">No transmitir autoridad</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Enlaces de publicidad, comentarios de usuarios</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">rel="sponsored"</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Enlace patrocinado/pagado</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Banners publicitarios, afiliados</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">rel="ugc"</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Contenido generado por usuarios</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Foros, comentarios, rese&ntilde;as</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">rel="noopener"</code></td>
+                            <td class="border border-gray-300 px-3 py-1.5">Seguridad con target="_blank"</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Siempre con enlaces externos nuevos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-red-700 mb-2">Mal: texto de enlace</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;a href="/guia"&gt;Clic aqu&iacute;&lt;/a&gt;
+&lt;a href="/guia"&gt;Leer m&aacute;s&lt;/a&gt;
+&lt;a href="/guia"&gt;Enlace&lt;/a&gt;</pre>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-green-700 mb-2">Bien: texto descriptivo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;a href="/guia"&gt;Gu&iacute;a completa de HTML5&lt;/a&gt;
+&lt;a href="/guia"&gt;Leer la gu&iacute;a de HTML&lt;/a&gt;
+&lt;a href="https://ads.com"
+   rel="sponsored noopener"
+   target="_blank"&gt;Oferta especial&lt;/a&gt;</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10.7 IMÁGENES Y SEO -->
+        <section id="imagenes-seo" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10.7</span>Im&aacute;genes optimizadas para SEO
+            </h2>
+            <p class="mb-3">Las im&aacute;genes son una fuente importante de tr&aacute;fico a trav&eacute;s de Google Images. Optimizarlas mejora el SEO y la velocidad de carga.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li><strong>Nombre descriptivo</strong>: <code class="text-xs font-mono">zapatos-running-mujer.webp</code> en vez de <code class="text-xs font-mono">IMG_4521.jpg</code></li>
+                <li><strong>Alt descriptivo</strong>: incluir palabra clave de forma natural</li>
+                <li><strong>Formato moderno</strong>: WebP o AVIF para mejor compresi&oacute;n</li>
+                <li><strong>Dimensiones correctas</strong>: definir <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">width</code> y <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">height</code> para evitar CLS</li>
+                <li><strong>Carga diferida</strong>: usar <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">loading="lazy"</code> para im&aacute;genes fuera del viewport</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Imagen optimizada para SEO --&gt;
+&lt;img src="zapatos-running-mujer.webp"
+     alt="Zapatos de running para mujer Nike Air Zoom en color rosa"
+     width="800"
+     height="600"
+     loading="lazy"&gt;
+
+&lt;!-- Imagen responsive con m&uacute;ltiples tama&ntilde;os --&gt;
+&lt;picture&gt;
+  &lt;source srcset="zapatos-800.avif" type="image/avif"&gt;
+  &lt;source srcset="zapatos-800.webp" type="image/webp"&gt;
+  &lt;img src="zapatos-800.jpg"
+       alt="Zapatos de running para mujer"
+       width="800" height="600"
+       loading="lazy"&gt;
+&lt;/picture&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 10.8 DATOS ESTRUCTURADOS -->
+        <section id="datos-estructurados" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10.8</span>Datos estructurados (Schema.org)
+            </h2>
+            <p class="mb-3">Los datos estructurados ayudan a Google a entender el significado del contenido y a generar <em>rich snippets</em> (resultados enriquecidos): estrellas de valoraci&oacute;n, precios, recetas, FAQs, etc.</p>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <h3 class="font-semibold text-gray-600 mb-2">Ejemplo: art&iacute;culo con JSON-LD</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Gu&iacute;a de HTML para principiantes",
+  "author": {
+    "@type": "Person",
+    "name": "Nombre del autor"
+  },
+  "datePublished": "2025-01-15",
+  "description": "Aprende los fundamentos de HTML5...",
+  "image": "https://ejemplo.com/img/portada.jpg"
+}
+&lt;/script&gt;</pre>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <h3 class="font-semibold text-gray-600 mb-2">Ejemplo: FAQ (preguntas frecuentes)</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "&iquest;Qu&eacute; es HTML?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HTML es el lenguaje est&aacute;ndar para crear p&aacute;ginas web."
+      }
+    }
+  ]
+}
+&lt;/script&gt;</pre>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mt-3">
+                <p class="font-semibold text-amber-900 mb-1">Herramienta de validaci&oacute;n</p>
+                <p>Usa <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Rich Results Test de Google</a> para verificar que tus datos estructurados son correctos y generar&aacute;n rich snippets.</p>
+            </div>
+        </section>
+
+        <!-- 10.9 RENDIMIENTO Y CORE WEB VITALS -->
+        <section id="rendimiento" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10.9</span>Rendimiento HTML y Core Web Vitals
+            </h2>
+            <p class="mb-3">Google usa las Core Web Vitals como factor de ranking. Varias de estas m&eacute;tricas se pueden mejorar directamente desde el HTML.</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">M&eacute;trica</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Qu&eacute; mide</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Optimizaci&oacute;n HTML</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">LCP</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Tiempo del elemento m&aacute;s grande visible</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">&lt;link rel="preload"&gt;</code> para la imagen principal</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">CLS</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Desplazamientos inesperados del layout</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Definir <code class="text-xs font-mono">width</code>/<code class="text-xs font-mono">height</code> en im&aacute;genes e iframes</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-bold">INP</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Retraso de interacci&oacute;n</td>
+                            <td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">&lt;script defer&gt;</code> para no bloquear el render</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;head&gt;
+  &lt;!-- Precargar la imagen hero (mejora LCP) --&gt;
+  &lt;link rel="preload" as="image" href="hero.webp"&gt;
+
+  &lt;!-- Preconectar a or&iacute;genes externos --&gt;
+  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+
+  &lt;!-- CSS cr&iacute;tico inline, resto diferido --&gt;
+  &lt;style&gt;/* CSS cr&iacute;tico */&lt;/style&gt;
+  &lt;link rel="stylesheet" href="estilos.css" media="print"
+        onload="this.media='all'"&gt;
+
+  &lt;!-- Scripts diferidos (no bloquean render) --&gt;
+  &lt;script src="app.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 10.10 CHECKLIST -->
+        <section id="checklist-seo" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10.10</span>Checklist SEO para HTML
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-2">Head y metadatos</h3>
+                    <ul class="list-none space-y-1 text-sm">
+                        <li>&square; <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;title&gt;</code> &uacute;nico y descriptivo (50-60 chars)</li>
+                        <li>&square; <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">meta description</code> &uacute;nica (155 chars)</li>
+                        <li>&square; <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">meta viewport</code> configurado</li>
+                        <li>&square; URL can&oacute;nica definida</li>
+                        <li>&square; Open Graph y Twitter Cards</li>
+                        <li>&square; Favicon configurado</li>
+                        <li>&square; <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">lang</code> definido en <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;html&gt;</code></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-2">Contenido y estructura</h3>
+                    <ul class="list-none space-y-1 text-sm">
+                        <li>&square; Un solo <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;h1&gt;</code> con palabra clave</li>
+                        <li>&square; Jerarqu&iacute;a de encabezados correcta</li>
+                        <li>&square; Im&aacute;genes con <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">alt</code>, <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">width</code>, <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">height</code></li>
+                        <li>&square; Enlaces con texto descriptivo</li>
+                        <li>&square; Datos estructurados (JSON-LD)</li>
+                        <li>&square; Estructura sem&aacute;ntica (header, main, nav, footer)</li>
+                        <li>&square; Scripts con <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">defer</code> o <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">async</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mt-3">
+                <p class="font-semibold text-amber-900 mb-1">Herramientas de auditor&iacute;a SEO</p>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li><strong>Google Lighthouse</strong>: auditor&iacute;a integrada en Chrome DevTools (F12 &rarr; Lighthouse)</li>
+                    <li><strong>Google Search Console</strong>: monitoriza el rendimiento en resultados de b&uacute;squeda</li>
+                    <li><strong>Rich Results Test</strong>: valida datos estructurados</li>
+                    <li><strong>PageSpeed Insights</strong>: analiza Core Web Vitals en m&oacute;vil y escritorio</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema9-accesibilidad.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 9</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema11-seo-ia.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 11 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes HTML &mdash; Tema 10 de 11</p>
+    </footer>
+</body>
+</html>

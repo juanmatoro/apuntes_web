@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 11: SEO para IA y Buscadores Generativos (GEO) - Apuntes HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 11: SEO para IA y Buscadores Generativos</h1>
+        <p class="opacity-90">Optimizar el HTML para que los modelos de IA entiendan y citen tu contenido</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        HTML
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 11
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#que-es-geo" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">&iquest;Qu&eacute; es GEO?</a>
+            <a href="#buscadores-ia" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Buscadores de IA</a>
+            <a href="#html-semantico-ia" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">HTML sem&aacute;ntico para IA</a>
+            <a href="#extraccion-ia" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Extracci&oacute;n por IA</a>
+            <a href="#datos-estructurados-ia" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Datos estructurados</a>
+            <a href="#configuracion-tecnica" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Configuraci&oacute;n t&eacute;cnica</a>
+            <a href="#token-budget" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Token budget</a>
+            <a href="#eeat" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">E-E-A-T</a>
+            <a href="#checklist-geo" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Checklist GEO</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- 11.1 QUÉ ES GEO -->
+        <section id="que-es-geo" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11.1</span>&iquest;Qu&eacute; es GEO (Generative Engine Optimization)?
+            </h2>
+            <p class="mb-3">
+                GEO es el proceso de optimizar contenido para que sea visible y citado por buscadores basados en inteligencia artificial: <strong>ChatGPT Search</strong>, <strong>Perplexity</strong>, <strong>Google AI Overviews</strong>, <strong>Microsoft Copilot</strong> y otros motores generativos.
+            </p>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mb-3">
+                <p class="font-semibold text-amber-900 mb-1">SEO tradicional vs GEO</p>
+                <table class="w-full border-collapse text-sm mt-2">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Aspecto</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">SEO Tradicional</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">GEO / LLM SEO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-semibold">Objetivo</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Posicionarse en la SERP</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Ser citado en respuestas de IA</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5 font-semibold">C&oacute;mo funciona</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Indexaci&oacute;n + ranking por algoritmo</td>
+                            <td class="border border-gray-300 px-3 py-1.5">RAG: recuperaci&oacute;n + generaci&oacute;n</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-semibold">Se&ntilde;al principal</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Backlinks y palabras clave</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Claridad, estructura y autoridad</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-1.5 font-semibold">Formato preferido</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Keywords en t&iacute;tulos y texto</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Respuestas directas, tablas, listas</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-1.5 font-semibold">Frescura</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Importa, pero tolera contenido antiguo</td>
+                            <td class="border border-gray-300 px-3 py-1.5">Se&ntilde;al de alto peso: los LLMs prefieren contenido reciente</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-sm text-gray-600">
+                <strong>Dato clave:</strong> Solo el 20% de las citas en AI Overviews de Google coincide con el resultado #1 tradicional. Posicionarse en Google no garantiza ser citado por la IA.
+            </p>
+        </section>
+
+        <!-- 11.2 CÓMO FUNCIONAN LOS BUSCADORES IA -->
+        <section id="buscadores-ia" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11.2</span>&iquest;C&oacute;mo leen tu HTML los buscadores de IA?
+            </h2>
+            <p class="mb-3">
+                Los sistemas de b&uacute;squeda basados en IA usan <strong>RAG (Retrieval-Augmented Generation)</strong>: primero recuperan fragmentos de p&aacute;ginas web relevantes y luego los usan como contexto para generar una respuesta.
+            </p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <h3 class="font-semibold text-gray-600 mb-2">El proceso paso a paso</h3>
+                <ol class="list-decimal pl-5 space-y-2 text-sm">
+                    <li><strong>Crawling</strong>: El bot de IA (OAI-SearchBot, Bingbot, Googlebot) solicita el HTML de tu p&aacute;gina</li>
+                    <li><strong>Parsing</strong>: Elimina boilerplate (men&uacute;s, footers, ads) y extrae el contenido principal</li>
+                    <li><strong>Tokenizaci&oacute;n</strong>: Divide el texto en tokens y genera <em>embeddings</em> vectoriales</li>
+                    <li><strong>Indexaci&oacute;n vectorial</strong>: Almacena los fragmentos en una base de datos vectorial</li>
+                    <li><strong>Recuperaci&oacute;n</strong>: Cuando un usuario pregunta, busca los fragmentos m&aacute;s relevantes</li>
+                    <li><strong>Generaci&oacute;n</strong>: El LLM sintetiza la respuesta usando esos fragmentos como fuente</li>
+                </ol>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md">
+                <p class="font-semibold text-amber-900 mb-1">Implicaci&oacute;n para tu HTML</p>
+                <p>Los modelos tienen una <strong>ventana de contexto limitada</strong> (budget de tokens). Si tu HTML est&aacute; lleno de markup redundante, men&uacute;s repetitivos o JavaScript pesado, el contenido importante puede quedar fuera del presupuesto de tokens y nunca ser procesado.</p>
+            </div>
+        </section>
+
+        <!-- 11.3 HTML SEMÁNTICO PARA IA -->
+        <section id="html-semantico-ia" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11.3</span>HTML sem&aacute;ntico como interfaz para la IA
+            </h2>
+            <p class="mb-3">
+                Para un crawler de IA, el HTML sem&aacute;ntico funciona como una <strong>API bien tipada</strong>: cada etiqueta le dice al modelo exactamente qu&eacute; tipo de contenido est&aacute; leyendo. Sin sem&aacute;ntica, el modelo trata tu contenido como datos malformados y lo descarta.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-3">
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-red-700 mb-2">Mal: &laquo;div soup&raquo;</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;div class="wrapper"&gt;
+  &lt;div class="top-bar"&gt;...&lt;/div&gt;
+  &lt;div class="content"&gt;
+    &lt;div class="title"&gt;C&oacute;mo usar HTML&lt;/div&gt;
+    &lt;div class="text"&gt;HTML es...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+                    <p class="text-xs text-red-600 mt-2">La IA no puede distinguir qu&eacute; es t&iacute;tulo, qu&eacute; es contenido o qu&eacute; es navegaci&oacute;n.</p>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-green-700 mb-2">Bien: HTML sem&aacute;ntico</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;header&gt;&lt;nav&gt;...&lt;/nav&gt;&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h1&gt;C&oacute;mo usar HTML&lt;/h1&gt;
+    &lt;p&gt;HTML es...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;</pre>
+                    <p class="text-xs text-green-600 mt-2">La IA sabe que <code>&lt;main&gt;</code> es el contenido principal y <code>&lt;h1&gt;</code> es el tema.</p>
+                </div>
+            </div>
+
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">Jerarqu&iacute;a de encabezados para IA</h3>
+            <p class="mb-2">Los LLMs usan la jerarqu&iacute;a de encabezados como <strong>mapa del contenido</strong>. Una buena pr&aacute;ctica es convertir los encabezados en las mismas preguntas que la p&aacute;gina responde:</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;h1&gt;Gu&iacute;a completa de Flexbox en CSS&lt;/h1&gt;
+
+&lt;h2&gt;&iquest;Qu&eacute; es Flexbox?&lt;/h2&gt;
+&lt;p&gt;Flexbox es un modelo de layout que...&lt;/p&gt;
+  &lt;!-- Respuesta directa inmediatamente debajo --&gt;
+
+&lt;h2&gt;&iquest;C&oacute;mo se usa justify-content?&lt;/h2&gt;
+&lt;p&gt;La propiedad justify-content distribuye...&lt;/p&gt;
+
+&lt;h2&gt;&iquest;Cu&aacute;l es la diferencia entre Flexbox y Grid?&lt;/h2&gt;
+&lt;p&gt;Flexbox es unidimensional mientras que Grid...&lt;/p&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 11.4 ESTRUCTURAR PARA EXTRACCIÓN -->
+        <section id="extraccion-ia" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11.4</span>Estructurar contenido para la extracci&oacute;n por IA
+            </h2>
+            <p class="mb-3">
+                Los motores generativos extraen <strong>fragmentos</strong> de tu p&aacute;gina, no la p&aacute;gina completa. Tu objetivo es que cada fragmento sea autocontenido y &uacute;til por s&iacute; mismo.
+            </p>
+
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">11.4.1 Patr&oacute;n pregunta-respuesta</h3>
+            <p class="mb-2">Coloca una respuesta directa y breve inmediatamente despu&eacute;s del encabezado. Luego ampl&iacute;a con detalles.</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-4">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;h2&gt;&iquest;Cu&aacute;nto tarda en cargar una web r&aacute;pida?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Una web r&aacute;pida carga en menos de 2.5 segundos
+(LCP).&lt;/strong&gt; Este es el umbral recomendado por Google
+para las Core Web Vitals...&lt;/p&gt;</pre>
+            </div>
+
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">11.4.2 Tablas y listas para datos comparativos</h3>
+            <p class="mb-2">Los LLMs procesan muy bien datos tabulados y listas. Son formatos ideales para comparaciones y pasos:</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-4">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Tabla comparativa: f&aacute;cil de extraer por IA --&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Formato&lt;/th&gt;&lt;th&gt;Compresi&oacute;n&lt;/th&gt;&lt;th&gt;Soporte&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;WebP&lt;/td&gt;&lt;td&gt;Excelente&lt;/td&gt;&lt;td&gt;97%&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;AVIF&lt;/td&gt;&lt;td&gt;Superior&lt;/td&gt;&lt;td&gt;92%&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;JPEG&lt;/td&gt;&lt;td&gt;Buena&lt;/td&gt;&lt;td&gt;100%&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- Lista de pasos: f&aacute;cil de citar --&gt;
+&lt;ol&gt;
+  &lt;li&gt;Instalar Node.js desde nodejs.org&lt;/li&gt;
+  &lt;li&gt;Ejecutar &lt;code&gt;npm init&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Instalar dependencias con &lt;code&gt;npm install&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;</pre>
+            </div>
+
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">11.4.3 Datos con atribuci&oacute;n clara</h3>
+            <p class="mb-2">Los LLMs valoran estad&iacute;sticas y datos con fuente expl&iacute;cita. Incluye la fuente junto al dato:</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Bien: dato con fuente clara --&gt;
+&lt;p&gt;El tr&aacute;fico referido por IA creci&oacute; un 527% entre enero
+y mayo de 2025
+(&lt;cite&gt;Growth Memo, Kevin Indig&lt;/cite&gt;).&lt;/p&gt;
+
+&lt;!-- Mal: dato sin fuente --&gt;
+&lt;p&gt;El tr&aacute;fico de IA ha crecido mucho.&lt;/p&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 11.5 DATOS ESTRUCTURADOS PARA IA -->
+        <section id="datos-estructurados-ia" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11.5</span>Datos estructurados optimizados para IA
+            </h2>
+            <p class="mb-3">
+                JSON-LD le da a los sistemas RAG un mapa sem&aacute;ntico del contenido. Es especialmente &uacute;til para que la IA entienda relaciones entre entidades: autor, tema, organizaci&oacute;n, fechas.
+            </p>
+
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">11.5.1 Conectar entidades con @id</h3>
+            <p class="mb-2">Crea un grafo de conocimiento interno conectando tus schemas con referencias <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">@id</code>:</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ejemplo.com/#org",
+      "name": "Mi Empresa",
+      "url": "https://ejemplo.com"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ejemplo.com/#autor",
+      "name": "Ana Garc&iacute;a",
+      "worksFor": { "@id": "https://ejemplo.com/#org" }
+    },
+    {
+      "@type": "Article",
+      "headline": "Gu&iacute;a de HTML para principiantes",
+      "author": { "@id": "https://ejemplo.com/#autor" },
+      "publisher": { "@id": "https://ejemplo.com/#org" },
+      "datePublished": "2025-10-15",
+      "dateModified": "2026-01-20"
+    }
+  ]
+}
+&lt;/script&gt;</pre>
+            </div>
+
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">11.5.2 Schemas recomendados para GEO</h3>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Schema</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Caso de uso</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Beneficio para IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">FAQPage</code></td><td class="border border-gray-300 px-3 py-1.5">Preguntas frecuentes</td><td class="border border-gray-300 px-3 py-1.5">Pares pregunta-respuesta directos</td></tr>
+                        <tr class="bg-gray-50"><td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">HowTo</code></td><td class="border border-gray-300 px-3 py-1.5">Tutoriales paso a paso</td><td class="border border-gray-300 px-3 py-1.5">Instrucciones secuenciales claras</td></tr>
+                        <tr><td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">Article</code></td><td class="border border-gray-300 px-3 py-1.5">Art&iacute;culos y gu&iacute;as</td><td class="border border-gray-300 px-3 py-1.5">Autor, fecha, tema identificado</td></tr>
+                        <tr class="bg-gray-50"><td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">Organization</code></td><td class="border border-gray-300 px-3 py-1.5">Datos de empresa</td><td class="border border-gray-300 px-3 py-1.5">Establece autoridad y confianza</td></tr>
+                        <tr><td class="border border-gray-300 px-3 py-1.5"><code class="text-xs font-mono">BreadcrumbList</code></td><td class="border border-gray-300 px-3 py-1.5">Rutas de navegaci&oacute;n</td><td class="border border-gray-300 px-3 py-1.5">Contexto jer&aacute;rquico del contenido</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 11.6 CONFIGURACIÓN TÉCNICA -->
+        <section id="configuracion-tecnica" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11.6</span>Configuraci&oacute;n t&eacute;cnica para crawlers de IA
+            </h2>
+
+            <h3 class="text-lg font-semibold text-amber-800 mt-2 mb-2">11.6.1 robots.txt para bots de IA</h3>
+            <p class="mb-2">Aseg&uacute;rate de permitir el acceso a los crawlers de IA m&aacute;s importantes. Muchos sitios bloquean estos bots sin saberlo:</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-4">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"># robots.txt - Permitir bots de IA
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot      # ChatGPT Search
+Allow: /
+
+User-agent: ChatGPT-User       # ChatGPT live browsing
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot           # Anthropic
+Allow: /</pre>
+            </div>
+
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">11.6.2 El archivo llms.txt</h3>
+            <p class="mb-2">Es un est&aacute;ndar emergente (propuesto, no oficial) que declara las pol&iacute;ticas de acceso para IA. Se coloca en la ra&iacute;z del dominio:</p>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"># /llms.txt - Ejemplo
+
+# Nombre del sitio
+&gt; Mi Web de Apuntes
+
+# Descripci&oacute;n
+Apuntes del curso de elaboraci&oacute;n de documentos web.
+Cubre HTML, CSS y buenas pr&aacute;cticas.
+
+# Contenido principal
+- [Apuntes HTML](https://ejemplo.com/apuntes/html/)
+- [Apuntes CSS](https://ejemplo.com/apuntes/css/)
+
+# Sitemap
+- [Sitemap XML](https://ejemplo.com/sitemap.xml)</pre>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mb-4">
+                <p class="font-semibold text-amber-900 mb-1">Sobre llms.txt</p>
+                <p class="text-sm">Este est&aacute;ndar est&aacute; en debate. Algunos expertos consideran que los bots de IA actualmente usan el HTML normal, no archivos especiales. Sin embargo, configurarlo no perjudica y puede ser &uacute;til a medida que el est&aacute;ndar madure.</p>
+            </div>
+
+            <h3 class="text-lg font-semibold text-amber-800 mt-4 mb-2">11.6.3 Renderizado server-side</h3>
+            <p class="mb-2">Los crawlers de IA no siempre ejecutan JavaScript. Si tu contenido depende de JS para renderizarse, puede que nunca sea indexado:</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Prioriza HTML est&aacute;tico o SSR (Server-Side Rendering)</li>
+                <li>Usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;noscript&gt;</code> como fallback para contenido cr&iacute;tico</li>
+                <li>Mantiene el tiempo de respuesta del servidor bajo 200ms</li>
+                <li>Evita SPA (Single Page Apps) sin SSR para contenido p&uacute;blico</li>
+            </ul>
+        </section>
+
+        <!-- 11.7 OPTIMIZACIÓN DEL TOKEN BUDGET -->
+        <section id="token-budget" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11.7</span>Optimizar el presupuesto de tokens
+            </h2>
+            <p class="mb-3">
+                Los modelos de IA tienen una ventana de contexto limitada. Cada token de HTML innecesario es un token que no se usa para tu contenido real.
+            </p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-green-700 mb-2">S&iacute; hacer</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>HTML limpio y sem&aacute;ntico</li>
+                        <li>Contenido principal al inicio del body</li>
+                        <li>Respuestas directas bajo los encabezados</li>
+                        <li>CSS y JS en archivos externos</li>
+                        <li>Contenido conciso y bien estructurado</li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h3 class="font-semibold text-red-700 mb-2">No hacer</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>CSS inline masivo o bloques <code class="text-xs">&lt;style&gt;</code> largos</li>
+                        <li>JavaScript inline extenso</li>
+                        <li>Men&uacute;s de navegaci&oacute;n repetidos/largos</li>
+                        <li>Divs anidados innecesariamente</li>
+                        <li>Texto oculto o contenido duplicado</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11.8 E-E-A-T Y AUTORIDAD -->
+        <section id="eeat" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11.8</span>E-E-A-T: Experiencia, Expertise, Autoridad y Confianza
+            </h2>
+            <p class="mb-3">
+                Los LLMs priorizan contenido que demuestra expertise real. E-E-A-T se puede reforzar desde el HTML:
+            </p>
+            <ul class="list-disc pl-5 space-y-2 text-sm mb-3">
+                <li><strong>Experiencia</strong>: incluir ejemplos pr&aacute;cticos reales, casos de uso propios</li>
+                <li><strong>Expertise</strong>: datos del autor con Schema <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">Person</code>, enlaces a perfil profesional</li>
+                <li><strong>Autoridad</strong>: citas con fuentes, datos estructurados <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">Organization</code></li>
+                <li><strong>Confianza</strong>: HTTPS, pol&iacute;tica de privacidad, contenido actualizado con <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">dateModified</code></li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Autor visible en la p&aacute;gina --&gt;
+&lt;address class="author"&gt;
+  Escrito por &lt;a rel="author" href="/about/ana"&gt;Ana Garc&iacute;a&lt;/a&gt;,
+  desarrolladora web con 10 a&ntilde;os de experiencia.
+  &lt;time datetime="2026-01-15"&gt;Actualizado: 15 enero 2026&lt;/time&gt;
+&lt;/address&gt;
+
+&lt;!-- Schema.org para el autor --&gt;
+&lt;script type="application/ld+json"&gt;
+{
+  "@type": "Person",
+  "name": "Ana Garc&iacute;a",
+  "jobTitle": "Desarrolladora Web Senior",
+  "sameAs": [
+    "https://linkedin.com/in/ana-garcia",
+    "https://github.com/anagarcia"
+  ]
+}
+&lt;/script&gt;</pre>
+            </div>
+        </section>
+
+        <!-- 11.9 CHECKLIST -->
+        <section id="checklist-geo" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11.9</span>Checklist GEO para tu HTML
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-2">Estructura y contenido</h3>
+                    <ul class="list-none space-y-1 text-sm">
+                        <li>&square; HTML sem&aacute;ntico (header, main, article, section, footer)</li>
+                        <li>&square; Encabezados como preguntas que la p&aacute;gina responde</li>
+                        <li>&square; Respuesta directa bajo cada <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;h2&gt;</code></li>
+                        <li>&square; Tablas y listas para datos comparativos</li>
+                        <li>&square; Estad&iacute;sticas con fuente expl&iacute;cita (<code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;cite&gt;</code>)</li>
+                        <li>&square; Contenido actualizado con frecuencia</li>
+                        <li>&square; Lenguaje claro y directo (evitar met&aacute;foras)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-600 mb-2">T&eacute;cnico</h3>
+                    <ul class="list-none space-y-1 text-sm">
+                        <li>&square; robots.txt permite bots de IA</li>
+                        <li>&square; JSON-LD con @graph conectando entidades</li>
+                        <li>&square; Datos del autor visibles + Schema Person</li>
+                        <li>&square; <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">dateModified</code> en el Schema</li>
+                        <li>&square; HTML renderizado server-side</li>
+                        <li>&square; Tiempo de respuesta &lt; 200ms</li>
+                        <li>&square; XML sitemap actualizado y segmentado</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema10-seo.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 10</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <span class="w-36"></span>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes HTML &mdash; Tema 11 de 11</p>
+    </footer>
+</body>
+</html>
