@@ -27,7 +27,17 @@
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
             <a href="#formularios" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Formularios</a>
+            <a href="#atributos-form" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Atributos Form</a>
             <a href="#tipos-input" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Tipos de Input</a>
+            <a href="#textarea" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Textarea</a>
+            <a href="#select-datalist" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Select y Datalist</a>
+            <a href="#atributos-input" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Atributos Input</a>
+            <a href="#fieldset" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Fieldset y Legend</a>
+            <a href="#validacion" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Validaci&oacute;n</a>
+            <a href="#botones" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Botones</a>
+            <a href="#label-input" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Label-Input</a>
+            <a href="#semanticos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Sem&aacute;nticos</a>
+            <a href="#accesibilidad" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">ARIA</a>
         </div>
     </nav>
 
@@ -37,27 +47,33 @@
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">10</span>Formularios
             </h2>
+            <p class="text-sm mb-3">Los formularios son el principal medio para recoger informaci&oacute;n del usuario en una p&aacute;gina web. Permiten enviar datos al servidor para su procesamiento.</p>
             <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;form&gt;</code>: contenedor del formulario</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;input&gt;</code>: campo de entrada (text, email, password, number, etc.)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;label&gt;</code>: etiqueta asociada al input (accesibilidad)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;form&gt;</code>: contenedor principal que agrupa todos los elementos del formulario</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;input&gt;</code>: campo de entrada de datos (el m&aacute;s vers&aacute;til)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;label&gt;</code>: etiqueta descriptiva asociada al input (mejora accesibilidad)</li>
                 <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;textarea&gt;</code>: &aacute;rea de texto multil&iacute;nea</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;select&gt;</code> + <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;option&gt;</code>: lista desplegable</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;button&gt;</code>: bot&oacute;n de acci&oacute;n</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;select&gt;</code> + <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;option&gt;</code>: lista desplegable de opciones</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;button&gt;</code>: bot&oacute;n para enviar o realizar acciones</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;fieldset&gt;</code> + <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;legend&gt;</code>: agrupa campos relacionados</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;datalist&gt;</code>: proporciona sugerencias de autocompletado</li>
             </ul>
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-3 mt-3 rounded-r-md">
+                <p class="text-xs"><strong>Importante:</strong> Siempre usa <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;label&gt;</code> con el atributo <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">for</code> que coincida con el <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">id</code> del input para mejorar la accesibilidad y permitir hacer clic en la etiqueta.</p>
+            </div>
             <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
                 <form onsubmit="return false;" class="space-y-2">
                     <p>
                         <label for="nombre" class="font-medium">Nombre:</label>
-                        <input type="text" id="nombre" placeholder="Tu nombre" class="border border-gray-300 rounded px-2 py-1 text-sm">
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" class="border border-gray-300 rounded px-2 py-1 text-sm">
                     </p>
                     <p>
                         <label for="email" class="font-medium">Email:</label>
-                        <input type="email" id="email" placeholder="tu@email.com" class="border border-gray-300 rounded px-2 py-1 text-sm">
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" class="border border-gray-300 rounded px-2 py-1 text-sm">
                     </p>
                     <p>
                         <label for="pais" class="font-medium">Pa&iacute;s:</label>
-                        <select id="pais" class="border border-gray-300 rounded px-2 py-1 text-sm">
+                        <select id="pais" name="pais" class="border border-gray-300 rounded px-2 py-1 text-sm">
                             <option value="">Selecciona...</option>
                             <option value="es">Espa&ntilde;a</option>
                             <option value="mx">M&eacute;xico</option>
@@ -69,29 +85,1042 @@
             </div>
         </section>
 
-        <!-- TIPOS DE INPUT -->
-        <section id="tipos-input" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <!-- ATRIBUTOS DE FORM -->
+        <section id="atributos-form" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">11</span>Tipos de Input
+                <span class="orden">11</span>Atributos del &lt;form&gt;
             </h2>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">text</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">password</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">email</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">number</code></li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">tel</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">url</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">date</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">time</code></li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">checkbox</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">radio</code></li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">file</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">color</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">range</code></li>
-                <li>Atributos: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">required</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">placeholder</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">disabled</code></li>
+            <p class="text-sm mb-3">El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;form&gt;</code> tiene atributos esenciales que definen c&oacute;mo se env&iacute;an los datos.</p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Atributo</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Descripci&oacute;n</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Valores</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">action</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">URL donde se env&iacute;an los datos</td>
+                            <td class="border border-gray-300 px-2 py-1.5">URL o ruta relativa</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">method</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">M&eacute;todo HTTP de env&iacute;o</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">GET</code> (defecto) | <code class="text-amber-700">POST</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">enctype</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Tipo de codificaci&oacute;n de datos</td>
+                            <td class="border border-gray-300 px-2 py-1.5">Ver nota abajo</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">target</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">D&oacute;nde mostrar la respuesta</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">_self</code> | <code class="text-amber-700">_blank</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">autocomplete</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Habilitar autocompletado del navegador</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">on</code> | <code class="text-amber-700">off</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">novalidate</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Desactiva validaci&oacute;n HTML5</td>
+                            <td class="border border-gray-300 px-2 py-1.5">Booleano (sin valor)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-3 mt-3 rounded-r-md">
+                <p class="text-xs"><strong>Valores de enctype:</strong></p>
+                <ul class="text-xs list-disc pl-4 mt-1 space-y-0.5">
+                    <li><code class="text-blue-700">application/x-www-form-urlencoded</code>: por defecto, codifica espacios como +</li>
+                    <li><code class="text-blue-700">multipart/form-data</code>: <strong>obligatorio para subir archivos</strong></li>
+                    <li><code class="text-blue-700">text/plain</code>: sin codificaci&oacute;n (poco usado)</li>
+                </ul>
+            </div>
+            <div class="bg-gray-900 text-gray-100 p-3 mt-3 rounded-md overflow-x-auto">
+                <pre class="text-xs"><code>&lt;form action="/enviar" method="POST" enctype="multipart/form-data"&gt;
+    &lt;input type="file" name="archivo"&gt;
+    &lt;button type="submit"&gt;Subir&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- TIPOS DE INPUT TEXTO -->
+        <section id="tipos-input" class="bg-white rounded-lg p-4 shadow basis-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">12</span>Tipos de Input
+            </h2>
+            <p class="text-sm mb-3">El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;input&gt;</code> es el m&aacute;s vers&aacute;til de los formularios. El atributo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">type</code> define su comportamiento y apariencia.</p>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Inputs de Texto</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mb-4">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-24">Tipo</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Descripci&oacute;n</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-40">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">text</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Texto de una l&iacute;nea (por defecto)</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="text" placeholder="Texto" class="border rounded px-1 w-full text-xs"></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">password</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Texto oculto con puntos/asteriscos</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="password" value="secreto" class="border rounded px-1 w-full text-xs"></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">email</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Valida formato de email. Teclado optimizado en m&oacute;viles</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="email" placeholder="tu@email.com" class="border rounded px-1 w-full text-xs"></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">tel</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Tel&eacute;fono. No valida formato pero muestra teclado num&eacute;rico</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="tel" placeholder="612345678" class="border rounded px-1 w-full text-xs"></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">url</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Valida formato de URL completa</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="url" placeholder="https://..." class="border rounded px-1 w-full text-xs"></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">search</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Campo de b&uacute;squeda (puede mostrar X para borrar)</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="search" placeholder="Buscar..." class="border rounded px-1 w-full text-xs"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Inputs Num&eacute;ricos</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mb-4">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-24">Tipo</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Descripci&oacute;n</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-40">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">number</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">N&uacute;meros con flechas +/-. Usa <code class="text-amber-700">min</code>, <code class="text-amber-700">max</code>, <code class="text-amber-700">step</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="number" value="5" min="0" max="10" class="border rounded px-1 w-full text-xs"></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">range</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Deslizador para seleccionar valor en rango</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="range" min="0" max="100" value="50" class="w-full"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Inputs de Fecha y Hora</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mb-4">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-28">Tipo</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Descripci&oacute;n</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-44">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">date</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Selector de fecha (d&iacute;a/mes/a&ntilde;o)</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="date" class="border rounded px-1 text-xs"></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">time</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Selector de hora (HH:MM)</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="time" class="border rounded px-1 text-xs"></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">datetime-local</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Fecha y hora combinadas (sin zona horaria)</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="datetime-local" class="border rounded px-1 text-xs w-full"></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">month</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Selector de mes y a&ntilde;o</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="month" class="border rounded px-1 text-xs"></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">week</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Selector de semana del a&ntilde;o</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="week" class="border rounded px-1 text-xs"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Inputs de Selecci&oacute;n</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mb-4">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-24">Tipo</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Descripci&oacute;n</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-48">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">checkbox</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Casilla de verificaci&oacute;n (selecci&oacute;n m&uacute;ltiple)</td>
+                            <td class="border border-gray-300 px-2 py-1.5">
+                                <label><input type="checkbox" checked> Opci&oacute;n 1</label>
+                                <label class="ml-2"><input type="checkbox"> Opci&oacute;n 2</label>
+                            </td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">radio</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Bot&oacute;n circular (selecci&oacute;n &uacute;nica, usar mismo <code class="text-amber-700">name</code>)</td>
+                            <td class="border border-gray-300 px-2 py-1.5">
+                                <label><input type="radio" name="demo" checked> S&iacute;</label>
+                                <label class="ml-2"><input type="radio" name="demo"> No</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Otros Inputs Especiales</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-24">Tipo</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Descripci&oacute;n</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-40">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">file</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Selector de archivos. Usa <code class="text-amber-700">accept</code> para filtrar tipos y <code class="text-amber-700">multiple</code> para varios</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="file" class="text-xs w-full"></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">color</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Selector de color con paleta</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="color" value="#d97706"></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">hidden</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Campo oculto (env&iacute;a datos sin mostrar al usuario)</td>
+                            <td class="border border-gray-300 px-2 py-1.5 text-gray-400 italic">No visible</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TEXTAREA -->
+        <section id="textarea" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">13</span>Textarea
+            </h2>
+            <p class="text-sm mb-3">El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;textarea&gt;</code> permite al usuario escribir texto en m&uacute;ltiples l&iacute;neas. A diferencia de <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;input&gt;</code>, tiene etiqueta de cierre.</p>
+
+            <h3 class="font-bold text-amber-800 mt-3 mb-2">Atributos principales</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">rows</code>: n&uacute;mero de filas visibles (alto)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">cols</code>: n&uacute;mero de columnas visibles (ancho)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">placeholder</code>: texto de ayuda</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">maxlength</code>: m&aacute;ximo de caracteres permitidos</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">minlength</code>: m&iacute;nimo de caracteres requeridos</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">wrap</code>: c&oacute;mo se env&iacute;an los saltos de l&iacute;nea (<code class="text-amber-700">soft</code>|<code class="text-amber-700">hard</code>)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">readonly</code>: solo lectura</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">disabled</code>: deshabilitado</li>
             </ul>
-            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md space-y-2">
-                <p><input type="checkbox" id="check" class="mr-1"> <label for="check">Checkbox</label></p>
-                <p>
-                    <input type="radio" name="opcion" id="r1" class="mr-1"> <label for="r1">Opci&oacute;n A</label>
-                    <input type="radio" name="opcion" id="r2" class="ml-3 mr-1"> <label for="r2">Opci&oacute;n B</label>
-                </p>
-                <p><input type="date" class="border border-gray-300 rounded px-2 py-1 text-sm"></p>
-                <p class="flex items-center gap-3">
-                    <input type="color">
-                    <input type="range" min="0" max="100" class="flex-1">
-                </p>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto">
+                <pre class="text-xs"><code>&lt;label for="mensaje"&gt;Tu mensaje:&lt;/label&gt;
+&lt;textarea id="mensaje" name="mensaje"
+    rows="4" cols="50"
+    placeholder="Escribe aqu&iacute;..."
+    maxlength="500"&gt;&lt;/textarea&gt;</code></pre>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
+                <label for="demo-textarea" class="font-medium text-sm block mb-1">Mensaje:</label>
+                <textarea id="demo-textarea" rows="3" placeholder="Escribe tu mensaje aqu&iacute;..." maxlength="200" class="w-full border border-gray-300 rounded px-2 py-1 text-sm resize-y"></textarea>
+                <p class="text-xs text-gray-500 mt-1">M&aacute;ximo 200 caracteres</p>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-3 mt-3 rounded-r-md">
+                <p class="text-xs"><strong>CSS resize:</strong> Usa <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">resize: none|vertical|horizontal|both</code> en CSS para controlar si el usuario puede redimensionar el textarea.</p>
+            </div>
+        </section>
+
+        <!-- SELECT Y DATALIST -->
+        <section id="select-datalist" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">14</span>Select y Datalist
+            </h2>
+
+            <h3 class="font-bold text-amber-800 mb-2">&lt;select&gt; - Lista desplegable</h3>
+            <p class="text-sm mb-2">Permite elegir una o varias opciones de una lista predefinida.</p>
+            <ul class="list-disc pl-5 space-y-1 text-xs mb-3">
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">&lt;option&gt;</code>: cada opci&oacute;n. Usa <code class="text-amber-700">value</code> para el valor enviado</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">&lt;optgroup&gt;</code>: agrupa opciones con etiqueta <code class="text-amber-700">label</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">multiple</code>: permite selecci&oacute;n m&uacute;ltiple (con Ctrl/Cmd)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">size</code>: n&uacute;mero de opciones visibles sin desplegar</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">selected</code>: opci&oacute;n preseleccionada</li>
+            </ul>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-4">
+                <label class="font-medium text-sm">Elige tu lenguaje:</label>
+                <select class="border border-gray-300 rounded px-2 py-1 text-sm ml-2">
+                    <option value="">Selecciona...</option>
+                    <optgroup label="Frontend">
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="js">JavaScript</option>
+                    </optgroup>
+                    <optgroup label="Backend">
+                        <option value="php">PHP</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mb-2">&lt;datalist&gt; - Autocompletado</h3>
+            <p class="text-sm mb-2">Proporciona sugerencias mientras el usuario escribe, pero permite valores libres.</p>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;input type="text" list="navegadores" placeholder="Elige o escribe..."&gt;
+&lt;datalist id="navegadores"&gt;
+    &lt;option value="Chrome"&gt;
+    &lt;option value="Firefox"&gt;
+    &lt;option value="Safari"&gt;
+    &lt;option value="Edge"&gt;
+&lt;/datalist&gt;</code></pre>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <label class="font-medium text-sm">Navegador favorito:</label>
+                <input type="text" list="navegadores-demo" placeholder="Escribe o elige..." class="border border-gray-300 rounded px-2 py-1 text-sm ml-2">
+                <datalist id="navegadores-demo">
+                    <option value="Chrome">
+                    <option value="Firefox">
+                    <option value="Safari">
+                    <option value="Edge">
+                    <option value="Opera">
+                </datalist>
+            </div>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-3 mt-3 rounded-r-md">
+                <p class="text-xs"><strong>Diferencia clave:</strong> <code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">&lt;select&gt;</code> fuerza a elegir entre opciones. <code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">&lt;datalist&gt;</code> sugiere pero permite escribir cualquier valor.</p>
+            </div>
+        </section>
+
+        <!-- ATRIBUTOS DE INPUT -->
+        <section id="atributos-input" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">15</span>Atributos de Input
+            </h2>
+            <p class="text-sm mb-3">Los inputs tienen numerosos atributos para controlar su comportamiento.</p>
+
+            <h3 class="font-bold text-amber-800 mb-2">Atributos esenciales</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mb-4">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Atributo</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Descripci&oacute;n</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">name</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5"><strong>Obligatorio para enviar datos.</strong> Clave en el par clave=valor</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">id</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Identificador &uacute;nico para asociar con &lt;label for&gt;</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">value</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Valor inicial o actual del campo</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">placeholder</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Texto de ayuda que desaparece al escribir</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mb-2">Atributos de estado</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mb-4">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Atributo</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Efecto</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left w-32">Demo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">disabled</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Deshabilitado. No se env&iacute;a con el formulario</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="text" value="No editable" disabled class="border rounded px-1 w-full bg-gray-200"></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">readonly</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Solo lectura. S&iacute; se env&iacute;a con el formulario</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="text" value="Solo lectura" readonly class="border rounded px-1 w-full"></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">autofocus</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Recibe foco autom&aacute;ticamente al cargar</td>
+                            <td class="border border-gray-300 px-2 py-1.5 text-gray-400 italic">Solo 1 por p&aacute;gina</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">checked</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Preseleccionado (solo checkbox/radio)</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><input type="checkbox" checked> marcado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mb-2">Atributos para archivos</h3>
+            <ul class="list-disc pl-5 space-y-1 text-xs">
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">accept</code>: tipos MIME permitidos (<code class="text-amber-700">image/*</code>, <code class="text-amber-700">.pdf</code>, <code class="text-amber-700">video/*</code>)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">multiple</code>: permite seleccionar varios archivos</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">capture</code>: en m&oacute;viles, abre c&aacute;mara (<code class="text-amber-700">user</code>|<code class="text-amber-700">environment</code>)</li>
+            </ul>
+        </section>
+
+        <!-- FIELDSET Y LEGEND -->
+        <section id="fieldset" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">16</span>Fieldset y Legend
+            </h2>
+            <p class="text-sm mb-3">Estos elementos agrupan campos relacionados, mejorando la organizaci&oacute;n y accesibilidad del formulario.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;fieldset&gt;</code>: agrupa controles relacionados con un borde visual</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;legend&gt;</code>: t&iacute;tulo del grupo (aparece sobre el borde)</li>
+            </ul>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;fieldset&gt;
+    &lt;legend&gt;Datos personales&lt;/legend&gt;
+    &lt;label&gt;Nombre: &lt;input type="text" name="nombre"&gt;&lt;/label&gt;
+    &lt;label&gt;Email: &lt;input type="email" name="email"&gt;&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+            </div>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <form onsubmit="return false;" class="space-y-3">
+                    <fieldset class="border border-gray-300 rounded p-3">
+                        <legend class="px-2 font-medium text-amber-900">Datos personales</legend>
+                        <div class="space-y-2">
+                            <p><label class="text-sm">Nombre: <input type="text" class="border rounded px-2 py-0.5 text-sm ml-1"></label></p>
+                            <p><label class="text-sm">Apellidos: <input type="text" class="border rounded px-2 py-0.5 text-sm ml-1"></label></p>
+                        </div>
+                    </fieldset>
+                    <fieldset class="border border-gray-300 rounded p-3">
+                        <legend class="px-2 font-medium text-amber-900">Preferencias</legend>
+                        <div class="space-y-1 text-sm">
+                            <p><label><input type="checkbox" class="mr-1"> Recibir newsletter</label></p>
+                            <p><label><input type="checkbox" class="mr-1"> Aceptar t&eacute;rminos</label></p>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-3 mt-3 rounded-r-md">
+                <p class="text-xs"><strong>Tip:</strong> Puedes usar <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">disabled</code> en el fieldset para deshabilitar todos sus campos a la vez.</p>
+            </div>
+        </section>
+
+        <!-- VALIDACION -->
+        <section id="validacion" class="bg-white rounded-lg p-4 shadow basis-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">17</span>Validaci&oacute;n de Formularios
+            </h2>
+            <p class="text-sm mb-3">HTML5 incluye validaci&oacute;n nativa sin necesidad de JavaScript. El navegador muestra mensajes de error autom&aacute;ticamente.</p>
+
+            <h3 class="font-bold text-amber-800 mb-2">Atributos de validaci&oacute;n</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mb-4">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Atributo</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Descripci&oacute;n</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">required</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Campo obligatorio</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">&lt;input required&gt;</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">minlength</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">M&iacute;nimo de caracteres</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">minlength="3"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">maxlength</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">M&aacute;ximo de caracteres</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">maxlength="50"</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">min</code> / <code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">max</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Valor m&iacute;nimo/m&aacute;ximo (n&uacute;meros, fechas)</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">min="0" max="100"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">step</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Incremento permitido</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">step="0.01"</code> (decimales)</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">pattern</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Expresi&oacute;n regular para validar</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">pattern="[A-Za-z]+"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mb-2">Ejemplos pr&aacute;cticos de pattern</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mb-4">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Uso</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Pattern</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5">Solo letras</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">[A-Za-z&aacute;&eacute;&iacute;&oacute;&uacute;&Aacute;&Eacute;&Iacute;&Oacute;&Uacute;&ntilde;&Ntilde;]+</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5">Tel&eacute;fono espa&ntilde;ol</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">[679][0-9]{8}</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5">C&oacute;digo postal</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">[0-9]{5}</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5">Contrase&ntilde;a segura</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mb-2">Prueba la validaci&oacute;n</h3>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <form class="space-y-3">
+                    <div>
+                        <label class="text-sm font-medium block mb-1">Nombre (requerido, m&iacute;n. 2 caracteres):</label>
+                        <input type="text" required minlength="2" placeholder="Tu nombre" class="border border-gray-300 rounded px-2 py-1 text-sm w-full">
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium block mb-1">Email (formato v&aacute;lido):</label>
+                        <input type="email" required placeholder="tu@email.com" class="border border-gray-300 rounded px-2 py-1 text-sm w-full">
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium block mb-1">Edad (18-99):</label>
+                        <input type="number" min="18" max="99" placeholder="25" class="border border-gray-300 rounded px-2 py-1 text-sm w-32">
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium block mb-1">Tel&eacute;fono (9 d&iacute;gitos empezando por 6, 7 o 9):</label>
+                        <input type="tel" pattern="[679][0-9]{8}" placeholder="612345678" title="Introduce un tel&eacute;fono v&aacute;lido (9 d&iacute;gitos)" class="border border-gray-300 rounded px-2 py-1 text-sm w-full">
+                    </div>
+                    <button type="submit" class="bg-amber-900 text-white px-4 py-1.5 rounded text-sm cursor-pointer hover:bg-amber-800">Validar formulario</button>
+                </form>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-3 mt-3 rounded-r-md">
+                <p class="text-xs"><strong>Pseudoclases CSS para validaci&oacute;n:</strong></p>
+                <ul class="text-xs list-disc pl-4 mt-1 space-y-0.5">
+                    <li><code class="text-blue-700">:valid</code> - campo v&aacute;lido</li>
+                    <li><code class="text-blue-700">:invalid</code> - campo inv&aacute;lido</li>
+                    <li><code class="text-blue-700">:required</code> - campo obligatorio</li>
+                    <li><code class="text-blue-700">:optional</code> - campo opcional</li>
+                    <li><code class="text-blue-700">:in-range</code> / <code class="text-blue-700">:out-of-range</code> - para valores num&eacute;ricos</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- BOTONES -->
+        <section id="botones" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">18</span>Botones
+            </h2>
+            <p class="text-sm mb-3">Hay dos formas de crear botones: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;button&gt;</code> e <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;input type="..."&gt;</code>.</p>
+
+            <h3 class="font-bold text-amber-800 mb-2">Tipos de &lt;button&gt;</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">type="submit"</code>: env&iacute;a el formulario (por defecto)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">type="reset"</code>: restablece todos los campos a su valor inicial</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">type="button"</code>: bot&oacute;n gen&eacute;rico (no hace nada sin JS)</li>
+            </ul>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md mb-3">
+                <form onsubmit="return false;" class="space-y-2">
+                    <p><input type="text" placeholder="Escribe algo..." class="border rounded px-2 py-1 text-sm"></p>
+                    <div class="flex gap-2 flex-wrap">
+                        <button type="submit" class="bg-amber-900 text-white px-3 py-1.5 rounded text-xs hover:bg-amber-800">Submit</button>
+                        <button type="reset" class="bg-gray-500 text-white px-3 py-1.5 rounded text-xs hover:bg-gray-600">Reset</button>
+                        <button type="button" class="bg-blue-500 text-white px-3 py-1.5 rounded text-xs hover:bg-blue-600">Button</button>
+                    </div>
+                </form>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mb-2">&lt;button&gt; vs &lt;input type="submit"&gt;</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">&lt;button&gt;</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">&lt;input type="submit"&gt;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5">Puede contener HTML (iconos, im&aacute;genes)</td>
+                            <td class="border border-gray-300 px-2 py-1.5">Solo texto plano (atributo value)</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5">M&aacute;s flexible para estilizar</td>
+                            <td class="border border-gray-300 px-2 py-1.5">Estilo limitado</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><strong>Recomendado</strong></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Uso legacy</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ASOCIACION LABEL-INPUT -->
+        <section id="label-input" class="bg-white rounded-lg p-4 shadow basis-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">19</span>Asociaci&oacute;n Label-Input
+            </h2>
+            <p class="text-sm mb-3">La correcta asociaci&oacute;n entre <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;label&gt;</code> e <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;input&gt;</code> es <strong>fundamental</strong> para la accesibilidad y usabilidad de los formularios.</p>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">&iquest;Por qu&eacute; es importante?</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-4">
+                <li><strong>Accesibilidad:</strong> Los lectores de pantalla anuncian el label cuando el input recibe el foco</li>
+                <li><strong>Usabilidad:</strong> Al hacer clic en el label, el input recibe el foco autom&aacute;ticamente</li>
+                <li><strong>&Aacute;rea de clic ampliada:</strong> Especialmente &uacute;til para checkboxes y radios peque&ntilde;os</li>
+                <li><strong>Sem&aacute;ntica:</strong> Indica claramente la relaci&oacute;n entre texto descriptivo y campo</li>
+            </ul>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">M&eacute;todo 1: Asociaci&oacute;n expl&iacute;cita (for/id)</h3>
+            <p class="text-sm mb-2">El atributo <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">for</code> del label debe coincidir exactamente con el <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">id</code> del input.</p>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;!-- Asociaci&oacute;n expl&iacute;cita: for="X" debe coincidir con id="X" --&gt;
+&lt;label for="email"&gt;Correo electr&oacute;nico:&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;
+
+&lt;!-- Pueden estar separados en el DOM --&gt;
+&lt;div class="campo"&gt;
+    &lt;label for="nombre"&gt;Nombre completo:&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="input"&gt;
+    &lt;input type="text" id="nombre" name="nombre"&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="bg-green-50 border-l-4 border-green-500 p-3 mb-4 rounded-r-md">
+                <p class="text-xs"><strong>Ventaja:</strong> M&aacute;s flexible, permite posicionar label e input en cualquier lugar del HTML. <strong>M&eacute;todo recomendado.</strong></p>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">M&eacute;todo 2: Asociaci&oacute;n impl&iacute;cita (anidamiento)</h3>
+            <p class="text-sm mb-2">El input se coloca <strong>dentro</strong> del label. No requiere for/id.</p>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;!-- Asociaci&oacute;n impl&iacute;cita: input dentro del label --&gt;
+&lt;label&gt;
+    Nombre de usuario:
+    &lt;input type="text" name="username"&gt;
+&lt;/label&gt;
+
+&lt;!-- Muy com&uacute;n para checkboxes y radios --&gt;
+&lt;label&gt;
+    &lt;input type="checkbox" name="terminos"&gt;
+    Acepto los t&eacute;rminos y condiciones
+&lt;/label&gt;</code></pre>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-3 mb-4 rounded-r-md">
+                <p class="text-xs"><strong>Nota:</strong> Algunos lectores de pantalla antiguos pueden tener problemas con este m&eacute;todo. Por seguridad, combina ambos:</p>
+                <code class="text-xs block mt-1 bg-gray-800 text-gray-100 p-2 rounded">&lt;label for="check1"&gt;&lt;input type="checkbox" id="check1"&gt; Texto&lt;/label&gt;</code>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Comparativa visual</h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <p class="text-xs font-bold text-green-700 mb-2">&#10004; CORRECTO - Con asociaci&oacute;n</p>
+                    <p class="mb-2">
+                        <label for="demo-correcto" class="font-medium text-sm cursor-pointer">Haz clic aqu&iacute;:</label>
+                        <input type="text" id="demo-correcto" class="border rounded px-2 py-0.5 text-sm ml-1" placeholder="Recibe foco">
+                    </p>
+                    <p class="text-xs text-gray-500">&#8593; Clic en el texto activa el input</p>
+                </div>
+                <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                    <p class="text-xs font-bold text-red-700 mb-2">&#10008; INCORRECTO - Sin asociaci&oacute;n</p>
+                    <p class="mb-2">
+                        <span class="font-medium text-sm">Haz clic aqu&iacute;:</span>
+                        <input type="text" class="border rounded px-2 py-0.5 text-sm ml-1" placeholder="No recibe foco">
+                    </p>
+                    <p class="text-xs text-gray-500">&#8593; Clic en el texto NO activa el input</p>
+                </div>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Errores comunes a evitar</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-red-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">&#10008; Mal</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">&#10004; Bien</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Problema</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-red-700">&lt;span&gt;Email:&lt;/span&gt;</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-green-700">&lt;label for="email"&gt;Email:&lt;/label&gt;</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Usar span/div en vez de label</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-red-700">&lt;label&gt;Email&lt;/label&gt;</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-green-700">&lt;label for="email"&gt;Email&lt;/label&gt;</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Label sin for ni input anidado</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-red-700">for="Email" id="email"</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-green-700">for="email" id="email"</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">for e id no coinciden (case-sensitive)</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-red-700">placeholder="Email"</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-green-700">&lt;label&gt; + placeholder</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Usar placeholder como &uacute;nica etiqueta</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-red-700">id duplicado</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-green-700">id &uacute;nico por p&aacute;gina</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Varios elementos con mismo id</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FORMULARIOS SEMANTICOS -->
+        <section id="semanticos" class="bg-white rounded-lg p-4 shadow basis-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">20</span>Formularios Sem&aacute;nticos
+            </h2>
+            <p class="text-sm mb-3">Un formulario sem&aacute;ntico usa los elementos HTML correctos para su prop&oacute;sito, mejorando la accesibilidad, SEO y mantenibilidad del c&oacute;digo.</p>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Estructura sem&aacute;ntica completa</h3>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-4">
+                <pre class="text-xs"><code>&lt;form action="/registro" method="POST"&gt;
+    &lt;!-- Agrupaci&oacute;n con fieldset y legend --&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Informaci&oacute;n personal&lt;/legend&gt;
+
+        &lt;!-- Campo con label expl&iacute;cito --&gt;
+        &lt;div class="campo"&gt;
+            &lt;label for="nombre"&gt;
+                Nombre completo
+                &lt;span class="requerido" aria-hidden="true"&gt;*&lt;/span&gt;
+            &lt;/label&gt;
+            &lt;input type="text" id="nombre" name="nombre"
+                required
+                autocomplete="name"
+                aria-describedby="nombre-ayuda"&gt;
+            &lt;span id="nombre-ayuda" class="ayuda"&gt;
+                Introduce tu nombre y apellidos
+            &lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Campo de email con autocomplete --&gt;
+        &lt;div class="campo"&gt;
+            &lt;label for="email"&gt;Correo electr&oacute;nico&lt;/label&gt;
+            &lt;input type="email" id="email" name="email"
+                required
+                autocomplete="email"
+                placeholder="ejemplo@dominio.com"&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+
+    &lt;fieldset&gt;
+        &lt;legend&gt;Preferencias&lt;/legend&gt;
+
+        &lt;!-- Grupo de radio buttons --&gt;
+        &lt;div role="radiogroup" aria-labelledby="contacto-label"&gt;
+            &lt;span id="contacto-label"&gt;Contactar por:&lt;/span&gt;
+            &lt;label&gt;
+                &lt;input type="radio" name="contacto" value="email" checked&gt;
+                Email
+            &lt;/label&gt;
+            &lt;label&gt;
+                &lt;input type="radio" name="contacto" value="telefono"&gt;
+                Tel&eacute;fono
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+
+    &lt;button type="submit"&gt;Enviar formulario&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Atributo autocomplete</h3>
+            <p class="text-sm mb-2">Indica al navegador qu&eacute; tipo de dato espera el campo, permitiendo autocompletado inteligente:</p>
+            <div class="overflow-x-auto mb-4">
+                <table class="w-full text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Valor</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Dato esperado</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Valor</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Dato esperado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">name</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Nombre completo</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">email</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Email</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">given-name</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Nombre</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">tel</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Tel&eacute;fono</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">family-name</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Apellidos</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">street-address</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Direcci&oacute;n</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">username</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Usuario</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">postal-code</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">C&oacute;digo postal</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">new-password</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Nueva contrase&ntilde;a</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">country</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Pa&iacute;s</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">current-password</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Contrase&ntilde;a actual</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">bday</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Fecha nacimiento</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Ejemplo pr&aacute;ctico sem&aacute;ntico</h3>
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-4 rounded-md">
+                <form onsubmit="return false;" class="space-y-4">
+                    <fieldset class="border border-gray-300 rounded p-3">
+                        <legend class="px-2 font-medium text-amber-900">Datos de contacto</legend>
+                        <div class="space-y-3">
+                            <div>
+                                <label for="sem-nombre" class="block text-sm font-medium mb-1">
+                                    Nombre completo <span class="text-red-500" aria-hidden="true">*</span>
+                                </label>
+                                <input type="text" id="sem-nombre" name="nombre" required autocomplete="name"
+                                    class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+                                    aria-describedby="nombre-desc">
+                                <span id="nombre-desc" class="text-xs text-gray-500">Como aparece en tu documento</span>
+                            </div>
+                            <div>
+                                <label for="sem-email" class="block text-sm font-medium mb-1">
+                                    Email <span class="text-red-500" aria-hidden="true">*</span>
+                                </label>
+                                <input type="email" id="sem-email" name="email" required autocomplete="email"
+                                    placeholder="tu@email.com"
+                                    class="w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                            </div>
+                            <div>
+                                <label for="sem-tel" class="block text-sm font-medium mb-1">Tel&eacute;fono</label>
+                                <input type="tel" id="sem-tel" name="telefono" autocomplete="tel"
+                                    class="w-full border border-gray-300 rounded px-2 py-1 text-sm">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="border border-gray-300 rounded p-3">
+                        <legend class="px-2 font-medium text-amber-900">Preferencias de contacto</legend>
+                        <div role="group" aria-labelledby="pref-label" class="space-y-1">
+                            <span id="pref-label" class="text-sm font-medium block mb-2">&iquest;C&oacute;mo prefieres que te contactemos?</span>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="radio" name="preferencia" value="email" checked>
+                                Por email
+                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="radio" name="preferencia" value="telefono">
+                                Por tel&eacute;fono
+                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="radio" name="preferencia" value="ambos">
+                                Ambos
+                            </label>
+                        </div>
+                    </fieldset>
+                    <div>
+                        <label class="flex items-start gap-2 text-sm cursor-pointer">
+                            <input type="checkbox" name="terminos" required class="mt-0.5">
+                            <span>Acepto los <a href="#" class="text-amber-700 underline">t&eacute;rminos y condiciones</a> <span class="text-red-500" aria-hidden="true">*</span></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="bg-amber-900 text-white px-4 py-2 rounded text-sm hover:bg-amber-800">
+                        Enviar formulario
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ACCESIBILIDAD -->
+        <section id="accesibilidad" class="bg-white rounded-lg p-4 shadow basis-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">21</span>Accesibilidad Avanzada (ARIA)
+            </h2>
+            <p class="text-sm mb-3">Los atributos ARIA (Accessible Rich Internet Applications) mejoran la accesibilidad cuando el HTML sem&aacute;ntico no es suficiente.</p>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Atributos ARIA para formularios</h3>
+            <div class="overflow-x-auto mb-4">
+                <table class="w-full text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-amber-100">
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Atributo</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Uso</th>
+                            <th class="border border-gray-300 px-2 py-1.5 text-left">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">aria-label</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Etiqueta invisible para lectores de pantalla</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">aria-label="Buscar productos"</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">aria-labelledby</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Referencia a elemento que act&uacute;a como label</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">aria-labelledby="titulo-seccion"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">aria-describedby</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Referencia a descripci&oacute;n adicional</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">aria-describedby="ayuda-pass"</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">aria-required</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Indica campo obligatorio (complementa required)</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">aria-required="true"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">aria-invalid</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Indica que el valor es inv&aacute;lido</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">aria-invalid="true"</code></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">aria-errormessage</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Referencia al mensaje de error</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">aria-errormessage="error-email"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">aria-hidden</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Oculta elemento decorativo del lector</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">aria-hidden="true"</code> (para iconos, *)</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">role</code></td>
+                            <td class="border border-gray-300 px-2 py-1.5">Define el rol del elemento</td>
+                            <td class="border border-gray-300 px-2 py-1.5"><code class="text-amber-700">role="alert"</code>, <code class="text-amber-700">role="group"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Ejemplo: Campo con validaci&oacute;n accesible</h3>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-4">
+                <pre class="text-xs"><code>&lt;div class="campo"&gt;
+    &lt;label for="password"&gt;
+        Contrase&ntilde;a
+        &lt;span class="requerido" aria-hidden="true"&gt;*&lt;/span&gt;
+    &lt;/label&gt;
+
+    &lt;input type="password" id="password" name="password"
+        required
+        minlength="8"
+        aria-required="true"
+        aria-describedby="password-requisitos"
+        aria-invalid="false"
+        aria-errormessage="password-error"&gt;
+
+    &lt;!-- Instrucciones siempre visibles --&gt;
+    &lt;p id="password-requisitos" class="ayuda"&gt;
+        M&iacute;nimo 8 caracteres, incluir may&uacute;sculas y n&uacute;meros
+    &lt;/p&gt;
+
+    &lt;!-- Error solo visible cuando aplica --&gt;
+    &lt;p id="password-error" class="error" role="alert" hidden&gt;
+        La contrase&ntilde;a no cumple los requisitos
+    &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Buenas pr&aacute;cticas de accesibilidad</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <p class="text-xs font-bold text-green-700 mb-2">&#10004; HAZ</p>
+                    <ul class="text-xs space-y-1 list-disc pl-4">
+                        <li>Usa <code>&lt;label&gt;</code> para TODOS los campos</li>
+                        <li>Agrupa campos relacionados con <code>&lt;fieldset&gt;</code></li>
+                        <li>Proporciona mensajes de error claros y espec&iacute;ficos</li>
+                        <li>Permite navegaci&oacute;n completa por teclado</li>
+                        <li>Indica visualmente el foco actual</li>
+                        <li>Usa <code>autocomplete</code> apropiado</li>
+                        <li>Mantiene contraste m&iacute;nimo 4.5:1</li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <p class="text-xs font-bold text-red-700 mb-2">&#10008; EVITA</p>
+                    <ul class="text-xs space-y-1 list-disc pl-4">
+                        <li>Usar solo placeholder como etiqueta</li>
+                        <li>Depender solo del color para indicar errores</li>
+                        <li>Usar <code>tabindex</code> positivo (altera orden natural)</li>
+                        <li>Deshabilitar el zoom en m&oacute;viles</li>
+                        <li>Usar CAPTCHA sin alternativa accesible</li>
+                        <li>L&iacute;mites de tiempo sin opci&oacute;n de extensi&oacute;n</li>
+                        <li>Auto-avanzar entre campos sin avisar</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-3 mt-4 rounded-r-md">
+                <p class="text-xs"><strong>Recuerda:</strong> La primera regla de ARIA es &quot;No uses ARIA si puedes usar HTML sem&aacute;ntico nativo&quot;. Un <code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">&lt;button&gt;</code> es mejor que <code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">&lt;div role=&quot;button&quot;&gt;</code>.</p>
             </div>
         </section>
     </main>
