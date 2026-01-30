@@ -3,30 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tema 3: Enlaces e Im&aacute;genes - Apuntes HTML</title>
+    <title>Tema 4: Imágenes - Apuntes HTML</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" type="image/png" href="../favicon.ico">
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
 
-    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
-        <h1 class="text-3xl font-bold mb-1">Tema 3: Enlaces e Im&aacute;genes</h1>
-        <p class="opacity-90">Hiperv&iacute;nculos, contenido visual y formatos de imagen en HTML</p>
-    </header>
-
-    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
-        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
-        <span class="text-gray-400 mx-1">&rsaquo;</span>
-        HTML
-        <span class="text-gray-400 mx-1">&rsaquo;</span>
-        Tema 3
-    </nav>
+    <!-- COMPONENTES DINÁMICOS -->
+    <div data-component="header" data-titulo="Tema 4: Imágenes" data-subtitulo="Contenido visual, formatos y optimización"></div>
+    <div data-component="breadcrumb"></div>
 
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
-            <a href="#enlaces" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Enlaces</a>
             <a href="#elemento-img" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Elemento img</a>
             <a href="#formatos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Formatos de imagen</a>
             <a href="#rasterizado-vectorial" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Rasterizado vs Vectorial</a>
@@ -41,30 +31,10 @@
 
     <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
 
-        <!-- ENLACES -->
-        <section id="enlaces" class="bg-white rounded-lg p-5 shadow">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">5</span>Enlaces
-            </h2>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;a href="url"&gt;</code>: crea hiperv&iacute;nculos</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href</code>: URL destino (relativa o absoluta)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">target="_blank"</code>: abre en nueva pesta&ntilde;a</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href="#id"</code>: ancla a elemento en la misma p&aacute;gina</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href="mailto:email"</code>: abre cliente de correo</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href="tel:numero"</code>: llama en m&oacute;viles</li>
-            </ul>
-            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
-                <p><a href="https://www.google.com" target="_blank" class="text-blue-600 hover:underline">Enlace externo</a></p>
-                <p><a href="#elemento-img" class="text-blue-600 hover:underline">Ancla interna (ir a im&aacute;genes)</a></p>
-                <p><a href="mailto:hola@ejemplo.com" class="text-blue-600 hover:underline">Enviar correo</a></p>
-            </div>
-        </section>
-
-        <!-- 6.1 ELEMENTO IMG -->
+        <!-- ELEMENTO IMG -->
         <section id="elemento-img" class="bg-white rounded-lg p-5 shadow">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6.1</span>El elemento &lt;img&gt;
+                <span class="orden">14</span>El elemento &lt;img&gt;
             </h2>
             <p class="mb-3">
                 El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;img&gt;</code> inserta una imagen en el documento. Es un <strong>elemento vac&iacute;o</strong> (no tiene etiqueta de cierre) y requiere como m&iacute;nimo los atributos <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">src</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">alt</code>.
@@ -136,10 +106,10 @@
             </div>
         </section>
 
-        <!-- 6.2 FORMATOS DE IMAGEN -->
+        <!-- FORMATOS DE IMAGEN -->
         <section id="formatos" class="bg-white rounded-lg p-5 shadow">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6.2</span>Formatos de imagen
+                <span class="orden">15</span>Formatos de imagen
             </h2>
             <p class="mb-3">
                 Elegir el formato correcto es clave para el <strong>rendimiento</strong>, la <strong>calidad visual</strong> y la <strong>compatibilidad</strong>. Cada formato tiene caracter&iacute;sticas que lo hacen ideal para situaciones concretas.
@@ -295,10 +265,10 @@
             </div>
         </section>
 
-        <!-- 6.3 RASTERIZADO VS VECTORIAL -->
+        <!-- RASTERIZADO VS VECTORIAL -->
         <section id="rasterizado-vectorial" class="bg-white rounded-lg p-5 shadow">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6.3</span>Rasterizado vs Vectorial
+                <span class="orden">16</span>Rasterizado vs Vectorial
             </h2>
             <p class="mb-3">
                 Es fundamental entender la diferencia entre estos dos tipos de im&aacute;genes para elegir el formato correcto.
@@ -340,10 +310,10 @@ Vectorial (SVG) ampliado a 400x400:
             </div>
         </section>
 
-        <!-- 6.4 PICTURE Y SRCSET -->
+        <!-- PICTURE Y SRCSET -->
         <section id="responsive" class="bg-white rounded-lg p-5 shadow">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6.4</span>Im&aacute;genes responsive: &lt;picture&gt; y srcset
+                <span class="orden">17</span>Im&aacute;genes responsive: &lt;picture&gt; y srcset
             </h2>
             <p class="mb-3">
                 HTML ofrece herramientas para servir <strong>diferentes im&aacute;genes seg&uacute;n el dispositivo</strong>: tama&ntilde;o de pantalla, densidad de p&iacute;xeles o soporte de formatos.
@@ -438,10 +408,10 @@ Vectorial (SVG) ampliado a 400x400:
             </div>
         </section>
 
-        <!-- 6.5 FIGURE Y FIGCAPTION -->
+        <!-- FIGURE Y FIGCAPTION -->
         <section id="figure-figcaption" class="bg-white rounded-lg p-5 shadow">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6.5</span>&lt;figure&gt; y &lt;figcaption&gt;
+                <span class="orden">18</span>&lt;figure&gt; y &lt;figcaption&gt;
             </h2>
             <p class="mb-3">
                 El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;figure&gt;</code> agrupa contenido autoexplicativo (imagen, diagrama, c&oacute;digo...) con su pie de descripci&oacute;n <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;figcaption&gt;</code>. Es sem&aacute;ntico y mejora la accesibilidad.
@@ -484,10 +454,10 @@ Vectorial (SVG) ampliado a 400x400:
             </div>
         </section>
 
-        <!-- 6.6 SVG INLINE -->
+        <!-- SVG INLINE -->
         <section id="svg-inline" class="bg-white rounded-lg p-5 shadow">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6.6</span>SVG inline en HTML
+                <span class="orden">19</span>SVG inline en HTML
             </h2>
             <p class="mb-3">
                 Los SVG se pueden incrustar directamente en el HTML. Esto permite <strong>estilizar con CSS</strong> y <strong>manipular con JavaScript</strong> cada parte del gr&aacute;fico.
@@ -548,10 +518,10 @@ Vectorial (SVG) ampliado a 400x400:
             </div>
         </section>
 
-        <!-- 6.7 MAPAS DE IMAGEN -->
+        <!-- MAPAS DE IMAGEN -->
         <section id="mapas-imagen" class="bg-white rounded-lg p-5 shadow">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6.7</span>Mapas de imagen (&lt;map&gt;)
+                <span class="orden">20</span>Mapas de imagen (&lt;map&gt;)
             </h2>
             <p class="mb-3">
                 Un <strong>mapa de imagen</strong> permite definir zonas clicables dentro de una imagen. Cada zona (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;area&gt;</code>) funciona como un enlace independiente.
@@ -609,10 +579,10 @@ Vectorial (SVG) ampliado a 400x400:
             </div>
         </section>
 
-        <!-- 6.8 FAVICON E IMÁGENES ESPECIALES -->
+        <!-- FAVICON E IMÁGENES ESPECIALES -->
         <section id="favicon" class="bg-white rounded-lg p-5 shadow">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6.8</span>Favicon e im&aacute;genes especiales
+                <span class="orden">21</span>Favicon e im&aacute;genes especiales
             </h2>
             <p class="mb-3">
                 Adem&aacute;s de las im&aacute;genes visibles en la p&aacute;gina, HTML utiliza im&aacute;genes para <strong>favicons</strong>, <strong>Open Graph</strong> (redes sociales) y <strong>pantallas de inicio</strong> (m&oacute;viles).
@@ -661,10 +631,10 @@ Vectorial (SVG) ampliado a 400x400:
             </div>
         </section>
 
-        <!-- 6.9 OPTIMIZACIÓN Y RENDIMIENTO -->
+        <!-- OPTIMIZACIÓN Y RENDIMIENTO -->
         <section id="optimizacion" class="bg-white rounded-lg p-5 shadow">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6.9</span>Optimizaci&oacute;n y rendimiento
+                <span class="orden">22</span>Optimizaci&oacute;n y rendimiento
             </h2>
             <p class="mb-3">
                 Las im&aacute;genes suelen ser el recurso m&aacute;s pesado de una web. Optimizarlas impacta directamente en el <strong>tiempo de carga</strong> y en los <strong>Core Web Vitals</strong> (LCP, CLS).
@@ -741,14 +711,11 @@ Vectorial (SVG) ampliado a 400x400:
 
     </main>
 
-    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
-        <a href="tema2-texto.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 2</a>
-        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
-        <a href="tema4-listas.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 4 &rarr;</a>
-    </nav>
+    <!-- COMPONENTES DINÁMICOS -->
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
 
-    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
-        <p>Apuntes HTML &mdash; Tema 3 de 11</p>
-    </footer>
+    <!-- Script de componentes -->
+    <script src="../assets/js/components.js"></script>
 </body>
 </html>

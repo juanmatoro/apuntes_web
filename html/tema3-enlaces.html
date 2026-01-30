@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3: Enlaces - Apuntes HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- COMPONENTES DINÁMICOS -->
+    <div data-component="header" data-titulo="Tema 3: Enlaces" data-subtitulo="Hipervínculos, navegación y conectividad en la web"></div>
+    <div data-component="breadcrumb"></div>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#elemento-a" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Elemento &lt;a&gt;</a>
+            <a href="#tipos-enlaces" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Tipos de enlaces</a>
+            <a href="#atributo-target" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Atributo target</a>
+            <a href="#atributo-rel" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Atributo rel</a>
+            <a href="#download" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Descargas</a>
+            <a href="#estados-css" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Estados CSS</a>
+            <a href="#seguridad" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Seguridad</a>
+            <a href="#accesibilidad" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Accesibilidad</a>
+            <a href="#buenas-practicas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Buenas pr&aacute;cticas</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- ELEMENTO A -->
+        <section id="elemento-a" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>El elemento &lt;a&gt;
+            </h2>
+            <p class="mb-3">
+                El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;a&gt;</code> (anchor) crea <strong>hiperv&iacute;nculos</strong>, la base de la navegaci&oacute;n web. Permite conectar documentos, secciones, archivos y recursos externos.
+            </p>
+
+            <div class="bg-amber-50 border-l-4 border-amber-900 p-3 rounded-r-md mb-4">
+                <p class="font-semibold text-amber-900 mb-1">Atributos principales</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">href</code> &mdash; URL de destino (<strong>obligatorio</strong> para que sea un enlace)</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">target</code> &mdash; d&oacute;nde abrir el enlace (_self, _blank, _parent, _top)</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">rel</code> &mdash; relaci&oacute;n con el documento destino (seguridad, SEO)</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">download</code> &mdash; fuerza descarga en lugar de navegar</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">hreflang</code> &mdash; idioma del documento destino</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">type</code> &mdash; tipo MIME del recurso enlazado</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">title</code> &mdash; informaci&oacute;n adicional (tooltip)</li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;!-- Sintaxis b&aacute;sica --&gt;
+&lt;a <span class="text-yellow-300">href="destino.html"</span>&gt;Texto del enlace&lt;/a&gt;
+
+&lt;!-- Enlace completo con atributos --&gt;
+&lt;a href="https://ejemplo.com/documento.pdf"
+   <span class="text-green-400">target="_blank"</span>
+   <span class="text-green-400">rel="noopener noreferrer"</span>
+   <span class="text-green-400">download="mi-documento.pdf"</span>
+   title="Descargar documento PDF"&gt;
+    Descargar PDF
+&lt;/a&gt;</code></pre>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-3 rounded-r-md">
+                <p class="text-xs"><strong>Nota:</strong> Un <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">&lt;a&gt;</code> sin <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">href</code> es v&aacute;lido pero no es un enlace &mdash; act&uacute;a como marcador de posici&oacute;n o ancla.</p>
+            </div>
+        </section>
+
+        <!-- TIPOS DE ENLACES -->
+        <section id="tipos-enlaces" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6</span>Tipos de enlaces
+            </h2>
+
+            <div class="overflow-x-auto mb-4">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Tipo</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Sintaxis</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Descripci&oacute;n</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold">Absoluto</td>
+                            <td class="border border-gray-300 px-3 py-2"><code class="text-xs bg-gray-100 px-1 rounded">href="https://web.com/pagina"</code></td>
+                            <td class="border border-gray-300 px-3 py-2">URL completa con protocolo</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold">Relativo</td>
+                            <td class="border border-gray-300 px-3 py-2"><code class="text-xs bg-gray-100 px-1 rounded">href="pagina.html"</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Relativo al documento actual</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold">Ra&iacute;z</td>
+                            <td class="border border-gray-300 px-3 py-2"><code class="text-xs bg-gray-100 px-1 rounded">href="/carpeta/pagina.html"</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Desde la ra&iacute;z del sitio</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold">Ancla</td>
+                            <td class="border border-gray-300 px-3 py-2"><code class="text-xs bg-gray-100 px-1 rounded">href="#seccion"</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Elemento con id en la misma p&aacute;gina</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold">Ancla externa</td>
+                            <td class="border border-gray-300 px-3 py-2"><code class="text-xs bg-gray-100 px-1 rounded">href="pagina.html#seccion"</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Secci&oacute;n en otra p&aacute;gina</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold">Email</td>
+                            <td class="border border-gray-300 px-3 py-2"><code class="text-xs bg-gray-100 px-1 rounded">href="mailto:correo@ejemplo.com"</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Abre cliente de correo</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold">Tel&eacute;fono</td>
+                            <td class="border border-gray-300 px-3 py-2"><code class="text-xs bg-gray-100 px-1 rounded">href="tel:+34612345678"</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Inicia llamada (m&oacute;viles)</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold">SMS</td>
+                            <td class="border border-gray-300 px-3 py-2"><code class="text-xs bg-gray-100 px-1 rounded">href="sms:+34612345678"</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Abre app de mensajes</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold">WhatsApp</td>
+                            <td class="border border-gray-300 px-3 py-2"><code class="text-xs bg-gray-100 px-1 rounded">href="https://wa.me/34612345678"</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Chat de WhatsApp</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold">JavaScript</td>
+                            <td class="border border-gray-300 px-3 py-2"><code class="text-xs bg-gray-100 px-1 rounded">href="javascript:void(0)"</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Previene navegaci&oacute;n (evitar)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Rutas relativas</h3>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;!-- Mismo directorio --&gt;
+&lt;a href="<span class="text-green-400">pagina.html</span>"&gt;Misma carpeta&lt;/a&gt;
+
+&lt;!-- Subdirectorio --&gt;
+&lt;a href="<span class="text-green-400">carpeta/pagina.html</span>"&gt;Dentro de carpeta&lt;/a&gt;
+
+&lt;!-- Directorio padre --&gt;
+&lt;a href="<span class="text-yellow-300">../</span>pagina.html"&gt;Un nivel arriba&lt;/a&gt;
+
+&lt;!-- Dos niveles arriba --&gt;
+&lt;a href="<span class="text-yellow-300">../../</span>pagina.html"&gt;Dos niveles arriba&lt;/a&gt;
+
+&lt;!-- Desde la ra&iacute;z del sitio --&gt;
+&lt;a href="<span class="text-yellow-300">/</span>carpeta/pagina.html"&gt;Desde ra&iacute;z&lt;/a&gt;</code></pre>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Enlaces mailto avanzados</h3>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;!-- Email b&aacute;sico --&gt;
+&lt;a href="<span class="text-green-400">mailto:info@ejemplo.com</span>"&gt;Contacto&lt;/a&gt;
+
+&lt;!-- Con asunto --&gt;
+&lt;a href="mailto:info@ejemplo.com<span class="text-yellow-300">?subject=Consulta</span>"&gt;Consulta&lt;/a&gt;
+
+&lt;!-- Con asunto y cuerpo --&gt;
+&lt;a href="mailto:info@ejemplo.com<span class="text-yellow-300">?subject=Hola&amp;body=Mi mensaje</span>"&gt;
+    Enviar email
+&lt;/a&gt;
+
+&lt;!-- M&uacute;ltiples destinatarios --&gt;
+&lt;a href="mailto:uno@ej.com<span class="text-yellow-300">,dos@ej.com</span>?cc=copia@ej.com&amp;bcc=oculto@ej.com"&gt;
+    Email m&uacute;ltiple
+&lt;/a&gt;</code></pre>
+            </div>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <h3 class="font-semibold text-gray-600 mb-2">Ejemplos interactivos</h3>
+                <div class="space-y-2">
+                    <p><a href="#elemento-a" class="text-blue-600 hover:underline">&#8593; Ancla interna (ir arriba)</a></p>
+                    <p><a href="mailto:ejemplo@test.com?subject=Consulta&body=Hola" class="text-blue-600 hover:underline">Enviar email con asunto y cuerpo</a></p>
+                    <p><a href="tel:+34612345678" class="text-blue-600 hover:underline">Llamar al +34 612 345 678</a></p>
+                    <p><a href="https://wa.me/34612345678?text=Hola" class="text-blue-600 hover:underline" target="_blank" rel="noopener">Abrir WhatsApp</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ATRIBUTO TARGET -->
+        <section id="atributo-target" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">7</span>Atributo target
+            </h2>
+            <p class="mb-3">
+                El atributo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">target</code> especifica <strong>d&oacute;nde</strong> se abrir&aacute; el enlace.
+            </p>
+
+            <div class="overflow-x-auto mb-4">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Valor</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Comportamiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">_self</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Misma pesta&ntilde;a/ventana (<strong>por defecto</strong>)</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">_blank</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Nueva pesta&ntilde;a o ventana</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">_parent</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Marco padre (en iframes anidados)</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">_top</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Ventana completa (sale de todos los iframes)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">nombre</code></td>
+                            <td class="border border-gray-300 px-3 py-2">iframe o ventana con ese nombre</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;!-- Nueva pesta&ntilde;a (SIEMPRE con rel="noopener") --&gt;
+&lt;a href="https://ejemplo.com"
+   <span class="text-yellow-300">target="_blank"</span>
+   <span class="text-green-400">rel="noopener noreferrer"</span>&gt;
+    Abrir en nueva pesta&ntilde;a
+&lt;/a&gt;
+
+&lt;!-- Abrir en un iframe espec&iacute;fico --&gt;
+&lt;a href="contenido.html" <span class="text-yellow-300">target="mi-iframe"</span>&gt;
+    Cargar en iframe
+&lt;/a&gt;
+&lt;iframe name="mi-iframe"&gt;&lt;/iframe&gt;</code></pre>
+            </div>
+
+            <div class="bg-red-50 border-l-4 border-red-500 p-3 rounded-r-md">
+                <p class="text-xs"><strong>Seguridad:</strong> Usar <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">target="_blank"</code> sin <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">rel="noopener"</code> es una vulnerabilidad. La p&aacute;gina destino puede acceder a <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">window.opener</code> y manipular tu p&aacute;gina.</p>
+            </div>
+        </section>
+
+        <!-- ATRIBUTO REL -->
+        <section id="atributo-rel" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8</span>Atributo rel
+            </h2>
+            <p class="mb-3">
+                El atributo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">rel</code> define la <strong>relaci&oacute;n</strong> entre el documento actual y el destino. Es crucial para seguridad y SEO.
+            </p>
+
+            <div class="overflow-x-auto mb-4">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Valor</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Descripci&oacute;n</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Uso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">noopener</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Impide acceso a <code class="text-xs">window.opener</code></td>
+                            <td class="border border-gray-300 px-3 py-2 text-green-600 font-bold">Seguridad</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">noreferrer</code></td>
+                            <td class="border border-gray-300 px-3 py-2">No env&iacute;a cabecera Referer</td>
+                            <td class="border border-gray-300 px-3 py-2 text-green-600 font-bold">Privacidad</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">nofollow</code></td>
+                            <td class="border border-gray-300 px-3 py-2">No seguir para SEO (no pasar PageRank)</td>
+                            <td class="border border-gray-300 px-3 py-2 text-blue-600 font-bold">SEO</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">sponsored</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Enlace patrocinado/publicitario</td>
+                            <td class="border border-gray-300 px-3 py-2 text-blue-600 font-bold">SEO</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">ugc</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Contenido generado por usuarios</td>
+                            <td class="border border-gray-300 px-3 py-2 text-blue-600 font-bold">SEO</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">external</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Indica enlace externo</td>
+                            <td class="border border-gray-300 px-3 py-2">Sem&aacute;ntico</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">author</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Enlace al autor del documento</td>
+                            <td class="border border-gray-300 px-3 py-2">Sem&aacute;ntico</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">license</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Enlace a licencia del contenido</td>
+                            <td class="border border-gray-300 px-3 py-2">Sem&aacute;ntico</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">help</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Enlace a ayuda</td>
+                            <td class="border border-gray-300 px-3 py-2">Sem&aacute;ntico</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">prev / next</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Navegaci&oacute;n secuencial</td>
+                            <td class="border border-gray-300 px-3 py-2">Navegaci&oacute;n</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-700">bookmark</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Enlace permanente al contenido</td>
+                            <td class="border border-gray-300 px-3 py-2">Sem&aacute;ntico</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;!-- Enlace externo seguro (OBLIGATORIO con target="_blank") --&gt;
+&lt;a href="https://externo.com" target="_blank"
+   <span class="text-green-400">rel="noopener noreferrer"</span>&gt;
+    Sitio externo
+&lt;/a&gt;
+
+&lt;!-- Enlace patrocinado (publicidad) --&gt;
+&lt;a href="https://sponsor.com"
+   <span class="text-yellow-300">rel="sponsored noopener"</span> target="_blank"&gt;
+    Patrocinador
+&lt;/a&gt;
+
+&lt;!-- Comentario de usuario (UGC) --&gt;
+&lt;a href="https://usuario.com"
+   <span class="text-yellow-300">rel="ugc nofollow noopener"</span> target="_blank"&gt;
+    Enlace de comentario
+&lt;/a&gt;
+
+&lt;!-- Navegaci&oacute;n secuencial --&gt;
+&lt;a href="cap-1.html" <span class="text-yellow-300">rel="prev"</span>&gt;&larr; Anterior&lt;/a&gt;
+&lt;a href="cap-3.html" <span class="text-yellow-300">rel="next"</span>&gt;Siguiente &rarr;&lt;/a&gt;</code></pre>
+            </div>
+
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-3 rounded-r-md">
+                <p class="text-xs"><strong>Se pueden combinar:</strong> <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">rel="noopener noreferrer nofollow"</code> aplica los tres a la vez.</p>
+            </div>
+        </section>
+
+        <!-- DOWNLOAD -->
+        <section id="download" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">9</span>Enlaces de descarga
+            </h2>
+            <p class="mb-3">
+                El atributo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">download</code> indica al navegador que debe <strong>descargar</strong> el recurso en lugar de navegar a &eacute;l.
+            </p>
+
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;!-- Descarga con nombre original --&gt;
+&lt;a href="/archivos/documento.pdf" <span class="text-yellow-300">download</span>&gt;
+    Descargar PDF
+&lt;/a&gt;
+
+&lt;!-- Descarga con nombre personalizado --&gt;
+&lt;a href="/archivos/doc-v2.pdf"
+   <span class="text-yellow-300">download="informe-anual-2024.pdf"</span>&gt;
+    Descargar Informe 2024
+&lt;/a&gt;
+
+&lt;!-- Descargar imagen --&gt;
+&lt;a href="/img/logo.png" download="logo-empresa.png"&gt;
+    Descargar logo
+&lt;/a&gt;
+
+&lt;!-- Descargar con tipo MIME --&gt;
+&lt;a href="/data/export.csv"
+   download="datos.csv"
+   <span class="text-green-400">type="text/csv"</span>&gt;
+    Exportar CSV
+&lt;/a&gt;</code></pre>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3 mb-3">
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h4 class="font-bold text-green-700 mb-1">Funciona</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li>Archivos del mismo origen (same-origin)</li>
+                        <li>URLs <code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">blob:</code></li>
+                        <li>URLs <code class="bg-gray-800 text-gray-100 px-1 rounded font-mono">data:</code></li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h4 class="font-bold text-red-700 mb-1">No funciona</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li>Archivos de otro dominio (cross-origin) sin CORS</li>
+                        <li>El servidor debe permitir la descarga</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <h3 class="font-semibold text-gray-600 mb-2">Iconos comunes por tipo de archivo</h3>
+                <div class="flex flex-wrap gap-4 text-sm">
+                    <span>&#128196; PDF</span>
+                    <span>&#128202; Excel/CSV</span>
+                    <span>&#128452; Word</span>
+                    <span>&#128230; ZIP</span>
+                    <span>&#127912; Imagen</span>
+                    <span>&#127909; Video</span>
+                    <span>&#127925; Audio</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTADOS CSS -->
+        <section id="estados-css" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10</span>Estados de enlaces (CSS)
+            </h2>
+            <p class="mb-3">
+                Los enlaces tienen estados que se pueden estilizar con <strong>pseudoclases CSS</strong>. El orden importa (LVHA).
+            </p>
+
+            <div class="overflow-x-auto mb-4">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Pseudoclase</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Estado</th>
+                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-2 text-left">Descripci&oacute;n</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-blue-600">:link</code></td>
+                            <td class="border border-gray-300 px-3 py-2">No visitado</td>
+                            <td class="border border-gray-300 px-3 py-2">Enlace que a&uacute;n no se ha visitado</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-purple-600">:visited</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Visitado</td>
+                            <td class="border border-gray-300 px-3 py-2">Enlace ya visitado (limitado por privacidad)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-amber-600">:hover</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Hover</td>
+                            <td class="border border-gray-300 px-3 py-2">Cursor encima del enlace</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-red-600">:active</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Activo</td>
+                            <td class="border border-gray-300 px-3 py-2">Mientras se hace clic</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-green-600">:focus</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Foco</td>
+                            <td class="border border-gray-300 px-3 py-2">Seleccionado con teclado (Tab)</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 px-3 py-2 font-bold"><code class="text-green-600">:focus-visible</code></td>
+                            <td class="border border-gray-300 px-3 py-2">Foco visible</td>
+                            <td class="border border-gray-300 px-3 py-2">Foco solo cuando es relevante mostrar</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code><span class="text-gray-400">/* Orden recomendado: LVHA (LoVe HAte) */</span>
+a<span class="text-blue-400">:link</span> {
+    color: blue;
+}
+
+a<span class="text-purple-400">:visited</span> {
+    color: purple;
+    <span class="text-gray-400">/* Limitado a: color, background-color,
+       border-color, outline-color */</span>
+}
+
+a<span class="text-amber-400">:hover</span> {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+a<span class="text-red-400">:active</span> {
+    color: red;
+}
+
+a<span class="text-green-400">:focus</span> {
+    outline: 2px solid orange;
+    outline-offset: 2px;
+}
+
+<span class="text-gray-400">/* focus-visible: solo muestra outline con teclado */</span>
+a<span class="text-green-400">:focus-visible</span> {
+    outline: 2px solid blue;
+}
+
+a:focus:not(:focus-visible) {
+    outline: none; <span class="text-gray-400">/* Oculta con mouse */</span>
+}</code></pre>
+            </div>
+
+            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
+                <h3 class="font-semibold text-gray-600 mb-2">Demo de estados</h3>
+                <style>
+                    .demo-link:link { color: #2563eb; }
+                    .demo-link:visited { color: #7c3aed; }
+                    .demo-link:hover { color: #1d4ed8; text-decoration: underline; }
+                    .demo-link:active { color: #dc2626; }
+                    .demo-link:focus { outline: 2px solid #f59e0b; outline-offset: 2px; }
+                </style>
+                <p><a href="#estados-css" class="demo-link">Pasa el cursor, haz clic, o usa Tab para ver los estados</a></p>
+            </div>
+        </section>
+
+        <!-- SEGURIDAD -->
+        <section id="seguridad" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">11</span>Seguridad en enlaces
+            </h2>
+
+            <h3 class="font-bold text-amber-800 mb-2">Vulnerabilidad: Tabnabbing</h3>
+            <p class="mb-3 text-sm">
+                Cuando usas <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">target="_blank"</code> sin protecci&oacute;n, la p&aacute;gina destino puede acceder a <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">window.opener</code> y redirigir tu p&aacute;gina a un sitio de phishing.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-3 mb-4">
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h4 class="font-bold text-red-700 mb-1">&#10008; Vulnerable</h4>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;a href="https://malicioso.com"
+   target="_blank"&gt;
+    Enlace peligroso
+&lt;/a&gt;
+
+<span class="text-gray-400">// El sitio malicioso puede hacer:</span>
+<span class="text-red-400">window.opener.location = "https://phishing.com"</span></pre>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h4 class="font-bold text-green-700 mb-1">&#10004; Seguro</h4>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;a href="https://externo.com"
+   target="_blank"
+   <span class="text-green-400">rel="noopener noreferrer"</span>&gt;
+    Enlace seguro
+&lt;/a&gt;
+
+<span class="text-gray-400">// window.opener ser&aacute; null</span>
+<span class="text-green-400">// No se env&iacute;a Referer</span></pre>
+                </div>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mb-2">Reglas de seguridad</h3>
+            <ul class="list-disc pl-5 space-y-2 text-sm mb-4">
+                <li><strong>Siempre</strong> a&ntilde;ade <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">rel="noopener"</code> con <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">target="_blank"</code></li>
+                <li>A&ntilde;ade <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">noreferrer</code> si no quieres compartir el origen</li>
+                <li>Usa <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">nofollow</code> para enlaces no confiables (comentarios, UGC)</li>
+                <li>Valida URLs de usuarios antes de mostrarlas</li>
+                <li>Nunca uses <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">javascript:</code> en href con datos de usuario</li>
+            </ul>
+
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-3 rounded-r-md">
+                <p class="text-xs"><strong>Navegadores modernos:</strong> Chrome 88+ y otros navegadores modernos aplican <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">noopener</code> autom&aacute;ticamente a <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">target="_blank"</code>, pero sigue siendo buena pr&aacute;ctica a&ntilde;adirlo expl&iacute;citamente para compatibilidad.</p>
+            </div>
+        </section>
+
+        <!-- ACCESIBILIDAD -->
+        <section id="accesibilidad" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">12</span>Accesibilidad en enlaces
+            </h2>
+
+            <h3 class="font-bold text-amber-800 mb-2">Texto descriptivo</h3>
+            <p class="mb-3 text-sm">
+                El texto del enlace debe describir su destino <strong>sin depender del contexto</strong>.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-3 mb-4">
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h4 class="font-bold text-red-700 mb-1">&#10008; Mal</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li><a href="#" class="text-blue-600">Clic aqu&iacute;</a></li>
+                        <li><a href="#" class="text-blue-600">Leer m&aacute;s</a></li>
+                        <li><a href="#" class="text-blue-600">Enlace</a></li>
+                        <li><a href="#" class="text-blue-600">https://ejemplo.com/articulo/123</a></li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h4 class="font-bold text-green-700 mb-1">&#10004; Bien</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li><a href="#" class="text-blue-600">Ver gu&iacute;a de instalaci&oacute;n</a></li>
+                        <li><a href="#" class="text-blue-600">Leer art&iacute;culo sobre accesibilidad</a></li>
+                        <li><a href="#" class="text-blue-600">Descargar informe 2024 (PDF)</a></li>
+                        <li><a href="#" class="text-blue-600">Documentaci&oacute;n de la API</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mb-2">Skip links (saltar navegaci&oacute;n)</h3>
+            <p class="mb-2 text-sm">Permite a usuarios de teclado/lectores saltar directamente al contenido principal.</p>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-4">
+                <pre class="text-xs"><code>&lt;body&gt;
+    &lt;!-- Primer elemento del body --&gt;
+    &lt;a href="#main" class="<span class="text-yellow-300">skip-link</span>"&gt;
+        Saltar al contenido principal
+    &lt;/a&gt;
+
+    &lt;header&gt;...navegaci&oacute;n...&lt;/header&gt;
+
+    &lt;main <span class="text-green-400">id="main"</span>&gt;
+        &lt;!-- Contenido --&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+
+&lt;style&gt;
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 8px;
+    background: #000;
+    color: #fff;
+    z-index: 100;
+}
+.skip-link<span class="text-green-400">:focus</span> {
+    top: 0; <span class="text-gray-400">/* Visible al hacer Tab */</span>
+}
+&lt;/style&gt;</code></pre>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mb-2">ARIA para enlaces</h3>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto mb-3">
+                <pre class="text-xs"><code>&lt;!-- Indicar que abre en nueva pesta&ntilde;a --&gt;
+&lt;a href="..." target="_blank"
+   <span class="text-green-400">aria-label="Documentaci&oacute;n (abre en nueva pesta&ntilde;a)"</span>&gt;
+    Documentaci&oacute;n &lt;span aria-hidden="true"&gt;&#8599;&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;!-- Enlace con descripci&oacute;n adicional --&gt;
+&lt;a href="..." <span class="text-green-400">aria-describedby="desc-pdf"</span>&gt;
+    Descargar informe
+&lt;/a&gt;
+&lt;span id="desc-pdf" class="sr-only"&gt;
+    Archivo PDF, 2.5 MB
+&lt;/span&gt;
+
+&lt;!-- Enlace que es el &uacute;nico prop&oacute;sito de su contenedor --&gt;
+&lt;article&gt;
+    &lt;h2&gt;&lt;a href="..."&gt;T&iacute;tulo del art&iacute;culo&lt;/a&gt;&lt;/h2&gt;
+    &lt;p&gt;Resumen...&lt;/p&gt;
+    &lt;a href="..." <span class="text-green-400">aria-label="Leer: T&iacute;tulo del art&iacute;culo"</span>&gt;
+        Leer m&aacute;s
+    &lt;/a&gt;
+&lt;/article&gt;</code></pre>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-3 rounded-r-md">
+                <p class="font-semibold text-blue-800 mb-1">Checklist de accesibilidad</p>
+                <ul class="list-disc pl-5 space-y-1 text-xs">
+                    <li>Texto descriptivo que tenga sentido fuera de contexto</li>
+                    <li>Indicar visualmente si abre en nueva pesta&ntilde;a</li>
+                    <li>Indicar tipo de archivo y tama&ntilde;o en descargas</li>
+                    <li>Foco visible al navegar con teclado</li>
+                    <li>Contraste suficiente (4.5:1 m&iacute;nimo)</li>
+                    <li>No usar solo color para diferenciar enlaces del texto</li>
+                    <li>Skip link al inicio de la p&aacute;gina</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- BUENAS PRÁCTICAS -->
+        <section id="buenas-practicas" class="bg-white rounded-lg p-5 shadow">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">13</span>Buenas pr&aacute;cticas
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-green-50 border border-green-200 p-3 rounded-md">
+                    <h3 class="font-bold text-green-700 mb-2">&#10004; HAZ</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Texto descriptivo y significativo</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">rel="noopener"</code> con <code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">target="_blank"</code></li>
+                        <li>Indicar tipo de archivo en descargas</li>
+                        <li>Diferenciar visualmente enlaces de texto</li>
+                        <li>Asegurar foco visible con teclado</li>
+                        <li>Usar rutas relativas para enlaces internos</li>
+                        <li>Incluir skip link para accesibilidad</li>
+                        <li>Verificar enlaces rotos regularmente</li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 border border-red-200 p-3 rounded-md">
+                    <h3 class="font-bold text-red-700 mb-2">&#10008; EVITA</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>&ldquo;Clic aqu&iacute;&rdquo;, &ldquo;Leer m&aacute;s&rdquo; sin contexto</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1 rounded text-xs font-mono">javascript:void(0)</code> como href</li>
+                        <li>URLs largas como texto del enlace</li>
+                        <li>Abrir todas las p&aacute;ginas en nueva pesta&ntilde;a</li>
+                        <li>Enlaces que no parecen enlaces</li>
+                        <li>Elementos no-enlace que act&uacute;an como enlaces</li>
+                        <li>Eliminar el outline de foco sin alternativa</li>
+                        <li>Enlaces vac&iacute;os o con solo imagen sin alt</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="font-bold text-amber-800 mt-4 mb-2">Patr&oacute;n recomendado para enlaces externos</h3>
+            <div class="bg-gray-900 text-gray-100 p-3 rounded-md overflow-x-auto">
+                <pre class="text-xs"><code>&lt;!-- Plantilla para enlaces externos --&gt;
+&lt;a href="https://sitio-externo.com"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="external-link"&gt;
+    Nombre descriptivo del destino
+    &lt;span class="icon" aria-hidden="true"&gt;&#8599;&lt;/span&gt;
+    &lt;span class="sr-only"&gt;(abre en nueva pesta&ntilde;a)&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;!-- Plantilla para descargas --&gt;
+&lt;a href="/archivos/documento.pdf"
+   download="nombre-descriptivo.pdf"
+   class="download-link"&gt;
+    Descargar gu&iacute;a completa
+    &lt;span class="meta"&gt;(PDF, 2.5 MB)&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- COMPONENTES DINÁMICOS -->
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+
+    <script src="../assets/js/components.js"></script>
+</body>
+</html>
