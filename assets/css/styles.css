@@ -53,3 +53,42 @@
     padding: 3px 8px;
     border-radius: 10px;
 }
+
+/* ── Dropdown de navegación de temas ── */
+.tema-dropdown {
+    position: relative;
+}
+
+.tema-dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+
+.tema-dropdown:hover .tema-dropdown-menu,
+.tema-dropdown:focus-within .tema-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    display: block;
+}
+
+/* Scrollbar del dropdown */
+.tema-dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tema-dropdown-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.tema-dropdown-menu::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.tema-dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}

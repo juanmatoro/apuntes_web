@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 2: Pseudo-elementos y Pseudo-clases - Apuntes CSS</title>
+    <meta name="description" content="Pseudo-elementos (::before, ::after, ::marker) y pseudo-clases (:hover, :focus, :has, :is, :where) en CSS.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+            <a href="../index.html" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
+                <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">CSS</span>
+            </a>
+            <h1 class="flex-1 text-lg font-semibold truncate">Tema 2: Pseudo-elementos y Pseudo-clases</h1>
+            <div class="relative tema-dropdown">
+                <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
+                    <span>Temas</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden">
+                    <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas CSS</div>
+                    <a href="tema1-conceptos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">1. Conceptos CSS</a>
+                    <a href="tema2-pseudos.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">2. Pseudo-elementos y Pseudo-clases</a>
+                    <a href="tema3-funciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">3. Funciones y Custom Properties</a>
+                    <a href="tema4-color-unidades.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">4. Color y Unidades</a>
+                    <a href="tema5-box-model.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">5. Modelo de Caja</a>
+                    <a href="tema6-layout.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Layout: Flexbox y Grid</a>
+                    <a href="tema7-posicionamiento.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. Posicionamiento y Espaciado</a>
+                    <a href="tema8-interacciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Interacciones y Scroll</a>
+                    <a href="tema9-texto.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. Texto y Tipograf&iacute;a</a>
+                    <a href="tema10-graficos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Formas y Gr&aacute;ficos</a>
+                    <a href="tema11-animaciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. CSS Din&aacute;mico</a>
+                    <a href="tema12-rwd.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. RWD y Accesibilidad</a>
+                    <div class="border-t border-gray-100 mt-2 pt-2">
+                        <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGACIÓN INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#pseudo-elementos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Pseudo-elementos</a>
+            <a href="#pseudo-clases-interactivas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Estados interactivos</a>
+            <a href="#pseudo-clases-formulario" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Estados de formulario</a>
+            <a href="#pseudo-clases-seleccion" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Selecci&oacute;n de elementos</a>
+            <a href="#pseudo-clases-busqueda" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">B&uacute;squeda</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- PSEUDO-ELEMENTOS -->
+        <section id="pseudo-elementos" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Pseudo-elementos (::)
+            </h2>
+            <p class="text-sm mb-3">Permiten estilizar partes espec&iacute;ficas de un elemento. Se escriben con <strong>doble dos puntos (::)</strong>.</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">::before y ::after</h3>
+                    <p class="text-sm text-gray-600 mb-2">Insertan contenido antes/despu&eacute;s del contenido del elemento. Requieren <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">content</code>.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.quote::before {
+    content: "\201C"; /* Comilla " */
+    font-size: 2em;
+    color: gray;
+}
+.external-link::after {
+    content: " ↗";
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">::first-letter y ::first-line</h3>
+                    <p class="text-sm text-gray-600 mb-2">Estilizan la primera letra o l&iacute;nea de un bloque de texto.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">p::first-letter {
+    font-size: 3em;
+    float: left;
+    line-height: 1;
+}
+p::first-line {
+    font-weight: bold;
+}</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">::marker</h3>
+                    <p class="text-sm text-gray-600 mb-2">Estiliza el marcador de listas (vi&ntilde;etas o n&uacute;meros).</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">li::marker {
+    color: tomato;
+    font-weight: bold;
+}
+summary::marker {
+    content: "▶ ";
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">::selection</h3>
+                    <p class="text-sm text-gray-600 mb-2">Estiliza el texto seleccionado por el usuario.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">::selection {
+    background: #ffb7b7;
+    color: #8b0000;
+}</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">::placeholder</h3>
+                    <p class="text-sm text-gray-600 mb-2">Estiliza el texto placeholder de inputs.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">input::placeholder {
+    color: #999;
+    font-style: italic;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">::backdrop</h3>
+                    <p class="text-sm text-gray-600 mb-2">Estiliza el fondo detr&aacute;s de elementos en pantalla completa (dialog, video).</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">dialog::backdrop {
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- PSEUDO-CLASES INTERACTIVAS -->
+        <section id="pseudo-clases-interactivas" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Estados interactivos
+            </h2>
+            <p class="text-sm mb-3">Pseudo-clases que responden a la interacci&oacute;n del usuario.</p>
+
+            <ul class="list-disc pl-5 space-y-2 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:hover</code> - Cursor sobre el elemento</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:active</code> - Elemento siendo activado (clic)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:focus</code> - Elemento con foco (teclado/clic)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:focus-visible</code> - Foco solo cuando es necesario mostrarlo <span class="text-amber-600 text-xs">(2022)</span></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:focus-within</code> - Padre contiene elemento con foco</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:target</code> - Elemento apuntado por ancla URL (#id)</li>
+            </ul>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">.btn:hover { background: #0056b3; }
+.btn:active { transform: scale(0.98); }
+
+/* Solo mostrar outline con teclado */
+.btn:focus-visible {
+    outline: 2px dashed orange;
+}
+
+/* Resaltar formulario cuando un input tiene foco */
+form:focus-within {
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Estados hist&oacute;ricos (enlaces)</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:link</code> - Enlace no visitado</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:visited</code> - Enlace ya visitado</li>
+            </ul>
+        </section>
+
+        <!-- PSEUDO-CLASES FORMULARIO -->
+        <section id="pseudo-clases-formulario" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Estados de formulario
+            </h2>
+            <p class="text-sm mb-3">Para estilizar inputs seg&uacute;n su estado.</p>
+
+            <h3 class="font-semibold text-amber-800 mb-2">Estado general</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:enabled</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:disabled</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:read-only</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:read-write</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:placeholder-shown</code> - Muestra placeholder</li>
+            </ul>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Estado de selecci&oacute;n</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:checked</code> - Checkbox/radio marcado</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:indeterminate</code> - Estado intermedio</li>
+            </ul>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Validaci&oacute;n</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:valid</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:invalid</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:required</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:optional</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:in-range</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:out-of-range</code></li>
+            </ul>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">input:disabled { opacity: 0.5; }
+input:valid { border-color: green; }
+input:invalid { border-color: red; }
+input:required { border-left: 3px solid orange; }</pre>
+        </section>
+
+        <!-- PSEUDO-CLASES SELECCIÓN -->
+        <section id="pseudo-clases-seleccion" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Selecci&oacute;n de elementos
+            </h2>
+            <p class="text-sm mb-3">Para seleccionar elementos por su posici&oacute;n.</p>
+
+            <h3 class="font-semibold text-amber-800 mb-2">Por posici&oacute;n (hijo)</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:first-child</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:last-child</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:nth-child(n)</code> - En&eacute;simo hijo</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:nth-last-child(n)</code> - Desde el final</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:only-child</code> - Hijo &uacute;nico</li>
+            </ul>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Por tipo</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:first-of-type</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:last-of-type</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:nth-of-type(n)</code></li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:only-of-type</code></li>
+            </ul>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">/* F&oacute;rmulas nth-child */
+:nth-child(odd)      /* Impares: 1, 3, 5... */
+:nth-child(even)     /* Pares: 2, 4, 6... */
+:nth-child(3n)       /* M&uacute;ltiplos de 3 */
+:nth-child(3n+1)     /* 1, 4, 7, 10... */
+:nth-child(-n+3)     /* Primeros 3 */
+
+/* 2023: nth-child con selector */
+:nth-child(2 of .active) /* 2do elemento .active */</pre>
+        </section>
+
+        <!-- PSEUDO-CLASES BÚSQUEDA -->
+        <section id="pseudo-clases-busqueda" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>B&uacute;squeda y coincidencia
+            </h2>
+
+            <h3 class="font-semibold text-amber-800 mb-2">:not() - Negaci&oacute;n</h3>
+            <p class="text-sm text-gray-600 mb-2">Selecciona elementos que NO coinciden.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">p:not(.intro) { }      /* p sin clase .intro */
+input:not([disabled]) { }  /* inputs habilitados */</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">:is() - Coincidencia</h3>
+            <p class="text-sm text-gray-600 mb-2">Agrupa selectores sin repetir. Toma la especificidad m&aacute;s alta.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">:is(h1, h2, h3) { color: navy; }
+article :is(h1, h2, h3) { margin-top: 2rem; }</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">:where() - Sin especificidad <span class="text-amber-600 text-xs">(2022)</span></h3>
+            <p class="text-sm text-gray-600 mb-2">Igual que :is() pero con especificidad 0. Ideal para resets.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">:where(h1, h2, h3) { margin: 0; } /* F&aacute;cil de sobrescribir */</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">:has() - Selector padre <span class="text-amber-600 text-xs">(2022)</span></h3>
+            <p class="text-sm text-gray-600 mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+                Revolucionario: permite seleccionar un elemento basado en sus hijos/hermanos.
+            </p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Card que contiene imagen */
+.card:has(img) { padding: 0; }
+
+/* Formulario con input inv&aacute;lido */
+form:has(:invalid) { border-color: red; }
+
+/* Label seguido de input requerido */
+label:has(+ input:required)::after {
+    content: " *";
+    color: red;
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">:empty</h3>
+            <p class="text-sm text-gray-600 mb-2">Elementos sin contenido (ni texto ni hijos).</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">p:empty { display: none; }</pre>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema1-conceptos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 1</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema3-funciones.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 3 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes CSS &mdash; Tema 2 de 12</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 4: Color y Unidades - Apuntes CSS</title>
+    <meta name="description" content="Colores en CSS: rgb, hsl, lab, oklch, color-mix. Unidades: em, rem, vw, vh, dvh y propiedades l&oacute;gicas.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+            <a href="../index.html" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
+                <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">CSS</span>
+            </a>
+            <h1 class="flex-1 text-lg font-semibold truncate">Tema 4: Color y Unidades</h1>
+            <div class="relative tema-dropdown">
+                <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
+                    <span>Temas</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden">
+                    <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas CSS</div>
+                    <a href="tema1-conceptos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">1. Conceptos CSS</a>
+                    <a href="tema2-pseudos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Pseudo-elementos y Pseudo-clases</a>
+                    <a href="tema3-funciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">3. Funciones y Custom Properties</a>
+                    <a href="tema4-color-unidades.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">4. Color y Unidades</a>
+                    <a href="tema5-box-model.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">5. Modelo de Caja</a>
+                    <a href="tema6-layout.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Layout: Flexbox y Grid</a>
+                    <a href="tema7-posicionamiento.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. Posicionamiento y Espaciado</a>
+                    <a href="tema8-interacciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Interacciones y Scroll</a>
+                    <a href="tema9-texto.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. Texto y Tipograf&iacute;a</a>
+                    <a href="tema10-graficos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Formas y Gr&aacute;ficos</a>
+                    <a href="tema11-animaciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. CSS Din&aacute;mico</a>
+                    <a href="tema12-rwd.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. RWD y Accesibilidad</a>
+                    <div class="border-t border-gray-100 mt-2 pt-2">
+                        <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGACIÓN INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#colores-basicos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Colores b&aacute;sicos</a>
+            <a href="#colores-modernos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Colores modernos</a>
+            <a href="#herramientas-color" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Herramientas</a>
+            <a href="#unidades" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Unidades</a>
+            <a href="#viewport" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Viewport</a>
+            <a href="#propiedades-logicas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Prop. l&oacute;gicas</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- COLORES BÁSICOS -->
+        <section id="colores-basicos" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Colores b&aacute;sicos
+            </h2>
+
+            <h3 class="font-semibold text-amber-800 mb-2">Hexadecimal</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.color {
+    color: #ff0000;      /* Rojo */
+    color: #f00;         /* Abreviado */
+    color: #ff000080;    /* Con alpha (50%) */
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">RGB / RGBA</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.color {
+    color: rgb(255, 0, 0);
+    color: rgb(255 0 0);        /* Sintaxis moderna */
+    color: rgb(255 0 0 / 50%);  /* Con alpha */
+    color: rgba(255, 0, 0, 0.5);
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">HSL / HSLA</h3>
+            <p class="text-xs text-gray-600 mb-2">Hue (0-360), Saturation (%), Lightness (%)</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.color {
+    color: hsl(0, 100%, 50%);     /* Rojo */
+    color: hsl(0 100% 50%);       /* Sintaxis moderna */
+    color: hsl(0 100% 50% / 50%); /* Con alpha */
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Palabras clave</h3>
+            <ul class="list-disc pl-5 text-sm text-gray-600">
+                <li>Colores nombrados: <code class="bg-gray-200 px-1 rounded text-xs">red</code>, <code class="bg-gray-200 px-1 rounded text-xs">blue</code>, <code class="bg-gray-200 px-1 rounded text-xs">tomato</code>, etc.</li>
+                <li><code class="bg-gray-200 px-1 rounded text-xs">transparent</code>, <code class="bg-gray-200 px-1 rounded text-xs">currentColor</code></li>
+            </ul>
+        </section>
+
+        <!-- COLORES MODERNOS -->
+        <section id="colores-modernos" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Colores de gama amplia
+            </h2>
+            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+                <strong>2023</strong> - Espacios de color que van m&aacute;s all&aacute; de sRGB.
+            </p>
+
+            <h3 class="font-semibold text-amber-800 mb-2">HWB</h3>
+            <p class="text-xs text-gray-600 mb-2">Hue, Whiteness, Blackness - M&aacute;s intuitivo que HSL</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.color {
+    color: hwb(0 0% 0%);    /* Rojo puro */
+    color: hwb(0 50% 0%);   /* Rojo claro */
+    color: hwb(0 0% 50%);   /* Rojo oscuro */
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">LAB / LCH</h3>
+            <p class="text-xs text-gray-600 mb-2">Basados en percepci&oacute;n humana. Mayor gama de colores.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.color {
+    color: lab(50% 40 60);       /* L, a, b */
+    color: lch(50% 70 30);       /* L, Chroma, Hue */
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">OKLAB / OKLCH</h3>
+            <p class="text-xs text-gray-600 mb-2">Versi&oacute;n mejorada de LAB/LCH. Mejor para gradientes.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.color {
+    color: oklab(0.6 0.1 0.1);
+    color: oklch(0.6 0.15 30);   /* Recomendado */
+}
+
+/* Gradiente sin colores "sucios" */
+.gradient {
+    background: linear-gradient(
+        in oklch,
+        red, blue
+    );
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">color() - Espacio personalizado</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.vivid-green {
+    background: color(display-p3 0 1 0);
+}</pre>
+        </section>
+
+        <!-- HERRAMIENTAS COLOR -->
+        <section id="herramientas-color" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Herramientas de color
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">color-mix() <span class="text-amber-600 text-xs">(2022)</span></h3>
+                    <p class="text-xs text-gray-600 mb-2">Mezcla dos colores en cualquier espacio.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.mixed {
+    /* 50% de cada color por defecto */
+    background: color-mix(in srgb, red, blue);
+
+    /* Proporciones personalizadas */
+    background: color-mix(in oklch, red 30%, blue);
+
+    /* Crear variantes */
+    --light: color-mix(in oklch, var(--brand) 80%, white);
+    --dark: color-mix(in oklch, var(--brand) 80%, black);
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Sintaxis relativa <span class="text-amber-600 text-xs">(2024)</span></h3>
+                    <p class="text-xs text-gray-600 mb-2">Modifica un color existente con la palabra clave <code class="bg-gray-200 px-1 rounded text-xs">from</code>.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.variants {
+    --base: #4488dd;
+
+    /* Aclarar */
+    --light: hsl(from var(--base) h s calc(l * 1.3));
+
+    /* Oscurecer */
+    --dark: hsl(from var(--base) h s calc(l * 0.7));
+
+    /* Cambiar saturaci&oacute;n */
+    --muted: hsl(from var(--base) h calc(s * 0.5) l);
+
+    /* Complementario */
+    --complement: hsl(from var(--base) calc(h + 180) s l);
+}</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">accent-color <span class="text-amber-600 text-xs">(2021)</span></h3>
+                    <p class="text-xs text-gray-600 mb-2">Color de acento para controles del navegador.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">input[type="checkbox"],
+input[type="radio"],
+input[type="range"],
+progress {
+    accent-color: #3b82f6;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">D&oacute;nde usar color</h3>
+                    <ul class="list-disc pl-5 text-sm text-gray-600">
+                        <li><code class="bg-gray-200 px-1 rounded text-xs">color</code> - Texto</li>
+                        <li><code class="bg-gray-200 px-1 rounded text-xs">background-color</code></li>
+                        <li><code class="bg-gray-200 px-1 rounded text-xs">border-color</code></li>
+                        <li><code class="bg-gray-200 px-1 rounded text-xs">outline-color</code></li>
+                        <li><code class="bg-gray-200 px-1 rounded text-xs">box-shadow</code>, <code class="bg-gray-200 px-1 rounded text-xs">text-shadow</code></li>
+                        <li><code class="bg-gray-200 px-1 rounded text-xs">fill</code>, <code class="bg-gray-200 px-1 rounded text-xs">stroke</code> (SVG)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNIDADES -->
+        <section id="unidades" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Unidades de medida
+            </h2>
+
+            <h3 class="font-semibold text-amber-800 mb-2">Absolutas</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">px</code> - P&iacute;xeles (la m&aacute;s com&uacute;n)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">cm</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">mm</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">in</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">pt</code> - Para impresi&oacute;n</li>
+            </ul>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Relativas al texto</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">em</code> - Relativo al font-size del elemento</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">rem</code> - Relativo al font-size del :root (16px)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ch</code> - Ancho del car&aacute;cter "0"</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ex</code> - Altura de la "x" min&uacute;scula</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">lh</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">rlh</code> - Line-height</li>
+            </ul>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">html { font-size: 16px; }       /* Base */
+
+h1 { font-size: 2rem; }         /* 32px */
+p { margin-bottom: 1.5em; }     /* 1.5 * font-size del p */
+.narrow { max-width: 65ch; }    /* ~65 caracteres */</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Porcentajes</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.half { width: 50%; }           /* Del padre */
+.full-height { height: 100%; }  /* Necesita altura en padre */</pre>
+        </section>
+
+        <!-- VIEWPORT -->
+        <section id="viewport" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>Unidades de viewport
+            </h2>
+
+            <h3 class="font-semibold text-amber-800 mb-2">Cl&aacute;sicas</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vw</code> - 1% del ancho del viewport</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vh</code> - 1% del alto del viewport</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vmin</code> - El menor entre vw y vh</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vmax</code> - El mayor entre vw y vh</li>
+            </ul>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Variables <span class="text-amber-600 text-xs">(2022)</span></h3>
+            <p class="text-xs text-gray-600 mb-2">Solucionan el problema de la barra de direcciones en m&oacute;viles.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">svh</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">svw</code> - Small (sin barra)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">lvh</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">lvw</code> - Large (con barra)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dvh</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dvw</code> - Dynamic (cambia con scroll)</li>
+            </ul>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">.hero {
+    /* Altura completa en m&oacute;vil */
+    min-height: 100dvh;
+}
+
+.sticky-footer {
+    /* Siempre visible sin barra */
+    min-height: 100svh;
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">L&oacute;gicas</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vi</code> - Viewport inline (horizontal/vertical seg&uacute;n escritura)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vb</code> - Viewport block</li>
+            </ul>
+        </section>
+
+        <!-- PROPIEDADES LÓGICAS -->
+        <section id="propiedades-logicas" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6</span>Propiedades l&oacute;gicas
+            </h2>
+            <p class="text-sm mb-3">Reemplazan left/right/top/bottom por propiedades que se adaptan al modo de escritura (LTR, RTL, vertical).</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Flujo inline (horizontal)</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">margin-inline</code> = margin-left + margin-right</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">margin-inline-start</code> = margin-left (en LTR)</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">margin-inline-end</code> = margin-right (en LTR)</li>
+                        <li>Igual para <code class="bg-gray-200 px-1 rounded text-xs">padding-inline</code>, <code class="bg-gray-200 px-1 rounded text-xs">border-inline</code></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Flujo block (vertical)</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">margin-block</code> = margin-top + margin-bottom</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">margin-block-start</code> = margin-top</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">margin-block-end</code> = margin-bottom</li>
+                        <li>Igual para <code class="bg-gray-200 px-1 rounded text-xs">padding-block</code>, <code class="bg-gray-200 px-1 rounded text-xs">border-block</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Tama&ntilde;o</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inline-size</code> = width</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">block-size</code> = height</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">max-inline-size</code> = max-width</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Posicionamiento (inset)</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-xs">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inset</code> = top + right + bottom + left</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inset-inline</code> = left + right</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inset-block</code> = top + bottom</li>
+                    </ul>
+                </div>
+            </div>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">/* Antes (solo LTR) */
+.card {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Ahora (funciona en LTR y RTL) */
+.card {
+    margin-inline: auto;
+    padding-block: 2rem;
+}
+
+/* Alineaci&oacute;n de texto */
+.text {
+    text-align: start;  /* left en LTR, right en RTL */
+    text-align: end;    /* right en LTR, left en RTL */
+}</pre>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema3-funciones.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 3</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema5-box-model.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 5 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes CSS &mdash; Tema 4 de 12</p>
+    </footer>
+</body>
+</html>

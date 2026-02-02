@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 12: RWD, Accesibilidad y Rendimiento - Apuntes CSS</title>
+    <meta name="description" content="Dise&ntilde;o responsive: media queries, container queries, prefers-*, @supports y optimizaci&oacute;n de rendimiento.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 12: RWD, Accesibilidad y Rendimiento</h1>
+        <p class="opacity-90">Dise&ntilde;o responsive, accesibilidad y optimizaci&oacute;n</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        CSS
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 12
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#media-queries" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Media queries</a>
+            <a href="#container-queries" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Container queries</a>
+            <a href="#accesibilidad" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Accesibilidad</a>
+            <a href="#supports" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">@supports</a>
+            <a href="#rendimiento" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Rendimiento</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- MEDIA QUERIES -->
+        <section id="media-queries" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Media Queries
+            </h2>
+            <p class="text-sm mb-3">Aplican estilos seg&uacute;n caracter&iacute;sticas del dispositivo o preferencias del usuario.</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Sintaxis</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Tradicional */
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+}
+
+/* Moderna (2022) - con operadores */
+@media (width >= 768px) {
+    .container { max-width: 720px; }
+}
+
+/* Rango */
+@media (400px <= width <= 800px) {
+    .card { padding: 1rem; }
+}
+
+/* Combinaciones */
+@media (min-width: 768px) and (orientation: landscape) {
+    /* ... */
+}
+
+@media (max-width: 480px), (orientation: portrait) {
+    /* O una u otra */
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Breakpoints comunes</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Mobile first */
+/* Base: m&oacute;vil */
+
+@media (min-width: 640px) {
+    /* sm: tablet peque&ntilde;a */
+}
+
+@media (min-width: 768px) {
+    /* md: tablet */
+}
+
+@media (min-width: 1024px) {
+    /* lg: desktop */
+}
+
+@media (min-width: 1280px) {
+    /* xl: desktop grande */
+}
+
+@media (min-width: 1536px) {
+    /* 2xl: pantallas muy grandes */
+}</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Otras caracter&iacute;sticas</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@media (orientation: portrait) { }    /* Vertical */
+@media (orientation: landscape) { }   /* Horizontal */
+@media (hover: hover) { }             /* Dispositivo con hover */
+@media (pointer: coarse) { }          /* Touch */
+@media (pointer: fine) { }            /* Mouse/stylus */
+@media print { }                      /* Para impresi&oacute;n */
+@media (display-mode: standalone) { } /* PWA instalada */</pre>
+        </section>
+
+        <!-- CONTAINER QUERIES -->
+        <section id="container-queries" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Container Queries
+            </h2>
+            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+                <strong>2023</strong> - Estilos basados en el tama&ntilde;o del contenedor, no del viewport.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Container size queries</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Definir contenedor */
+.card-container {
+    container-type: inline-size;
+    container-name: card;
+    /* O atajo: */
+    container: card / inline-size;
+}
+
+/* Consultar tama&ntilde;o del contenedor */
+@container card (min-width: 400px) {
+    .card {
+        display: flex;
+        gap: 1rem;
+    }
+}
+
+@container (width > 300px) {
+    /* Sin nombre: contenedor m&aacute;s cercano */
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Container style queries <span class="text-amber-600 text-xs">(2024)</span></h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Consultar custom properties del contenedor */
+.card-container {
+    --theme: dark;
+}
+
+@container style(--theme: dark) {
+    .card {
+        background: #1a1a1a;
+        color: white;
+    }
+}
+
+/* Combinado con tama&ntilde;o */
+@container card (width > 400px) and style(--featured: true) {
+    .card {
+        border: 2px solid gold;
+    }
+}</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Unidades de contenedor</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.card-title {
+    font-size: clamp(1rem, 5cqi, 2rem);
+    /* cqi: 1% del inline-size del contenedor */
+    /* cqw, cqh, cqmin, cqmax tambi&eacute;n disponibles */
+}</pre>
+        </section>
+
+        <!-- ACCESIBILIDAD -->
+        <section id="accesibilidad" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Accesibilidad (prefers-*)
+            </h2>
+            <p class="text-sm mb-3">Media queries que respetan las preferencias del usuario.</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">prefers-color-scheme</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Tema oscuro autom&aacute;tico */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #1a1a1a;
+        --text: #f0f0f0;
+    }
+}
+
+/* O usar color-scheme */
+:root {
+    color-scheme: light dark;
+}</pre>
+
+                    <h3 class="font-semibold text-amber-800 mt-3 mb-2">light-dark() <span class="text-amber-600 text-xs">(2024)</span></h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.element {
+    background: light-dark(white, #1a1a1a);
+    color: light-dark(#333, #f0f0f0);
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">prefers-reduced-motion</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}</pre>
+
+                    <h3 class="font-semibold text-amber-800 mt-3 mb-2">prefers-contrast</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@media (prefers-contrast: more) {
+    .button {
+        border: 2px solid currentColor;
+    }
+}</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">forced-colors</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@media (forced-colors: active) {
+    .button {
+        border: 2px solid ButtonText;
+    }
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">prefers-reduced-data</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@media (prefers-reduced-data: reduce) {
+    .hero {
+        background-image: none;
+    }
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- @SUPPORTS -->
+        <section id="supports" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>@supports (Feature queries)
+            </h2>
+            <p class="text-sm mb-3">Aplica estilos solo si el navegador soporta una caracter&iacute;stica.</p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Si soporta grid */
+@supports (display: grid) {
+    .container {
+        display: grid;
+    }
+}
+
+/* Si NO soporta */
+@supports not (display: grid) {
+    .container {
+        display: flex;
+    }
+}
+
+/* Combinaciones */
+@supports (display: grid) and (gap: 1rem) {
+    /* ... */
+}
+
+/* Verificar selector */
+@supports selector(:has(*)) {
+    /* Usar :has() */
+}
+
+/* Verificar @property */
+@supports (background: paint(something)) {
+    /* Houdini Paint API disponible */
+}</pre>
+        </section>
+
+        <!-- RENDIMIENTO -->
+        <section id="rendimiento" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>Rendimiento
+            </h2>
+
+            <h3 class="font-semibold text-amber-800 mb-2">content-visibility</h3>
+            <p class="text-xs text-gray-600 mb-2">Omite renderizado de elementos fuera del viewport.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;  /* Tama&ntilde;o estimado */
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">contain</h3>
+            <p class="text-xs text-gray-600 mb-2">Limita el &aacute;mbito de c&aacute;lculos del navegador.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.widget {
+    contain: layout;    /* Aislado del resto */
+    contain: paint;     /* No pinta fuera */
+    contain: size;      /* Tama&ntilde;o independiente */
+    contain: style;     /* Contadores aislados */
+    contain: strict;    /* layout + paint + size */
+    contain: content;   /* layout + paint */
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">will-change</h3>
+            <p class="text-xs text-gray-600 mb-2">Avisa al navegador sobre cambios futuros.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.animated {
+    will-change: transform, opacity;
+}
+/* Usar con moderaci&oacute;n, consume memoria */</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Buenas pr&aacute;cticas</h3>
+            <ul class="list-disc pl-5 space-y-1 text-xs text-gray-600">
+                <li>Animar solo transform y opacity (GPU)</li>
+                <li>Evitar animaciones de width/height</li>
+                <li>Usar font-display: swap para fuentes</li>
+                <li>Cargar CSS cr&iacute;tico inline</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema11-animaciones.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 11</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <span class="w-36"></span>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes CSS &mdash; Tema 12 de 12</p>
+    </footer>
+</body>
+</html>

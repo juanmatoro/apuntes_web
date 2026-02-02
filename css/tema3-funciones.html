@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3: Funciones y Custom Properties - Apuntes CSS</title>
+    <meta name="description" content="Funciones CSS: var(), calc(), min(), max(), clamp(), funciones matem&aacute;ticas y @property.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+            <a href="../index.html" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
+                <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">CSS</span>
+            </a>
+            <h1 class="flex-1 text-lg font-semibold truncate">Tema 3: Funciones y Custom Properties</h1>
+            <div class="relative tema-dropdown">
+                <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
+                    <span>Temas</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden">
+                    <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas CSS</div>
+                    <a href="tema1-conceptos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">1. Conceptos CSS</a>
+                    <a href="tema2-pseudos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Pseudo-elementos y Pseudo-clases</a>
+                    <a href="tema3-funciones.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">3. Funciones y Custom Properties</a>
+                    <a href="tema4-color-unidades.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">4. Color y Unidades</a>
+                    <a href="tema5-box-model.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">5. Modelo de Caja</a>
+                    <a href="tema6-layout.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Layout: Flexbox y Grid</a>
+                    <a href="tema7-posicionamiento.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. Posicionamiento y Espaciado</a>
+                    <a href="tema8-interacciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Interacciones y Scroll</a>
+                    <a href="tema9-texto.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. Texto y Tipograf&iacute;a</a>
+                    <a href="tema10-graficos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Formas y Gr&aacute;ficos</a>
+                    <a href="tema11-animaciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. CSS Din&aacute;mico</a>
+                    <a href="tema12-rwd.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. RWD y Accesibilidad</a>
+                    <div class="border-t border-gray-100 mt-2 pt-2">
+                        <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGACIÓN INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#custom-properties" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Custom Properties</a>
+            <a href="#calc" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">calc()</a>
+            <a href="#min-max-clamp" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">min/max/clamp</a>
+            <a href="#matematicas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Matem&aacute;ticas</a>
+            <a href="#at-property" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">@property</a>
+            <a href="#otras-funciones" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Otras funciones</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- CUSTOM PROPERTIES -->
+        <section id="custom-properties" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Custom Properties (Variables CSS)
+            </h2>
+            <p class="text-sm mb-3">Propiedades personalizadas que almacenan valores reutilizables. Se definen con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">--nombre</code> y se acceden con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">var()</code>.</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Definici&oacute;n y uso</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Definir variables globales */
+:root {
+    --color-primary: #3b82f6;
+    --color-secondary: #10b981;
+    --spacing-unit: 8px;
+    --font-main: 'Inter', sans-serif;
+}
+
+/* Usar variables */
+.button {
+    background: var(--color-primary);
+    padding: var(--spacing-unit);
+    font-family: var(--font-main);
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Valor por defecto (fallback)</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Si --accent no existe, usa blue */
+.element {
+    color: var(--accent, blue);
+}
+
+/* Fallback encadenado */
+.element {
+    color: var(--brand, var(--accent, blue));
+}</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Alcance (scope) de variables</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">:root {
+    --bg: white;  /* Global */
+}
+
+.dark-theme {
+    --bg: #1a1a1a;  /* Sobrescribe en este &aacute;mbito */
+}
+
+.card {
+    background: var(--bg);  /* Hereda seg&uacute;n contexto */
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Manipulaci&oacute;n con JavaScript</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// Leer variable
+getComputedStyle(document.documentElement)
+    .getPropertyValue('--color-primary');
+
+// Escribir variable
+document.documentElement.style
+    .setProperty('--color-primary', '#ff0000');</pre>
+        </section>
+
+        <!-- CALC -->
+        <section id="calc" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>calc()
+            </h2>
+            <p class="text-sm mb-3">Realiza c&aacute;lculos matem&aacute;ticos mezclando unidades.</p>
+
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li>Operadores: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">+</code> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">-</code> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">*</code> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">/</code></li>
+                <li><strong>Importante:</strong> Espacios alrededor de <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">+</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">-</code></li>
+                <li>Puede mezclar %, px, em, rem, vw, vh...</li>
+            </ul>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.sidebar {
+    width: calc(100% - 250px);
+}
+
+.container {
+    padding: calc(var(--spacing) * 2);
+    max-width: calc(100vw - 2rem);
+}
+
+.grid-item {
+    width: calc((100% - 3 * 20px) / 4);
+}</pre>
+        </section>
+
+        <!-- MIN MAX CLAMP -->
+        <section id="min-max-clamp" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>min(), max() y clamp()
+            </h2>
+            <p class="text-sm mb-3">Funciones de comparaci&oacute;n para valores responsive.</p>
+
+            <h3 class="font-semibold text-amber-800 mb-2">min() - El menor valor</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.card {
+    /* M&aacute;ximo 400px o 90% del contenedor */
+    width: min(400px, 90%);
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">max() - El mayor valor</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.sidebar {
+    /* M&iacute;nimo 200px o 25% del contenedor */
+    width: max(200px, 25%);
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">clamp(min, ideal, max)</h3>
+            <p class="text-sm text-gray-600 mb-2">Define un rango: m&iacute;nimo, valor preferido, m&aacute;ximo.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Tipograf&iacute;a fluida */
+h1 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Ancho responsive */
+.container {
+    width: clamp(300px, 80%, 1200px);
+}</pre>
+        </section>
+
+        <!-- MATEMÁTICAS -->
+        <section id="matematicas" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Funciones matem&aacute;ticas avanzadas
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Trigonom&eacute;tricas <span class="text-amber-600 text-xs">(2022)</span></h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm mb-2">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">sin()</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">cos()</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">tan()</code></li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">asin()</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">acos()</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">atan()</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">atan2()</code></li>
+                    </ul>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.circle-item {
+    --angle: calc(var(--i) * 45deg);
+    transform:
+        rotate(var(--angle))
+        translateX(calc(cos(var(--angle)) * 100px));
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Exponenciales <span class="text-amber-600 text-xs">(2024)</span></h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm mb-2">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">pow(base, exp)</code> - Potencia</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">sqrt()</code> - Ra&iacute;z cuadrada</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">exp()</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">log()</code></li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">hypot()</code> - Hipotenusa</li>
+                    </ul>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.scale {
+    --factor: pow(1.2, var(--level));
+    font-size: calc(1rem * var(--factor));
+}</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Valor escalonado <span class="text-amber-600 text-xs">(2024)</span></h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm mb-2">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">round(valor)</code> - Redondea</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">mod(a, b)</code> - M&oacute;dulo</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">rem(a, b)</code> - Resto</li>
+                    </ul>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.grid {
+    --cols: round(down, 100vw / 300px);
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Signo <span class="text-amber-600 text-xs">(2024)</span></h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm mb-2">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">abs()</code> - Valor absoluto</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">sign()</code> - Signo (-1, 0, 1)</li>
+                    </ul>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.element {
+    margin: abs(var(--offset));
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- @PROPERTY -->
+        <section id="at-property" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>@property
+            </h2>
+            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+                <strong>2021</strong> - Parte de CSS Houdini. Define propiedades personalizadas con tipos, valores por defecto y herencia.
+            </p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@property --gradient-angle {
+    syntax: "&lt;angle&gt;";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.gradient-box {
+    --gradient-angle: 0deg;
+    background: linear-gradient(
+        var(--gradient-angle),
+        red, blue
+    );
+    transition: --gradient-angle 0.5s;
+}
+
+.gradient-box:hover {
+    --gradient-angle: 180deg;
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Sintaxis disponibles</h3>
+            <ul class="list-disc pl-5 space-y-1 text-xs text-gray-600">
+                <li><code>&lt;length&gt;</code>, <code>&lt;percentage&gt;</code>, <code>&lt;length-percentage&gt;</code></li>
+                <li><code>&lt;color&gt;</code>, <code>&lt;image&gt;</code>, <code>&lt;url&gt;</code></li>
+                <li><code>&lt;angle&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;number&gt;</code>, <code>&lt;integer&gt;</code></li>
+                <li><code>&lt;custom-ident&gt;</code>, <code>*</code> (cualquier valor)</li>
+            </ul>
+        </section>
+
+        <!-- OTRAS FUNCIONES -->
+        <section id="otras-funciones" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6</span>Otras funciones &uacute;tiles
+            </h2>
+
+            <h3 class="font-semibold text-amber-800 mb-2">url()</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.hero {
+    background-image: url("imagen.jpg");
+}
+@font-face {
+    src: url("fuente.woff2");
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">attr()</h3>
+            <p class="text-sm text-gray-600 mb-2">Obtiene el valor de un atributo HTML (limitado a content).</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">a[href]::after {
+    content: " (" attr(href) ")";
+}
+
+[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">image() <span class="text-amber-600 text-xs">(2022)</span></h3>
+            <p class="text-sm text-gray-600 mb-2">Similar a url() pero con m&aacute;s opciones.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.bg {
+    background: image("photo.jpg", blue);
+    /* Fallback a blue si la imagen falla */
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">env()</h3>
+            <p class="text-sm text-gray-600 mb-2">Accede a variables de entorno del navegador.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Safe areas para dispositivos con notch */
+.app {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+}</pre>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema2-pseudos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 2</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema4-color-unidades.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 4 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes CSS &mdash; Tema 3 de 12</p>
+    </footer>
+</body>
+</html>

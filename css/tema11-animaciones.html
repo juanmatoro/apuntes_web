@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 11: CSS Din&aacute;mico - Apuntes CSS</title>
+    <meta name="description" content="CSS din&aacute;mico: transiciones, transformaciones, animaciones, scroll-timeline y view transitions.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 11: CSS Din&aacute;mico</h1>
+        <p class="opacity-90">Transiciones, transformaciones y animaciones</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        CSS
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 11
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#transiciones" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Transiciones</a>
+            <a href="#transformaciones" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Transformaciones</a>
+            <a href="#animaciones" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Animaciones</a>
+            <a href="#scroll-animations" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Scroll animations</a>
+            <a href="#view-transitions" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">View transitions</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- TRANSICIONES -->
+        <section id="transiciones" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Transiciones
+            </h2>
+            <p class="text-sm mb-3">Suavizan el cambio entre estados de un elemento.</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Propiedades</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.button {
+    transition-property: background, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    transition-delay: 0s;
+
+    /* Atajo */
+    transition: all 0.3s ease-out;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    background: blue;
+    transform: scale(1.05);
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Timing functions</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">transition-timing-function:
+    ease;          /* Default, suave */
+    linear;        /* Velocidad constante */
+    ease-in;       /* Empieza lento */
+    ease-out;      /* Termina lento */
+    ease-in-out;   /* Lento al inicio y final */
+
+    /* Personalizado */
+    cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Steps (discreto) */
+    steps(4, end);</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Propiedades animables</h3>
+            <p class="text-xs text-gray-600 mb-2">No todas las propiedades pueden tener transici&oacute;n. Las m&aacute;s eficientes:</p>
+            <ul class="list-disc pl-5 text-xs text-gray-600">
+                <li><strong>Recomendadas (GPU):</strong> transform, opacity</li>
+                <li><strong>Otras:</strong> color, background-color, border-color, box-shadow, filter</li>
+                <li><strong>Evitar:</strong> width, height, margin (causan reflow)</li>
+            </ul>
+        </section>
+
+        <!-- TRANSFORMACIONES -->
+        <section id="transformaciones" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Transformaciones
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Funciones 2D</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.element {
+    /* Mover */
+    transform: translate(10px, 20px);
+    transform: translateX(10px);
+    transform: translateY(20px);
+
+    /* Escalar */
+    transform: scale(1.5);
+    transform: scale(1.5, 0.5);  /* X, Y */
+
+    /* Rotar */
+    transform: rotate(45deg);
+
+    /* Sesgar */
+    transform: skew(10deg, 5deg);
+    transform: skewX(10deg);
+
+    /* M&uacute;ltiples */
+    transform: translateX(50px) rotate(45deg) scale(1.2);
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Funciones 3D</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.element {
+    transform: translate3d(10px, 20px, 30px);
+    transform: translateZ(50px);
+
+    transform: rotate3d(1, 1, 0, 45deg);
+    transform: rotateX(45deg);
+    transform: rotateY(45deg);
+    transform: rotateZ(45deg);
+
+    transform: scale3d(1, 1.5, 2);
+}
+
+/* Perspectiva */
+.container {
+    perspective: 1000px;  /* En el padre */
+}
+.card {
+    transform: perspective(1000px) rotateY(45deg);
+}</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Propiedades auxiliares</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.element {
+    transform-origin: center center;  /* Default */
+    transform-origin: top left;
+    transform-origin: 50% 100%;
+
+    transform-style: flat | preserve-3d;  /* Para 3D anidado */
+    backface-visibility: visible | hidden;  /* Cara trasera */
+}</pre>
+        </section>
+
+        <!-- ANIMACIONES -->
+        <section id="animaciones" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Animaciones (@keyframes)
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Definir keyframes</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Aplicar animaci&oacute;n</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.element {
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;     /* o infinite */
+    animation-direction: normal;      /* reverse, alternate */
+    animation-fill-mode: forwards;    /* none, backwards, both */
+    animation-play-state: running;    /* paused */
+
+    /* Atajo */
+    animation: fadeIn 0.5s ease-out forwards;
+    animation: bounce 1s ease-in-out infinite;
+}</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Accesibilidad: prefers-reduced-motion</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}</pre>
+        </section>
+
+        <!-- SCROLL ANIMATIONS -->
+        <section id="scroll-animations" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Scroll-linked animations
+            </h2>
+            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+                <strong>2024</strong> - Animaciones sincronizadas con el scroll.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">scroll() - Timeline an&oacute;nima</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@keyframes progress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+.progress-bar {
+    animation: progress linear;
+    animation-timeline: scroll();
+    /* Se anima con el scroll de la p&aacute;gina */
+}
+
+/* Especificar scroller */
+.element {
+    animation-timeline: scroll(root);   /* Viewport */
+    animation-timeline: scroll(nearest); /* Contenedor m&aacute;s cercano */
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">view() - Entrada en viewport</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">scroll-timeline (con nombre)</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.scroller {
+    scroll-timeline-name: --my-timeline;
+    scroll-timeline-axis: block;
+}
+
+.animated {
+    animation: progress linear;
+    animation-timeline: --my-timeline;
+}</pre>
+        </section>
+
+        <!-- VIEW TRANSITIONS -->
+        <section id="view-transitions" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>View Transitions API
+            </h2>
+            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+                <strong>2023</strong> - Transiciones entre p&aacute;ginas o estados de la aplicaci&oacute;n.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Transiciones entre p&aacute;ginas</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Habilitar en CSS */
+@view-transition {
+    navigation: auto;
+}
+
+/* Nombrar elementos para transici&oacute;n */
+.hero-image {
+    view-transition-name: hero;
+}
+
+.page-title {
+    view-transition-name: title;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Personalizar animaciones</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Animaci&oacute;n de salida */
+::view-transition-old(hero) {
+    animation: fade-out 0.3s ease-out;
+}
+
+/* Animaci&oacute;n de entrada */
+::view-transition-new(hero) {
+    animation: fade-in 0.3s ease-out;
+}
+
+/* Para toda la p&aacute;gina */
+::view-transition-old(root) {
+    animation: slide-out 0.3s;
+}
+::view-transition-new(root) {
+    animation: slide-in 0.3s;
+}</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">@starting-style (animaci&oacute;n de entrada)</h3>
+            <p class="text-xs text-gray-600 mb-2">Define el estado inicial para animar elementos que aparecen (dialog, popover).</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">dialog[open] {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+dialog {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s, transform 0.3s, display 0.3s allow-discrete;
+}
+
+@starting-style {
+    dialog[open] {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}</pre>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema10-graficos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 10</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema12-rwd.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 12 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes CSS &mdash; Tema 11 de 12</p>
+    </footer>
+</body>
+</html>

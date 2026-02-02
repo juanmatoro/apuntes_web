@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 9: Texto y Tipograf&iacute;a - Apuntes CSS</title>
+    <meta name="description" content="Tipograf&iacute;a en CSS: fuentes, text-wrap, line-clamp, listas, ::marker y writing-mode.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 9: Texto y Tipograf&iacute;a</h1>
+        <p class="opacity-90">Fuentes, formato de texto y modos de escritura</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        CSS
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 9
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#fuentes" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Fuentes</a>
+            <a href="#texto" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Propiedades de texto</a>
+            <a href="#text-wrap" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Text-wrap</a>
+            <a href="#listas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Listas</a>
+            <a href="#writing-mode" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Writing mode</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- FUENTES -->
+        <section id="fuentes" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Fuentes y tipograf&iacute;a
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Propiedades font-*</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.text {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;      /* 100-900 o normal/bold */
+    font-style: italic;    /* normal | italic | oblique */
+    font-variant: small-caps;
+
+    /* Atajo */
+    font: italic 700 1.2rem/1.5 'Inter', sans-serif;
+    /* style weight size/line-height family */
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">@font-face</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@font-face {
+    font-family: 'MiFuente';
+    src: url('fuente.woff2') format('woff2'),
+         url('fuente.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;  /* Evita FOIT */
+}
+
+/* font-display valores */
+/* auto | block | swap | fallback | optional */</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Fuentes variables</h3>
+            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+                Un solo archivo con m&uacute;ltiples variaciones (peso, ancho, inclinaci&oacute;n).
+            </p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@font-face {
+    font-family: 'Inter';
+    src: url('Inter-Variable.woff2') format('woff2-variations');
+    font-weight: 100 900;
+}
+
+.element {
+    font-variation-settings: 'wght' 450, 'slnt' -10;
+}</pre>
+        </section>
+
+        <!-- TEXTO -->
+        <section id="texto" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Propiedades de texto
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Espaciado</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.text {
+    line-height: 1.5;        /* Altura de l&iacute;nea */
+    letter-spacing: 0.05em;  /* Entre caracteres */
+    word-spacing: 0.1em;     /* Entre palabras */
+    text-indent: 2em;        /* Sangr&iacute;a primera l&iacute;nea */
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Alineaci&oacute;n</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.text {
+    text-align: left | center | right | justify;
+
+    /* Propiedades l&oacute;gicas */
+    text-align: start;       /* Seg&uacute;n direcci&oacute;n */
+    text-align: end;
+
+    vertical-align: baseline | top | middle | bottom;
+}</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Decoraci&oacute;n</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.text {
+    text-decoration: underline;
+    text-decoration: line-through wavy red;
+
+    /* Propiedades individuales */
+    text-decoration-line: underline | overline | line-through;
+    text-decoration-style: solid | dashed | dotted | wavy;
+    text-decoration-color: red;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Transformaci&oacute;n</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.text {
+    text-transform: uppercase;
+    text-transform: lowercase;
+    text-transform: capitalize;
+    text-transform: none;
+}
+
+/* Sombra de texto */
+.text {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    /* offset-x offset-y blur color */
+}</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Control de espacio en blanco y palabras</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.text {
+    white-space: normal | nowrap | pre | pre-wrap | pre-line;
+    word-break: normal | break-all | keep-all;
+    overflow-wrap: normal | break-word | anywhere;
+    hyphens: none | manual | auto;
+}</pre>
+        </section>
+
+        <!-- TEXT-WRAP -->
+        <section id="text-wrap" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Text-wrap
+            </h2>
+            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+                <strong>2023</strong> - Controla c&oacute;mo se distribuye el texto en m&uacute;ltiples l&iacute;neas.
+            </p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.title {
+    text-wrap: balance;
+    /* Distribuye texto uniformemente
+       (evita l&iacute;neas hu&eacute;rfanas cortas) */
+}
+
+.paragraph {
+    text-wrap: pretty;  /* 2024 */
+    /* Optimiza saltos de l&iacute;nea
+       para mejor lectura */
+}
+
+.code {
+    text-wrap: nowrap;
+    /* Sin saltos de l&iacute;nea */
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">line-clamp</h3>
+            <p class="text-xs text-gray-600 mb-2">Limita el texto a un n&uacute;mero de l&iacute;neas.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.excerpt {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}</pre>
+        </section>
+
+        <!-- LISTAS -->
+        <section id="listas" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Listas
+            </h2>
+
+            <h3 class="font-semibold text-amber-800 mb-2">list-style</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">ul {
+    list-style-type: disc | circle | square | none;
+    list-style-position: inside | outside;
+    list-style-image: url('bullet.svg');
+
+    /* Atajo */
+    list-style: square inside;
+}
+
+ol {
+    list-style-type: decimal | lower-alpha | upper-roman;
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">::marker</h3>
+            <p class="text-xs text-gray-600 mb-2">Estiliza el marcador de listas.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">li::marker {
+    color: tomato;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Contenido personalizado */
+li::marker {
+    content: "→ ";
+}
+
+/* En summary/details */
+summary::marker {
+    content: "▸ ";
+}
+details[open] summary::marker {
+    content: "▾ ";
+}</pre>
+        </section>
+
+        <!-- WRITING MODE -->
+        <section id="writing-mode" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>Modos de escritura
+            </h2>
+            <p class="text-sm mb-3">Controla la direcci&oacute;n del texto (horizontal, vertical, RTL).</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">writing-mode</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.horizontal {
+    writing-mode: horizontal-tb;  /* Default */
+}
+
+.vertical {
+    writing-mode: vertical-rl;    /* Vertical, derecha a izquierda */
+    writing-mode: vertical-lr;    /* Vertical, izquierda a derecha */
+}
+
+/* Uso: texto lateral en diseño */
+.sidebar-title {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">direction y text-orientation</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.rtl {
+    direction: rtl;   /* Derecha a izquierda (árabe, hebreo) */
+    direction: ltr;   /* Izquierda a derecha (default) */
+}
+
+.vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;    /* Default */
+    text-orientation: upright;  /* Caracteres verticales */
+    text-orientation: sideways; /* Caracteres girados */
+}</pre>
+                </div>
+            </div>
+
+            <div class="mt-4 p-3 bg-gray-50 border border-dashed border-gray-300 rounded">
+                <p class="text-xs text-gray-600"><strong>Nota:</strong> Los modos de escritura afectan a las propiedades l&oacute;gicas. Por eso <code class="bg-gray-200 px-1 rounded text-xs">inline-size</code> es mejor que <code class="bg-gray-200 px-1 rounded text-xs">width</code> para sitios multiling&uuml;es.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema8-interacciones.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 8</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema10-graficos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 10 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes CSS &mdash; Tema 9 de 12</p>
+    </footer>
+</body>
+</html>

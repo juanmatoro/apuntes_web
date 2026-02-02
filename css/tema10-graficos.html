@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 10: Formas y Gr&aacute;ficos - Apuntes CSS</title>
+    <meta name="description" content="Gr&aacute;ficos CSS: bordes, border-radius, clip-path, sombras, fondos, gradientes, filtros y blend modes.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 10: Formas y Gr&aacute;ficos</h1>
+        <p class="opacity-90">Bordes, sombras, fondos, gradientes y efectos visuales</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        CSS
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 10
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#bordes" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Bordes</a>
+            <a href="#clip-path" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Clip-path</a>
+            <a href="#sombras" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Sombras</a>
+            <a href="#fondos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Fondos</a>
+            <a href="#gradientes" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Gradientes</a>
+            <a href="#filtros" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Filtros</a>
+            <a href="#blend" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Blend modes</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- BORDES -->
+        <section id="bordes" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Bordes
+            </h2>
+
+            <h3 class="font-semibold text-amber-800 mb-2">Propiedades b&aacute;sicas</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.box {
+    border: 1px solid #333;
+
+    /* Individual */
+    border-width: 2px;
+    border-style: solid | dashed | dotted | double | groove;
+    border-color: #333;
+
+    /* Por lado */
+    border-top: 2px dashed red;
+    border-left-width: 4px;
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">border-radius</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.rounded {
+    border-radius: 8px;              /* Todos */
+    border-radius: 8px 16px;         /* Top-L/Bot-R | Top-R/Bot-L */
+    border-radius: 8px 16px 24px 32px; /* TL TR BR BL */
+
+    /* Elipse */
+    border-radius: 50% / 25%;        /* Horizontal / Vertical */
+
+    /* C&iacute;rculo perfecto */
+    border-radius: 50%;
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">border-image</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.fancy-border {
+    border: 10px solid transparent;
+    border-image: url(border.png) 30 round;
+    /* O con gradiente */
+    border-image: linear-gradient(45deg, gold, purple) 1;
+}</pre>
+        </section>
+
+        <!-- CLIP-PATH -->
+        <section id="clip-path" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Clip-path y formas
+            </h2>
+            <p class="text-sm mb-3">Recorta elementos con formas geom&eacute;tricas.</p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Formas b&aacute;sicas */
+.circle {
+    clip-path: circle(50%);
+}
+.ellipse {
+    clip-path: ellipse(50% 30% at center);
+}
+.inset {
+    clip-path: inset(10px 20px 30px 40px round 10px);
+}
+
+/* Pol&iacute;gono personalizado */
+.triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.hexagon {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%,
+                       75% 100%, 25% 100%, 0% 50%);
+}
+
+/* Path SVG */
+.custom {
+    clip-path: path('M0,0 L100,0 L100,100 Z');
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">shape-outside</h3>
+            <p class="text-xs text-gray-600 mb-2">Define forma alrededor de la cual fluye el texto.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.float-circle {
+    float: left;
+    width: 200px;
+    height: 200px;
+    shape-outside: circle(50%);
+    clip-path: circle(50%);
+}</pre>
+        </section>
+
+        <!-- SOMBRAS -->
+        <section id="sombras" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Sombras
+            </h2>
+
+            <h3 class="font-semibold text-amber-800 mb-2">box-shadow</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.card {
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+    /* offset-x offset-y blur color */
+
+    /* Con spread */
+    box-shadow: 4px 4px 8px 2px rgba(0,0,0,0.2);
+    /* offset-x offset-y blur spread color */
+
+    /* Sombra interior */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+
+    /* M&uacute;ltiples sombras */
+    box-shadow:
+        0 1px 3px rgba(0,0,0,0.12),
+        0 1px 2px rgba(0,0,0,0.24);
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">text-shadow</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.text {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    /* offset-x offset-y blur color */
+
+    /* Efecto glow */
+    text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">drop-shadow (filtro)</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Respeta transparencia (PNG, SVG) */
+.icon {
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}</pre>
+        </section>
+
+        <!-- FONDOS -->
+        <section id="fondos" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Fondos
+            </h2>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.element {
+    background-color: #f0f0f0;
+    background-image: url('imagen.jpg');
+    background-repeat: no-repeat | repeat | repeat-x | repeat-y;
+    background-position: center center;
+    background-size: cover | contain | 100% auto;
+    background-attachment: scroll | fixed | local;
+    background-origin: border-box | padding-box | content-box;
+    background-clip: border-box | padding-box | content-box | text;
+
+    /* Atajo */
+    background: #f0f0f0 url('img.jpg') no-repeat center/cover;
+}
+
+/* M&uacute;ltiples fondos */
+.layered {
+    background:
+        url('overlay.png') no-repeat center/cover,
+        linear-gradient(to bottom, blue, purple),
+        url('base.jpg') no-repeat center/cover;
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">background-clip: text</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.gradient-text {
+    background: linear-gradient(90deg, purple, pink);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}</pre>
+        </section>
+
+        <!-- GRADIENTES -->
+        <section id="gradientes" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>Gradientes
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">linear-gradient</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.linear {
+    background: linear-gradient(
+        to right,  /* o 90deg */
+        red, blue
+    );
+
+    /* Con paradas */
+    background: linear-gradient(
+        45deg,
+        red 0%,
+        yellow 50%,
+        green 100%
+    );
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">radial-gradient</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.radial {
+    background: radial-gradient(
+        circle at center,
+        yellow, red
+    );
+
+    background: radial-gradient(
+        ellipse at top left,
+        white 0%,
+        blue 100%
+    );
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">conic-gradient</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.conic {
+    background: conic-gradient(
+        from 0deg,
+        red, yellow, green, blue, red
+    );
+}
+
+/* Gr&aacute;fico de tarta */
+.pie {
+    background: conic-gradient(
+        red 0% 30%,
+        blue 30% 60%,
+        green 60% 100%
+    );
+}</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">repeating-*-gradient</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.stripes {
+    background: repeating-linear-gradient(
+        45deg,
+        #606dbc,
+        #606dbc 10px,
+        #465298 10px,
+        #465298 20px
+    );
+}</pre>
+        </section>
+
+        <!-- FILTROS -->
+        <section id="filtros" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6</span>Filtros
+            </h2>
+
+            <h3 class="font-semibold text-amber-800 mb-2">filter</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.image {
+    filter: blur(5px);          /* Desenfoque */
+    filter: brightness(1.2);    /* Brillo (1 = normal) */
+    filter: contrast(150%);     /* Contraste */
+    filter: grayscale(100%);    /* Escala de grises */
+    filter: saturate(200%);     /* Saturaci&oacute;n */
+    filter: sepia(80%);         /* Efecto sepia */
+    filter: hue-rotate(90deg);  /* Rotar tono */
+    filter: invert(100%);       /* Invertir colores */
+    filter: opacity(50%);       /* Opacidad */
+
+    /* M&uacute;ltiples filtros */
+    filter: brightness(1.1) contrast(1.1) saturate(1.2);
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">backdrop-filter</h3>
+            <p class="text-xs text-gray-600 mb-2">Aplica filtros al fondo <em>detr&aacute;s</em> del elemento.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.glass {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+}</pre>
+        </section>
+
+        <!-- BLEND MODES -->
+        <section id="blend" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">7</span>Blend modes
+            </h2>
+            <p class="text-sm mb-3">Mezcla colores entre capas superpuestas.</p>
+
+            <h3 class="font-semibold text-amber-800 mb-2">mix-blend-mode</h3>
+            <p class="text-xs text-gray-600 mb-2">Mezcla con elementos debajo.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.overlay-text {
+    mix-blend-mode: multiply;
+    /* normal | multiply | screen | overlay |
+       darken | lighten | color-dodge | color-burn |
+       hard-light | soft-light | difference | exclusion |
+       hue | saturation | color | luminosity */
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">background-blend-mode</h3>
+            <p class="text-xs text-gray-600 mb-2">Mezcla capas de fondo entre s&iacute;.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.duotone {
+    background-image:
+        url('photo.jpg'),
+        linear-gradient(purple, orange);
+    background-blend-mode: multiply;
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">isolation</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
+    isolation: isolate;
+    /* Crea nuevo contexto de apilamiento,
+       evita que blend-mode afecte fuera */
+}</pre>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema9-texto.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 9</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema11-animaciones.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 11 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes CSS &mdash; Tema 10 de 12</p>
+    </footer>
+</body>
+</html>

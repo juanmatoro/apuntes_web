@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 8: Interacciones y Scroll - Apuntes CSS</title>
+    <meta name="description" content="Interacciones CSS: focus, overflow, scroll-snap, scroll-behavior, touch-action y pointer-events.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Tema 8: Interacciones y Scroll</h1>
+        <p class="opacity-90">Focus, desbordamiento y comportamiento de scroll</p>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="../index.html" class="text-amber-900 no-underline hover:underline">&Iacute;ndice</a>
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        CSS
+        <span class="text-gray-400 mx-1">&rsaquo;</span>
+        Tema 8
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#focus" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Focus</a>
+            <a href="#overflow" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Overflow</a>
+            <a href="#scroll-behavior" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Scroll behavior</a>
+            <a href="#scroll-snap" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Scroll snap</a>
+            <a href="#otras" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Otras interacciones</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- FOCUS -->
+        <section id="focus" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Focus
+            </h2>
+            <p class="text-sm mb-3">Esencial para accesibilidad y navegaci&oacute;n por teclado.</p>
+
+            <h3 class="font-semibold text-amber-800 mb-2">Pseudo-clases de focus</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:focus</code> - Elemento con foco (cualquier m&eacute;todo)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:focus-visible</code> - Solo muestra outline cuando es necesario</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">:focus-within</code> - Padre contiene elemento con foco</li>
+            </ul>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">/* Quitar outline por defecto (no recomendado) */
+button:focus {
+    outline: none;
+}
+
+/* Mejor: usar focus-visible */
+button:focus-visible {
+    outline: 2px solid blue;
+    outline-offset: 2px;
+}
+
+/* Estilizar formulario cuando tiene foco interno */
+form:focus-within {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Outline</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.element:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;  /* Espacio entre borde y outline */
+}</pre>
+        </section>
+
+        <!-- OVERFLOW -->
+        <section id="overflow" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Overflow
+            </h2>
+            <p class="text-sm mb-3">Controla qu&eacute; pasa cuando el contenido excede el contenedor.</p>
+
+            <h3 class="font-semibold text-amber-800 mb-2">Valores</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">visible</code> - Contenido se desborda (default)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">hidden</code> - Recorta el contenido</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">scroll</code> - Siempre muestra scrollbar</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">auto</code> - Scrollbar solo si es necesario</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">clip</code> - Como hidden, pero sin crear BFC</li>
+            </ul>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">.container {
+    overflow: auto;           /* Ambos ejes */
+    overflow-x: auto;         /* Solo horizontal */
+    overflow-y: scroll;       /* Solo vertical */
+
+    /* Propiedades l&oacute;gicas */
+    overflow-inline: auto;
+    overflow-block: hidden;
+}</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-3 mb-2">text-overflow</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  /* ... al final */
+}</pre>
+        </section>
+
+        <!-- SCROLL BEHAVIOR -->
+        <section id="scroll-behavior" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Comportamiento de scroll
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">scroll-behavior</h3>
+                    <p class="text-xs text-gray-600 mb-2">Suaviza el scroll al navegar con anclas.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">html {
+    scroll-behavior: smooth;
+}
+
+/* O en un contenedor espec&iacute;fico */
+.scroll-container {
+    scroll-behavior: smooth;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">overscroll-behavior</h3>
+                    <p class="text-xs text-gray-600 mb-2">Controla qu&eacute; pasa al llegar al l&iacute;mite del scroll.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.modal {
+    overscroll-behavior: contain;
+    /* Evita que el scroll "escape" al body */
+}
+
+/* Valores */
+overscroll-behavior: auto;     /* Default */
+overscroll-behavior: contain;  /* No propaga */
+overscroll-behavior: none;     /* Sin efecto bounce */</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">scrollbar-gutter <span class="text-amber-600 text-xs">(2022)</span></h3>
+                    <p class="text-xs text-gray-600 mb-2">Reserva espacio para la scrollbar.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
+    scrollbar-gutter: stable;
+    /* Evita saltos cuando aparece/desaparece scrollbar */
+
+    scrollbar-gutter: stable both-edges;
+    /* Espacio en ambos lados */
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">scroll-padding</h3>
+                    <p class="text-xs text-gray-600 mb-2">Offset para scroll a anclas (headers fijos).</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">html {
+    scroll-padding-top: 80px;
+    /* Deja espacio para header fijo */
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCROLL SNAP -->
+        <section id="scroll-snap" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Scroll Snap
+            </h2>
+            <p class="text-sm mb-3">Crea puntos de "enganche" durante el scroll, ideal para carruseles y galer&iacute;as.</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Contenedor</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.carousel {
+    display: flex;
+    overflow-x: auto;
+
+    /* Tipo de snap */
+    scroll-snap-type: x mandatory;
+    /* x | y | both */
+    /* mandatory: siempre para | proximity: cerca */
+
+    /* Ocultar scrollbar */
+    scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar {
+    display: none;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">&Iacute;tems</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.slide {
+    flex: 0 0 100%;
+
+    /* Punto de enganche */
+    scroll-snap-align: start;
+    /* start | center | end */
+
+    /* Forzar parada */
+    scroll-snap-stop: always;
+    /* always: para en cada uno */
+    /* normal: puede saltar */
+}</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Ejemplo: Carrusel de im&aacute;genes</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.gallery {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 1rem;
+}
+
+.gallery img {
+    flex: 0 0 calc(100% - 2rem);
+    scroll-snap-align: center;
+    border-radius: 8px;
+}</pre>
+        </section>
+
+        <!-- OTRAS INTERACCIONES -->
+        <section id="otras" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>Otras interacciones
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">touch-action</h3>
+                    <p class="text-xs text-gray-600 mb-2">Controla gestos t&aacute;ctiles permitidos.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.element {
+    touch-action: none;       /* Sin gestos */
+    touch-action: pan-x;      /* Solo scroll horizontal */
+    touch-action: pan-y;      /* Solo scroll vertical */
+    touch-action: pinch-zoom; /* Solo zoom */
+    touch-action: manipulation; /* Pan y zoom */
+}
+
+/* Ejemplo: mapa interactivo */
+.map {
+    touch-action: none;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">pointer-events</h3>
+                    <p class="text-xs text-gray-600 mb-2">Controla si un elemento responde a clics.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.disabled {
+    pointer-events: none;
+    /* No responde a clics ni hover */
+    opacity: 0.5;
+}
+
+/* El clic pasa al elemento de abajo */
+.overlay {
+    pointer-events: none;
+}
+
+.overlay button {
+    pointer-events: auto;  /* Restaurar */
+}</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">cursor</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.clickable { cursor: pointer; }
+.loading { cursor: wait; }
+.disabled { cursor: not-allowed; }
+.text { cursor: text; }
+.move { cursor: move; }
+.resize { cursor: ew-resize; }
+.custom { cursor: url(cursor.png), auto; }</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">user-select</h3>
+                    <p class="text-xs text-gray-600 mb-2">Controla si el texto es seleccionable.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.button {
+    user-select: none;  /* No seleccionable */
+}
+
+.code {
+    user-select: all;   /* Selecciona todo al clic */
+}</pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema7-posicionamiento.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 7</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
+        <a href="tema9-texto.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 9 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes CSS &mdash; Tema 8 de 12</p>
+    </footer>
+</body>
+</html>
