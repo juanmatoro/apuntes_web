@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 1: Introducci&oacute;n y Entorno - Apuntes JavaScript</title>
+    <meta name="description" content="Arquitecturas web, SPA/MPA, SSR/CSR, navegadores, motores JS y entornos de ejecuci&oacute;n.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <div data-component="header"></div>
+
+    <!-- BREADCRUMB -->
+    <div data-component="breadcrumb"></div>
+
+    <!-- NAVEGACI&Oacute;N INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#arquitecturas" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Arquitecturas web</a>
+            <a href="#navegadores" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Navegadores</a>
+            <a href="#motores" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Motores y Entornos JS</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- ARQUITECTURAS DE APLICACIONES WEB -->
+        <section id="arquitecturas" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Arquitecturas de aplicaciones web
+            </h2>
+
+            <h3 class="font-semibold text-yellow-600 mt-3 mb-2">Cliente / Servidor</h3>
+            <p class="text-sm mb-3">La arquitectura web se basa en el modelo <strong>cliente-servidor</strong>: el navegador (cliente) solicita recursos al servidor, que los procesa y env&iacute;a una respuesta.</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Modelos de navegaci&oacute;n</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">SPA</code> <strong>(Single Page Application)</strong> &mdash; Una sola p&aacute;gina HTML que se actualiza din&aacute;micamente sin recargar el navegador</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">MPA</code> <strong>(Multi Page Application)</strong> &mdash; M&uacute;ltiples p&aacute;ginas HTML, cada navegaci&oacute;n implica una nueva solicitud al servidor</li>
+            </ul>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Modelos de renderizado</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Modelo</th>
+                            <th class="border border-yellow-200 p-2 text-left">Descripci&oacute;n</th>
+                            <th class="border border-yellow-200 p-2 text-left">Momento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">Creaci&oacute;n manual</td>
+                            <td class="border border-gray-200 p-2">HTML generado manualmente en el servidor</td>
+                            <td class="border border-gray-200 p-2">Servidor</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">SSG</td>
+                            <td class="border border-gray-200 p-2">Static Site Generation &mdash; HTML generado en el servidor en tiempo de compilaci&oacute;n</td>
+                            <td class="border border-gray-200 p-2">Ahead of time</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">SSR</td>
+                            <td class="border border-gray-200 p-2">Server Side Rendering &mdash; HTML generado en el servidor en tiempo de ejecuci&oacute;n</td>
+                            <td class="border border-gray-200 p-2">Just in time</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">CSR</td>
+                            <td class="border border-gray-200 p-2">Client Side Rendering &mdash; HTML generado en el cliente en tiempo de ejecuci&oacute;n</td>
+                            <td class="border border-gray-200 p-2">Just in time</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Otros t&eacute;rminos</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>JAMStack</strong> &mdash; JavaScript, APIs y Markup: arquitectura basada en pre-renderizado y desacoplamiento</li>
+                <li><strong>PWA</strong> (Progressive Web App) &mdash; Aplicaciones web con capacidades nativas (offline, instalable)</li>
+                <li><strong>Microservicios</strong> &mdash; Arquitectura donde la aplicaci&oacute;n se divide en servicios independientes</li>
+                <li><strong>Serverless</strong> &mdash; Ejecuci&oacute;n de funciones en la nube sin gestionar servidores</li>
+                <li><strong>Headless CMS</strong> &mdash; Sistema de gesti&oacute;n de contenido que expone los datos v&iacute;a API</li>
+            </ul>
+        </section>
+
+        <!-- NAVEGADORES WEB -->
+        <section id="navegadores" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>Navegadores web
+            </h2>
+
+            <h3 class="font-semibold text-yellow-600 mt-3 mb-2">Componentes de un navegador</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Interfaz de usuario</strong> &mdash; Barra de direcciones, botones, marcadores...</li>
+                <li><strong>Motor de navegaci&oacute;n</strong> &mdash; Coordina las acciones entre el UI y el motor de renderizado</li>
+                <li><strong>Motor de renderizado</strong> &mdash; Presenta el contenido visual del documento</li>
+                <li><strong>Persistencia de datos</strong> &mdash; Almacenamiento local (cookies, localStorage, IndexedDB)</li>
+                <li><strong>Networking</strong> &mdash; Gestiona las peticiones HTTP/HTTPS</li>
+                <li><strong>Int&eacute;rprete de scripts</strong> &mdash; Motor de JavaScript</li>
+                <li><strong>Backend del UI</strong> &mdash; Renderiza elementos b&aacute;sicos (ventanas, combos, etc.)</li>
+            </ul>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Motor de renderizado</h3>
+            <p class="text-sm mb-2">El <strong>rendering engine</strong> es el responsable de presentar el contenido del documento en pantalla. Su flujo de trabajo:</p>
+            <ol class="list-decimal pl-5 space-y-1 text-sm">
+                <li><strong>Parsing</strong> &mdash; An&aacute;lisis sint&aacute;ctico del HTML y CSS, transform&aacute;ndolos en un &aacute;rbol de derivaci&oacute;n</li>
+                <li><strong>&Aacute;rbol DOM</strong> &mdash; Creaci&oacute;n del Document Object Model que representa la estructura del documento</li>
+                <li><strong>Reglas de estilo</strong> &mdash; Aplicaci&oacute;n de las reglas CSS al &aacute;rbol DOM</li>
+                <li><strong>Render Tree</strong> &mdash; Creaci&oacute;n del &aacute;rbol de renderizado con la informaci&oacute;n visual</li>
+                <li><strong>Layout</strong> &mdash; Disposici&oacute;n de los elementos en la pantalla</li>
+                <li><strong>Paint</strong> &mdash; Presentaci&oacute;n final del contenido en la pantalla</li>
+            </ol>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">HTML/CSS &rarr; Parsing &rarr; &Aacute;rbol DOM + CSSOM &rarr; Render Tree &rarr; Layout &rarr; Paint</pre>
+        </section>
+
+        <!-- MOTORES Y ENTORNOS DE EJECUCI&Oacute;N -->
+        <section id="motores" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Motores y Entornos de ejecuci&oacute;n de JS
+            </h2>
+
+            <h3 class="font-semibold text-yellow-600 mt-3 mb-2">Motor de JavaScript</h3>
+            <p class="text-sm mb-2">El <strong>int&eacute;rprete de scripts</strong> (motor de JS) es el responsable de ejecutar el c&oacute;digo JavaScript. Interpreta el c&oacute;digo fuente, genera c&oacute;digo intermedio (bytecode) y lo ejecuta.</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Principales motores</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Motor</th>
+                            <th class="border border-yellow-200 p-2 text-left">Usado en</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">V8</td>
+                            <td class="border border-gray-200 p-2">Chrome, Node.js, Edge (Chromium)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">SpiderMonkey</td>
+                            <td class="border border-gray-200 p-2">Firefox</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">JavaScriptCore</td>
+                            <td class="border border-gray-200 p-2">Safari</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">Chakra</td>
+                            <td class="border border-gray-200 p-2">Edge (Legacy)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">N&uacute;cleo del lenguaje (core)</h3>
+            <p class="text-sm mb-2">Todos los motores implementan el n&uacute;cleo de JavaScript con una API m&iacute;nima:</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Manejo de datos, textos, arrays y expresiones regulares</li>
+                <li>No hay funcionalidad de entradas y salidas (I/O)</li>
+                <li>No hay funciones m&aacute;s sofisticadas: redes, almacenamiento, gr&aacute;ficos&hellip;</li>
+            </ul>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Entornos de ejecuci&oacute;n</h3>
+            <p class="text-sm mb-2">Los motores se integran en diversos entornos que proporcionan APIs espec&iacute;ficas:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                    <h4 class="font-semibold text-yellow-700 mb-2">Navegadores</h4>
+                    <ul class="list-disc pl-4 space-y-1 text-sm">
+                        <li>Integra motor JS + motor de renderizado + backend UI</li>
+                        <li>API: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">DOM</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Web APIs</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">fetch</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">localStorage</code>&hellip;</li>
+                    </ul>
+                </div>
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                    <h4 class="font-semibold text-yellow-700 mb-2">Node.js</h4>
+                    <ul class="list-disc pl-4 space-y-1 text-sm">
+                        <li>Entorno de ejecuci&oacute;n fuera del navegador (motor V8)</li>
+                        <li>API: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">fs</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">http</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">modules</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">process</code>&hellip;</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Transpiladores</h3>
+            <p class="text-sm">Herramientas como <strong>Babel</strong> transforman c&oacute;digo JavaScript moderno (ES6+) en versiones compatibles con navegadores antiguos. Permiten usar las &uacute;ltimas caracter&iacute;sticas del lenguaje sin preocuparse por la compatibilidad.</p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">// C&oacute;digo fuente (ES6+)
+const greet = (name) =&gt; `Hola, ${name}!`;
+
+// Transpilado (ES5)
+var greet = function(name) {
+    return "Hola, " + name + "!";
+};</pre>
+        </section>
+
+    </main>
+
+    <!-- NAVEGACI&Oacute;N INFERIOR -->
+    <div data-component="footer-nav"></div>
+
+    <!-- FOOTER -->
+    <div data-component="footer"></div>
+
+</body>
+</html>

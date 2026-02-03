@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3: Control de Flujo - Apuntes JavaScript</title>
+    <meta name="description" content="if/else, switch, for, while, for...of, for...in y break/continue en JavaScript.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <div data-component="header"></div>
+
+    <!-- BREADCRUMB -->
+    <div data-component="breadcrumb"></div>
+
+    <!-- NAVEGACI&Oacute;N INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#condicionales" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Condicionales</a>
+            <a href="#switch" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Switch</a>
+            <a href="#bucles-clasicos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Bucles cl&aacute;sicos</a>
+            <a href="#iteradores" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">for...of / for...in</a>
+            <a href="#control-bucles" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">break / continue</a>
+            <a href="#manejo-errores" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Manejo de errores</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- CONDICIONALES -->
+        <section id="condicionales" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Condicionales: if / else
+            </h2>
+
+            <p class="text-sm mb-3">Las sentencias condicionales ejecutan bloques de c&oacute;digo en funci&oacute;n de si una condici&oacute;n se eval&uacute;a como <strong>truthy</strong> o <strong>falsy</strong>.</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-3 mb-2">if / else if / else</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nota = 7;
+
+if (nota &gt;= 9) {
+    console.log('Sobresaliente');
+} else if (nota &gt;= 7) {
+    console.log('Notable');
+} else if (nota &gt;= 5) {
+    console.log('Aprobado');
+} else {
+    console.log('Suspenso');
+}</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Operador ternario</h3>
+            <p class="text-sm mb-2">Forma abreviada para condiciones simples con un solo valor de retorno:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// condici&oacute;n ? valor_si_true : valor_si_false
+const tipo = edad &gt;= 18 ? 'adulto' : 'menor';
+
+// Ternarios anidados (evitar si son complejos)
+const clase = nota &gt;= 9 ? 'A' : nota &gt;= 7 ? 'B' : 'C';</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Patrones comunes</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// Guard clause (retorno anticipado)
+function procesar(datos) {
+    if (!datos) return null;
+    // ... l&oacute;gica principal
+}
+
+// Short-circuit con &amp;&amp;
+esAdmin &amp;&amp; mostrarPanel();
+
+// Valor por defecto con ||
+const nombre = input || 'An&oacute;nimo';
+
+// Valor por defecto con ?? (solo null/undefined)
+const puerto = config ?? 3000;</pre>
+        </section>
+
+        <!-- SWITCH -->
+        <section id="switch" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>Switch
+            </h2>
+
+            <p class="text-sm mb-3">Eval&uacute;a una expresi&oacute;n y ejecuta el bloque del <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">case</code> que coincida. Usa comparaci&oacute;n estricta (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">===</code>).</p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const dia = 'lunes';
+
+switch (dia) {
+    case 'lunes':
+    case 'martes':
+    case 'mi&eacute;rcoles':
+    case 'jueves':
+    case 'viernes':
+        console.log('D&iacute;a laborable');
+        break;
+    case 's&aacute;bado':
+    case 'domingo':
+        console.log('Fin de semana');
+        break;
+    default:
+        console.log('D&iacute;a no v&aacute;lido');
+}</pre>
+
+            <p class="text-sm mt-3 mb-2 p-2 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                <strong>Importante</strong>: sin <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">break</code>, la ejecuci&oacute;n &ldquo;cae&rdquo; (<em>fall-through</em>) al siguiente <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">case</code>. Esto puede ser intencionado (como agrupar varios <code>case</code>) o un error.
+            </p>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Alternativa con objetos</h3>
+            <p class="text-sm mb-2">Para mapeos simples valor &rarr; resultado, un objeto puede ser m&aacute;s limpio que un <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">switch</code>:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const traducciones = {
+    rojo: 'red',
+    verde: 'green',
+    azul: 'blue',
+};
+
+const color = traducciones[colorES] ?? 'unknown';</pre>
+        </section>
+
+        <!-- BUCLES CL&Aacute;SICOS -->
+        <section id="bucles-clasicos" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Bucles cl&aacute;sicos
+            </h2>
+
+            <h3 class="font-semibold text-yellow-600 mt-3 mb-2">for</h3>
+            <p class="text-sm mb-2">Bucle con inicializaci&oacute;n, condici&oacute;n y actualizaci&oacute;n expl&iacute;citas:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// for (inicializaci&oacute;n; condici&oacute;n; actualizaci&oacute;n)
+for (let i = 0; i &lt; 5; i++) {
+    console.log(i); // 0, 1, 2, 3, 4
+}
+
+// Recorrer un array por &iacute;ndice
+const frutas = ['manzana', 'pera', 'uva'];
+for (let i = 0; i &lt; frutas.length; i++) {
+    console.log(frutas[i]);
+}
+
+// Recorrido inverso
+for (let i = frutas.length - 1; i &gt;= 0; i--) {
+    console.log(frutas[i]);
+}</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">while</h3>
+            <p class="text-sm mb-2">Ejecuta el bloque <strong>mientras</strong> la condici&oacute;n sea truthy. La condici&oacute;n se eval&uacute;a <strong>antes</strong> de cada iteraci&oacute;n:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">let contador = 0;
+
+while (contador &lt; 5) {
+    console.log(contador); // 0, 1, 2, 3, 4
+    contador++;
+}</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">do...while</h3>
+            <p class="text-sm mb-2">Similar a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">while</code>, pero el bloque se ejecuta <strong>al menos una vez</strong> porque la condici&oacute;n se eval&uacute;a <strong>despu&eacute;s</strong>:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">let input;
+
+do {
+    input = prompt('Escribe "salir" para terminar');
+} while (input !== 'salir');</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Comparativa</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Bucle</th>
+                            <th class="border border-yellow-200 p-2 text-left">Uso t&iacute;pico</th>
+                            <th class="border border-yellow-200 p-2 text-left">Eval&uacute;a condici&oacute;n</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code>for</code></td>
+                            <td class="border border-gray-200 p-2">N&uacute;mero de iteraciones conocido</td>
+                            <td class="border border-gray-200 p-2">Antes de cada iteraci&oacute;n</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code>while</code></td>
+                            <td class="border border-gray-200 p-2">N&uacute;mero de iteraciones desconocido</td>
+                            <td class="border border-gray-200 p-2">Antes de cada iteraci&oacute;n</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code>do...while</code></td>
+                            <td class="border border-gray-200 p-2">Al menos una ejecuci&oacute;n garantizada</td>
+                            <td class="border border-gray-200 p-2">Despu&eacute;s de cada iteraci&oacute;n</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FOR...OF / FOR...IN -->
+        <section id="iteradores" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>for...of y for...in
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-2">for...of</h3>
+                    <p class="text-sm mb-2">Itera sobre los <strong>valores</strong> de un iterable (arrays, strings, Map, Set, NodeList&hellip;)</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const colores = ['rojo', 'verde', 'azul'];
+
+for (const color of colores) {
+    console.log(color);
+}
+// 'rojo', 'verde', 'azul'
+
+// Con strings
+for (const char of 'Hola') {
+    console.log(char);
+}
+// 'H', 'o', 'l', 'a'</pre>
+                </div>
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-2">for...in</h3>
+                    <p class="text-sm mb-2">Itera sobre las <strong>claves (propiedades enumerables)</strong> de un objeto:</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const persona = {
+    nombre: 'Ana',
+    edad: 25,
+    ciudad: 'Madrid'
+};
+
+for (const key in persona) {
+    console.log(key, persona[key]);
+}
+// 'nombre' 'Ana'
+// 'edad' 25
+// 'ciudad' 'Madrid'</pre>
+                </div>
+            </div>
+
+            <p class="text-sm mt-3 p-2 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                <strong>Regla pr&aacute;ctica</strong>: usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for...of</code> para <strong>arrays</strong> e iterables y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for...in</code> para <strong>objetos</strong>. Evitar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for...in</code> con arrays (itera sobre &iacute;ndices como strings e incluye propiedades heredadas).
+            </p>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Obtener &iacute;ndice y valor con for...of</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const frutas = ['manzana', 'pera', 'uva'];
+
+// entries() devuelve [&iacute;ndice, valor]
+for (const [i, fruta] of frutas.entries()) {
+    console.log(`${i}: ${fruta}`);
+}
+// 0: manzana
+// 1: pera
+// 2: uva</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Iterar objetos con for...of</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const config = { host: 'localhost', port: 3000, debug: true };
+
+// Object.keys() &rarr; array de claves
+for (const key of Object.keys(config)) {
+    console.log(key);
+}
+
+// Object.values() &rarr; array de valores
+for (const value of Object.values(config)) {
+    console.log(value);
+}
+
+// Object.entries() &rarr; array de [clave, valor]
+for (const [key, value] of Object.entries(config)) {
+    console.log(`${key}: ${value}`);
+}</pre>
+        </section>
+
+        <!-- BREAK / CONTINUE -->
+        <section id="control-bucles" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">5</span>break y continue
+            </h2>
+
+            <p class="text-sm mb-3">Palabras clave para controlar el flujo dentro de bucles:</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-3 mb-2">break</h3>
+            <p class="text-sm mb-2"><strong>Sale</strong> completamente del bucle actual:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nums = [1, 5, 12, 3, 8];
+
+for (const n of nums) {
+    if (n &gt; 10) break; // sale al encontrar 12
+    console.log(n);
+}
+// 1, 5</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">continue</h3>
+            <p class="text-sm mb-2"><strong>Salta</strong> a la siguiente iteraci&oacute;n:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">for (let i = 0; i &lt; 10; i++) {
+    if (i % 2 !== 0) continue; // salta impares
+    console.log(i);
+}
+// 0, 2, 4, 6, 8</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Labels (etiquetas)</h3>
+            <p class="text-sm mb-2">Permiten hacer <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">break</code> o <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">continue</code> de un bucle externo desde uno anidado:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">externo: for (let i = 0; i &lt; 3; i++) {
+    for (let j = 0; j &lt; 3; j++) {
+        if (i === 1 &amp;&amp; j === 1) break externo;
+        console.log(i, j);
+    }
+}
+// 0 0 / 0 1 / 0 2 / 1 0</pre>
+        </section>
+
+        <!-- MANEJO DE ERRORES -->
+        <section id="manejo-errores" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">6</span>Manejo de errores: try / catch
+            </h2>
+
+            <p class="text-sm mb-3">Permite capturar errores en tiempo de ejecuci&oacute;n sin detener el programa:</p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">try {
+    const data = JSON.parse('texto inv&aacute;lido');
+} catch (error) {
+    console.error('Error:', error.message);
+} finally {
+    // Se ejecuta SIEMPRE, haya o no error
+    console.log('Proceso finalizado');
+}</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Lanzar errores</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function dividir(a, b) {
+    if (b === 0) {
+        throw new Error('No se puede dividir por cero');
+    }
+    return a / b;
+}
+
+try {
+    dividir(10, 0);
+} catch (e) {
+    console.error(e.message);
+    // 'No se puede dividir por cero'
+}</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Tipos de error</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Error</code> &mdash; Error gen&eacute;rico</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">TypeError</code> &mdash; Tipo incorrecto</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ReferenceError</code> &mdash; Variable no definida</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">SyntaxError</code> &mdash; C&oacute;digo mal formado</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">RangeError</code> &mdash; Valor fuera de rango</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- NAVEGACI&Oacute;N INFERIOR -->
+    <div data-component="footer-nav"></div>
+
+    <!-- FOOTER -->
+    <div data-component="footer"></div>
+
+</body>
+</html>

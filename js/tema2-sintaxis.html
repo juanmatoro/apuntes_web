@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 2: Sintaxis y Variables - Apuntes JavaScript</title>
+    <meta name="description" content="let, const, var, tipos primitivos, operadores y coerci&oacute;n en JavaScript.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <div data-component="header"></div>
+
+    <!-- BREADCRUMB -->
+    <div data-component="breadcrumb"></div>
+
+    <!-- NAVEGACI&Oacute;N INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#variables" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Variables</a>
+            <a href="#tipos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Tipos de datos</a>
+            <a href="#operadores" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Operadores</a>
+            <a href="#coercion" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Coerci&oacute;n</a>
+            <a href="#modelo-mental" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Modelo mental</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- VARIABLES -->
+        <section id="variables" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Variables: let, const y var
+            </h2>
+
+            <p class="text-sm mb-3">Las variables son <strong>nombres simb&oacute;licos</strong> que apuntan (hacen referencia) a valores almacenados en memoria. En JavaScript se declaran con tres palabras clave:</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Palabra clave</th>
+                            <th class="border border-yellow-200 p-2 text-left">Scope</th>
+                            <th class="border border-yellow-200 p-2 text-left">Reasignable</th>
+                            <th class="border border-yellow-200 p-2 text-left">Hoisting</th>
+                            <th class="border border-yellow-200 p-2 text-left">Redeclarable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code class="bg-gray-800 text-gray-100 px-1.5 rounded font-mono">let</code></td>
+                            <td class="border border-gray-200 p-2">Bloque <code class="bg-gray-800 text-gray-100 px-1.5 rounded font-mono">{}</code></td>
+                            <td class="border border-gray-200 p-2">S&iacute;</td>
+                            <td class="border border-gray-200 p-2">S&iacute; (TDZ)</td>
+                            <td class="border border-gray-200 p-2">No</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code class="bg-gray-800 text-gray-100 px-1.5 rounded font-mono">const</code></td>
+                            <td class="border border-gray-200 p-2">Bloque <code class="bg-gray-800 text-gray-100 px-1.5 rounded font-mono">{}</code></td>
+                            <td class="border border-gray-200 p-2">No</td>
+                            <td class="border border-gray-200 p-2">S&iacute; (TDZ)</td>
+                            <td class="border border-gray-200 p-2">No</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code class="bg-gray-800 text-gray-100 px-1.5 rounded font-mono">var</code></td>
+                            <td class="border border-gray-200 p-2">Funci&oacute;n</td>
+                            <td class="border border-gray-200 p-2">S&iacute;</td>
+                            <td class="border border-gray-200 p-2">S&iacute; (undefined)</td>
+                            <td class="border border-gray-200 p-2">S&iacute;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-sm mt-3 mb-2 p-2 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                <strong>TDZ (Temporal Dead Zone)</strong>: con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">let</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">const</code>, la variable existe en el scope desde el inicio del bloque, pero no es accesible hasta su declaraci&oacute;n. Acceder antes lanza un <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ReferenceError</code>.
+            </p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">// let: variable reasignable, scope de bloque
+let nombre = 'Ana';
+nombre = 'Luis'; // OK
+
+// const: NO reasignable, scope de bloque
+const PI = 3.14159;
+// PI = 3; // TypeError: Assignment to constant variable
+
+// const con objetos: la referencia no cambia, pero el contenido s&iacute;
+const user = { name: 'Ana' };
+user.name = 'Luis'; // OK, se modifica el contenido
+// user = {};       // TypeError
+
+// var: scope de funci&oacute;n, hoisting con valor undefined
+console.log(x); // undefined (no lanza error)
+var x = 10;</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Buenas pr&aacute;cticas</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">const</code> por defecto</li>
+                <li>Usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">let</code> solo cuando sea necesario reasignar</li>
+                <li>Evitar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">var</code> en c&oacute;digo moderno</li>
+                <li>Nombres descriptivos en <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">camelCase</code></li>
+                <li>Constantes globales en <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">UPPER_SNAKE_CASE</code></li>
+            </ul>
+        </section>
+
+        <!-- TIPOS DE DATOS -->
+        <section id="tipos" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>Tipos de datos
+            </h2>
+
+            <p class="text-sm mb-3">JavaScript es un lenguaje de <strong>tipado din&aacute;mico</strong>: las variables no tienen un tipo fijo, el tipo lo determina el valor asignado. Existen <strong>7 tipos primitivos</strong> y el tipo <strong>Object</strong>.</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-3 mb-2">Tipos primitivos</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Tipo</th>
+                            <th class="border border-yellow-200 p-2 text-left">typeof</th>
+                            <th class="border border-yellow-200 p-2 text-left">Ejemplos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">string</td>
+                            <td class="border border-gray-200 p-2"><code>"string"</code></td>
+                            <td class="border border-gray-200 p-2"><code>'Hola'</code>, <code>"mundo"</code>, <code>`template`</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">number</td>
+                            <td class="border border-gray-200 p-2"><code>"number"</code></td>
+                            <td class="border border-gray-200 p-2"><code>42</code>, <code>3.14</code>, <code>NaN</code>, <code>Infinity</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">bigint</td>
+                            <td class="border border-gray-200 p-2"><code>"bigint"</code></td>
+                            <td class="border border-gray-200 p-2"><code>9007199254740991n</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">boolean</td>
+                            <td class="border border-gray-200 p-2"><code>"boolean"</code></td>
+                            <td class="border border-gray-200 p-2"><code>true</code>, <code>false</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">undefined</td>
+                            <td class="border border-gray-200 p-2"><code>"undefined"</code></td>
+                            <td class="border border-gray-200 p-2"><code>undefined</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">null</td>
+                            <td class="border border-gray-200 p-2"><code>"object"</code> *</td>
+                            <td class="border border-gray-200 p-2"><code>null</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">symbol</td>
+                            <td class="border border-gray-200 p-2"><code>"symbol"</code></td>
+                            <td class="border border-gray-200 p-2"><code>Symbol('id')</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-gray-500 mt-1">* <code>typeof null</code> devuelve <code>"object"</code> por un bug hist&oacute;rico de JS que se mantiene por compatibilidad.</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Tipo Object</h3>
+            <p class="text-sm mb-2">Todo lo que no es primitivo es un <strong>objeto</strong>: colecciones de pares clave-valor. Incluyen arrays, funciones, fechas, expresiones regulares, etc.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// Objeto literal
+const persona = { nombre: 'Ana', edad: 25 };
+
+// Array (objeto indexado)
+const colores = ['rojo', 'verde', 'azul'];
+
+// Funci&oacute;n (objeto invocable)
+const saludar = function(name) { return `Hola ${name}`; };
+
+// typeof
+typeof persona;  // "object"
+typeof colores;  // "object"
+typeof saludar;  // "function"</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Primitivos vs Objetos</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Primitivos</strong>: inmutables, se comparan por <strong>valor</strong>, se copian por valor</li>
+                <li><strong>Objetos</strong>: mutables, se comparan por <strong>referencia</strong>, se copian por referencia</li>
+            </ul>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">// Comparaci&oacute;n por valor (primitivos)
+'hola' === 'hola'  // true
+
+// Comparaci&oacute;n por referencia (objetos)
+[1, 2] === [1, 2]  // false (distintas referencias)
+
+const a = { x: 1 };
+const b = a;       // misma referencia
+a === b            // true</pre>
+        </section>
+
+        <!-- OPERADORES -->
+        <section id="operadores" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Operadores
+            </h2>
+
+            <h3 class="font-semibold text-yellow-600 mt-3 mb-2">Aritm&eacute;ticos</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Operador</th>
+                            <th class="border border-yellow-200 p-2 text-left">Descripci&oacute;n</th>
+                            <th class="border border-yellow-200 p-2 text-left">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-200 p-2"><code>+</code></td><td class="border border-gray-200 p-2">Suma / concatenaci&oacute;n</td><td class="border border-gray-200 p-2"><code>5 + 3 // 8</code></td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>-</code></td><td class="border border-gray-200 p-2">Resta</td><td class="border border-gray-200 p-2"><code>5 - 3 // 2</code></td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>*</code></td><td class="border border-gray-200 p-2">Multiplicaci&oacute;n</td><td class="border border-gray-200 p-2"><code>5 * 3 // 15</code></td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>/</code></td><td class="border border-gray-200 p-2">Divisi&oacute;n</td><td class="border border-gray-200 p-2"><code>10 / 3 // 3.333...</code></td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>%</code></td><td class="border border-gray-200 p-2">M&oacute;dulo (resto)</td><td class="border border-gray-200 p-2"><code>10 % 3 // 1</code></td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>**</code></td><td class="border border-gray-200 p-2">Exponenciaci&oacute;n</td><td class="border border-gray-200 p-2"><code>2 ** 3 // 8</code></td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>++</code> / <code>--</code></td><td class="border border-gray-200 p-2">Incremento / decremento</td><td class="border border-gray-200 p-2"><code>x++</code>, <code>--y</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Asignaci&oacute;n</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">let x = 10;
+x += 5;   // x = x + 5  &rarr; 15
+x -= 3;   // x = x - 3  &rarr; 12
+x *= 2;   // x = x * 2  &rarr; 24
+x /= 4;   // x = x / 4  &rarr; 6
+x %= 4;   // x = x % 4  &rarr; 2
+x **= 3;  // x = x ** 3 &rarr; 8</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Comparaci&oacute;n</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Operador</th>
+                            <th class="border border-yellow-200 p-2 text-left">Descripci&oacute;n</th>
+                            <th class="border border-yellow-200 p-2 text-left">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-200 p-2"><code>==</code></td><td class="border border-gray-200 p-2">Igualdad abstracta (con coerci&oacute;n)</td><td class="border border-gray-200 p-2"><code>'5' == 5 // true</code></td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>===</code></td><td class="border border-gray-200 p-2">Igualdad estricta (sin coerci&oacute;n)</td><td class="border border-gray-200 p-2"><code>'5' === 5 // false</code></td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>!=</code></td><td class="border border-gray-200 p-2">Desigualdad abstracta</td><td class="border border-gray-200 p-2"><code>'5' != 5 // false</code></td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>!==</code></td><td class="border border-gray-200 p-2">Desigualdad estricta</td><td class="border border-gray-200 p-2"><code>'5' !== 5 // true</code></td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></td><td class="border border-gray-200 p-2">Relacionales</td><td class="border border-gray-200 p-2"><code>5 &gt; 3 // true</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-sm mt-2 p-2 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                <strong>Buena pr&aacute;ctica</strong>: usar siempre <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">===</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">!==</code> para evitar conversiones inesperadas.
+            </p>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">L&oacute;gicos</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Operador</th>
+                            <th class="border border-yellow-200 p-2 text-left">Descripci&oacute;n</th>
+                            <th class="border border-yellow-200 p-2 text-left">Comportamiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-200 p-2"><code>&&</code></td><td class="border border-gray-200 p-2">AND l&oacute;gico</td><td class="border border-gray-200 p-2">Devuelve el primer valor <em>falsy</em> o el &uacute;ltimo</td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>||</code></td><td class="border border-gray-200 p-2">OR l&oacute;gico</td><td class="border border-gray-200 p-2">Devuelve el primer valor <em>truthy</em> o el &uacute;ltimo</td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>!</code></td><td class="border border-gray-200 p-2">NOT l&oacute;gico</td><td class="border border-gray-200 p-2">Invierte el valor booleano</td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>??</code></td><td class="border border-gray-200 p-2">Nullish coalescing</td><td class="border border-gray-200 p-2">Devuelve el derecho si el izquierdo es <code>null</code> o <code>undefined</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">// Short-circuit evaluation
+const name = user &amp;&amp; user.name;   // si user es falsy, devuelve user
+const port = config || 3000;      // si config es falsy, devuelve 3000
+
+// Nullish coalescing (??) vs OR (||)
+0 || 'default'   // 'default' (0 es falsy)
+0 ?? 'default'   // 0         (0 no es null ni undefined)
+
+'' || 'default'  // 'default' ('' es falsy)
+'' ?? 'default'  // ''        ('' no es null ni undefined)
+
+// Optional chaining (?.)
+const city = user?.address?.city; // undefined si alguno es null/undefined</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Operador ternario</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// condici&oacute;n ? valor_si_true : valor_si_false
+const mensaje = edad &gt;= 18 ? 'Adulto' : 'Menor';</pre>
+        </section>
+
+        <!-- COERCI&Oacute;N DE TIPOS -->
+        <section id="coercion" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Coerci&oacute;n de tipos
+            </h2>
+
+            <p class="text-sm mb-3">La <strong>coerci&oacute;n</strong> es la conversi&oacute;n autom&aacute;tica o expl&iacute;cita de un valor de un tipo a otro.</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-3 mb-2">Coerci&oacute;n impl&iacute;cita (autom&aacute;tica)</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// String + number &rarr; concatenaci&oacute;n
+'5' + 3         // '53'
+'5' + true      // '5true'
+
+// Operadores num&eacute;ricos &rarr; conversi&oacute;n a number
+'5' - 3         // 2
+'5' * 2         // 10
+'5' / 1         // 5
+true + 1        // 2
+false + 1       // 1
+
+// Contexto booleano
+if ('hola') {}  // true (string no vac&iacute;o)
+if (0) {}       // false</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Coerci&oacute;n expl&iacute;cita</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// A String
+String(42)        // '42'
+(42).toString()   // '42'
+
+// A Number
+Number('42')      // 42
+parseInt('42px')  // 42
+parseFloat('3.14')// 3.14
++'42'             // 42 (operador unario +)
+
+// A Boolean
+Boolean(1)        // true
+Boolean('')       // false
+!!0               // false (doble negaci&oacute;n)</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Valores falsy y truthy</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+                <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+                    <h4 class="font-semibold text-red-700 mb-2">Valores falsy (7)</h4>
+                    <ul class="list-disc pl-4 space-y-1 text-sm">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">false</code></li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">0</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">-0</code></li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">0n</code> (BigInt cero)</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">''</code> (string vac&iacute;o)</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">null</code></li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">undefined</code></li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">NaN</code></li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 border border-green-200 rounded-lg p-3">
+                    <h4 class="font-semibold text-green-700 mb-2">Valores truthy</h4>
+                    <ul class="list-disc pl-4 space-y-1 text-sm">
+                        <li>Todo lo que <strong>no</strong> es falsy</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">'0'</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">'false'</code> (strings no vac&iacute;os)</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">[]</code> (array vac&iacute;o)</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">{}</code> (objeto vac&iacute;o)</li>
+                        <li>Cualquier n&uacute;mero distinto de 0</li>
+                        <li>Cualquier funci&oacute;n</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODELO MENTAL -->
+        <section id="modelo-mental" class="bg-white rounded-lg p-4 shadow w-full">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">5</span>Modelo mental: variables y datos
+            </h2>
+
+            <p class="text-sm mb-3">Un <strong>modelo mental</strong> correcto de c&oacute;mo funcionan las variables es clave para entender JavaScript. Las variables no &ldquo;contienen&rdquo; valores: son <strong>cables</strong> (wires) que <strong>apuntan</strong> a valores.</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-3 mb-2">Variables como cables</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Una variable es un <strong>nombre</strong> que apunta a un <strong>valor</strong> en el universo de JS</li>
+                <li>Los valores primitivos son &uacute;nicos e inmutables: no se crean ni se destruyen</li>
+                <li>Los objetos s&iacute; se crean y pueden ser modificados (mutados)</li>
+                <li>Asignar una variable (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">=</code>) cambia a d&oacute;nde apunta el cable, no el valor en s&iacute;</li>
+            </ul>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">// Primitivos: cada variable apunta al mismo valor &uacute;nico
+let a = 'hola';
+let b = 'hola';
+a === b  // true (mismo valor en el universo JS)
+
+// Objetos: cada literal crea un NUEVO objeto
+let obj1 = { x: 1 };
+let obj2 = { x: 1 };
+obj1 === obj2  // false (distintos objetos)</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Asignaci&oacute;n v&iacute;a variables</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// Con primitivos: se copia el valor
+let x = 10;
+let y = x;    // y apunta a 10
+x = 20;       // x apunta a 20, y sigue apuntando a 10
+console.log(y); // 10
+
+// Con objetos: se copia la REFERENCIA
+let arr1 = [1, 2, 3];
+let arr2 = arr1;        // arr2 apunta al MISMO array
+arr1.push(4);
+console.log(arr2);      // [1, 2, 3, 4]</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Mutabilidad vs inmutabilidad</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Inmutables</strong> (primitivos): no se pueden modificar. Las operaciones siempre devuelven un nuevo valor</li>
+                <li><strong>Mutables</strong> (objetos): se pueden modificar directamente sus propiedades</li>
+            </ul>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">// Strings son inmutables
+let str = 'hola';
+str.toUpperCase();    // devuelve 'HOLA' (nuevo valor)
+console.log(str);     // 'hola' (no ha cambiado)
+
+// Arrays son mutables
+let arr = [1, 2, 3];
+arr.push(4);          // modifica el array original
+console.log(arr);     // [1, 2, 3, 4]</pre>
+        </section>
+
+    </main>
+
+    <!-- NAVEGACI&Oacute;N INFERIOR -->
+    <div data-component="footer-nav"></div>
+
+    <!-- FOOTER -->
+    <div data-component="footer"></div>
+
+</body>
+</html>
