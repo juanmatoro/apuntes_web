@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,34 +8,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" type="image/png" href="../favicon.ico">
+    <style>
+        /* Corrección para desbordamiento de bloques de código */
+        pre {
+            white-space: pre-wrap; /* Mantiene el formato pero rompe líneas si es necesario */
+            word-break: break-all;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed overflow-x-hidden">
 
     <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white sticky top-0 z-50 shadow-md">
-        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
             <a href="../index.html" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
                 <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">CSS</span>
             </a>
-            <h1 class="flex-1 text-lg font-semibold truncate">Tema 3: Funciones y Custom Properties</h1>
+            <h1 class="flex-1 text-base md:text-lg font-semibold truncate">Tema 3: Funciones</h1>
             <div class="relative tema-dropdown">
-                <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
+                <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-3 py-2 rounded text-xs font-medium transition-colors">
                     <span>Temas</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden">
+                <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-[240px] max-h-96 overflow-y-auto hidden">
                     <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas CSS</div>
                     <a href="tema1-conceptos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">1. Conceptos CSS</a>
-                    <a href="tema2-pseudos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Pseudo-elementos y Pseudo-clases</a>
-                    <a href="tema3-funciones.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">3. Funciones y Custom Properties</a>
-                    <a href="tema4-color-unidades.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">4. Color y Unidades</a>
-                    <a href="tema5-box-model.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">5. Modelo de Caja</a>
-                    <a href="tema6-layout.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Layout: Flexbox y Grid</a>
-                    <a href="tema7-posicionamiento.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. Posicionamiento y Espaciado</a>
-                    <a href="tema8-interacciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Interacciones y Scroll</a>
-                    <a href="tema9-texto.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. Texto y Tipografía</a>
-                    <a href="tema10-graficos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Formas y Gráficos</a>
-                    <a href="tema11-animaciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. CSS Dinámico</a>
-                    <a href="tema12-rwd.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. RWD y Accesibilidad</a>
+                    <a href="tema2-pseudos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Pseudo-elementos</a>
+                    <a href="tema3-funciones.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">3. Funciones y Variables</a>
                     <div class="border-t border-gray-100 mt-2 pt-2">
                         <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al índice</a>
                     </div>
@@ -45,281 +42,108 @@
         </div>
     </header>
 
-    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
-        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+    <nav class="bg-white border-b border-gray-200 px-4 py-2.5 max-w-6xl mx-auto">
+        <p class="text-[10px] text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
-            <a href="#custom-properties" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Custom Properties</a>
-            <a href="#calc" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">calc()</a>
-            <a href="#min-max-clamp" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">min/max/clamp</a>
-            <a href="#tipografia-fluida" class="text-xs px-2.5 py-1 bg-amber-900 text-white rounded-full no-underline border border-amber-900 italic font-medium">Escalas y Fluidez</a>
-            <a href="#matematicas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Matemáticas</a>
-            <a href="#at-property" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">@property</a>
-            <a href="#otras-funciones" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Otras funciones</a>
+            <a href="#custom-properties" class="text-[10px] px-2 py-1 bg-amber-50 text-amber-900 rounded-full border border-amber-200">Variables</a>
+            <a href="#calc" class="text-[10px] px-2 py-1 bg-amber-50 text-amber-900 rounded-full border border-amber-200">calc()</a>
+            <a href="#min-max-clamp" class="text-[10px] px-2 py-1 bg-amber-50 text-amber-900 rounded-full border border-amber-200">Comparación</a>
+            <a href="#tipografia-fluida" class="text-[10px] px-2 py-1 bg-amber-900 text-white rounded-full italic font-medium">Fluidez</a>
+            <a href="#matematicas" class="text-[10px] px-2 py-1 bg-amber-50 text-amber-900 rounded-full border border-amber-200">Matemáticas</a>
         </div>
     </nav>
 
-    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+    <main class="flex flex-col gap-4 p-4 max-w-6xl mx-auto">
 
-        <section id="custom-properties" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="custom-properties" class="bg-white rounded-lg p-4 shadow-sm w-full border-l-4 border-amber-600 overflow-hidden">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">1</span>Custom Properties (Variables CSS)
+                <span class="orden">1</span>Custom Properties
             </h2>
-            <p class="text-sm mb-3 italic text-amber-700">Propiedades personalizadas que almacenan valores reutilizables. A diferencia de SASS, estas se resuelven en el navegador y respetan la cascada en tiempo real.</p>
-            <p class="text-sm mb-3">Se definen con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">--nombre</code> y se acceden con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">var()</code>.</p>
-
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Definición y uso</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Definir variables globales */
-:root {
-    --color-primary: #3b82f6;
-    --color-secondary: #10b981;
-    --spacing-unit: 8px;
-    --font-main: 'Inter', sans-serif;
-}
-
-/* Usar variables */
-.button {
-    background: var(--color-primary);
-    padding: var(--spacing-unit);
-    font-family: var(--font-main);
-}</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Valor por defecto (fallback)</h3>
-                    <p class="text-xs text-gray-500 mb-2 italic">El segundo argumento se activa si la variable no existe.</p>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Si --accent no existe, usa blue */
-.element {
-    color: var(--accent, blue);
-}
-
-/* Fallback encadenado */
-.element {
-    color: var(--brand, var(--accent, blue));
-}</pre>
-                </div>
+            <div class="bg-amber-50 p-3 rounded-md mb-4 text-xs sm:text-sm">
+                <p><strong>Dinamismo:</strong> Se resuelven en el navegador en tiempo real. Pueden cambiarse con JS o dentro de Media Queries sin duplicar código.</p>
             </div>
 
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Alcance (scope) de variables</h3>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">:root {
-    --bg: white;  /* Global */
-}
-
-.dark-theme {
-    --bg: #1a1a1a;  /* Sobrescribe en este ámbito */
-}
-
-.card {
-    background: var(--bg);  /* Hereda según contexto */
-}</pre>
-
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Manipulación con JavaScript</h3>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// Leer variable
-getComputedStyle(document.documentElement)
-    .getPropertyValue('--color-primary');
-
-// Escribir variable
-document.documentElement.style
-    .setProperty('--color-primary', '#ff0000');</pre>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="overflow-hidden">
+                    <h3 class="font-semibold text-amber-800 mb-2">Definición</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md text-[11px] overflow-x-auto">:root { --color-hazme: #47d7ac; }
+.hero { --color-hazme: #222; }</pre>
+                </div>
+                <div class="overflow-hidden">
+                    <h3 class="font-semibold text-amber-800 mb-2">Fallbacks</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md text-[11px] overflow-x-auto">color: var(--text, #333);</pre>
+                </div>
+            </div>
         </section>
 
-        <section id="calc" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">2</span>calc()
-            </h2>
-            <p class="text-sm mb-3">Realiza cálculos matemáticos mezclando unidades heterogéneas.</p>
+        <div class="flex flex-wrap gap-4">
+            <section id="calc" class="bg-white rounded-lg p-4 shadow-sm flex-1 min-w-full md:min-w-[300px] overflow-hidden">
+                <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                    <span class="orden">2</span>calc()
+                </h2>
+                <div class="text-[11px] p-2 bg-red-50 text-red-800 rounded mb-3 border border-red-100">
+                    <strong>⚠️ Espacios obligatorios:</strong> <code>calc(100% - 20px)</code>.
+                </div>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md text-[11px] overflow-x-auto">.content { width: calc(100% - 60px); }</pre>
+            </section>
 
-            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
-                <li>Operadores: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">+</code> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">-</code> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">*</code> <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">/</code></li>
-                <li class="text-red-700 font-semibold italic underline">Importante: Espacios obligatorios alrededor de + y -</li>
-                <li>Puede mezclar %, px, em, rem, vw, vh...</li>
-            </ul>
+            <section id="min-max-clamp" class="bg-white rounded-lg p-4 shadow-sm flex-1 min-w-full md:min-w-[300px] overflow-hidden">
+                <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                    <span class="orden">3</span>Comparación
+                </h2>
+                <div class="space-y-2 text-[11px]">
+                    <div class="p-2 bg-gray-50 rounded border"><strong>min(100%, 500px):</strong> No pases de 500px.</div>
+                    <div class="p-2 bg-amber-50 rounded border border-amber-200"><strong>clamp(min, ideal, max):</strong> Fluidez total.</div>
+                </div>
+            </section>
+        </div>
 
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.sidebar {
-    width: calc(100% - 250px);
-}
-
-.container {
-    padding: calc(var(--spacing) * 2);
-    max-width: calc(100vw - 2rem);
-}
-
-.grid-item {
-    width: calc((100% - 3 * 20px) / 4);
-}</pre>
-        </section>
-
-        <section id="min-max-clamp" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">3</span>min(), max() y clamp()
-            </h2>
-            <p class="text-sm mb-3 font-medium">Funciones de comparación para valores fluidos y controlados.</p>
-
-            <h3 class="font-semibold text-amber-800 mb-2 text-sm">min() - "No pases de este valor"</h3>
-            <p class="text-xs text-gray-600 mb-1">Elige el valor más pequeño. Se usa para establecer un máximo responsive.</p>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">.card {
-    width: min(400px, 90%);
-}</pre>
-
-            <h3 class="font-semibold text-amber-800 mb-2 text-sm">max() - "No seas menor que este valor"</h3>
-            <p class="text-xs text-gray-600 mb-1">Elige el valor mayor. Ideal para establecer mínimos de seguridad.</p>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">.sidebar {
-    width: max(200px, 25%);
-}</pre>
-
-            <h3 class="font-semibold text-amber-800 mb-2 text-sm">clamp(min, ideal, max)</h3>
-            <p class="text-xs text-gray-600 mb-2 italic">Define un rango dinámico basado en una medida flexible.</p>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Tipografía fluida */
-h1 {
-    font-size: clamp(1.5rem, 4vw, 3rem);
-}</pre>
-        </section>
-
-        <section id="tipografia-fluida" class="bg-amber-900 text-white rounded-lg p-5 shadow w-full">
+        <section id="tipografia-fluida" class="bg-amber-900 text-white rounded-lg p-5 shadow-sm w-full overflow-hidden">
             <h2 class="text-xl font-bold border-b border-amber-500 pb-1 mb-4 italic">
-                <span class="orden bg-white text-amber-900">4</span>Escalas y Tipografía Líquida
+                <span class="orden bg-white text-amber-900">4</span>Escalas y Fluidez
             </h2>
-            <div class="grid md:grid-cols-2 gap-6 text-sm">
-                <div>
-                    <h3 class="font-bold text-amber-300 mb-2">Concepto de Escala Modular</h3>
-                    <p class="mb-3">En lugar de tamaños fijos, usamos un **ratio multiplicador** (ej. 1.25) para que cada paso tipográfico sea proporcional al anterior, creando armonía visual.</p>
-                    <pre class="bg-black/30 p-3 rounded text-[11px] border border-white/10">
---step-0: 1rem;
---step-1: calc(var(--step-0) * 1.25); /* 1.25rem */
---step-2: calc(var(--step-1) * 1.25); /* 1.56rem */</pre>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+                <div class="overflow-hidden">
+                    <h3 class="font-bold text-amber-300 mb-2">Escala Modular</h3>
+                    <p class="mb-3 opacity-90">Usa un ratio (ej. 1.25) para que cada paso sea proporcional.</p>
+                    <pre class="bg-black/30 p-3 rounded text-[10px] border border-white/10 overflow-x-auto">--step-1: calc(var(--step-0) * 1.25);</pre>
                 </div>
-                <div>
-                    <h3 class="font-bold text-amber-300 mb-2">Aplicación con Clamp (Líquido)</h3>
-                    <p class="mb-3">Combinamos escalas con `clamp()` para que la base de la escala crezca según el tamaño de la pantalla sin necesidad de Media Queries.</p>
-                    <pre class="bg-black/30 p-3 rounded text-[11px] border border-white/10">
-:root {
-  /* La base cambia entre 1rem y 1.2rem */
-  --fs-base: clamp(1rem, 0.5vw + 1rem, 1.2rem);
-  --h1: calc(var(--fs-base) * 3.05); /* Escala proporcional */
-}</pre>
+                <div class="overflow-hidden">
+                    <h3 class="font-bold text-amber-300 mb-2">Clamp Líquido</h3>
+                    <p class="mb-3 opacity-90">La base cambia con el viewport sin Media Queries.</p>
+                    <pre class="bg-black/30 p-3 rounded text-[10px] border border-white/10 overflow-x-auto">--fs: clamp(1rem, 5vw, 1.2rem);</pre>
                 </div>
             </div>
             
         </section>
 
-        <section id="matematicas" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="matematicas" class="bg-white rounded-lg p-4 shadow-sm w-full overflow-hidden">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">5</span>Funciones matemáticas avanzadas
+                <span class="orden">5</span>Matemáticas Avanzadas
             </h2>
-            <p class="text-xs italic mb-4 text-gray-500">Nuevas incorporaciones (2022-2024) para control total del diseño sin JS.</p>
-
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Trigonométricas</h3>
-                    <ul class="list-disc pl-5 space-y-1 text-sm mb-2 text-gray-600">
-                        <li><code class="bg-gray-100 px-1 font-mono">sin()</code>, <code class="bg-gray-100 px-1 font-mono">cos()</code>, <code class="bg-gray-100 px-1 font-mono">tan()</code></li>
-                        <li>Permiten colocar elementos en órbitas o crear formas circulares dinámicas.</li>
-                    </ul>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.circle-item {
-    --angle: calc(var(--i) * 45deg);
-    transform: translateX(calc(cos(var(--angle)) * 100px));
-}</pre>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="p-3 bg-gray-50 rounded overflow-hidden">
+                    <h3 class="font-semibold text-amber-800 text-sm mb-1">Trigonométricas</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-[10px] overflow-x-auto">left: cos(45deg);</pre>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Exponenciales</h3>
-                    <ul class="list-disc pl-5 space-y-1 text-sm mb-2 text-gray-600">
-                        <li><code class="bg-gray-100 px-1 font-mono">pow(base, exp)</code> y <code class="bg-gray-100 px-1 font-mono">sqrt()</code></li>
-                        <li>Indispensables para calcular hipotenusas o escalas geométricas.</li>
-                    </ul>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.scale {
-    --factor: pow(1.2, var(--level));
-    font-size: calc(1rem * var(--factor));
-}</pre>
+                <div class="p-3 bg-gray-50 rounded overflow-hidden">
+                    <h3 class="font-semibold text-amber-800 text-sm mb-1">Exponenciales</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-[10px] overflow-x-auto">--z: pow(1.2, 3);</pre>
+                </div>
+                <div class="p-3 bg-gray-50 rounded overflow-hidden">
+                    <h3 class="font-semibold text-amber-800 text-sm mb-1">Redondeo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-2 rounded text-[10px] overflow-x-auto">round(153px, 10px);</pre>
                 </div>
             </div>
-
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2 text-sm">Valor escalonado y Redondeo</h3>
-                    <ul class="list-disc pl-5 space-y-1 text-xs text-gray-600">
-                        <li><code class="bg-gray-100 px-1 font-mono">round(valor, múltiplo)</code>: Ajusta a la rejilla más cercana.</li>
-                        <li><code class="bg-gray-100 px-1 font-mono">mod()</code>: Útil para crear patrones cíclicos.</li>
-                    </ul>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.grid {
-    --cols: round(down, 100vw / 300px, 1);
-}</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2 text-sm">Signo y Absolutos</h3>
-                    <p class="text-xs text-gray-600 mb-2">Elimina signos negativos o fuerza comportamientos según dirección.</p>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.element {
-    margin: abs(var(--offset));
-}</pre>
-                </div>
-            </div>
-            
-
-[Image of unit circle trigonometry]
-
-        </section>
-
-        <section id="at-property" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6</span>@property (CSS Houdini)
-            </h2>
-            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded font-medium">
-                Permite registrar tipos de datos para variables. ¡Clave para animar gradientes!
-            </p>
-
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@property --gradient-angle {
-    syntax: "&lt;angle&gt;";
-    initial-value: 0deg;
-    inherits: false;
-}
-
-.box {
-    background: linear-gradient(var(--gradient-angle), red, blue);
-    transition: --gradient-angle 0.5s;
-}
-
-.box:hover { --gradient-angle: 180deg; }</pre>
-
-            <h3 class="font-semibold text-amber-800 mt-3 mb-2 text-xs uppercase tracking-wider text-gray-500">Sintaxis comunes</h3>
-            <ul class="grid grid-cols-2 gap-1 text-[10px] text-gray-600 italic">
-                <li>&lt;length&gt;, &lt;percentage&gt;</li>
-                <li>&lt;color&gt;, &lt;image&gt;</li>
-                <li>&lt;angle&gt;, &lt;number&gt;</li>
-                <li>&lt;integer&gt;, &lt;time&gt;</li>
-            </ul>
-        </section>
-
-        <section id="otras-funciones" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">7</span>Otras funciones útiles
-            </h2>
-
-            <h3 class="font-semibold text-amber-800 mb-2 text-sm">url() e image()</h3>
-            <p class="text-xs text-gray-600 mb-2">Referencia a recursos externos con fallback.</p>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">.hero { background: image("photo.jpg", blue); }</pre>
-
-            <h3 class="font-semibold text-amber-800 mb-2 text-sm">attr()</h3>
-            <p class="text-xs text-gray-600 mb-2 italic">Obtiene el valor de un atributo HTML (limitado mayormente a content).</p>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">a::after { content: " (" attr(href) ")"; }</pre>
-
-            <h3 class="font-semibold text-amber-800 mb-2 text-sm">env()</h3>
-            <p class="text-xs text-gray-600 mb-2">Acceso a variables de entorno del sistema operativo/navegador.</p>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.safe-app { padding-top: env(safe-area-inset-top); }</pre>
         </section>
 
     </main>
 
-    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
-        <a href="tema2-pseudos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 2</a>
-        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al índice</a>
-        <a href="tema4-color-unidades.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 4 &rarr;</a>
-    </nav>
-
-    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
-        <p>Apuntes CSS &mdash; Tema 3 de 12</p>
+    <footer class="text-center py-6 text-gray-400 text-[10px] border-t border-gray-200 mt-4 px-4">
+        <p>Apuntes CSS &mdash; Tema 3: Diseño Fluido y Matemático</p>
     </footer>
 
     <script>
-        // JS para el dropdown (Mantenido igual)
         const btn = document.querySelector('.tema-dropdown button');
         const menu = document.querySelector('.tema-dropdown-menu');
         btn.addEventListener('click', () => menu.classList.toggle('hidden'));
@@ -329,4 +153,3 @@ h1 {
     </script>
 </body>
 </html>
-
