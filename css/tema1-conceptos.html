@@ -1,131 +1,375 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tema 1: Conceptos CSS - Apuntes CSS</title>
-    <meta name="description" content="Fundamentos de CSS: selectores, cascada, especificidad, herencia, anidamiento y @scope.">
+    <meta
+      name="description"
+      content="Fundamentos de CSS: selectores, cascada, especificidad, herencia, anidamiento y @scope."
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="icon" type="image/png" href="../favicon.ico">
-</head>
-<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
-
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="icon" type="image/png" href="../favicon.ico" />
+  </head>
+  <body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
     <!-- CABECERA PRINCIPAL -->
-    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white sticky top-0 z-50 shadow-md">
-        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
-            <!-- Tecnología + Enlace índice -->
-            <a href="../index.html" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
-                <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">CSS</span>
-            </a>
+    <header
+      class="bg-gradient-to-br from-amber-900 to-amber-800 text-white sticky top-0 z-50 shadow-md"
+    >
+      <div
+        class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4"
+      >
+        <!-- Tecnología + Enlace índice -->
+        <a
+          href="../index.html"
+          class="flex items-center gap-2 text-white no-underline hover:opacity-80"
+        >
+          <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg"
+            >CSS</span
+          >
+        </a>
 
-            <!-- Título del tema -->
-            <h1 class="flex-1 text-lg font-semibold truncate">Tema 1: Conceptos CSS</h1>
+        <!-- Título del tema -->
+        <h1 class="flex-1 text-lg font-semibold truncate">
+          Tema 1: Conceptos CSS
+        </h1>
 
-            <!-- Dropdown de navegación -->
-            <div class="relative tema-dropdown">
-                <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
-                    <span>Temas</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden">
-                    <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas CSS</div>
-                    <a href="tema1-conceptos.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">1. Conceptos CSS</a>
-                    <a href="tema2-pseudos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Pseudo-elementos y Pseudo-clases</a>
-                    <a href="tema3-funciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">3. Funciones y Custom Properties</a>
-                    <a href="tema4-color-unidades.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">4. Color y Unidades</a>
-                    <a href="tema5-box-model.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">5. Modelo de Caja</a>
-                    <a href="tema6-layout.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Layout: Flexbox y Grid</a>
-                    <a href="tema7-posicionamiento.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. Posicionamiento y Espaciado</a>
-                    <a href="tema8-interacciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Interacciones y Scroll</a>
-                    <a href="tema9-texto.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. Texto y Tipograf&iacute;a</a>
-                    <a href="tema10-graficos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Formas y Gr&aacute;ficos</a>
-                    <a href="tema11-animaciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. CSS Din&aacute;mico</a>
-                    <a href="tema12-rwd.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. RWD y Accesibilidad</a>
-                    <div class="border-t border-gray-100 mt-2 pt-2">
-                        <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
-                    </div>
-                </div>
+        <!-- Dropdown de navegación -->
+        <div class="relative tema-dropdown">
+          <button
+            class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors"
+          >
+            <span>Temas</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+          <div
+            class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden"
+          >
+            <div
+              class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100"
+            >
+              Temas CSS
             </div>
+            <a
+              href="tema1-conceptos.html"
+              class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium"
+              >1. Conceptos CSS</a
+            >
+            <a
+              href="tema2-pseudos.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >2. Pseudo-elementos y Pseudo-clases</a
+            >
+            <a
+              href="tema3-funciones.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >3. Funciones y Custom Properties</a
+            >
+            <a
+              href="tema4-color-unidades.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >4. Color y Unidades</a
+            >
+            <a
+              href="tema5-box-model.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >5. Modelo de Caja</a
+            >
+            <a
+              href="tema6-layout.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >6. Layout: Flexbox y Grid</a
+            >
+            <a
+              href="tema7-posicionamiento.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >7. Posicionamiento y Espaciado</a
+            >
+            <a
+              href="tema8-interacciones.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >8. Interacciones y Scroll</a
+            >
+            <a
+              href="tema9-texto.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >9. Texto y Tipograf&iacute;a</a
+            >
+            <a
+              href="tema10-graficos.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >10. Formas y Gr&aacute;ficos</a
+            >
+            <a
+              href="tema11-animaciones.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >11. CSS Din&aacute;mico</a
+            >
+            <a
+              href="tema12-rwd.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >12. RWD y Accesibilidad</a
+            >
+            <div class="border-t border-gray-100 mt-2 pt-2">
+              <a
+                href="../index.html"
+                class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium"
+                >&larr; Volver al &iacute;ndice</a
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </header>
 
     <!-- NAVEGACIÓN INTERNA DEL TEMA -->
-    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
-        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
-        <div class="flex flex-wrap gap-1.5">
-            <a href="#selectores" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Selectores</a>
-            <a href="#anidamiento" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Anidamiento</a>
-            <a href="#scope" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">@scope</a>
-            <a href="#cascada" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Cascada</a>
-            <a href="#especificidad" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Especificidad</a>
-            <a href="#herencia" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Herencia</a>
-        </div>
+    <nav
+      class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto"
+    >
+      <p
+        class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide"
+      >
+        En este tema
+      </p>
+      <div class="flex flex-wrap gap-1.5">
+        <a
+          href="#selectores"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Selectores</a
+        >
+        <a
+          href="#anidamiento"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Anidamiento</a
+        >
+        <a
+          href="#scope"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >@scope</a
+        >
+        <a
+          href="#cascada"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Cascada</a
+        >
+        <a
+          href="#especificidad"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Especificidad</a
+        >
+        <a
+          href="#herencia"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Herencia</a
+        >
+      </div>
     </nav>
 
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+      <!-- SELECTORES -->
+      <section id="selectores" class="bg-white rounded-lg p-4 shadow w-full">
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">1</span>Selectores
+        </h2>
 
-        <!-- SELECTORES -->
-        <section id="selectores" class="bg-white rounded-lg p-4 shadow w-full">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">1</span>Selectores
-            </h2>
-
-            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Partes de una regla CSS</h3>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">selector {
+        <h3 class="font-semibold text-amber-800 mt-3 mb-2">
+          Partes de una regla CSS
+        </h3>
+        <pre
+          class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+        >
+selector {
     propiedad: valor;
-}</pre>
+}</pre
+        >
 
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Selectores simples</h3>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">*</code> - Selector universal (todos los elementos)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">elemento</code> - Selector de tipo (p, div, h1...)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">.clase</code> - Selector de clase</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#id</code> - Selector de ID</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">[atributo]</code> - Selector de atributo</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">[attr="valor"]</code> - Atributo con valor exacto</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">[attr^="inicio"]</code> - Atributo que empieza por...</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">[attr$="fin"]</code> - Atributo que termina en...</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">[attr*="contiene"]</code> - Atributo que contiene...</li>
-            </ul>
+        <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+          Selectores simples
+        </h3>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >*</code
+            >
+            - Selector universal (todos los elementos)
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >elemento</code
+            >
+            - Selector de tipo (p, div, h1...)
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >.clase</code
+            >
+            - Selector de clase
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >#id</code
+            >
+            - Selector de ID
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >[atributo]</code
+            >
+            - Selector de atributo
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >[attr="valor"]</code
+            >
+            - Atributo con valor exacto
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >[attr^="inicio"]</code
+            >
+            - Atributo que empieza por...
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >[attr$="fin"]</code
+            >
+            - Atributo que termina en...
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >[attr*="contiene"]</code
+            >
+            - Atributo que contiene...
+          </li>
+        </ul>
 
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Selectores combinados (combinadores)</h3>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">A B</code> - Descendiente (B dentro de A, cualquier nivel)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">A &gt; B</code> - Hijo directo (B hijo inmediato de A)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">A + B</code> - Hermano adyacente (B inmediatamente despu&eacute;s de A)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">A ~ B</code> - Hermano general (B despu&eacute;s de A, mismo nivel)</li>
-            </ul>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">/* Ejemplos de combinadores */
+        <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+          Selectores combinados (combinadores)
+        </h3>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >A B</code
+            >
+            - Descendiente (B dentro de A, cualquier nivel)
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >A &gt; B</code
+            >
+            - Hijo directo (B hijo inmediato de A)
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >A + B</code
+            >
+            - Hermano adyacente (B inmediatamente despu&eacute;s de A)
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >A ~ B</code
+            >
+            - Hermano general (B despu&eacute;s de A, mismo nivel)
+          </li>
+        </ul>
+        <pre
+          class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3"
+        >
+/* Ejemplos de combinadores */
 article p { }       /* p dentro de article */
 ul &gt; li { }         /* li hijo directo de ul */
 h2 + p { }          /* p justo despu&eacute;s de h2 */
-h2 ~ p { }          /* todos los p hermanos de h2 */</pre>
+h2 ~ p { }          /* todos los p hermanos de h2 */</pre
+        >
 
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Selectores compuestos</h3>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">A, B</code> - Agrupaci&oacute;n (A o B)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">A.clase</code> - Elemento A con clase</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">A#id</code> - Elemento A con ID</li>
-            </ul>
-        </section>
+        <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+          Selectores compuestos
+        </h3>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >A, B</code
+            >
+            - Agrupaci&oacute;n (A o B)
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >A.clase</code
+            >
+            - Elemento A con clase
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >A#id</code
+            >
+            - Elemento A con ID
+          </li>
+        </ul>
+      </section>
 
-        <!-- ANIDAMIENTO -->
-        <section id="anidamiento" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">2</span>Anidamiento de selectores
-            </h2>
-            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
-                <strong>2023</strong> - Permite escribir CSS anidado de forma nativa, similar a SASS/LESS.
-            </p>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li>Reduce la repetici&oacute;n de selectores</li>
-                <li>Mejora la legibilidad y organizaci&oacute;n</li>
-                <li>El s&iacute;mbolo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&amp;</code> referencia al selector padre</li>
-            </ul>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">/* Anidamiento nativo en CSS */
+      <!-- ANIDAMIENTO -->
+      <section
+        id="anidamiento"
+        class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]"
+      >
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">2</span>Anidamiento de selectores
+        </h2>
+        <p
+          class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded"
+        >
+          <strong>2023</strong> - Permite escribir CSS anidado de forma nativa,
+          similar a SASS/LESS.
+        </p>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>Reduce la repetici&oacute;n de selectores</li>
+          <li>Mejora la legibilidad y organizaci&oacute;n</li>
+          <li>
+            El s&iacute;mbolo
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >&amp;</code
+            >
+            referencia al selector padre
+          </li>
+        </ul>
+        <pre
+          class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3"
+        >
+/* Anidamiento nativo en CSS */
 .card {
     padding: 1rem;
 
@@ -140,23 +384,47 @@ h2 ~ p { }          /* todos los p hermanos de h2 */</pre>
     &amp;.featured {
         border: 2px solid gold;
     }
-}</pre>
-        </section>
+}</pre
+        >
+      </section>
 
-        <!-- @SCOPE -->
-        <section id="scope" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">3</span>@scope
-            </h2>
-            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
-                <strong>2024</strong> - Nueva regla CSS que delimita el alcance de los selectores.
-            </p>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">@scope (inicio)</code> - Define d&oacute;nde empiezan a aplicarse los estilos</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">@scope (inicio) to (fin)</code> - Define inicio y fin del alcance</li>
-                <li>Evita fugas de estilos a elementos no deseados</li>
-            </ul>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">/* @scope b&aacute;sico */
+      <!-- @SCOPE -->
+      <section
+        id="scope"
+        class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]"
+      >
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">3</span>@scope
+        </h2>
+        <p
+          class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded"
+        >
+          <strong>2024</strong> - Nueva regla CSS que delimita el alcance de los
+          selectores.
+        </p>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >@scope (inicio)</code
+            >
+            - Define d&oacute;nde empiezan a aplicarse los estilos
+          </li>
+          <li>
+            <code
+              class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+              >@scope (inicio) to (fin)</code
+            >
+            - Define inicio y fin del alcance
+          </li>
+          <li>Evita fugas de estilos a elementos no deseados</li>
+        </ul>
+        <pre
+          class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3"
+        >
+/* @scope b&aacute;sico */
 @scope (.card) {
     p { color: gray; }
     .title { font-weight: bold; }
@@ -166,39 +434,61 @@ h2 ~ p { }          /* todos los p hermanos de h2 */</pre>
 @scope (.card) to (.card-footer) {
     /* Estilos solo entre .card y .card-footer */
     p { margin: 0.5rem 0; }
-}</pre>
-        </section>
+}</pre
+        >
+      </section>
 
-        <!-- CASCADA -->
-        <section id="cascada" class="bg-white rounded-lg p-4 shadow w-full">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">4</span>La cascada
-            </h2>
-            <p class="text-sm mb-3">El algoritmo que determina qu&eacute; estilos se aplican cuando hay conflictos. Orden de prioridad:</p>
+      <!-- CASCADA -->
+      <section id="cascada" class="bg-white rounded-lg p-4 shadow w-full">
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">4</span>La cascada
+        </h2>
+        <p class="text-sm mb-3">
+          El algoritmo que determina qu&eacute; estilos se aplican cuando hay
+          conflictos. Orden de prioridad:
+        </p>
 
-            <ol class="list-decimal pl-5 space-y-2 text-sm">
-                <li>
-                    <strong>Origen e importancia</strong>
-                    <ul class="list-disc pl-5 mt-1 text-gray-600">
-                        <li>Estilos del agente de usuario (navegador)</li>
-                        <li>Estilos del usuario</li>
-                        <li>Estilos del autor (tu CSS)</li>
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">!important</code> invierte el orden</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Especificidad</strong> - Peso del selector (ver secci&oacute;n siguiente)
-                </li>
-                <li>
-                    <strong>Orden de aparici&oacute;n</strong> - El &uacute;ltimo declarado gana
-                </li>
-            </ol>
+        <ol class="list-decimal pl-5 space-y-2 text-sm">
+          <li>
+            <strong>Origen e importancia</strong>
+            <ul class="list-disc pl-5 mt-1 text-gray-600">
+              <li>Estilos del agente de usuario (navegador)</li>
+              <li>Estilos del usuario</li>
+              <li>Estilos del autor (tu CSS)</li>
+              <li>
+                <code
+                  class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                  >!important</code
+                >
+                invierte el orden
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Especificidad</strong> - Peso del selector (ver
+            secci&oacute;n siguiente)
+          </li>
+          <li>
+            <strong>Orden de aparici&oacute;n</strong> - El &uacute;ltimo
+            declarado gana
+          </li>
+        </ol>
 
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">@layer - Capas de cascada</h3>
-            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
-                <strong>2022</strong> - Permite organizar estilos en capas con orden de prioridad controlado.
-            </p>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Declarar orden de capas */
+        <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+          @layer - Capas de cascada
+        </h3>
+        <p
+          class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded"
+        >
+          <strong>2022</strong> - Permite organizar estilos en capas con orden
+          de prioridad controlado.
+        </p>
+        <pre
+          class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+        >
+/* Declarar orden de capas */
 @layer reset, base, components, utilities;
 
 /* Definir estilos en cada capa */
@@ -216,84 +506,191 @@ h2 ~ p { }          /* todos los p hermanos de h2 */</pre>
 
 @layer utilities {
     .mt-4 { margin-top: 1rem; }
-}</pre>
-            <p class="text-xs text-gray-500 mt-2">Las capas declaradas primero tienen menor prioridad. Los estilos sin @layer tienen la mayor prioridad.</p>
-        </section>
+}</pre
+        >
+        <p class="text-xs text-gray-500 mt-2">
+          Las capas declaradas primero tienen menor prioridad. Los estilos sin
+          @layer tienen la mayor prioridad.
+        </p>
+      </section>
 
-        <!-- ESPECIFICIDAD -->
-        <section id="especificidad" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">5</span>Especificidad
-            </h2>
-            <p class="text-sm mb-3">Sistema de puntuaci&oacute;n que determina qu&eacute; selector tiene prioridad.</p>
+      <!-- ESPECIFICIDAD -->
+      <section
+        id="especificidad"
+        class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]"
+      >
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">5</span>Especificidad
+        </h2>
+        <p class="text-sm mb-3">
+          Sistema de puntuación que determina qué selector tiene prioridad.
+        </p>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-xs border-collapse">
-                    <thead>
-                        <tr class="bg-amber-100">
-                            <th class="border border-amber-200 p-2 text-left">Selector</th>
-                            <th class="border border-amber-200 p-2 text-center">Puntos</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="border border-gray-200 p-2"><code>*</code>, combinadores</td><td class="border border-gray-200 p-2 text-center">0</td></tr>
-                        <tr><td class="border border-gray-200 p-2">Elemento, pseudo-elemento</td><td class="border border-gray-200 p-2 text-center">0-0-1</td></tr>
-                        <tr><td class="border border-gray-200 p-2">Clase, atributo, pseudo-clase</td><td class="border border-gray-200 p-2 text-center">0-1-0</td></tr>
-                        <tr><td class="border border-gray-200 p-2">ID</td><td class="border border-gray-200 p-2 text-center">1-0-0</td></tr>
-                        <tr class="bg-red-50"><td class="border border-gray-200 p-2">style="" (inline)</td><td class="border border-gray-200 p-2 text-center">1-0-0-0</td></tr>
-                        <tr class="bg-red-50"><td class="border border-gray-200 p-2">!important</td><td class="border border-gray-200 p-2 text-center">Gana siempre*</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">/* Ejemplos de especificidad */
-p { }                  /* 0-0-1 */
-.card { }              /* 0-1-0 */
-#header { }            /* 1-0-0 */
-p.intro { }            /* 0-1-1 */
-#nav .link:hover { }   /* 1-2-0 */
-div#main p.text { }    /* 1-1-2 */</pre>
-        </section>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs border-collapse">
+            <thead>
+              <tr class="bg-amber-100">
+                <th class="border border-amber-200 p-2 text-left">Selector</th>
+                <th class="border border-amber-200 p-2 text-center">Puntos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-200 p-2">
+                  <code>*</code>, combinadores (<code>+</code>, <code>~</code>,
+                  <code>&gt;</code>)
+                </td>
+                <td class="border border-gray-200 p-2 text-center">0</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2">
+                  Elemento (<code>div</code>), pseudo-elemento
+                  (<code>::before</code>)
+                </td>
+                <td class="border border-gray-200 p-2 text-center">0-0-1</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2">
+                  Clase, atributo (<code>[type]</code>), pseudo-clase
+                  (<code>:hover</code>)
+                </td>
+                <td class="border border-gray-200 p-2 text-center">0-1-0</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2">
+                  ID (<code>#user</code>)
+                </td>
+                <td class="border border-gray-200 p-2 text-center">1-0-0</td>
+              </tr>
+              <tr class="bg-red-50">
+                <td class="border border-gray-200 p-2">style="" (inline)</td>
+                <td class="border border-gray-200 p-2 text-center">1-0-0-0</td>
+              </tr>
+              <tr class="bg-red-50">
+                <td class="border border-gray-200 p-2">!important</td>
+                <td class="border border-gray-200 p-2 text-center">
+                  Gana siempre*
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <!-- HERENCIA -->
-        <section id="herencia" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6</span>Herencia
-            </h2>
-            <p class="text-sm mb-3">Algunas propiedades CSS se heredan autom&aacute;ticamente de padres a hijos.</p>
+        <pre
+          class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">
+            /* Ejemplos de especificidad */
+            p { }                  /* 0-0-1 */
+            .card { }              /* 0-1-0 */
+            #header { }            /* 1-0-0 */
+            p.intro { }            /* 0-1-1 */
+            #nav .link:hover { }   /* 1-2-0 */
+            div#main p.text { }    /* 1-1-2 */
+        </pre>
+        
 
-            <h3 class="font-semibold text-amber-800 mt-3 mb-2">Propiedades heredables</h3>
-            <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600">
-                <li><strong>Texto:</strong> color, font-*, letter-spacing, line-height, text-align, text-indent, text-transform</li>
-                <li><strong>Listas:</strong> list-style-*</li>
-                <li><strong>Otros:</strong> visibility, cursor</li>
-            </ul>
+        <div class="mt-4 space-y-2">
+          <h3 class="text-sm font-bold text-amber-800 italic">
+            Excepciones importantes:
+          </h3>
+          <ul class="text-xs list-disc pl-5 space-y-1 text-gray-700">
+            <li>
+              <strong>:where()</strong>: Tiene especificidad <strong>0</strong>,
+              sin importar lo que haya dentro.
+            </li>
+            <li>
+              <strong>:is() y :not()</strong>: No tienen valor por sí mismas,
+              pero toman la puntuación del selector
+              <strong>más pesado</strong> en su interior.
+            </li>
+            <li>
+              <strong>Heredados</strong>: Los estilos heredados (ej. color en un
+              <code>p</code> heredado del <code>body</code>) tienen
+              especificidad <strong>nula</strong>. Cualquier selector directo
+              siempre ganará a la herencia.
+            </li>
+            <li>
+              <strong>!important</strong>: No suma puntos, rompe la cascada. Si
+              dos <code>!important</code> colisionan, gana el de mayor
+              especificidad o el último definido.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Propiedades NO heredables</h3>
-            <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600">
-                <li>Box model: margin, padding, border, width, height</li>
-                <li>Posicionamiento: position, top, left, z-index</li>
-                <li>Fondo: background-*</li>
-            </ul>
+      <!-- HERENCIA -->
+      <section
+        id="herencia"
+        class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]"
+      >
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">6</span>Herencia
+        </h2>
+        <p class="text-sm mb-3">
+          Algunas propiedades CSS se heredan autom&aacute;ticamente de padres a
+          hijos.
+        </p>
 
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Controlar la herencia</h3>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.elemento {
+        <h3 class="font-semibold text-amber-800 mt-3 mb-2">
+          Propiedades heredables
+        </h3>
+        <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600">
+          <li>
+            <strong>Texto:</strong> color, font-*, letter-spacing, line-height,
+            text-align, text-indent, text-transform
+          </li>
+          <li><strong>Listas:</strong> list-style-*</li>
+          <li><strong>Otros:</strong> visibility, cursor</li>
+        </ul>
+
+        <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+          Propiedades NO heredables
+        </h3>
+        <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600">
+          <li>Box model: margin, padding, border, width, height</li>
+          <li>Posicionamiento: position, top, left, z-index</li>
+          <li>Fondo: background-*</li>
+        </ul>
+
+        <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+          Controlar la herencia
+        </h3>
+        <pre
+          class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+        >
+.elemento {
     color: inherit;    /* Fuerza herencia del padre */
     margin: initial;   /* Valor por defecto del navegador */
     padding: unset;    /* inherit si hereda, initial si no */
     all: revert;       /* Revierte a estilos del navegador */
-}</pre>
-        </section>
-
+}</pre
+        >
+      </section>
     </main>
 
-    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
-        <span class="w-36"></span>
-        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
-        <a href="tema2-pseudos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 2 &rarr;</a>
+    <nav
+      class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5"
+    >
+      <span class="w-36"></span>
+      <a
+        href="../index.html"
+        class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800"
+        >&uarr; Volver al &iacute;ndice</a
+      >
+      <a
+        href="tema2-pseudos.html"
+        class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800"
+        >Tema 2 &rarr;</a
+      >
     </nav>
 
-    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
-        <p>Apuntes CSS &mdash; Tema 1 de 12</p>
+    <footer
+      class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4"
+    >
+      <p>Apuntes CSS &mdash; Tema 1 de 12</p>
     </footer>
-</body>
+  </body>
 </html>
