@@ -52,18 +52,21 @@ const TEMAS_CONFIG = {
         carpeta: 'js',
         color: 'yellow',
         temas: [
-            { num: 1, slug: 'sintaxis', titulo: 'Sintaxis y Variables' },
-            { num: 2, slug: 'control', titulo: 'Control de Flujo' },
-            { num: 3, slug: 'funciones', titulo: 'Funciones' },
-            { num: 4, slug: 'arrays', titulo: 'Arrays' },
-            { num: 5, slug: 'objetos', titulo: 'Objetos' },
-            { num: 6, slug: 'dom', titulo: 'DOM' },
-            { num: 7, slug: 'eventos', titulo: 'Eventos' },
-            { num: 8, slug: 'asincronia', titulo: 'Asincronía' },
-            { num: 9, slug: 'modulos', titulo: 'Módulos' },
-            { num: 10, slug: 'apis', titulo: 'APIs Web' },
-            { num: 11, slug: 'poo', titulo: 'POO y Clases' },
-            { num: 12, slug: 'testing', titulo: 'Testing y Herramientas' }
+            { num: 1, slug: 'intro', titulo: 'Introducción y Entorno' },
+            { num: 2, slug: 'sintaxis', titulo: 'Sintaxis y Variables' },
+            { num: 3, slug: 'control', titulo: 'Control de Flujo' },
+            { num: 4, slug: 'funciones', titulo: 'Funciones' },
+            { num: 5, slug: 'arrays', titulo: 'Arrays' },
+            { num: 6, slug: 'objetos', titulo: 'Objetos' },
+            { num: 7, slug: 'dom', titulo: 'DOM' },
+            { num: 8, slug: 'eventos', titulo: 'Eventos' },
+            { num: 9, slug: 'formularios', titulo: 'Formularios y Datos' },
+            { num: 10, slug: 'componentes', titulo: 'Componentes' },
+            { num: 11, slug: 'asincronia', titulo: 'Asincronía' },
+            { num: 12, slug: 'apis', titulo: 'APIs REST y Fetch' },
+            { num: 13, slug: 'modulos', titulo: 'Módulos' },
+            { num: 14, slug: 'poo', titulo: 'POO y Clases' },
+            { num: 15, slug: 'testing', titulo: 'Testing y Herramientas' }
         ]
     },
     ts: {
