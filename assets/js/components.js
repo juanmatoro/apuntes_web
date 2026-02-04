@@ -217,7 +217,7 @@ function generarHeader(titulo, subtitulo, color = 'amber', info = null) {
 
     header.innerHTML = `
         <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
-            <a href="${basePath}index.html" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
+            <a href="${basePath}index.html#${info ? info.categoria : ''}" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
                 <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">${badge}</span>
             </a>
             <h1 class="flex-1 text-lg font-semibold truncate">${titulo}</h1>
