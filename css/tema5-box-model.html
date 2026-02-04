@@ -119,6 +119,15 @@
     margin: 20px;
     margin: 0 auto;             /* Centrar horizontalmente */
 }</pre>
+
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Tipos de caja seg&uacute;n display</h3>
+            <p class="text-xs text-gray-600 mb-2">La propiedad <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">display</code> determina c&oacute;mo se comporta la caja en el flujo del documento:</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">block</code> - Ocupa todo el ancho disponible. Acepta width, height, margin y padding en todas las direcciones. (<code class="text-xs">div</code>, <code class="text-xs">p</code>, <code class="text-xs">h1-h6</code>, <code class="text-xs">section</code>...)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inline</code> - Fluye con el texto. <strong>No acepta</strong> width ni height; margin y padding vertical no afectan al flujo. (<code class="text-xs">span</code>, <code class="text-xs">a</code>, <code class="text-xs">strong</code>, <code class="text-xs">em</code>...)</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inline-block</code> - Fluye en l&iacute;nea como inline, pero acepta el box model completo (width, height, margin, padding).</li>
+            </ul>
+            <p class="text-xs text-gray-500 mt-2 italic">Ver <a href="tema6-layout.html" class="text-amber-700 underline hover:text-amber-900">Tema 6: Layout</a> para una explicaci&oacute;n ampliada de display.</p>
         </section>
 
         <!-- BOX-SIZING -->
