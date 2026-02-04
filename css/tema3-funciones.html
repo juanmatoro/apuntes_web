@@ -51,7 +51,7 @@
             <a href="#custom-properties" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Custom Properties</a>
             <a href="#calc" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">calc()</a>
             <a href="#min-max-clamp" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">min/max/clamp</a>
-            <a href="#tipografia-fluida" class="text-xs px-2.5 py-1 bg-amber-900 text-white rounded-full no-underline border border-amber-900 italic font-medium">Escalas y Fluidez</a>
+            <a href="#tipografia-fluida" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Escalas y Fluidez</a>
             <a href="#matematicas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Matemáticas</a>
             <a href="#at-property" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">@property</a>
             <a href="#otras-funciones" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Otras funciones</a>
@@ -207,26 +207,26 @@ h1 {
 }</pre>
         </section>
 
-        <section id="tipografia-fluida" class="bg-amber-900 text-white rounded-lg p-5 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold border-b border-amber-500 pb-1 mb-4 italic">
-                <span class="orden bg-white text-amber-900">4</span>Escalas y Tipografía Líquida
+        <section id="tipografia-fluida" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Escalas y Tipografía Líquida
             </h2>
-            <div class="bg-black/20 border-l-4 border-amber-400 p-3 rounded mb-4 text-sm">
-                <p class="font-semibold text-amber-300 mb-1">Definici&oacute;n:</p>
-                <p class="break-words">La <strong>tipograf&iacute;a l&iacute;quida</strong> (fluid typography) es una t&eacute;cnica donde los tama&ntilde;os de fuente escalan proporcionalmente al ancho del viewport, sin saltos bruscos entre breakpoints. Se consigue combinando <code class="bg-black/40 px-1 rounded text-xs">clamp()</code> con una <strong>escala modular</strong>: un sistema donde cada tama&ntilde;o tipogr&aacute;fico se obtiene multiplicando el anterior por un ratio constante (ej. 1.25), creando una jerarqu&iacute;a visual arm&oacute;nica y matem&aacute;ticamente coherente.</p>
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-3 rounded mb-3 text-sm">
+                <p class="font-semibold text-amber-900 mb-1">Definici&oacute;n:</p>
+                <p class="text-gray-700 break-words">La <strong>tipograf&iacute;a l&iacute;quida</strong> (fluid typography) es una t&eacute;cnica donde los tama&ntilde;os de fuente escalan proporcionalmente al ancho del viewport, sin saltos bruscos entre breakpoints. Se consigue combinando <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">clamp()</code> con una <strong>escala modular</strong>: un sistema donde cada tama&ntilde;o tipogr&aacute;fico se obtiene multiplicando el anterior por un ratio constante (ej. 1.25), creando una jerarqu&iacute;a visual arm&oacute;nica y matem&aacute;ticamente coherente.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
                 <div class="min-w-0">
-                    <h3 class="font-bold text-amber-300 mb-2">Concepto de Escala Modular</h3>
-                    <p class="mb-2">Cada paso se obtiene multiplicando el anterior por un ratio fijo. Ratios comunes:</p>
-                    <ul class="list-disc pl-5 mb-3 text-xs space-y-1 text-amber-100">
+                    <h3 class="font-semibold text-amber-800 mb-2">Concepto de Escala Modular</h3>
+                    <p class="text-xs text-gray-600 mb-2">Cada paso se obtiene multiplicando el anterior por un ratio fijo. Ratios comunes:</p>
+                    <ul class="list-disc pl-5 mb-3 text-xs space-y-1 text-gray-600">
                         <li><strong>1.125</strong> (segunda mayor) &mdash; sutil, textos densos</li>
                         <li><strong>1.250</strong> (tercera mayor) &mdash; equilibrio general</li>
                         <li><strong>1.333</strong> (cuarta perfecta) &mdash; contraste medio</li>
                         <li><strong>1.618</strong> (proporci&oacute;n &aacute;urea) &mdash; contraste dram&aacute;tico</li>
                     </ul>
-                    <pre class="bg-black/30 p-3 rounded text-[11px] border border-white/10 overflow-x-auto">:root {
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">:root {
   /* 2 variables de control */
   --base-size: 1rem;       /* Tama&ntilde;o inicial */
   --ratio: 1.25;           /* Multiplicador */
@@ -239,26 +239,26 @@ h1 {
   --step-4: calc(var(--step-3) * var(--ratio));  /* 2.441rem */
   --step--1: calc(var(--step-0) / var(--ratio)); /* 0.8rem   */
 }</pre>
-                    <div class="mt-3 bg-black/30 p-3 rounded border border-white/10 text-[10px] overflow-x-auto">
-                        <p class="text-amber-300 font-semibold mb-1 uppercase tracking-wider">Cambia las variables y toda la escala se adapta:</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-amber-100 font-mono mt-2">
+                    <div class="mt-3 bg-gray-50 p-3 rounded border border-gray-200 text-[10px] overflow-x-auto">
+                        <p class="text-amber-900 font-semibold mb-1 uppercase tracking-wider">Cambia las variables y toda la escala se adapta:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-gray-600 font-mono mt-2">
                             <span>--base-size: 1rem</span><span>--ratio: 1.25</span>
                             <span>--base-size: 1.125rem</span><span>--ratio: 1.333</span>
                         </div>
                     </div>
-                    <div class="mt-3 bg-black/30 p-3 rounded border border-white/10 overflow-hidden">
-                        <p class="text-[10px] text-amber-300 font-semibold mb-2 uppercase tracking-wider">Vista previa (base: 1rem, ratio: 1.25):</p>
-                        <p style="font-size:0.8rem" class="text-white/70 truncate">step-1: Peque&ntilde;o (0.8rem)</p>
-                        <p style="font-size:1rem" class="text-white/90 truncate">step-0: Texto base (1rem)</p>
-                        <p style="font-size:1.25rem" class="text-white/90 truncate">step+1: Subt&iacute;tulo (1.25rem)</p>
-                        <p style="font-size:1.563rem" class="text-white/90 truncate">step+2: T&iacute;tulo (1.56rem)</p>
-                        <p style="font-size:1.953rem" class="text-white/80 truncate">step+3: Heading (1.95rem)</p>
+                    <div class="mt-3 bg-gray-50 p-3 rounded border border-gray-200 overflow-hidden">
+                        <p class="text-[10px] text-amber-900 font-semibold mb-2 uppercase tracking-wider">Vista previa (base: 1rem, ratio: 1.25):</p>
+                        <p style="font-size:0.8rem" class="text-gray-500 truncate">step-1: Peque&ntilde;o (0.8rem)</p>
+                        <p style="font-size:1rem" class="text-gray-700 truncate">step-0: Texto base (1rem)</p>
+                        <p style="font-size:1.25rem" class="text-gray-700 truncate">step+1: Subt&iacute;tulo (1.25rem)</p>
+                        <p style="font-size:1.563rem" class="text-gray-700 truncate">step+2: T&iacute;tulo (1.56rem)</p>
+                        <p style="font-size:1.953rem" class="text-gray-600 truncate">step+3: Heading (1.95rem)</p>
                     </div>
                 </div>
                 <div class="min-w-0">
-                    <h3 class="font-bold text-amber-300 mb-2">Aplicaci&oacute;n con Clamp (L&iacute;quido)</h3>
-                    <p class="mb-3">Combinamos escalas con <code class="bg-black/40 px-1 rounded text-xs">clamp()</code> para que la base crezca seg&uacute;n el viewport sin media queries.</p>
-                    <pre class="bg-black/30 p-3 rounded text-[11px] border border-white/10 overflow-x-auto">:root {
+                    <h3 class="font-semibold text-amber-800 mb-2">Aplicaci&oacute;n con Clamp (L&iacute;quido)</h3>
+                    <p class="text-xs text-gray-600 mb-3">Combinamos escalas con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">clamp()</code> para que la base crezca seg&uacute;n el viewport sin media queries.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">:root {
   /* Variables de control */
   --base-size: 1rem;
   --ratio: 1.25;
@@ -277,27 +277,27 @@ h1 {
   --fs-2xl: calc(var(--fs-xl) * var(--ratio));
   --fs-3xl: calc(var(--fs-2xl) * var(--ratio));
 }</pre>
-                    <div class="mt-3 bg-black/20 p-3 rounded border border-white/10 text-xs">
-                        <p class="text-amber-300 font-semibold mb-2">Comportamiento visual:</p>
+                    <div class="mt-3 bg-gray-50 p-3 rounded border border-gray-200 text-xs">
+                        <p class="text-amber-900 font-semibold mb-2">Comportamiento visual:</p>
                         <div class="flex items-end gap-2 mb-2">
                             <div class="text-center">
-                                <div class="bg-amber-400 rounded" style="width:20px;height:30px"></div>
-                                <span class="text-[9px]">375px</span>
+                                <div class="bg-amber-600 rounded" style="width:20px;height:30px"></div>
+                                <span class="text-[9px] text-gray-500">375px</span>
                             </div>
                             <div class="text-center">
-                                <div class="bg-amber-400 rounded" style="width:20px;height:40px"></div>
-                                <span class="text-[9px]">768px</span>
+                                <div class="bg-amber-600 rounded" style="width:20px;height:40px"></div>
+                                <span class="text-[9px] text-gray-500">768px</span>
                             </div>
                             <div class="text-center">
-                                <div class="bg-amber-400 rounded" style="width:20px;height:50px"></div>
-                                <span class="text-[9px]">1024px</span>
+                                <div class="bg-amber-600 rounded" style="width:20px;height:50px"></div>
+                                <span class="text-[9px] text-gray-500">1024px</span>
                             </div>
                             <div class="text-center">
-                                <div class="bg-amber-400 rounded" style="width:20px;height:55px"></div>
-                                <span class="text-[9px]">1440px</span>
+                                <div class="bg-amber-600 rounded" style="width:20px;height:55px"></div>
+                                <span class="text-[9px] text-gray-500">1440px</span>
                             </div>
                         </div>
-                        <p class="text-amber-100">El tama&ntilde;o crece <em>gradualmente</em> entre m&iacute;nimo y m&aacute;ximo, sin saltos.</p>
+                        <p class="text-gray-600">El tama&ntilde;o crece <em>gradualmente</em> entre m&iacute;nimo y m&aacute;ximo, sin saltos.</p>
                     </div>
                 </div>
             </div>
