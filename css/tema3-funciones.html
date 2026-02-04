@@ -136,7 +136,7 @@ document.documentElement.style
     .setProperty('--color-primary', '#ff0000');</pre>
         </section>
 
-        <section id="calc" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="calc" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">2</span>calc()
             </h2>
@@ -168,7 +168,7 @@ document.documentElement.style
 }</pre>
         </section>
 
-        <section id="min-max-clamp" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="min-max-clamp" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">3</span>min(), max() y clamp()
             </h2>
@@ -207,7 +207,7 @@ h1 {
 }</pre>
         </section>
 
-        <section id="tipografia-fluida" class="bg-amber-900 text-white rounded-lg p-5 shadow w-full">
+        <section id="tipografia-fluida" class="bg-amber-900 text-white rounded-lg p-5 shadow w-full min-w-0">
             <h2 class="text-xl font-bold border-b border-amber-500 pb-1 mb-4 italic">
                 <span class="orden bg-white text-amber-900">4</span>Escalas y Tipografía Líquida
             </h2>
@@ -217,7 +217,7 @@ h1 {
             </div>
 
             <div class="grid md:grid-cols-2 gap-6 text-sm">
-                <div>
+                <div class="min-w-0">
                     <h3 class="font-bold text-amber-300 mb-2">Concepto de Escala Modular</h3>
                     <p class="mb-2">Cada paso se obtiene multiplicando el anterior por un ratio fijo. Ratios comunes:</p>
                     <ul class="list-disc pl-5 mb-3 text-xs space-y-1 text-amber-100">
@@ -255,7 +255,7 @@ h1 {
                         <p style="font-size:1.953rem" class="text-white/80 truncate">step+3: Heading (1.95rem)</p>
                     </div>
                 </div>
-                <div>
+                <div class="min-w-0">
                     <h3 class="font-bold text-amber-300 mb-2">Aplicaci&oacute;n con Clamp (L&iacute;quido)</h3>
                     <p class="mb-3">Combinamos escalas con <code class="bg-black/40 px-1 rounded text-xs">clamp()</code> para que la base crezca seg&uacute;n el viewport sin media queries.</p>
                     <pre class="bg-black/30 p-3 rounded text-[11px] border border-white/10 overflow-x-auto">:root {
@@ -535,7 +535,7 @@ h1 {
 
 /* Con fallback si no existe la variable */
 .app { padding-top: env(safe-area-inset-top, 20px); }</pre>
-            <!-- Visualizaci&oacute;n de safe areas -->
+            <!-- Visualización de safe areas -->
             <div class="mt-3 bg-gray-50 p-3 rounded border border-gray-200 flex justify-center">
                 <div class="relative bg-gray-800 rounded-2xl" style="width:100px;height:170px">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-gray-900 rounded-b-lg" style="width:40px;height:12px"></div>
