@@ -92,3 +92,13 @@
 .tema-dropdown-menu::-webkit-scrollbar-thumb:hover {
     background: #aaa;
 }
+
+/* ── Tarjetas de recursos (bibliografía) ── */
+.recurso-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.recurso-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
