@@ -127,6 +127,38 @@
                 <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inline</code> - Fluye con el texto. <strong>No acepta</strong> width ni height; margin y padding vertical no afectan al flujo. (<code class="text-xs">span</code>, <code class="text-xs">a</code>, <code class="text-xs">strong</code>, <code class="text-xs">em</code>...)</li>
                 <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inline-block</code> - Fluye en l&iacute;nea como inline, pero acepta el box model completo (width, height, margin, padding).</li>
             </ul>
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Saltos de l&iacute;nea = espacio</h3>
+            <p class="text-xs text-gray-600 mb-2">En elementos <strong>inline</strong> e <strong>inline-block</strong>, los saltos de l&iacute;nea y espacios en blanco del c&oacute;digo fuente se colapsan en un &uacute;nico espacio visible. Esto puede generar huecos inesperados entre elementos.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- Cada salto de l&iacute;nea genera un espacio entre los spans --&gt;
+&lt;span&gt;Uno&lt;/span&gt;
+&lt;span&gt;Dos&lt;/span&gt;
+&lt;span&gt;Tres&lt;/span&gt;
+
+&lt;!-- Resultado visual: Uno Dos Tres (con espacios) --&gt;</pre>
+
+            <p class="text-xs text-gray-600 mt-2 mb-2">Soluciones para eliminar ese espacio:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* 1. font-size: 0 en el padre (reset de espacio) */
+.parent {
+    font-size: 0;
+}
+.parent &gt; span {
+    font-size: 16px; /* Restaurar en los hijos */
+}
+
+/* 2. Usar flexbox o grid (elimina el espacio autom&aacute;ticamente) */
+.parent {
+    display: flex;      /* o display: inline-flex */
+}
+
+/* 3. Usar float (m&eacute;todo legacy) */
+.parent &gt; span {
+    float: left;
+}</pre>
+
+            <div class="mt-3 p-3 bg-gray-50 border border-dashed border-gray-300 rounded">
+                <p class="text-xs text-gray-600"><strong>Nota:</strong> Los elementos <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">block</code> no se ven afectados porque cada uno ocupa su propia l&iacute;nea completa. Este comportamiento solo importa en contextos inline.</p>
+            </div>
+
             <p class="text-xs text-gray-500 mt-2 italic">Ver <a href="tema6-layout.html" class="text-amber-700 underline hover:text-amber-900">Tema 6: Layout</a> para una explicaci&oacute;n ampliada de display.</p>
         </section>
 
