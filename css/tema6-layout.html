@@ -1,104 +1,449 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tema 6: Layout - Flexbox y Grid - Apuntes CSS</title>
-    <meta name="description" content="Layout en CSS: display, Flexbox, CSS Grid, subgrid, gap y multi-column layout.">
+    <meta
+      name="description"
+      content="Layout en CSS: display, Flexbox, CSS Grid, subgrid, gap y multi-column layout."
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="icon" type="image/png" href="../favicon.ico">
-</head>
-<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
-
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="icon" type="image/png" href="../favicon.ico" />
+  </head>
+  <body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
     <!-- CABECERA PRINCIPAL -->
-    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white sticky top-0 z-50 shadow-md">
-        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
-            <a href="../index.html#css" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
-                <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">CSS</span>
-            </a>
-            <h1 class="flex-1 text-lg font-semibold truncate">Tema 6: Layout - Flexbox y Grid</h1>
-            <div class="relative tema-dropdown">
-                <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
-                    <span>Temas</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden">
-                    <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas CSS</div>
-                    <a href="tema1-conceptos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">1. Conceptos CSS</a>
-                    <a href="tema2-pseudos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Pseudo-elementos y Pseudo-clases</a>
-                    <a href="tema3-funciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">3. Funciones y Custom Properties</a>
-                    <a href="tema4-color-unidades.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">4. Color y Unidades</a>
-                    <a href="tema5-box-model.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">5. Modelo de Caja</a>
-                    <a href="tema6-layout.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">6. Layout: Flexbox y Grid</a>
-                    <a href="tema7-posicionamiento.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. Posicionamiento y Espaciado</a>
-                    <a href="tema8-interacciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Interacciones y Scroll</a>
-                    <a href="tema9-texto.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. Texto y Tipograf&iacute;a</a>
-                    <a href="tema10-graficos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Formas y Gr&aacute;ficos</a>
-                    <a href="tema11-animaciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. CSS Din&aacute;mico</a>
-                    <a href="tema12-rwd.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. RWD y Accesibilidad</a>
-                    <div class="border-t border-gray-100 mt-2 pt-2">
-                        <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
-                    </div>
-                </div>
+    <header
+      class="bg-gradient-to-br from-amber-900 to-amber-800 text-white sticky top-0 z-50 shadow-md"
+    >
+      <div
+        class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4"
+      >
+        <a
+          href="../index.html#css"
+          class="flex items-center gap-2 text-white no-underline hover:opacity-80"
+        >
+          <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg"
+            >CSS</span
+          >
+        </a>
+        <h1 class="flex-1 text-lg font-semibold truncate">
+          Tema 6: Layout - Flexbox y Grid
+        </h1>
+        <div class="relative tema-dropdown">
+          <button
+            class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors"
+          >
+            <span>Temas</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+          <div
+            class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden"
+          >
+            <div
+              class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100"
+            >
+              Temas CSS
             </div>
+            <a
+              href="tema1-conceptos.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >1. Conceptos CSS</a
+            >
+            <a
+              href="tema2-pseudos.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >2. Pseudo-elementos y Pseudo-clases</a
+            >
+            <a
+              href="tema3-funciones.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >3. Funciones y Custom Properties</a
+            >
+            <a
+              href="tema4-color-unidades.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >4. Color y Unidades</a
+            >
+            <a
+              href="tema5-box-model.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >5. Modelo de Caja</a
+            >
+            <a
+              href="tema6-layout.html"
+              class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium"
+              >6. Layout: Flexbox y Grid</a
+            >
+            <a
+              href="tema7-posicionamiento.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >7. Posicionamiento y Espaciado</a
+            >
+            <a
+              href="tema8-interacciones.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >8. Interacciones y Scroll</a
+            >
+            <a
+              href="tema9-texto.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >9. Texto y Tipograf&iacute;a</a
+            >
+            <a
+              href="tema10-graficos.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >10. Formas y Gr&aacute;ficos</a
+            >
+            <a
+              href="tema11-animaciones.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >11. CSS Din&aacute;mico</a
+            >
+            <a
+              href="tema12-rwd.html"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >12. RWD y Accesibilidad</a
+            >
+            <div class="border-t border-gray-100 mt-2 pt-2">
+              <a
+                href="../index.html"
+                class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium"
+                >&larr; Volver al &iacute;ndice</a
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </header>
 
     <!-- NAVEGACIÓN INTERNA DEL TEMA -->
-    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
-        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
-        <div class="flex flex-wrap gap-1.5">
-            <a href="#display" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Display</a>
-            <a href="#flexbox" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Flexbox</a>
-            <a href="#grid" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Grid</a>
-            <a href="#subgrid" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Subgrid</a>
-            <a href="#gap" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Gap</a>
-            <a href="#multicolumn" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Multi-column</a>
-        </div>
+    <nav
+      class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto"
+    >
+      <p
+        class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide"
+      >
+        En este tema
+      </p>
+      <div class="flex flex-wrap gap-1.5">
+        <a
+          href="#display"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Display</a
+        >
+        <a
+          href="#flexbox"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Flexbox</a
+        >
+        <a
+          href="#grid"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Grid</a
+        >
+        <a
+          href="#subgrid"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Subgrid</a
+        >
+        <a
+          href="#gap"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Gap</a
+        >
+        <a
+          href="#multicolumn"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Multi-column</a
+        >
+        <a
+          href="#spacing-logic"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Padding vs Margin</a
+        >
+      </div>
     </nav>
 
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+      <!-- SEMÁNTICA -->
+      <section id="semantica" class="bg-white rounded-lg p-4 shadow w-full">
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">0</span>Estructura Semántica
+        </h2>
+        <p class="text-sm mb-4">
+          Antes de aplicar Flexbox o Grid, debemos estructurar el contenido con
+          etiquetas que aporten significado al navegador y buscadores.
+        </p>
 
-        <!-- DISPLAY -->
-        <section id="display" class="bg-white rounded-lg p-4 shadow w-full">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">1</span>La propiedad display
-            </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-3">
+            <h3 class="font-semibold text-amber-800 mb-2">
+              Etiquetas de Bloque Principales
+            </h3>
+            <ul class="list-none space-y-2 text-sm">
+              <li>
+                <code
+                  class="bg-amber-100 text-amber-900 px-1.5 rounded text-xs font-bold"
+                  >&lt;header&gt;</code
+                >
+                <span class="text-gray-600"
+                  >Cabecera del sitio o de una sección (logo, nav).</span
+                >
+              </li>
+              <li>
+                <code
+                  class="bg-amber-100 text-amber-900 px-1.5 rounded text-xs font-bold"
+                  >&lt;nav&gt;</code
+                >
+                <span class="text-gray-600"
+                  >Contenedor de enlaces de navegación principal.</span
+                >
+              </li>
+              <li>
+                <code
+                  class="bg-amber-100 text-amber-900 px-1.5 rounded text-xs font-bold"
+                  >&lt;main&gt;</code
+                >
+                <span class="text-gray-600"
+                  >Contenido único y principal del documento.</span
+                >
+              </li>
+              <li>
+                <code
+                  class="bg-amber-100 text-amber-900 px-1.5 rounded text-xs font-bold"
+                  >&lt;aside&gt;</code
+                >
+                <span class="text-gray-600"
+                  >Contenido tangencial (barras laterales, publicidad).</span
+                >
+              </li>
+              <li>
+                <code
+                  class="bg-amber-100 text-amber-900 px-1.5 rounded text-xs font-bold"
+                  >&lt;footer&gt;</code
+                >
+                <span class="text-gray-600"
+                  >Pie de página (copyright, contacto, redes).</span
+                >
+              </li>
+            </ul>
+          </div>
 
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Valores b&aacute;sicos</h3>
-                    <ul class="list-disc pl-5 space-y-1 text-sm">
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">block</code> - Ocupa todo el ancho, nueva l&iacute;nea</li>
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inline</code> - Fluye con el texto, sin dimensiones</li>
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inline-block</code> - Inline con dimensiones</li>
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">none</code> - Oculta completamente</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Valores de layout</h3>
-                    <ul class="list-disc pl-5 space-y-1 text-sm">
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">flex</code> - Contenedor Flexbox</li>
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inline-flex</code> - Flexbox inline</li>
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">grid</code> - Contenedor Grid</li>
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">inline-grid</code> - Grid inline</li>
-                    </ul>
-                </div>
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">
+              Esquema de Layout Típico
+            </h3>
+
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs font-mono leading-relaxed"
+            >
+&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+  
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;section&gt;...&lt;/section&gt;
+    &lt;/article&gt;
+    &lt;aside&gt;...&lt;/aside&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</pre
+            >
+            <p class="text-[10px] text-gray-400 mt-2 italic">
+              * Nota: El uso de estas etiquetas mejora el SEO y la accesibilidad
+              (lectores de pantalla).
+            </p>
+          </div>
+        </div>
+        <section id="semantica">
+          <h2
+            class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+          >
+            <span class="orden">0.1</span>Estructura y Altura Automática
+          </h2>
+          <p class="text-sm mb-4">
+            Para que el layout ocupe siempre el 100% de la altura de la ventana
+            (evitando que el footer "flote" a mitad de pantalla), aplicamos un
+            modelo de <strong>Flexbox vertical</strong> al cuerpo del documento.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-3">
+              <h3 class="font-semibold text-amber-800 mb-2">
+                Sticky Footer con CSS
+              </h3>
+              <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                <li>
+                  <strong>Min-height: 100vh/dvh:</strong> Asegura que el
+                  <code>body</code> sea al menos tan alto como la pantalla.
+                </li>
+                <li>
+                  <strong>Flex-direction: column:</strong> Apila las secciones
+                  semánticas verticalmente.
+                </li>
+                <li>
+                  <strong>Flex-grow: 1:</strong> Aplicado al <code>main</code>,
+                  obliga a esta sección a "estirarse" para rellenar todo el
+                  espacio sobrante, empujando el footer al final.
+                </li>
+              </ul>
+
+              <div
+                class="bg-amber-50 p-3 rounded border-l-4 border-amber-500 text-xs"
+              >
+                <strong>Tip:</strong> Usar <code>min-height</code> en lugar de
+                <code>height</code> permite que la página crezca si el contenido
+                supera el tamaño de la pantalla.
+              </div>
             </div>
+
+            <div>
+              <h3 class="font-semibold text-amber-800 mb-2">CSS Necesario</h3>
+
+              <pre
+                class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs font-mono leading-relaxed"
+              >
+/* 1. Preparamos el contenedor */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh; /* Altura dinámica */
+  margin: 0;
+}
+
+/* 2. El contenido principal crece */
+main {
+  flex-grow: 1;
+}
+
+/* 3. Header y Footer mantienen su tamaño */
+header, footer {
+  flex-shrink: 0;
+}</pre
+              >
+            </div>
+          </div>
         </section>
+      </section>
 
-        <!-- FLEXBOX -->
-        <section id="flexbox" class="bg-white rounded-lg p-4 shadow w-full">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">2</span>Flexbox
-            </h2>
-            <p class="text-sm mb-3">Sistema de layout unidimensional (fila O columna).</p>
+      <!-- DISPLAY -->
+      <section id="display" class="bg-white rounded-lg p-4 shadow w-full">
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">1</span>La propiedad display
+        </h2>
 
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Contenedor (padre)</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">
+              Valores b&aacute;sicos
+            </h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>
+                <code
+                  class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                  >block</code
+                >
+                - Ocupa todo el ancho, nueva l&iacute;nea
+              </li>
+              <li>
+                <code
+                  class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                  >inline</code
+                >
+                - Fluye con el texto, sin dimensiones
+              </li>
+              <li>
+                <code
+                  class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                  >inline-block</code
+                >
+                - Inline con dimensiones
+              </li>
+              <li>
+                <code
+                  class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                  >none</code
+                >
+                - Oculta completamente
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">Valores de layout</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>
+                <code
+                  class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                  >flex</code
+                >
+                - Contenedor Flexbox
+              </li>
+              <li>
+                <code
+                  class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                  >inline-flex</code
+                >
+                - Flexbox inline
+              </li>
+              <li>
+                <code
+                  class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                  >grid</code
+                >
+                - Contenedor Grid
+              </li>
+              <li>
+                <code
+                  class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                  >inline-grid</code
+                >
+                - Grid inline
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FLEXBOX -->
+      <section id="flexbox" class="bg-white rounded-lg p-4 shadow w-full">
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">2</span>Flexbox
+        </h2>
+        <p class="text-sm mb-3">
+          Sistema de layout unidimensional (fila O columna).
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">
+              Contenedor (padre)
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+.container {
     display: flex;
 
     /* Direcci&oacute;n */
@@ -130,11 +475,17 @@
 
     /* M&uacute;ltiples l&iacute;neas */
     align-content: flex-start;
-}</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">&Iacute;tems (hijos)</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.item {
+}</pre
+            >
+          </div>
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">
+              &Iacute;tems (hijos)
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+.item {
     /* Orden visual */
     order: 0;                   /* default */
 
@@ -155,29 +506,219 @@
 
     /* Alineaci&oacute;n individual */
     align-self: center;
-}</pre>
+}</pre
+            >
 
-                    <h3 class="font-semibold text-amber-800 mt-4 mb-2">Centrar elemento</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.center {
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+              Centrar elemento
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+.center {
     display: flex;
     justify-content: center;
     align-items: center;
-}</pre>
-                </div>
+}</pre
+            >
+          </div>
+        </div>
+
+        <section id="flexbox" class="mt-6">
+          <h2
+            class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+          >
+            <span class="orden">2.1</span>Flexbox: Guía de Propiedades
+          </h2>
+          <p class="text-sm mb-4">
+            Sistema de distribución de espacio basado en un
+            <strong>eje principal</strong> (main axis) y un
+            <strong>eje cruzado</strong> (cross axis).
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-bold text-amber-800 mb-3 flex items-center gap-2">
+                <span
+                  class="bg-amber-800 text-white text-[10px] px-1.5 py-0.5 rounded"
+                  >Container</span
+                >
+              </h3>
+              <ul class="space-y-4 text-sm">
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >flex-direction</code
+                  >
+                  <p class="text-gray-600 text-xs mt-1">
+                    Define el eje principal:
+                    <code class="text-amber-700">row</code> (horizontal),
+                    <code class="text-amber-700">column</code> (vertical), o sus
+                    versiones <code class="text-amber-700">reverse</code>.
+                  </p>
+                </li>
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >flex-wrap</code
+                  >
+                  <p class="text-gray-600 text-xs mt-1">
+                    Controla si los ítems saltan a una nueva línea:
+                    <code class="text-amber-700">nowrap</code> (fuerza una
+                    línea), <code class="text-amber-700">wrap</code> (permite
+                    múltiples líneas).
+                  </p>
+                </li>
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >justify-content</code
+                  >
+                  <p class="text-gray-600 text-xs mt-1">
+                    Alineación en el <strong>eje principal</strong>. Distribuye
+                    el espacio sobrante entre o alrededor de los ítems.
+                  </p>
+                </li>
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >align-items</code
+                  >
+                  <p class="text-gray-600 text-xs mt-1">
+                    Alineación en el <strong>eje cruzado</strong> para los ítems
+                    dentro de una sola línea.
+                  </p>
+                </li>
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >align-content</code
+                  >
+                  <p class="text-gray-600 text-xs mt-1">
+                    Alineación de las <strong>líneas del grid</strong> (solo
+                    funciona si hay
+                    <code class="text-amber-700">flex-wrap: wrap</code>).
+                  </p>
+                </li>
+              </ul>
             </div>
+
+            <div>
+              <h3 class="font-bold text-amber-800 mb-3 flex items-center gap-2">
+                <span
+                  class="bg-amber-600 text-white text-[10px] px-1.5 py-0.5 rounded"
+                  >Items</span
+                >
+              </h3>
+              <ul class="space-y-4 text-sm">
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >flex-grow</code
+                  >
+                  <p class="text-gray-600 text-xs mt-1">
+                    Capacidad de un ítem para crecer si hay espacio.
+                    <code class="text-amber-700">0</code> (fijo),
+                    <code class="text-amber-700">1</code> (ocupa lo disponible).
+                  </p>
+                </li>
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >flex-shrink</code
+                  >
+                  <p class="text-gray-600 text-xs mt-1">
+                    Capacidad de encogerse si no hay espacio. Por defecto es
+                    <code class="text-amber-700">1</code>.
+                  </p>
+                </li>
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >flex-basis</code
+                  >
+                  <p class="text-gray-600 text-xs mt-1">
+                    Tamaño inicial del ítem antes de distribuir el espacio
+                    restante (reemplaza al width/height según el eje).
+                  </p>
+                </li>
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >flex</code
+                  >
+                  (Shorthand)
+                  <p class="text-gray-600 text-xs mt-1">
+                    Combinación de
+                    <code class="text-amber-700">grow | shrink | basis</code>.
+                    Ej: <code class="text-amber-700">flex: 1 0 200px;</code>
+                  </p>
+                </li>
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >align-self</code
+                  >
+                  <p class="text-gray-600 text-xs mt-1">
+                    Permite sobreescribir el
+                    <code class="text-amber-700">align-items</code> del padre
+                    para un ítem específico.
+                  </p>
+                </li>
+                <li>
+                  <code
+                    class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                    >order</code
+                  >
+                  <p class="text-gray-600 text-xs mt-1">
+                    Cambia el orden visual sin alterar el HTML. Por defecto
+                    <code class="text-amber-700">0</code>.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="font-semibold text-amber-800 mt-6 mb-2">
+            Implementación Común
+          </h3>
+          <pre
+            class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs font-mono"
+          >
+.flex-parent {
+  display: flex;
+  flex-flow: row wrap; /* shorthand: direction + wrap */
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flex-child {
+  flex: 1 1 300px; /* Crece, encoge y base de 300px */
+  align-self: stretch; /* Se estira verticalmente */
+}</pre
+          >
         </section>
+      </section>
 
-        <!-- GRID -->
-        <section id="grid" class="bg-white rounded-lg p-4 shadow w-full">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">3</span>CSS Grid
-            </h2>
-            <p class="text-sm mb-3">Sistema de layout bidimensional (filas Y columnas).</p>
+      <!-- GRID -->
+      <section id="grid" class="bg-white rounded-lg p-4 shadow w-full">
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">3</span>CSS Grid
+        </h2>
+        <p class="text-sm mb-3">
+          Sistema de layout bidimensional (filas Y columnas).
+        </p>
 
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Contenedor</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.grid {
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">Contenedor</h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+.grid {
     display: grid;
 
     /* Columnas */
@@ -199,11 +740,15 @@
     /* Alineaci&oacute;n del grid completo */
     justify-content: center;
     align-content: center;
-}</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">&Iacute;tems</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.item {
+}</pre
+            >
+          </div>
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">&Iacute;tems</h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+.item {
     /* Posici&oacute;n por l&iacute;neas */
     grid-column: 1 / 3;         /* L&iacute;nea 1 a 3 */
     grid-column: span 2;        /* Ocupa 2 columnas */
@@ -215,10 +760,16 @@
     /* Alineaci&oacute;n individual */
     justify-self: center;
     align-self: center;
-}</pre>
+}</pre
+            >
 
-                    <h3 class="font-semibold text-amber-800 mt-4 mb-2">Grid Areas (nombradas)</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.layout {
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+              Grid Areas (nombradas)
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+.layout {
     grid-template-areas:
         "header header"
         "sidebar main"
@@ -227,12 +778,18 @@
 .header { grid-area: header; }
 .sidebar { grid-area: sidebar; }
 .main { grid-area: main; }
-.footer { grid-area: footer; }</pre>
-                </div>
-            </div>
+.footer { grid-area: footer; }</pre
+            >
+          </div>
+        </div>
 
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Funciones &uacute;tiles</h3>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* minmax() - Rango de tama&ntilde;o */
+        <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+          Funciones &uacute;tiles
+        </h3>
+        <pre
+          class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+        >
+/* minmax() - Rango de tama&ntilde;o */
 grid-template-columns: minmax(100px, 1fr) 2fr;
 
 /* repeat() - Repetir patr&oacute;n */
@@ -243,19 +800,30 @@ repeat(auto-fit, minmax(200px, 1fr))   /* Estira para llenar */
 repeat(auto-fill, minmax(200px, 1fr))  /* Mantiene huecos */
 
 /* La unidad fr - fracci&oacute;n del espacio disponible */
-grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre>
-        </section>
+grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre
+        >
+      </section>
 
-        <!-- SUBGRID -->
-        <section id="subgrid" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">4</span>Subgrid
-            </h2>
-            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
-                Permite que un elemento hijo herede las l&iacute;neas del grid padre.
-            </p>
+      <!-- SUBGRID -->
+      <section
+        id="subgrid"
+        class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]"
+      >
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">4</span>Subgrid
+        </h2>
+        <p
+          class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded"
+        >
+          Permite que un elemento hijo herede las l&iacute;neas del grid padre.
+        </p>
 
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.grid {
+        <pre
+          class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+        >
+.grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto auto auto;
@@ -275,23 +843,40 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre>
    con las l&iacute;neas del grid principal */
 .card-title { grid-row: 1; }
 .card-body { grid-row: 2; }
-.card-footer { grid-row: 3; }</pre>
+.card-footer { grid-row: 3; }</pre
+        >
 
-            <div class="mt-3 p-3 bg-gray-50 border border-dashed border-gray-300 rounded">
-                <p class="text-xs text-gray-600"><strong>Uso:</strong> Alinear elementos de tarjetas (t&iacute;tulo, contenido, footer) entre s&iacute;, incluso con contenido de diferentes longitudes.</p>
-            </div>
-        </section>
+        <div
+          class="mt-3 p-3 bg-gray-50 border border-dashed border-gray-300 rounded"
+        >
+          <p class="text-xs text-gray-600">
+            <strong>Uso:</strong> Alinear elementos de tarjetas (t&iacute;tulo,
+            contenido, footer) entre s&iacute;, incluso con contenido de
+            diferentes longitudes.
+          </p>
+        </div>
+      </section>
 
-        <!-- GAP -->
-        <section id="gap" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">5</span>Gap
-            </h2>
-            <p class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
-                <strong>2021</strong> - Espaciado entre elementos en Flex y Grid.
-            </p>
+      <!-- GAP -->
+      <section
+        id="gap"
+        class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]"
+      >
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">5</span>Gap
+        </h2>
+        <p
+          class="text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded"
+        >
+          <strong>2021</strong> - Espaciado entre elementos en Flex y Grid.
+        </p>
 
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
+        <pre
+          class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+        >
+.container {
     display: flex; /* o grid */
 
     /* Gap uniforme */
@@ -303,28 +888,41 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre>
     /* Propiedades individuales */
     row-gap: 10px;
     column-gap: 20px;
-}</pre>
+}</pre
+        >
 
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Ventajas sobre margin</h3>
-            <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600">
-                <li>Solo aplica entre elementos (no en bordes)</li>
-                <li>No necesita selectores :first-child/:last-child</li>
-                <li>No hay colapso de m&aacute;rgenes</li>
-                <li>Funciona con wrap en Flexbox</li>
-            </ul>
-        </section>
+        <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+          Ventajas sobre margin
+        </h3>
+        <ul class="list-disc pl-5 space-y-1 text-sm text-gray-600">
+          <li>Solo aplica entre elementos (no en bordes)</li>
+          <li>No necesita selectores :first-child/:last-child</li>
+          <li>No hay colapso de m&aacute;rgenes</li>
+          <li>Funciona con wrap en Flexbox</li>
+        </ul>
+      </section>
 
-        <!-- MULTI-COLUMN -->
-        <section id="multicolumn" class="bg-white rounded-lg p-4 shadow w-full">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">6</span>Multi-column layout
-            </h2>
-            <p class="text-sm mb-3">Divide el contenido en m&uacute;ltiples columnas, como en peri&oacute;dicos.</p>
+      <!-- MULTI-COLUMN -->
+      <section id="multicolumn" class="bg-white rounded-lg p-4 shadow w-full">
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">6</span>Multi-column layout
+        </h2>
+        <p class="text-sm mb-3">
+          Divide el contenido en m&uacute;ltiples columnas, como en
+          peri&oacute;dicos.
+        </p>
 
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Propiedades principales</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.article {
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">
+              Propiedades principales
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+.article {
     /* N&uacute;mero de columnas */
     column-count: 3;
 
@@ -341,11 +939,17 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre>
 
     /* L&iacute;nea separadora */
     column-rule: 1px solid #ccc;
-}</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Control de contenido</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Evitar que un elemento se corte entre columnas */
+}</pre
+            >
+          </div>
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">
+              Control de contenido
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+/* Evitar que un elemento se corte entre columnas */
 .article h2 {
     break-after: avoid;
 }
@@ -357,25 +961,141 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre>
 /* Elemento que ocupa todas las columnas */
 .article .featured {
     column-span: all;
-}</pre>
+}</pre
+            >
 
-                    <div class="mt-3 p-3 bg-gray-50 border border-dashed border-gray-300 rounded">
-                        <p class="text-xs text-gray-600"><strong>Uso:</strong> Art&iacute;culos largos, galer&iacute;as tipo masonry, listas en columnas.</p>
-                    </div>
-                </div>
+            <div
+              class="mt-3 p-3 bg-gray-50 border border-dashed border-gray-300 rounded"
+            >
+              <p class="text-xs text-gray-600">
+                <strong>Uso:</strong> Art&iacute;culos largos, galer&iacute;as
+                tipo masonry, listas en columnas.
+              </p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
+      <section id="spacing-logic" class="bg-white rounded-lg p-4 shadow w-full">
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">7</span>Padding vs Margin: ¿Cuál usar?
+        </h2>
+        <p class="text-sm mb-4">
+          Aunque ambos crean "espacio en blanco", su comportamiento técnico es
+          radicalmente opuesto.
+        </p>
 
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">Diferencias Clave</h3>
+            <div class="space-y-4">
+              <div class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
+                <h4 class="text-xs font-bold text-blue-900 uppercase">
+                  Padding (Interno)
+                </h4>
+                <p class="text-xs text-blue-800 mt-1">
+                  Es el espacio <strong>dentro</strong> del borde. Afecta al
+                  tamaño del elemento y muestra el color de fondo.
+                </p>
+              </div>
+              <div
+                class="p-3 bg-orange-50 border-l-4 border-orange-500 rounded"
+              >
+                <h4 class="text-xs font-bold text-orange-900 uppercase">
+                  Margin (Externo)
+                </h4>
+                <p class="text-xs text-orange-800 mt-1">
+                  Es el espacio <strong>fuera</strong> del borde. Separa al
+                  elemento de sus vecinos y es siempre transparente.
+                </p>
+              </div>
+            </div>
+
+            <ul class="list-disc pl-5 mt-4 space-y-2 text-sm text-gray-700">
+              <li>
+                <strong>Clickability:</strong> El padding aumenta el área
+                clickable (en botones); el margin no.
+              </li>
+              <li>
+                <strong>Colapso:</strong> Los márgenes verticales pueden
+                "colapsar" (unirse), el padding nunca.
+              </li>
+              <li>
+                <strong>Fondo:</strong> El `background-color` se ve en el
+                padding, pero no en el margin.
+              </li>
+              <li>
+                <strong>Regla de oro de componentes:</strong> Un componente bien diseñado debería
+                definir su propio Padding (cómo se ve por dentro), pero lo ideal
+                es que el Margin (cómo se separa de otros) lo defina el
+                contenedor padre o una clase de utilidad, para que el componente
+                sea reutilizable en cualquier sitio.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">Reglas de Oro</h3>
+
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs font-mono leading-relaxed"
+            >
+/* ✅ BIEN: Separación externa */
+.card {
+    margin-bottom: 20px; 
+}
+
+/* ✅ BIEN: Respiración interna */
+.card-content {
+    padding: 1.5rem;
+    background-color: white;
+}
+
+/* ❌ MAL: Usar margin para separar el 
+   texto del borde de su propio contenedor */
+.bad-card p {
+    margin: 20px; /* El fondo se cortará antes del texto */
+}</pre
+            >
+            <div class="mt-3 p-3 bg-amber-50 rounded border border-amber-200">
+              <p class="text-[11px] text-amber-900">
+                <strong>Consejo Pro:</strong> Si el elemento tiene un
+                <strong>borde</strong> o un <strong>fondo</strong>, usa
+                <code>padding</code> para que el contenido no lo toque. Si
+                quieres alejarte de <strong>otros elementos</strong>, usa
+                <code>margin</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
-        <a href="tema5-box-model.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 5</a>
-        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
-        <a href="tema7-posicionamiento.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 7 &rarr;</a>
+    <nav
+      class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5"
+    >
+      <a
+        href="tema5-box-model.html"
+        class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800"
+        >&larr; Tema 5</a
+      >
+      <a
+        href="../index.html"
+        class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800"
+        >&uarr; Volver al &iacute;ndice</a
+      >
+      <a
+        href="tema7-posicionamiento.html"
+        class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800"
+        >Tema 7 &rarr;</a
+      >
     </nav>
 
-    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
-        <p>Apuntes CSS &mdash; Tema 6 de 12</p>
+    <footer
+      class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4"
+    >
+      <p>Apuntes CSS &mdash; Tema 6 de 12</p>
     </footer>
-</body>
+  </body>
 </html>
