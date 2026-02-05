@@ -75,12 +75,12 @@
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
 
         <!-- POSITION -->
-        <section id="position" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="position" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">1</span>Position
             </h2>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">static (default)</h3>
                     <p class="text-xs text-gray-600 mb-2">Flujo normal del documento. top/left/etc no funcionan.</p>
@@ -100,7 +100,7 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">absolute</h3>
                     <p class="text-xs text-gray-600 mb-2">Sale del flujo. Se posiciona respecto al ancestro posicionado m&aacute;s cercano.</p>
@@ -134,7 +134,7 @@
         </section>
 
         <!-- STICKY -->
-        <section id="sticky" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="sticky" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">2</span>Position sticky
             </h2>
@@ -164,7 +164,7 @@
         </section>
 
         <!-- ANCHOR -->
-        <section id="anchor" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="anchor" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">3</span>Anchor positioning
             </h2>
@@ -196,7 +196,7 @@
         </section>
 
         <!-- Z-INDEX -->
-        <section id="z-index" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="z-index" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">4</span>Z-index y capas
             </h2>
@@ -227,7 +227,7 @@
         </section>
 
         <!-- INSET -->
-        <section id="inset" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="inset" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">5</span>Inset (propiedad l&oacute;gica)
             </h2>
@@ -259,7 +259,7 @@
         </section>
 
         <!-- MÁRGENES -->
-        <section id="margenes" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="margenes" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">6</span>M&aacute;rgenes y espaciado
             </h2>
