@@ -19,11 +19,11 @@
 
     <nav class="sticky top-0 z-50 bg-amber-950 shadow-md">
         <ul class="max-w-6xl mx-auto flex justify-center gap-1 px-4 py-2 text-sm">
-            <li><a href="#html" class="px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">HTML</a></li>
-            <li><a href="#css" class="px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">CSS</a></li>
-            <li><a href="#js" class="px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">JavaScript</a></li>
-            <li><a href="#ts" class="px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">TypeScript</a></li>
-            <li><a href="#recursos" class="px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">Recursos</a></li>
+            <li><a href="#html" data-nav="html" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">HTML</a></li>
+            <li><a href="#css" data-nav="css" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">CSS</a></li>
+            <li><a href="#js" data-nav="js" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">JavaScript</a></li>
+            <li><a href="#ts" data-nav="ts" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">TypeScript</a></li>
+            <li><a href="#recursos" data-nav="recursos" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">Recursos</a></li>
         </ul>
     </nav>
 
@@ -459,5 +459,54 @@
     <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-8">
         <p>Apuntes de Desarrollo Web &mdash; HTML, CSS, JavaScript y TypeScript</p>
     </footer>
+
+    <script>
+    (function() {
+        const ACTIVE_BG = {
+            html:     '#b45309',
+            css:      '#b45309',
+            js:       '#ca8a04',
+            ts:       '#1d4ed8',
+            recursos: '#4b5563'
+        };
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+        let currentActive = null;
+
+        function setActive(id) {
+            if (currentActive === id) return;
+            currentActive = id;
+
+            navLinks.forEach(link => {
+                const nav = link.dataset.nav;
+                if (nav === id) {
+                    link.style.backgroundColor = ACTIVE_BG[nav];
+                    link.style.color = '#ffffff';
+                } else {
+                    link.style.backgroundColor = '';
+                    link.style.color = '';
+                }
+            });
+        }
+
+        function updateActive() {
+            let closestId = null;
+            let closestDist = Infinity;
+            sections.forEach(sec => {
+                const top = sec.getBoundingClientRect().top;
+                const dist = Math.abs(top - 50);
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closestId = sec.id;
+                }
+            });
+            if (closestId) setActive(closestId);
+        }
+
+        window.addEventListener('scroll', updateActive, { passive: true });
+        updateActive();
+    })();
+    </script>
 </body>
 </html>
