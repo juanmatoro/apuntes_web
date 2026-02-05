@@ -180,7 +180,7 @@
 
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
       <!-- SEMÁNTICA -->
-      <section id="semantica" class="bg-white rounded-lg p-4 shadow w-full">
+      <section id="semantica" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
@@ -191,7 +191,7 @@
           etiquetas que aporten significado al navegador y buscadores.
         </p>
 
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
           <div class="space-y-3">
             <h3 class="font-semibold text-amber-800 mb-2">
               Etiquetas de Bloque Principales
@@ -273,7 +273,7 @@
             </p>
           </div>
         </div>
-        <section id="semantica">
+        <section id="semantica" class="min-w-0">
           <h2
             class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
           >
@@ -285,7 +285,7 @@
             modelo de <strong>Flexbox vertical</strong> al cuerpo del documento.
           </p>
 
-          <div class="grid md:grid-cols-2 gap-6">
+          <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
             <div class="space-y-3">
               <h3 class="font-semibold text-amber-800 mb-2">
                 Sticky Footer con CSS
@@ -345,14 +345,14 @@ header, footer {
       </section>
 
       <!-- DISPLAY -->
-      <section id="display" class="bg-white rounded-lg p-4 shadow w-full">
+      <section id="display" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
           <span class="orden">1</span>La propiedad display
         </h2>
 
-        <div class="grid md:grid-cols-2 gap-4">
+        <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
           <div>
             <h3 class="font-semibold text-amber-800 mb-2">
               Valores b&aacute;sicos
@@ -425,7 +425,7 @@ header, footer {
       </section>
 
       <!-- FLEXBOX -->
-      <section id="flexbox" class="bg-white rounded-lg p-4 shadow w-full">
+      <section id="flexbox" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
@@ -435,7 +435,7 @@ header, footer {
           Sistema de layout unidimensional (fila O columna).
         </p>
 
-        <div class="grid md:grid-cols-2 gap-4">
+        <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
           <div>
             <h3 class="font-semibold text-amber-800 mb-2">
               Contenedor (padre)
@@ -524,7 +524,7 @@ header, footer {
           </div>
         </div>
 
-        <section id="flexbox" class="mt-6">
+        <section id="flexbox" class="mt-6 min-w-0">
           <h2
             class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
           >
@@ -536,7 +536,7 @@ header, footer {
             <strong>eje cruzado</strong> (cross axis).
           </p>
 
-          <div class="grid md:grid-cols-2 gap-6">
+          <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
             <div>
               <h3 class="font-bold text-amber-800 mb-3 flex items-center gap-2">
                 <span
@@ -702,7 +702,7 @@ header, footer {
       </section>
 
       <!-- GRID -->
-      <section id="grid" class="bg-white rounded-lg p-4 shadow w-full">
+      <section id="grid" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
@@ -712,7 +712,7 @@ header, footer {
           Sistema de layout bidimensional (filas Y columnas).
         </p>
 
-        <div class="grid md:grid-cols-2 gap-4">
+        <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
           <div>
             <h3 class="font-semibold text-amber-800 mb-2">Contenedor</h3>
             <pre
@@ -807,7 +807,7 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre
       <!-- SUBGRID -->
       <section
         id="subgrid"
-        class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]"
+        class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0"
       >
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
@@ -860,7 +860,7 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre
       <!-- GAP -->
       <section
         id="gap"
-        class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]"
+        class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0"
       >
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
@@ -903,7 +903,7 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre
       </section>
 
       <!-- MULTI-COLUMN -->
-      <section id="multicolumn" class="bg-white rounded-lg p-4 shadow w-full">
+      <section id="multicolumn" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
@@ -914,7 +914,7 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre
           peri&oacute;dicos.
         </p>
 
-        <div class="grid md:grid-cols-2 gap-4">
+        <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
           <div>
             <h3 class="font-semibold text-amber-800 mb-2">
               Propiedades principales
@@ -975,7 +975,7 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre
           </div>
         </div>
       </section>
-      <section id="spacing-logic" class="bg-white rounded-lg p-4 shadow w-full">
+      <section id="spacing-logic" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
@@ -986,7 +986,7 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre
           radicalmente opuesto.
         </p>
 
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
           <div>
             <h3 class="font-semibold text-amber-800 mb-2">Diferencias Clave</h3>
             <div class="space-y-4">
