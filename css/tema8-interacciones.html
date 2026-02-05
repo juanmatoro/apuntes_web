@@ -69,7 +69,7 @@
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
 
         <!-- FOCUS -->
-        <section id="focus" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="focus" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">1</span>Focus
             </h2>
@@ -106,7 +106,7 @@ form:focus-within {
         </section>
 
         <!-- OVERFLOW -->
-        <section id="overflow" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="overflow" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">2</span>Overflow
             </h2>
@@ -140,12 +140,12 @@ form:focus-within {
         </section>
 
         <!-- SCROLL BEHAVIOR -->
-        <section id="scroll-behavior" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="scroll-behavior" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">3</span>Comportamiento de scroll
             </h2>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">scroll-behavior</h3>
                     <p class="text-xs text-gray-600 mb-2">Suaviza el scroll al navegar con anclas.</p>
@@ -173,7 +173,7 @@ overscroll-behavior: none;     /* Sin efecto bounce */</pre>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">scrollbar-gutter <span class="text-amber-600 text-xs">(2022)</span></h3>
                     <p class="text-xs text-gray-600 mb-2">Reserva espacio para la scrollbar.</p>
@@ -197,13 +197,13 @@ overscroll-behavior: none;     /* Sin efecto bounce */</pre>
         </section>
 
         <!-- SCROLL SNAP -->
-        <section id="scroll-snap" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="scroll-snap" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">4</span>Scroll Snap
             </h2>
             <p class="text-sm mb-3">Crea puntos de "enganche" durante el scroll, ideal para carruseles y galer&iacute;as.</p>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Contenedor</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.carousel {
@@ -256,12 +256,12 @@ overscroll-behavior: none;     /* Sin efecto bounce */</pre>
         </section>
 
         <!-- OTRAS INTERACCIONES -->
-        <section id="otras" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="otras" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">5</span>Otras interacciones
             </h2>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">touch-action</h3>
                     <p class="text-xs text-gray-600 mb-2">Controla gestos t&aacute;ctiles permitidos.</p>
@@ -298,7 +298,7 @@ overscroll-behavior: none;     /* Sin efecto bounce */</pre>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">cursor</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.clickable { cursor: pointer; }

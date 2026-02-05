@@ -70,13 +70,13 @@
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
 
         <!-- MEDIA QUERIES -->
-        <section id="media-queries" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="media-queries" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">1</span>Media Queries
             </h2>
             <p class="text-sm mb-3">Aplican estilos seg&uacute;n caracter&iacute;sticas del dispositivo o preferencias del usuario.</p>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Sintaxis</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Tradicional */
@@ -141,7 +141,7 @@
         </section>
 
         <!-- CONTAINER QUERIES -->
-        <section id="container-queries" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="container-queries" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">2</span>Container Queries
             </h2>
@@ -149,7 +149,7 @@
                 <strong>2023</strong> - Estilos basados en el tama&ntilde;o del contenedor, no del viewport.
             </p>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Container size queries</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Definir contenedor */
@@ -204,13 +204,13 @@
         </section>
 
         <!-- ACCESIBILIDAD -->
-        <section id="accesibilidad" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="accesibilidad" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">3</span>Accesibilidad (prefers-*)
             </h2>
             <p class="text-sm mb-3">Media queries que respetan las preferencias del usuario.</p>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">prefers-color-scheme</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Tema oscuro autom&aacute;tico */
@@ -250,7 +250,7 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">forced-colors</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@media (forced-colors: active) {
@@ -271,7 +271,7 @@
         </section>
 
         <!-- @SUPPORTS -->
-        <section id="supports" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="supports" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">4</span>@supports (Feature queries)
             </h2>
@@ -308,7 +308,7 @@
         </section>
 
         <!-- RENDIMIENTO -->
-        <section id="rendimiento" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="rendimiento" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">5</span>Rendimiento
             </h2>
@@ -347,13 +347,13 @@
             </ul>
         </section>
         <!-- RECURSOS Y CONSULTAS -->
-        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">6</span>Recursos y Consultas
             </h2>
             <p class="text-sm mb-4">Herramientas esenciales para monitorizar el estado de CSS y asegurar buenas prácticas.</p>
 
-            <div class="grid md:grid-cols-3 gap-4">
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
                 <div class="border border-amber-100 rounded-lg p-3 bg-amber-50/30">
                     <h3 class="font-semibold text-amber-800 mb-2 flex items-center gap-2">
                         <span>📊</span> Estado de CSS

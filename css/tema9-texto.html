@@ -69,12 +69,12 @@
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
 
         <!-- FUENTES -->
-        <section id="fuentes" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="fuentes" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">1</span>Fuentes y tipograf&iacute;a
             </h2>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Propiedades font-*</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.text {
@@ -121,12 +121,12 @@
         </section>
 
         <!-- TEXTO -->
-        <section id="texto" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="texto" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">2</span>Propiedades de texto
             </h2>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Espaciado</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.text {
@@ -150,7 +150,7 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Decoraci&oacute;n</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.text {
@@ -192,7 +192,7 @@
         </section>
 
         <!-- TEXT-WRAP -->
-        <section id="text-wrap" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="text-wrap" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">3</span>Text-wrap
             </h2>
@@ -228,7 +228,7 @@
         </section>
 
         <!-- LISTAS -->
-        <section id="listas" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="listas" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">4</span>Listas
             </h2>
@@ -270,13 +270,13 @@ details[open] summary::marker {
         </section>
 
         <!-- WRITING MODE -->
-        <section id="writing-mode" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="writing-mode" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">5</span>Modos de escritura
             </h2>
             <p class="text-sm mb-3">Controla la direcci&oacute;n del texto (horizontal, vertical, RTL).</p>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">writing-mode</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.horizontal {
