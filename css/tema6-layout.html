@@ -698,11 +698,17 @@ header, footer {
   align-self: stretch; /* Se estira verticalmente */
 }</pre
           >
+          <p class="text-sm mt-4 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+    <strong>Recurso esencial:</strong> Para una guía visual completa de todas las propiedades, consulta 
+    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener noreferrer" class="text-amber-900 font-bold underline hover:text-amber-700">
+        A Complete Guide to Flexbox
+    </a> de CSS-Tricks.
+</p>
         </section>
       </section>
 
       <!-- GRID -->
-      <section id="grid" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+      <!-- <section id="grid" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
@@ -802,8 +808,80 @@ repeat(auto-fill, minmax(200px, 1fr))  /* Mantiene huecos */
 /* La unidad fr - fracci&oacute;n del espacio disponible */
 grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre
         >
-      </section>
+      </section> -->
+      <section id="css-grid" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+    <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+        <span class="orden">3</span>CSS Grid Layout
+    </h2>
+    <p class="text-sm mb-3">Sistema de maquetación bidimensional que permite trabajar con filas y columnas simultáneamente.</p>
 
+    <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+        <div>
+            <h3 class="font-semibold text-amber-800 mb-2">Definición del Contenedor</h3>
+            <p class="text-xs mb-2">Se activa con <code>display: grid</code>. Define la estructura base de la cuadrícula.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
+    display: grid;
+    /* 3 columnas: fija, flexible y flexible */
+    grid-template-columns: 200px 1fr 2fr; 
+    /* Filas automáticas */
+    grid-template-rows: auto;
+    /* Espacio entre celdas */
+    gap: 20px; 
+}</pre>
+        </div>
+        <div>
+            <h3 class="font-semibold text-amber-800 mb-2">Posicionamiento de Ítems</h3>
+            <p class="text-xs mb-2">Los hijos directos se pueden ubicar indicando líneas de inicio y fin.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.item-especial {
+    /* Empieza en línea 1, ocupa 2 columnas */
+    grid-column: 1 / 3; 
+    /* También se puede usar span */
+    grid-row: span 2; 
+}</pre>
+        </div>
+    </div>
+
+    <section id="grid-avanzado" class="mt-6 min-w-0">
+        <h2 class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+            <span class="orden">3.1</span>Funciones y Áreas
+        </h2>
+        <p class="text-sm mb-4">Herramientas potentes para crear layouts dinámicos y legibles.</p>
+
+        <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
+            <div>
+                <h3 class="font-semibold text-amber-800 mb-2">Funciones Mágicas</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* repeat() y minmax() */
+grid-template-columns: repeat(3, 1fr);
+
+/* Responsive sin Media Queries */
+grid-template-columns: repeat(
+    auto-fit, 
+    minmax(200px, 1fr)
+);</pre>
+            </div>
+            <div>
+                <h3 class="font-semibold text-amber-800 mb-2">Grid Template Areas</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
+    grid-template-areas:
+        "header  header"
+        "sidebar main"
+        "footer  footer";
+}
+.header { grid-area: header; }</pre>
+            </div>
+        </div>
+        <p class="text-sm mt-4 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+    <strong>Recurso esencial:</strong> Domina la cuadrícula con la guía definitiva: 
+    <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank" rel="noopener noreferrer" class="text-amber-900 font-bold underline hover:text-amber-700">
+        A Complete Guide to CSS Grid
+    </a> de CSS-Tricks.
+</p>
+    </section>
+
+    <p class="text-sm mt-4 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+        <strong>Tip:</strong> Usa la unidad <code>fr</code> (fractional unit) para ocupar una fracción del espacio libre disponible, lo que facilita el diseño fluido sin cálculos manuales.
+    </p>
+</section>
       <!-- SUBGRID -->
       <section
         id="subgrid"
