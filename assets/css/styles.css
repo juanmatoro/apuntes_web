@@ -120,6 +120,28 @@ pre.has-scroll.scrolled-end {
     mask-image: none;
 }
 
+/* ── Indicador de scroll horizontal en tablas ── */
+.table-scroll {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.2) transparent;
+}
+
+.table-scroll::-webkit-scrollbar { height: 6px; }
+.table-scroll::-webkit-scrollbar-track { background: transparent; }
+.table-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 3px; }
+.table-scroll::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.35); }
+
+.table-scroll.has-scroll {
+    -webkit-mask-image: linear-gradient(to right, #000 85%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 85%, transparent 100%);
+}
+
+.table-scroll.has-scroll.scrolled-end {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
 /* ── Tarjetas de recursos (bibliografía) ── */
 .recurso-card {
     transition: transform 0.2s, box-shadow 0.2s;

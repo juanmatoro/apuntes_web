@@ -342,31 +342,40 @@ function initComponents() {
 }
 
 /**
- * Marca los <pre> que tienen scroll horizontal con la clase .has-scroll
- * para mostrar un indicador visual al usuario
+ * Marca los <pre> y contenedores de <table> que tienen scroll horizontal
+ * con la clase .has-scroll para mostrar un indicador visual al usuario.
+ * Para las tablas, añade automáticamente .table-scroll y overflow-x-auto al padre.
  */
-function marcarPreScrollables() {
-    const pres = document.querySelectorAll('pre');
-    const observer = new ResizeObserver(() => {
-        pres.forEach(pre => {
-            pre.classList.toggle('has-scroll', pre.scrollWidth > pre.clientWidth + 1);
+function marcarScrollables() {
+    // Preparar wrappers de tablas
+    document.querySelectorAll('table').forEach(t => {
+        const wrap = t.parentElement;
+        if (wrap) {
+            wrap.classList.add('table-scroll', 'overflow-x-auto');
+        }
+    });
+
+    const elementos = document.querySelectorAll('pre, .table-scroll');
+    const observer = new ResizeObserver(entries => {
+        entries.forEach(e => {
+            e.target.classList.toggle('has-scroll', e.target.scrollWidth > e.target.clientWidth + 1);
         });
     });
-    pres.forEach(pre => {
-        observer.observe(pre);
-        pre.addEventListener('scroll', () => {
-            const atEnd = pre.scrollLeft + pre.clientWidth >= pre.scrollWidth - 1;
-            pre.classList.toggle('scrolled-end', atEnd);
+    elementos.forEach(el => {
+        observer.observe(el);
+        el.addEventListener('scroll', () => {
+            const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
+            el.classList.toggle('scrolled-end', atEnd);
         });
     });
 }
 
 // Auto-inicializar cuando el DOM esté listo
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => { initComponents(); marcarPreScrollables(); });
+    document.addEventListener('DOMContentLoaded', () => { initComponents(); marcarScrollables(); });
 } else {
     initComponents();
-    marcarPreScrollables();
+    marcarScrollables();
 }
 
 // Exportar para uso manual si es necesario

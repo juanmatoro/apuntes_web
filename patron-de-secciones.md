@@ -115,3 +115,29 @@
 ## OBLIGATORIO: `[&>*]:min-w-0` en TODOS los grid
 
 `[&>*]:min-w-0` es **obligatorio** en cada `div` con clase `grid`. Sin esta clase los hijos del grid mantienen `min-width: auto` (el valor por defecto en CSS Grid), lo que provoca que bloques `<pre>`, tablas o cualquier contenido ancho fuerce al hijo del grid a expandirse más allá del viewport, causando desbordamiento horizontal en móvil. Al aplicar `min-w-0` a los hijos, se permite que `overflow-x-auto` en los `<pre>` funcione correctamente.
+
+---
+
+## Scroll horizontal automático en `<pre>` y `<table>`
+
+La función `marcarScrollables()` en `assets/js/components.js` gestiona el indicador de scroll horizontal tanto para bloques `<pre>` como para tablas. Se ejecuta automáticamente al cargar la página.
+
+### Funcionamiento
+
+1. **Tablas**: busca todos los `<table>` y añade automáticamente las clases `table-scroll` y `overflow-x-auto` a su elemento padre. No es necesario añadir ninguna clase manual en el HTML.
+2. **`<pre>` y `.table-scroll`**: observa estos elementos con un `ResizeObserver` y detecta si tienen contenido más ancho que su contenedor.
+3. Si hay scroll horizontal, añade la clase `.has-scroll` que muestra un degradado en el borde derecho como indicador visual.
+4. Cuando el usuario hace scroll hasta el final, añade `.scrolled-end` que elimina el degradado.
+
+### CSS relacionado (`assets/css/styles.css`)
+
+| Selector | Propósito |
+|----------|-----------|
+| `pre` | Scrollbar fino blanco semitransparente (fondo oscuro) |
+| `.table-scroll` | Scrollbar fino oscuro semitransparente (fondo claro) + `overflow-x-auto` |
+| `.has-scroll` | Degradado `mask-image` en el borde derecho como indicador |
+| `.has-scroll.scrolled-end` | Elimina el degradado al llegar al final del scroll |
+
+### No requiere cambios en el HTML
+
+Las tablas no necesitan wrapper especial ni clases adicionales. El script detecta automáticamente cualquier `<table>` y prepara su contenedor padre para el scroll horizontal.
