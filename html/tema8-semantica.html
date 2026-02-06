@@ -58,34 +58,120 @@
 
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
         <!-- ELEMENTOS SEMÁNTICOS -->
-        <section id="semanticos" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="semanticos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">12</span>Elementos sem&aacute;nticos
             </h2>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;header&gt;</code>: encabezado de p&aacute;gina/secci&oacute;n</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;nav&gt;</code>: navegaci&oacute;n principal</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;main&gt;</code>: contenido principal (&uacute;nico)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;article&gt;</code>: contenido independiente</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;section&gt;</code>: secci&oacute;n tem&aacute;tica</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;aside&gt;</code>: contenido relacionado (sidebar)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;footer&gt;</code>: pie de p&aacute;gina/secci&oacute;n</li>
-            </ul>
-            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
-                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;header&gt;Logo y navegaci&oacute;n&lt;/header&gt;
+            <p class="text-sm mb-3">Etiquetas HTML5 que describen el <strong>rol</strong> del contenido que envuelven, mejorando la accesibilidad, el SEO y la legibilidad del c&oacute;digo.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">&lt;header&gt;</h3>
+                    <p class="text-sm mb-1">Agrupa contenido <strong>introductorio o de navegaci&oacute;n</strong> al inicio de la p&aacute;gina o de una secci&oacute;n. Puede contener logotipos, t&iacute;tulos, barras de b&uacute;squeda o men&uacute;s.</p>
+                    <p class="text-xs text-gray-500 mb-2">Usar cuando: la p&aacute;gina, un &lt;article&gt; o un &lt;section&gt; necesitan una cabecera con t&iacute;tulo o navegaci&oacute;n. Puede haber varios &lt;header&gt; en una p&aacute;gina.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;header&gt;
+  &lt;img src="logo.svg" alt="Logo"&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">&lt;nav&gt;</h3>
+                    <p class="text-sm mb-1">Envuelve un bloque de <strong>enlaces de navegaci&oacute;n</strong> principales del sitio: men&uacute;s, &iacute;ndices, breadcrumbs o paginaci&oacute;n.</p>
+                    <p class="text-xs text-gray-500 mb-2">Usar cuando: tienes un grupo de enlaces cuyo prop&oacute;sito es navegar entre p&aacute;ginas o secciones. No usar para cualquier lista de enlaces (ej. enlaces en un p&aacute;rrafo).</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">&lt;main&gt;</h3>
+                    <p class="text-sm mb-1">Marca el <strong>contenido central y &uacute;nico</strong> de la p&aacute;gina. Excluye cabeceras, pies y barras laterales que se repiten en todas las p&aacute;ginas.</p>
+                    <p class="text-xs text-gray-500 mb-2">Usar cuando: necesitas indicar d&oacute;nde empieza el contenido que diferencia esta p&aacute;gina de las dem&aacute;s. Solo puede haber <strong>uno por documento</strong> y no debe estar anidado dentro de &lt;article&gt;, &lt;aside&gt;, &lt;header&gt; o &lt;footer&gt;.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;main&gt;
+    &lt;!-- Contenido propio de esta p&aacute;gina --&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">&lt;article&gt;</h3>
+                    <p class="text-sm mb-1">Envuelve contenido <strong>aut&oacute;nomo y redistribuible</strong>: tiene sentido por s&iacute; solo fuera del contexto de la p&aacute;gina (podr&iacute;a aparecer en un feed RSS, por ejemplo).</p>
+                    <p class="text-xs text-gray-500 mb-2">Usar cuando: el bloque es una entrada de blog, una noticia, un comentario de usuario, un producto en una tienda o un widget interactivo independiente. Suele llevar su propio &lt;header&gt; y &lt;footer&gt;.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;article&gt;
+  &lt;header&gt;&lt;h2&gt;T&iacute;tulo post&lt;/h2&gt;&lt;/header&gt;
+  &lt;p&gt;Contenido del art&iacute;culo...&lt;/p&gt;
+  &lt;footer&gt;Autor: Ana&lt;/footer&gt;
+&lt;/article&gt;</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">&lt;section&gt;</h3>
+                    <p class="text-sm mb-1">Agrupa contenido <strong>tem&aacute;ticamente relacionado</strong> que forma parte de un todo mayor. A diferencia de &lt;article&gt;, no tiene sentido aislado.</p>
+                    <p class="text-xs text-gray-500 mb-2">Usar cuando: divides una p&aacute;gina o art&iacute;culo en partes l&oacute;gicas (cap&iacute;tulos, pesta&ntilde;as, bloques de un landing). Cada &lt;section&gt; deber&iacute;a tener un encabezado (&lt;h2&gt;-&lt;h6&gt;). No usar como contenedor gen&eacute;rico de estilos (para eso est&aacute; &lt;div&gt;).</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;section&gt;
+  &lt;h2&gt;Caracter&iacute;sticas&lt;/h2&gt;
+  &lt;p&gt;Descripci&oacute;n de features...&lt;/p&gt;
+&lt;/section&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">&lt;aside&gt;</h3>
+                    <p class="text-sm mb-1">Contiene informaci&oacute;n <strong>complementaria o tangencial</strong> al contenido principal: sidebars, bloques de publicidad, glosarios, citas destacadas o enlaces relacionados.</p>
+                    <p class="text-xs text-gray-500 mb-2">Usar cuando: el contenido enriquece la p&aacute;gina pero podr&iacute;a eliminarse sin afectar la comprensi&oacute;n del contenido principal. No es sin&oacute;nimo de "barra lateral" aunque a menudo se use as&iacute;.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;aside&gt;
+  &lt;h3&gt;Art&iacute;culos relacionados&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Otro post&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">&lt;footer&gt;</h3>
+                    <p class="text-sm mb-1">Agrupa informaci&oacute;n de <strong>cierre</strong>: copyright, enlaces legales, datos de contacto, autor o metadatos sobre la secci&oacute;n que lo contiene.</p>
+                    <p class="text-xs text-gray-500 mb-2">Usar cuando: necesitas cerrar la p&aacute;gina, un &lt;article&gt; o un &lt;section&gt; con informaci&oacute;n de contexto. Puede haber varios &lt;footer&gt; en un documento (uno por cada secci&oacute;n que lo necesite).</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;footer&gt;
+  &lt;p&gt;&amp;copy; 2025 Mi Sitio&lt;/p&gt;
+  &lt;nav&gt;
+    &lt;a href="/privacidad"&gt;Privacidad&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/footer&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Estructura t&iacute;pica completa</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;header&gt;
+  &lt;nav&gt;Men&uacute; principal&lt;/nav&gt;
+&lt;/header&gt;
 &lt;main&gt;
-  &lt;article&gt;Contenido principal&lt;/article&gt;
+  &lt;article&gt;
+    &lt;header&gt;&lt;h1&gt;T&iacute;tulo&lt;/h1&gt;&lt;/header&gt;
+    &lt;section&gt;Parte 1...&lt;/section&gt;
+    &lt;section&gt;Parte 2...&lt;/section&gt;
+    &lt;footer&gt;Autor&lt;/footer&gt;
+  &lt;/article&gt;
   &lt;aside&gt;Sidebar&lt;/aside&gt;
 &lt;/main&gt;
-&lt;footer&gt;Copyright&lt;/footer&gt;</pre>
+&lt;footer&gt;&amp;copy; 2025&lt;/footer&gt;</pre>
+                </div>
             </div>
         </section>
 
         <!-- MULTIMEDIA -->
-        <section id="multimedia" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="multimedia" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">13</span>Multimedia
             </h2>
+            <p class="text-sm mb-3">Etiquetas para insertar contenido multimedia nativo en HTML5.</p>
             <ul class="list-disc pl-5 space-y-1 text-sm">
                 <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;video&gt;</code>: insertar v&iacute;deo</li>
                 <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;audio&gt;</code>: insertar audio</li>
@@ -93,8 +179,7 @@
                 <li>Atributos: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">controls</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">autoplay</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">loop</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">muted</code></li>
                 <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;iframe&gt;</code>: incrustar contenido externo (YouTube, mapas)</li>
             </ul>
-            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
-                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;video controls width="300"&gt;
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">&lt;video controls width="300"&gt;
   &lt;source src="video.mp4" type="video/mp4"&gt;
 &lt;/video&gt;
 
@@ -103,7 +188,6 @@
 &lt;/audio&gt;
 
 &lt;iframe src="https://youtube.com/embed/ID"&gt;&lt;/iframe&gt;</pre>
-            </div>
         </section>
     </main>
 
