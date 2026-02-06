@@ -341,11 +341,32 @@ function initComponents() {
     }
 }
 
+/**
+ * Marca los <pre> que tienen scroll horizontal con la clase .has-scroll
+ * para mostrar un indicador visual al usuario
+ */
+function marcarPreScrollables() {
+    const pres = document.querySelectorAll('pre');
+    const observer = new ResizeObserver(() => {
+        pres.forEach(pre => {
+            pre.classList.toggle('has-scroll', pre.scrollWidth > pre.clientWidth + 1);
+        });
+    });
+    pres.forEach(pre => {
+        observer.observe(pre);
+        pre.addEventListener('scroll', () => {
+            const atEnd = pre.scrollLeft + pre.clientWidth >= pre.scrollWidth - 1;
+            pre.classList.toggle('scrolled-end', atEnd);
+        });
+    });
+}
+
 // Auto-inicializar cuando el DOM esté listo
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initComponents);
+    document.addEventListener('DOMContentLoaded', () => { initComponents(); marcarPreScrollables(); });
 } else {
     initComponents();
+    marcarPreScrollables();
 }
 
 // Exportar para uso manual si es necesario
