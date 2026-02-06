@@ -60,13 +60,13 @@
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
 
         <!-- PSEUDO-ELEMENTOS -->
-        <section id="pseudo-elementos" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="pseudo-elementos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">1</span>Pseudo-elementos (::)
             </h2>
             <p class="text-sm mb-3">Permiten estilizar partes espec&iacute;ficas de un elemento. Se escriben con <strong>doble dos puntos (::)</strong>.</p>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">::before y ::after</h3>
                     <p class="text-sm text-gray-600 mb-2">Insertan contenido antes/despu&eacute;s del contenido del elemento. Requieren <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">content</code>.</p>
@@ -93,7 +93,7 @@ p::first-line {
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">::marker</h3>
                     <p class="text-sm text-gray-600 mb-2">Estiliza el marcador de listas (vi&ntilde;etas o n&uacute;meros).</p>
@@ -115,7 +115,7 @@ summary::marker {
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">::placeholder</h3>
                     <p class="text-sm text-gray-600 mb-2">Estiliza el texto placeholder de inputs.</p>
@@ -136,7 +136,7 @@ summary::marker {
         </section>
 
         <!-- PSEUDO-CLASES INTERACTIVAS -->
-        <section id="pseudo-clases-interactivas" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="pseudo-clases-interactivas" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">2</span>Estados interactivos
             </h2>
@@ -172,7 +172,7 @@ form:focus-within {
         </section>
 
         <!-- PSEUDO-CLASES FORMULARIO -->
-        <section id="pseudo-clases-formulario" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="pseudo-clases-formulario" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">3</span>Estados de formulario
             </h2>
@@ -205,7 +205,7 @@ input:required { border-left: 3px solid orange; }</pre>
         </section>
 
         <!-- PSEUDO-CLASES SELECCIÓN -->
-        <section id="pseudo-clases-seleccion" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="pseudo-clases-seleccion" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">4</span>Selecci&oacute;n de elementos
             </h2>
@@ -238,7 +238,7 @@ input:required { border-left: 3px solid orange; }</pre>
         </section>
 
         <!-- PSEUDO-CLASES BÚSQUEDA -->
-        <section id="pseudo-clases-busqueda" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)]">
+        <section id="pseudo-clases-busqueda" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">5</span>B&uacute;squeda y coincidencia
             </h2>

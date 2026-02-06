@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-3">
+            <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
                 <div class="bg-red-50 border border-red-200 p-3 rounded-md">
                     <h4 class="font-bold text-red-700 mb-1">Mal</h4>
                     <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;!-- Sin alt: inaccesible --&gt;
@@ -215,7 +215,7 @@
 
             <!-- Detalle por formato -->
             <div class="space-y-3">
-                <div class="grid md:grid-cols-2 gap-3">
+                <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
                     <div class="bg-blue-50 border border-blue-200 p-3 rounded-md">
                         <h3 class="font-bold text-blue-800 mb-1">JPEG / JPG</h3>
                         <ul class="list-disc pl-5 space-y-1 text-sm">
@@ -237,7 +237,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="grid md:grid-cols-2 gap-3">
+                <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
                     <div class="bg-green-50 border border-green-200 p-3 rounded-md">
                         <h3 class="font-bold text-green-800 mb-1">SVG</h3>
                         <ul class="list-disc pl-5 space-y-1 text-sm">
@@ -260,7 +260,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="grid md:grid-cols-2 gap-3">
+                <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
                     <div class="bg-red-50 border border-red-200 p-3 rounded-md">
                         <h3 class="font-bold text-red-800 mb-1">GIF</h3>
                         <ul class="list-disc pl-5 space-y-1 text-sm">
@@ -307,7 +307,7 @@
                 Es fundamental entender la diferencia entre estos dos tipos de im&aacute;genes para elegir el formato correcto.
             </p>
 
-            <div class="grid md:grid-cols-2 gap-4 mb-3">
+            <div class="grid md:grid-cols-2 gap-4 mb-3 [&>*]:min-w-0">
                 <div class="bg-blue-50 border border-blue-200 p-3 rounded-md">
                     <h3 class="font-bold text-blue-800 mb-2">Rasterizado (mapa de bits)</h3>
                     <p class="text-sm mb-2">Formado por una <strong>cuadr&iacute;cula de p&iacute;xeles</strong>. Cada p&iacute;xel tiene un color.</p>
@@ -398,7 +398,7 @@ Vectorial (SVG) ampliado a 400x400:
                 <p class="text-sm mb-2">
                     El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;picture&gt;</code> permite ofrecer <strong>diferentes formatos</strong> (con fallback) y <strong>diferentes im&aacute;genes seg&uacute;n media queries</strong> (art direction).
                 </p>
-                <div class="grid md:grid-cols-2 gap-3">
+                <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
                     <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
                         <h4 class="font-semibold text-gray-600 mb-2">Fallback de formatos</h4>
                         <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;<span class="text-yellow-300">picture</span>&gt;
@@ -450,7 +450,7 @@ Vectorial (SVG) ampliado a 400x400:
                 El elemento <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;figure&gt;</code> agrupa contenido autoexplicativo (imagen, diagrama, c&oacute;digo...) con su pie de descripci&oacute;n <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;figcaption&gt;</code>. Es sem&aacute;ntico y mejora la accesibilidad.
             </p>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
                     <h3 class="font-semibold text-gray-600 mb-2">C&oacute;digo</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;<span class="text-yellow-300">figure</span>&gt;
@@ -496,7 +496,7 @@ Vectorial (SVG) ampliado a 400x400:
                 Los SVG se pueden incrustar directamente en el HTML. Esto permite <strong>estilizar con CSS</strong> y <strong>manipular con JavaScript</strong> cada parte del gr&aacute;fico.
             </p>
 
-            <div class="grid md:grid-cols-2 gap-3 mb-3">
+            <div class="grid md:grid-cols-2 gap-3 mb-3 [&>*]:min-w-0">
                 <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
                     <h3 class="font-semibold text-gray-600 mb-2">Como &lt;img&gt; (est&aacute;tico)</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- No se puede estilizar con CSS externo --&gt;
@@ -691,7 +691,7 @@ Vectorial (SVG) ampliado a 400x400:
                 <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md">
                     <h3 class="font-semibold text-gray-700 mb-2">Evitar Layout Shift (CLS)</h3>
                     <p class="text-sm mb-2">Si no defines <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">width</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">height</code>, la p&aacute;gina &ldquo;salta&rdquo; cuando la imagen se carga.</p>
-                    <div class="grid md:grid-cols-2 gap-3">
+                    <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
                         <div class="bg-red-50 border border-red-200 p-2 rounded">
                             <h4 class="font-bold text-red-700 mb-1 text-xs">Mal &mdash; causa CLS</h4>
                             <pre class="bg-gray-800 text-gray-100 p-2 rounded text-xs overflow-x-auto">&lt;img src="foto.jpg" alt="Foto"&gt;

@@ -60,7 +60,7 @@
 
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto overflow-x-hidden">
 
-        <section id="custom-properties" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="custom-properties" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">1</span>Custom Properties (Variables CSS)
             </h2>
@@ -80,7 +80,7 @@
                 </ul>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Definición y uso</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Definir variables globales */
@@ -216,7 +216,7 @@ h1 {
                 <p class="text-gray-700 break-words">La <strong>tipograf&iacute;a l&iacute;quida</strong> (fluid typography) es una t&eacute;cnica donde los tama&ntilde;os de fuente escalan proporcionalmente al ancho del viewport, sin saltos bruscos entre breakpoints. Se consigue combinando <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">clamp()</code> con una <strong>escala modular</strong>: un sistema donde cada tama&ntilde;o tipogr&aacute;fico se obtiene multiplicando el anterior por un ratio constante (ej. 1.25), creando una jerarqu&iacute;a visual arm&oacute;nica y matem&aacute;ticamente coherente.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 text-sm">
+            <div class="grid md:grid-cols-2 gap-4 text-sm [&>*]:min-w-0">
                 <div class="min-w-0">
                     <h3 class="font-semibold text-amber-800 mb-2">Concepto de Escala Modular</h3>
                     <p class="text-xs text-gray-600 mb-2">Cada paso se obtiene multiplicando el anterior por un ratio fijo. Ratios comunes:</p>
@@ -304,7 +304,7 @@ h1 {
 
         </section>
 
-        <section id="matematicas" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="matematicas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">5</span>Funciones matemáticas avanzadas
             </h2>
@@ -313,7 +313,7 @@ h1 {
                 <p class="text-gray-700">CSS incorpora funciones matem&aacute;ticas nativas (especificaci&oacute;n CSS Values Level 4) que permiten realizar c&aacute;lculos avanzados <strong>directamente en la hoja de estilos</strong>, sin depender de JavaScript ni preprocesadores. Estas funciones operan con &aacute;ngulos, n&uacute;meros y longitudes CSS, y son &uacute;tiles para layouts circulares, escalas din&aacute;micas, patrones repetitivos y ajustes a rejillas.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4">
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Trigonom&eacute;tricas</h3>
                     <p class="text-xs text-gray-600 mb-2"><code class="bg-gray-100 px-1 font-mono">sin()</code>, <code class="bg-gray-100 px-1 font-mono">cos()</code>, <code class="bg-gray-100 px-1 font-mono">tan()</code> &mdash; Reciben un <code class="bg-gray-100 px-1 font-mono">&lt;angle&gt;</code> (deg, rad, turn) y devuelven un <code class="bg-gray-100 px-1 font-mono">&lt;number&gt;</code> entre -1 y 1. Inversas: <code class="bg-gray-100 px-1 font-mono">asin()</code>, <code class="bg-gray-100 px-1 font-mono">acos()</code>, <code class="bg-gray-100 px-1 font-mono">atan()</code>, <code class="bg-gray-100 px-1 font-mono">atan2(y, x)</code>.</p>
@@ -358,7 +358,7 @@ h1 {
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2 text-sm">Redondeo y Escalonado</h3>
                     <p class="text-xs text-gray-600 mb-2"><code class="bg-gray-100 px-1 font-mono">round(strategy, value, interval)</code> &mdash; redondea <em>value</em> al m&uacute;ltiplo m&aacute;s cercano de <em>interval</em>. Estrategias: <code class="bg-gray-100 px-1 font-mono">nearest</code> (defecto), <code class="bg-gray-100 px-1 font-mono">up</code>, <code class="bg-gray-100 px-1 font-mono">down</code>, <code class="bg-gray-100 px-1 font-mono">to-zero</code>.</p>
@@ -402,7 +402,7 @@ h1 {
 
         </section>
 
-        <section id="at-property" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="at-property" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">6</span>@property (CSS Houdini)
             </h2>
@@ -475,7 +475,7 @@ h1 {
             </div>
         </section>
 
-        <section id="otras-funciones" class="bg-white rounded-lg p-4 shadow w-full">
+        <section id="otras-funciones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">7</span>Otras funciones útiles
             </h2>

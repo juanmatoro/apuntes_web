@@ -99,11 +99,19 @@
 | Sección mitad          | `bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0` |
 | Subsección anidada     | `mt-6 min-w-0`                                                                |
 | Grid 2 cols            | `grid md:grid-cols-2 gap-4 [&>*]:min-w-0`                                     |
+| Grid 2 cols (gap menor)| `grid md:grid-cols-2 gap-3 [&>*]:min-w-0`                                     |
 | Grid 2 cols (más gap)  | `grid md:grid-cols-2 gap-6 [&>*]:min-w-0`                                     |
 | Grid 2 cols + margen   | `grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0`                                |
 | Grid 3 cols            | `grid md:grid-cols-3 gap-4 [&>*]:min-w-0`                                     |
+| Grid 3 cols (gap menor)| `grid md:grid-cols-3 gap-3 [&>*]:min-w-0`                                     |
 | Bloque `<pre>`         | `bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs`            |
 | H2 sección             | `text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3`     |
 | H2 subsección          | `text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3`      |
 | H3                     | `font-semibold text-amber-800 mb-2`                                           |
 | Nota destacada         | `text-sm mb-2 p-2 bg-amber-50 border-l-4 border-amber-500 rounded`           |
+
+---
+
+## OBLIGATORIO: `[&>*]:min-w-0` en TODOS los grid
+
+`[&>*]:min-w-0` es **obligatorio** en cada `div` con clase `grid`. Sin esta clase los hijos del grid mantienen `min-width: auto` (el valor por defecto en CSS Grid), lo que provoca que bloques `<pre>`, tablas o cualquier contenido ancho fuerce al hijo del grid a expandirse más allá del viewport, causando desbordamiento horizontal en móvil. Al aplicar `min-w-0` a los hijos, se permite que `overflow-x-auto` en los `<pre>` funcione correctamente.
