@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 4: Funciones - Apuntes JavaScript</title>
+    <meta name="description" content="Declaraci&oacute;n, par&aacute;metros, scope, closures y this en funciones de JavaScript.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <div data-component="header"></div>
+
+    <!-- BREADCRUMB -->
+    <div data-component="breadcrumb"></div>
+
+    <!-- NAVEGACI&Oacute;N INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+        <a href="#declaracion" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Declaraci&oacute;n</a>
+        <a href="#parametros" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Par&aacute;metros</a>
+        <a href="#scope-closure" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Scope y closure</a>
+        <a href="#this-arrow" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">this y arrow</a>
+        <a href="#buenas-practicas" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Buenas pr&aacute;cticas</a>
+        <a href=\
+      </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- DECLARACION -->
+        <section id="declaracion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Declaraci&oacute;n y expresi&oacute;n
+            </h2>
+            <p class="text-sm mb-3">Las funciones se pueden declarar o asignar a variables como expresiones. Las declaraciones se <strong>elevan</strong> (hoisting), las expresiones no.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Declaraci&oacute;n</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function saludar(nombre) {
+  return `Hola ${nombre}`;
+}
+
+saludar('Ana');</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Expresi&oacute;n / Arrow</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const saludar = function(nombre) {
+  return `Hola ${nombre}`;
+};
+
+const saludar2 = (nombre) =&gt; `Hola ${nombre}`;</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARAMETROS -->
+        <section id="parametros" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>Par&aacute;metros y valores por defecto
+            </h2>
+            <p class="text-sm mb-3">Puedes definir valores por defecto, capturar el resto de argumentos y usar <strong>destructuring</strong>.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Default + rest</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function sumar(a = 0, b = 0) {
+  return a + b;
+}
+
+function total(...nums) {
+  return nums.reduce((acc, n) =&gt; acc + n, 0);
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Destructuring</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function crearUsuario({ nombre, edad }) {
+  return { nombre, edad };
+}
+
+crearUsuario({ nombre: 'Ana', edad: 25 });</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCOPE Y CLOSURE -->
+        <section id="scope-closure" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Scope y closures
+            </h2>
+            <p class="text-sm mb-3">El scope l&eacute;xico determina qu&eacute; variables est&aacute;n disponibles. Un <strong>closure</strong> es una funci&oacute;n que recuerda su entorno.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Scope l&eacute;xico</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nombre = 'Ana';
+
+function saludar() {
+  return `Hola ${nombre}`;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Closure</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function contador() {
+  let n = 0;
+  return () =&gt; ++n;
+}
+
+const inc = contador();
+inc(); // 1
+inc(); // 2</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- THIS Y ARROW -->
+        <section id="this-arrow" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> y funciones flecha
+            </h2>
+            <p class="text-sm mb-3">Las funciones flecha no tienen su propio <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code>; heredan el del contexto exterior.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Funci&oacute;n normal</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const obj = {
+  nombre: 'Ana',
+  saludar() {
+    return this.nombre;
+  }
+};</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Arrow</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const obj = {
+  nombre: 'Ana',
+  saludar: () =&gt; this.nombre // this no es obj
+};</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUENAS PRACTICAS -->
+        <section id="buenas-practicas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">5</span>Buenas pr&aacute;cticas
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Usa nombres verbales: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">getUser</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">createTask</code>.</li>
+                <li>Evita funciones con demasiados par&aacute;metros; prefiere un objeto.</li>
+                <li>Divide l&oacute;gica compleja en funciones peque&ntilde;as y puras.</li>
+            </ul>
+        </section>
+        <!-- RECURSOS -->
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">6</span>Recursos y herramientas
+            </h2>
+            <p class="text-sm mb-4">Referencias y utilidades para trabajar con calidad y eficiencia.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Referencia t&eacute;cnica</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" class="text-yellow-700 hover:underline font-medium block">MDN JavaScript</a>
+                            <span class="text-gray-500">Referencia oficial del lenguaje.</span>
+                        </li>
+                        <li>
+                            <a href="https://javascript.info/" target="_blank" class="text-yellow-700 hover:underline font-medium block">javascript.info</a>
+                            <span class="text-gray-500">Gu&iacute;a completa y ejemplos claros.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Compatibilidad y calidad</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://caniuse.com/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Can I Use</a>
+                            <span class="text-gray-500">Compatibilidad de APIs y features.</span>
+                        </li>
+                        <li>
+                            <a href="https://tc39.es/ecma262/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ECMAScript</a>
+                            <span class="text-gray-500">Especificaci&oacute;n del lenguaje.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Herramientas</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://eslint.org/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ESLint</a>
+                            <span class="text-gray-500">Linter para calidad y consistencia.</span>
+                        </li>
+                        <li>
+                            <a href="https://prettier.io/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Prettier</a>
+                            <span class="text-gray-500">Formateo autom&aacute;tico de c&oacute;digo.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- NAVEGACI&Oacute;N INFERIOR -->
+    <div data-component="footer-nav"></div>
+
+    <!-- FOOTER -->
+    <div data-component="footer"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

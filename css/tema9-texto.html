@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -63,6 +63,7 @@
             <a href="#text-wrap" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Text-wrap</a>
             <a href="#listas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Listas</a>
             <a href="#writing-mode" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Writing mode</a>
+        <a href="#recursos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Recursos</a>
         </div>
     </nav>
 
@@ -257,15 +258,15 @@ ol {
 
 /* Contenido personalizado */
 li::marker {
-    content: "→ ";
+    content: "â†’ ";
 }
 
 /* En summary/details */
 summary::marker {
-    content: "▸ ";
+    content: "â–¸ ";
 }
 details[open] summary::marker {
-    content: "▾ ";
+    content: "â–¾ ";
 }</pre>
         </section>
 
@@ -288,7 +289,7 @@ details[open] summary::marker {
     writing-mode: vertical-lr;    /* Vertical, izquierda a derecha */
 }
 
-/* Uso: texto lateral en diseño */
+/* Uso: texto lateral en diseÃ±o */
 .sidebar-title {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
@@ -297,7 +298,7 @@ details[open] summary::marker {
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">direction y text-orientation</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.rtl {
-    direction: rtl;   /* Derecha a izquierda (árabe, hebreo) */
+    direction: rtl;   /* Derecha a izquierda (Ã¡rabe, hebreo) */
     direction: ltr;   /* Izquierda a derecha (default) */
 }
 
@@ -314,7 +315,57 @@ details[open] summary::marker {
                 <p class="text-xs text-gray-600"><strong>Nota:</strong> Los modos de escritura afectan a las propiedades l&oacute;gicas. Por eso <code class="bg-gray-200 px-1 rounded text-xs">inline-size</code> es mejor que <code class="bg-gray-200 px-1 rounded text-xs">width</code> para sitios multiling&uuml;es.</p>
             </div>
         </section>
+        <!-- RECURSOS -->
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6</span>Recursos y herramientas
+            </h2>
+            <p class="text-sm mb-4">Referencias y utilidades para trabajar CSS con calidad y eficiencia.</p>
 
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-amber-100 rounded-lg p-3 bg-amber-50/30">
+                    <h3 class="font-semibold text-amber-800 mb-2">Referencia t&eacute;cnica</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank" class="text-amber-700 hover:underline font-medium block">MDN Web Docs</a>
+                            <span class="text-gray-500">Documentaci&oacute;n oficial y completa de CSS.</span>
+                        </li>
+                        <li>
+                            <a href="https://web.dev/learn/css/" target="_blank" class="text-amber-700 hover:underline font-medium block">Learn CSS (web.dev)</a>
+                            <span class="text-gray-500">Curso con ejemplos pr&aacute;cticos y buenas pr&aacute;cticas.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-amber-100 rounded-lg p-3 bg-amber-50/30">
+                    <h3 class="font-semibold text-amber-800 mb-2">Compatibilidad</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://caniuse.com/" target="_blank" class="text-amber-700 hover:underline font-medium block">Can I Use</a>
+                            <span class="text-gray-500">Soporte por navegador para propiedades y funciones.</span>
+                        </li>
+                        <li>
+                            <a href="https://stateofcss.com/" target="_blank" class="text-amber-700 hover:underline font-medium block">State of CSS</a>
+                            <span class="text-gray-500">Tendencias y estado actual del ecosistema.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-amber-100 rounded-lg p-3 bg-amber-50/30">
+                    <h3 class="font-semibold text-amber-800 mb-2">Herramientas</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://css-tricks.com/" target="_blank" class="text-amber-700 hover:underline font-medium block">CSS-Tricks</a>
+                            <span class="text-gray-500">Gu&iacute;as visuales y patrones comunes.</span>
+                        </li>
+                        <li>
+                            <a href="https://polypane.app/css-media-query-generator/" target="_blank" class="text-amber-700 hover:underline font-medium block">Media Query Generator</a>
+                            <span class="text-gray-500">Utilidad r&aacute;pida para generar media queries.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
 
     <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
@@ -328,3 +379,4 @@ details[open] summary::marker {
     </footer>
 </body>
 </html>
+

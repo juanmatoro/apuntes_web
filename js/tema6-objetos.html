@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 6: Objetos - Apuntes JavaScript</title>
+    <meta name="description" content="Objetos en JavaScript: propiedades, m&eacute;todos, referencia, destructuring y patrones comunes.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <div data-component="header"></div>
+
+    <!-- BREADCRUMB -->
+    <div data-component="breadcrumb"></div>
+
+    <!-- NAVEGACI&Oacute;N INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+        <a href="#objetos-basico" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">B&aacute;sicos</a>
+        <a href="#propiedades" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Propiedades</a>
+        <a href="#referencia" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Referencia</a>
+        <a href="#destructuring" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Destructuring</a>
+        <a href="#patrones" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Patrones</a>
+        <a href=\
+      </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- OBJETOS BASICOS -->
+        <section id="objetos-basico" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Objetos b&aacute;sicos
+            </h2>
+            <p class="text-sm mb-3">Un objeto es una colecci&oacute;n de pares <strong>clave-valor</strong> que representa una entidad o concepto. Las claves son strings o symbols y los valores pueden ser cualquier tipo.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Ideal para agrupar datos relacionados bajo un mismo nombre.</li>
+                <li>El orden de las propiedades no es lo importante, lo importante es la clave.</li>
+            </ul>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Literal</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const user = {
+  nombre: 'Ana',
+  edad: 25,
+  activo: true
+};</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Acceso</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">user.nombre;      // 'Ana'
+user['edad'];     // 25
+const key = 'activo';
+user[key];        // true</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROPIEDADES -->
+        <section id="propiedades" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>Propiedades y m&eacute;todos
+            </h2>
+            <p class="text-sm mb-3">Las propiedades almacenan datos y los m&eacute;todos encapsulan comportamiento. Un m&eacute;todo es una funci&oacute;n asociada a un objeto que suele usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code>.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> para acceder a otras propiedades del mismo objeto.</li>
+                <li>Las claves din&aacute;micas permiten crear propiedades con valores calculados.</li>
+            </ul>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">M&eacute;todos</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const user = {
+  nombre: 'Ana',
+  saludar() {
+    return `Hola ${this.nombre}`;
+  }
+};</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Claves din&aacute;micas</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const field = 'email';
+const user = {
+  [field]: 'ana@mail.com'
+};</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- REFERENCIA -->
+        <section id="referencia" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Referencia y mutabilidad
+            </h2>
+            <p class="text-sm mb-3">Los objetos se comparan por referencia. Dos objetos con el mismo contenido no son iguales si son referencias distintas.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Asignar un objeto a otra variable copia la referencia, no el contenido.</li>
+                <li>El spread <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">{ ...obj }</code> crea una copia superficial.</li>
+            </ul>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Referencia</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const a = { x: 1 };
+const b = a;
+
+b.x = 2;
+a.x; // 2</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Copia superficial</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const a = { x: 1, y: 2 };
+const b = { ...a };
+
+b.y = 9;
+a.y; // 2</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- DESTRUCTURING -->
+        <section id="destructuring" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Destructuring y rest
+            </h2>
+            <p class="text-sm mb-3">Extrae propiedades en variables de forma concisa. Puedes renombrar, dar valores por defecto y recoger el resto.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Mejora la legibilidad cuando solo necesitas algunas propiedades.</li>
+                <li>El operador rest agrupa las propiedades restantes en un nuevo objeto.</li>
+            </ul>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Destructuring</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const user = { nombre: 'Ana', edad: 25 };
+const { nombre, edad } = user;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Rest</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const { nombre, ...resto } = user;
+resto; // { edad: 25 }</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- PATRONES -->
+        <section id="patrones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">5</span>Patrones de uso
+            </h2>
+            <p class="text-sm mb-3">Los objetos son ideales para representar entidades y pasar configuraci&oacute;n. Ayudan a evitar listas largas de par&aacute;metros.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Modela entidades con propiedades consistentes y predecibles.</li>
+                <li>Pasa opciones como un objeto para extensibilidad.</li>
+            </ul>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Entidad</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const task = {
+  id: 1,
+  title: 'Leer',
+  done: false
+};</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Configuraci&oacute;n</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function init({ host = 'localhost', port = 3000 }) {
+  return `http://${host}:${port}`;
+}</pre>
+                </div>
+            </div>
+        </section>
+        <!-- RECURSOS -->
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">6</span>Recursos y herramientas
+            </h2>
+            <p class="text-sm mb-4">Referencias y utilidades para trabajar con calidad y eficiencia.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Referencia t&eacute;cnica</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" class="text-yellow-700 hover:underline font-medium block">MDN JavaScript</a>
+                            <span class="text-gray-500">Referencia oficial del lenguaje.</span>
+                        </li>
+                        <li>
+                            <a href="https://javascript.info/" target="_blank" class="text-yellow-700 hover:underline font-medium block">javascript.info</a>
+                            <span class="text-gray-500">Gu&iacute;a completa y ejemplos claros.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Compatibilidad y calidad</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://caniuse.com/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Can I Use</a>
+                            <span class="text-gray-500">Compatibilidad de APIs y features.</span>
+                        </li>
+                        <li>
+                            <a href="https://tc39.es/ecma262/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ECMAScript</a>
+                            <span class="text-gray-500">Especificaci&oacute;n del lenguaje.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Herramientas</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://eslint.org/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ESLint</a>
+                            <span class="text-gray-500">Linter para calidad y consistencia.</span>
+                        </li>
+                        <li>
+                            <a href="https://prettier.io/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Prettier</a>
+                            <span class="text-gray-500">Formateo autom&aacute;tico de c&oacute;digo.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- NAVEGACI&Oacute;N INFERIOR -->
+    <div data-component="footer-nav"></div>
+
+    <!-- FOOTER -->
+    <div data-component="footer"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

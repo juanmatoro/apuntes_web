@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 5: Arrays - Apuntes JavaScript</title>
+    <meta name="description" content="Arrays en JavaScript: creaci&oacute;n, acceso, m&eacute;todos mutables e inmutables y uso en proyectos.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <div data-component="header"></div>
+
+    <!-- BREADCRUMB -->
+    <div data-component="breadcrumb"></div>
+
+    <!-- NAVEGACI&Oacute;N INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+        <a href="#arrays-basico" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">B&aacute;sicos</a>
+        <a href="#metodos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">M&eacute;todos</a>
+        <a href="#iteracion" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Iteraci&oacute;n</a>
+        <a href="#patrones" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Patrones</a>
+        <a href=\
+      </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- ARRAYS BASICOS -->
+        <section id="arrays-basico" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Arrays b&aacute;sicos
+            </h2>
+            <p class="text-sm mb-3">Un array es una colecci&oacute;n ordenada de valores. Se accede por &iacute;ndice (desde 0).</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Creaci&oacute;n y acceso</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const colores = ['rojo', 'verde', 'azul'];
+
+colores[0]; // 'rojo'
+colores.length; // 3
+colores.at(-1); // 'azul'</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Array con tipos mixtos</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const data = [1, 'hola', true, { x: 1 }];
+
+Array.isArray(data); // true</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- METODOS -->
+        <section id="metodos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>M&eacute;todos mutables e inmutables
+            </h2>
+            <p class="text-sm mb-3">Los m&eacute;todos <strong>mutables</strong> modifican el array original; los <strong>inmutables</strong> devuelven uno nuevo.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Mutables</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nums = [3, 1, 2];
+nums.push(4);     // [3,1,2,4]
+nums.pop();       // [3,1,2]
+nums.sort();      // [1,2,3]</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Inmutables</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nums = [3, 1, 2];
+const ordenado = nums.toSorted(); // [1,2,3]
+const pares = nums.filter(n => n % 2 === 0);
+const dobles = nums.map(n => n * 2);</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ITERACION -->
+        <section id="iteracion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Iteraci&oacute;n y b&uacute;squeda
+            </h2>
+            <p class="text-sm mb-3">Para recorrer arrays usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for...of</code> o m&eacute;todos como <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">forEach</code>.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">for...of</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const items = ['a', 'b', 'c'];
+for (const item of items) {
+  console.log(item);
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">find / some / every</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nums = [1, 2, 3, 4];
+nums.find(n => n > 2);   // 3
+nums.some(n => n > 3);   // true
+nums.every(n => n > 0);  // true</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- PATRONES -->
+        <section id="patrones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Patrones de uso en proyectos
+            </h2>
+            <p class="text-sm mb-3">En la web, los arrays se usan para renderizar listas, filtrar datos y gestionar estados.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Render de listas</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const tasks = ['A', 'B', 'C'];
+const html = tasks.map(t => `&lt;li&gt;${t}&lt;/li&gt;`).join('');
+list.innerHTML = html;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Ejemplo: Tres en raya</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const board = ['X', '', 'O', '', 'X', '', '', '', 'O'];
+const winner = checkWinner(board);
+
+function checkWinner(cells) {
+  const lines = [
+    [0,1,2],[3,4,5],[6,7,8],
+    [0,3,6],[1,4,7],[2,5,8],
+    [0,4,8],[2,4,6]
+  ];
+  return lines.find(([a, b, c]) =>
+    cells[a] && cells[a] === cells[b] && cells[a] === cells[c]
+  );
+}</pre>
+                </div>
+            </div>
+        </section>
+        <!-- RECURSOS -->
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">5</span>Recursos y herramientas
+            </h2>
+            <p class="text-sm mb-4">Referencias y utilidades para trabajar con calidad y eficiencia.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Referencia t&eacute;cnica</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" class="text-yellow-700 hover:underline font-medium block">MDN JavaScript</a>
+                            <span class="text-gray-500">Referencia oficial del lenguaje.</span>
+                        </li>
+                        <li>
+                            <a href="https://javascript.info/" target="_blank" class="text-yellow-700 hover:underline font-medium block">javascript.info</a>
+                            <span class="text-gray-500">Gu&iacute;a completa y ejemplos claros.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Compatibilidad y calidad</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://caniuse.com/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Can I Use</a>
+                            <span class="text-gray-500">Compatibilidad de APIs y features.</span>
+                        </li>
+                        <li>
+                            <a href="https://tc39.es/ecma262/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ECMAScript</a>
+                            <span class="text-gray-500">Especificaci&oacute;n del lenguaje.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Herramientas</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://eslint.org/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ESLint</a>
+                            <span class="text-gray-500">Linter para calidad y consistencia.</span>
+                        </li>
+                        <li>
+                            <a href="https://prettier.io/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Prettier</a>
+                            <span class="text-gray-500">Formateo autom&aacute;tico de c&oacute;digo.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- NAVEGACI&Oacute;N INFERIOR -->
+    <div data-component="footer-nav"></div>
+
+    <!-- FOOTER -->
+    <div data-component="footer"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

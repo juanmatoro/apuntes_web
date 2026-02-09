@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 7: DOM - Apuntes JavaScript</title>
+    <meta name="description" content="DOM en JavaScript: nodos, acceso, recorrido y manipulaci&oacute;n b&aacute;sica.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <div data-component="header"></div>
+
+    <!-- BREADCRUMB -->
+    <div data-component="breadcrumb"></div>
+
+    <!-- NAVEGACI&Oacute;N INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+        <a href="#dom-intro" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">DOM</a>
+        <a href="#nodos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Nodos</a>
+        <a href="#acceso" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Acceso</a>
+        <a href="#recorrido" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Recorrido</a>
+        <a href="#manipulacion" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Manipulaci&oacute;n</a>
+        <a href=\
+      </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- DOM INTRO -->
+        <section id="dom-intro" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>DOM (Document Object Model)
+            </h2>
+            <p class="text-sm mb-3">El DOM es la representaci&oacute;n en memoria del HTML como un &aacute;rbol de nodos. JavaScript lo usa como interfaz para leer y modificar la p&aacute;gina.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>El navegador parsea HTML y CSS y construye el &aacute;rbol DOM.</li>
+                <li>Los cambios en el DOM se reflejan en pantalla.</li>
+            </ul>
+        </section>
+
+        <!-- NODOS -->
+        <section id="nodos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>Tipos de nodos
+            </h2>
+            <p class="text-sm mb-3">Un documento est&aacute; formado por distintos tipos de nodos. Los m&aacute;s comunes son:</p>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Principales</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Elemento: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ELEMENT_NODE</code></li>
+                        <li>Texto: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">TEXT_NODE</code></li>
+                        <li>Documento: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">DOCUMENT_NODE</code></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Otros</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Atributo: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ATTRIBUTE_NODE</code></li>
+                        <li>Comentario: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">COMMENT_NODE</code></li>
+                        <li>Fragmento: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">DOCUMENT_FRAGMENT_NODE</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACCESO -->
+        <section id="acceso" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Acceso a nodos
+            </h2>
+            <p class="text-sm mb-3">Puedes acceder al DOM con selectores CSS o m&eacute;todos cl&aacute;sicos.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Query</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const el = document.querySelector('.card');
+const all = document.querySelectorAll('li');</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Get</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">document.getElementById('app');
+document.getElementsByClassName('item');
+document.getElementsByTagName('li');</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECORRIDO -->
+        <section id="recorrido" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Recorrido del &aacute;rbol DOM
+            </h2>
+            <p class="text-sm mb-3">Cada nodo tiene referencias para moverte por el &aacute;rbol.</p>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Hijos</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">el.children;
+el.firstElementChild;
+el.lastElementChild;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Padres y hermanos</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">el.parentElement;
+el.nextElementSibling;
+el.previousElementSibling;</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- MANIPULACION -->
+        <section id="manipulacion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">5</span>Creaci&oacute;n y modificaci&oacute;n
+            </h2>
+            <p class="text-sm mb-3">Puedes crear nodos y modificar contenido, atributos y clases.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Crear y a&ntilde;adir</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const li = document.createElement('li');
+li.textContent = 'Nuevo';
+list.appendChild(li);</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Atributos y clases</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">el.setAttribute('data-id', '7');
+el.classList.add('active');
+el.classList.toggle('hidden');</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">innerHTML / textContent</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">title.textContent = 'Hola';
+container.innerHTML = '&lt;strong&gt;OK&lt;/strong&gt;';</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">insertAdjacentHTML</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">card.insertAdjacentHTML('beforeend', '<p>Nuevo</p>');</pre>
+                </div>
+            </div>
+        </section>
+        <!-- RECURSOS -->
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">6</span>Recursos y herramientas
+            </h2>
+            <p class="text-sm mb-4">Referencias y utilidades para trabajar con calidad y eficiencia.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Referencia t&eacute;cnica</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" class="text-yellow-700 hover:underline font-medium block">MDN JavaScript</a>
+                            <span class="text-gray-500">Referencia oficial del lenguaje.</span>
+                        </li>
+                        <li>
+                            <a href="https://javascript.info/" target="_blank" class="text-yellow-700 hover:underline font-medium block">javascript.info</a>
+                            <span class="text-gray-500">Gu&iacute;a completa y ejemplos claros.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Compatibilidad y calidad</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://caniuse.com/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Can I Use</a>
+                            <span class="text-gray-500">Compatibilidad de APIs y features.</span>
+                        </li>
+                        <li>
+                            <a href="https://tc39.es/ecma262/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ECMAScript</a>
+                            <span class="text-gray-500">Especificaci&oacute;n del lenguaje.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Herramientas</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://eslint.org/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ESLint</a>
+                            <span class="text-gray-500">Linter para calidad y consistencia.</span>
+                        </li>
+                        <li>
+                            <a href="https://prettier.io/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Prettier</a>
+                            <span class="text-gray-500">Formateo autom&aacute;tico de c&oacute;digo.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- NAVEGACI&Oacute;N INFERIOR -->
+    <div data-component="footer-nav"></div>
+
+    <!-- FOOTER -->
+    <div data-component="footer"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

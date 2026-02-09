@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -130,7 +130,7 @@
       </div>
     </header>
 
-    <!-- NAVEGACIÓN INTERNA DEL TEMA -->
+    <!-- NAVEGACIÃ“N INTERNA DEL TEMA -->
     <nav
       class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto"
     >
@@ -180,16 +180,17 @@
           class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
           >Padding vs Margin</a
         >
+        <a href="#recursos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Recursos</a>
       </div>
     </nav>
 
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
-      <!-- SEMÁNTICA -->
+      <!-- SEMÃNTICA -->
       <section id="semantica" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
-          <span class="orden">0</span>Estructura Semántica
+          <span class="orden">0</span>Estructura SemÃ¡ntica
         </h2>
         <p class="text-sm mb-4">
           Antes de aplicar Flexbox o Grid, debemos estructurar el contenido con
@@ -208,7 +209,7 @@
                   >&lt;header&gt;</code
                 >
                 <span class="text-gray-600"
-                  >Cabecera del sitio o de una sección (logo, nav).</span
+                  >Cabecera del sitio o de una secciÃ³n (logo, nav).</span
                 >
               </li>
               <li>
@@ -217,7 +218,7 @@
                   >&lt;nav&gt;</code
                 >
                 <span class="text-gray-600"
-                  >Contenedor de enlaces de navegación principal.</span
+                  >Contenedor de enlaces de navegaciÃ³n principal.</span
                 >
               </li>
               <li>
@@ -226,7 +227,7 @@
                   >&lt;main&gt;</code
                 >
                 <span class="text-gray-600"
-                  >Contenido único y principal del documento.</span
+                  >Contenido Ãºnico y principal del documento.</span
                 >
               </li>
               <li>
@@ -244,7 +245,7 @@
                   >&lt;footer&gt;</code
                 >
                 <span class="text-gray-600"
-                  >Pie de página (copyright, contacto, redes).</span
+                  >Pie de pÃ¡gina (copyright, contacto, redes).</span
                 >
               </li>
             </ul>
@@ -252,7 +253,7 @@
 
           <div>
             <h3 class="font-semibold text-amber-800 mb-2">
-              Esquema de Layout Típico
+              Esquema de Layout TÃ­pico
             </h3>
 
             <pre
@@ -282,7 +283,7 @@
           <h2
             class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
           >
-            <span class="orden">0.1</span>Estructura y Altura Automática
+            <span class="orden">0.1</span>Estructura y Altura AutomÃ¡tica
           </h2>
           <p class="text-sm mb-4">
             Para que el layout ocupe siempre el 100% de la altura de la ventana
@@ -302,11 +303,11 @@
                 </li>
                 <li>
                   <strong>Flex-direction: column:</strong> Apila las secciones
-                  semánticas verticalmente.
+                  semÃ¡nticas verticalmente.
                 </li>
                 <li>
                   <strong>Flex-grow: 1:</strong> Aplicado al <code>main</code>,
-                  obliga a esta sección a "estirarse" para rellenar todo el
+                  obliga a esta secciÃ³n a "estirarse" para rellenar todo el
                   espacio sobrante, empujando el footer al final.
                 </li>
               </ul>
@@ -315,8 +316,8 @@
                 class="bg-amber-50 p-3 rounded border-l-4 border-amber-500 text-xs"
               >
                 <strong>Tip:</strong> Usar <code>min-height</code> en lugar de
-                <code>height</code> permite que la página crezca si el contenido
-                supera el tamaño de la pantalla.
+                <code>height</code> permite que la pÃ¡gina crezca si el contenido
+                supera el tamaÃ±o de la pantalla.
               </div>
             </div>
 
@@ -330,7 +331,7 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100dvh; /* Altura dinámica */
+  min-height: 100dvh; /* Altura dinÃ¡mica */
   margin: 0;
 }
 
@@ -339,7 +340,7 @@ main {
   flex-grow: 1;
 }
 
-/* 3. Header y Footer mantienen su tamaño */
+/* 3. Header y Footer mantienen su tamaÃ±o */
 header, footer {
   flex-shrink: 0;
 }</pre
@@ -355,7 +356,7 @@ header, footer {
           </h2>
           <p class="text-sm mb-4">
             El mismo resultado (footer siempre al fondo) se puede lograr con
-            <strong>CSS Grid</strong>, usando filas explícitas y la unidad
+            <strong>CSS Grid</strong>, usando filas explÃ­citas y la unidad
             <code>fr</code> para que el contenido principal ocupe todo el
             espacio disponible.
           </p>
@@ -368,7 +369,7 @@ header, footer {
               <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
                 <li>
                   <strong>Display: grid:</strong> Convierte el
-                  <code>body</code> en un contenedor de cuadrícula.
+                  <code>body</code> en un contenedor de cuadrÃ­cula.
                 </li>
                 <li>
                   <strong>grid-template-rows:</strong> Definimos tres filas:
@@ -378,7 +379,7 @@ header, footer {
                 </li>
                 <li>
                   <strong>Sin flex-grow:</strong> No hace falta asignar
-                  propiedades a los hijos; la definición de filas del
+                  propiedades a los hijos; la definiciÃ³n de filas del
                   contenedor es suficiente.
                 </li>
               </ul>
@@ -388,7 +389,7 @@ header, footer {
               >
                 <strong>Tip:</strong> Con Grid defines la estructura completa
                 en el <strong>contenedor</strong>, mientras que con Flexbox
-                necesitas configurar también los <strong>hijos</strong>
+                necesitas configurar tambiÃ©n los <strong>hijos</strong>
                 (<code>flex-grow</code>).
               </div>
             </div>
@@ -407,15 +408,15 @@ body {
   margin: 0;
 }
 
-/* 2. No necesitamos nada más.
-   - header → fila auto (su contenido)
-   - main   → fila 1fr  (todo el resto)
-   - footer → fila auto (su contenido)
+/* 2. No necesitamos nada mÃ¡s.
+   - header â†’ fila auto (su contenido)
+   - main   â†’ fila 1fr  (todo el resto)
+   - footer â†’ fila auto (su contenido)
 */</pre
               >
 
               <h3 class="font-semibold text-amber-800 mt-4 mb-2">
-                Comparación rápida
+                ComparaciÃ³n rÃ¡pida
               </h3>
               <div class="text-xs space-y-1">
                 <div class="flex gap-2">
@@ -616,10 +617,10 @@ body {
           <h2
             class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
           >
-            <span class="orden">2.1</span>Flexbox: Guía de Propiedades
+            <span class="orden">2.1</span>Flexbox: GuÃ­a de Propiedades
           </h2>
           <p class="text-sm mb-4">
-            Sistema de distribución de espacio basado en un
+            Sistema de distribuciÃ³n de espacio basado en un
             <strong>eje principal</strong> (main axis) y un
             <strong>eje cruzado</strong> (cross axis).
           </p>
@@ -651,10 +652,10 @@ body {
                     >flex-wrap</code
                   >
                   <p class="text-gray-600 text-xs mt-1">
-                    Controla si los ítems saltan a una nueva línea:
+                    Controla si los Ã­tems saltan a una nueva lÃ­nea:
                     <code class="text-amber-700">nowrap</code> (fuerza una
-                    línea), <code class="text-amber-700">wrap</code> (permite
-                    múltiples líneas).
+                    lÃ­nea), <code class="text-amber-700">wrap</code> (permite
+                    mÃºltiples lÃ­neas).
                   </p>
                 </li>
                 <li>
@@ -663,8 +664,8 @@ body {
                     >justify-content</code
                   >
                   <p class="text-gray-600 text-xs mt-1">
-                    Alineación en el <strong>eje principal</strong>. Distribuye
-                    el espacio sobrante entre o alrededor de los ítems.
+                    AlineaciÃ³n en el <strong>eje principal</strong>. Distribuye
+                    el espacio sobrante entre o alrededor de los Ã­tems.
                   </p>
                 </li>
                 <li>
@@ -673,8 +674,8 @@ body {
                     >align-items</code
                   >
                   <p class="text-gray-600 text-xs mt-1">
-                    Alineación en el <strong>eje cruzado</strong> para los ítems
-                    dentro de una sola línea.
+                    AlineaciÃ³n en el <strong>eje cruzado</strong> para los Ã­tems
+                    dentro de una sola lÃ­nea.
                   </p>
                 </li>
                 <li>
@@ -683,7 +684,7 @@ body {
                     >align-content</code
                   >
                   <p class="text-gray-600 text-xs mt-1">
-                    Alineación de las <strong>líneas del grid</strong> (solo
+                    AlineaciÃ³n de las <strong>lÃ­neas del grid</strong> (solo
                     funciona si hay
                     <code class="text-amber-700">flex-wrap: wrap</code>).
                   </p>
@@ -705,7 +706,7 @@ body {
                     >flex-grow</code
                   >
                   <p class="text-gray-600 text-xs mt-1">
-                    Capacidad de un ítem para crecer si hay espacio.
+                    Capacidad de un Ã­tem para crecer si hay espacio.
                     <code class="text-amber-700">0</code> (fijo),
                     <code class="text-amber-700">1</code> (ocupa lo disponible).
                   </p>
@@ -726,8 +727,8 @@ body {
                     >flex-basis</code
                   >
                   <p class="text-gray-600 text-xs mt-1">
-                    Tamaño inicial del ítem antes de distribuir el espacio
-                    restante (reemplaza al width/height según el eje).
+                    TamaÃ±o inicial del Ã­tem antes de distribuir el espacio
+                    restante (reemplaza al width/height segÃºn el eje).
                   </p>
                 </li>
                 <li>
@@ -737,7 +738,7 @@ body {
                   >
                   (Shorthand)
                   <p class="text-gray-600 text-xs mt-1">
-                    Combinación de
+                    CombinaciÃ³n de
                     <code class="text-amber-700">grow | shrink | basis</code>.
                     Ej: <code class="text-amber-700">flex: 1 0 200px;</code>
                   </p>
@@ -750,7 +751,7 @@ body {
                   <p class="text-gray-600 text-xs mt-1">
                     Permite sobreescribir el
                     <code class="text-amber-700">align-items</code> del padre
-                    para un ítem específico.
+                    para un Ã­tem especÃ­fico.
                   </p>
                 </li>
                 <li>
@@ -768,7 +769,7 @@ body {
           </div>
 
           <h3 class="font-semibold text-amber-800 mt-6 mb-2">
-            Implementación Común
+            ImplementaciÃ³n ComÃºn
           </h3>
           <pre
             class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs font-mono"
@@ -787,7 +788,7 @@ body {
 }</pre
           >
           <p class="text-sm mt-4 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
-    <strong>Recurso esencial:</strong> Para una guía visual completa de todas las propiedades, consulta 
+    <strong>Recurso esencial:</strong> Para una guÃ­a visual completa de todas las propiedades, consulta 
     <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener noreferrer" class="text-amber-900 font-bold underline hover:text-amber-700">
         A Complete Guide to Flexbox
     </a> de CSS-Tricks.
@@ -901,29 +902,29 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre
     <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
         <span class="orden">3</span>CSS Grid Layout
     </h2>
-    <p class="text-sm mb-3">Sistema de maquetación bidimensional que permite trabajar con filas y columnas simultáneamente.</p>
+    <p class="text-sm mb-3">Sistema de maquetaciÃ³n bidimensional que permite trabajar con filas y columnas simultÃ¡neamente.</p>
 
     <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
         <div>
-            <h3 class="font-semibold text-amber-800 mb-2">Definición del Contenedor</h3>
-            <p class="text-xs mb-2">Se activa con <code>display: grid</code>. Define la estructura base de la cuadrícula.</p>
+            <h3 class="font-semibold text-amber-800 mb-2">DefiniciÃ³n del Contenedor</h3>
+            <p class="text-xs mb-2">Se activa con <code>display: grid</code>. Define la estructura base de la cuadrÃ­cula.</p>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
     display: grid;
     /* 3 columnas: fija, flexible y flexible */
     grid-template-columns: 200px 1fr 2fr; 
-    /* Filas automáticas */
+    /* Filas automÃ¡ticas */
     grid-template-rows: auto;
     /* Espacio entre celdas */
     gap: 20px; 
 }</pre>
         </div>
         <div>
-            <h3 class="font-semibold text-amber-800 mb-2">Posicionamiento de Ítems</h3>
-            <p class="text-xs mb-2">Los hijos directos se pueden ubicar indicando líneas de inicio y fin.</p>
+            <h3 class="font-semibold text-amber-800 mb-2">Posicionamiento de Ãtems</h3>
+            <p class="text-xs mb-2">Los hijos directos se pueden ubicar indicando lÃ­neas de inicio y fin.</p>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.item-especial {
-    /* Empieza en línea 1, ocupa 2 columnas */
+    /* Empieza en lÃ­nea 1, ocupa 2 columnas */
     grid-column: 1 / 3; 
-    /* También se puede usar span */
+    /* TambiÃ©n se puede usar span */
     grid-row: span 2; 
 }</pre>
         </div>
@@ -931,13 +932,13 @@ grid-template-columns: 1fr 2fr 1fr;    /* 25% 50% 25% */</pre
 
     <section id="grid-avanzado" class="mt-6 min-w-0">
         <h2 class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-            <span class="orden">3.1</span>Funciones y Áreas
+            <span class="orden">3.1</span>Funciones y Ãreas
         </h2>
-        <p class="text-sm mb-4">Herramientas potentes para crear layouts dinámicos y legibles.</p>
+        <p class="text-sm mb-4">Herramientas potentes para crear layouts dinÃ¡micos y legibles.</p>
 
         <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
             <div>
-                <h3 class="font-semibold text-amber-800 mb-2">Funciones Mágicas</h3>
+                <h3 class="font-semibold text-amber-800 mb-2">Funciones MÃ¡gicas</h3>
                 <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* repeat() y minmax() */
 grid-template-columns: repeat(3, 1fr);
 
@@ -959,7 +960,7 @@ grid-template-columns: repeat(
             </div>
         </div>
         <p class="text-sm mt-4 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
-    <strong>Recurso esencial:</strong> Domina la cuadrícula con la guía definitiva: 
+    <strong>Recurso esencial:</strong> Domina la cuadrÃ­cula con la guÃ­a definitiva: 
     <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank" rel="noopener noreferrer" class="text-amber-900 font-bold underline hover:text-amber-700">
         A Complete Guide to CSS Grid
     </a> de CSS-Tricks.
@@ -967,14 +968,14 @@ grid-template-columns: repeat(
     </section>
     <section id="grid-alignment" class="mt-6 min-w-0">
         <h2 class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-            <span class="orden">3.2</span>Alineación de Contenidos
+            <span class="orden">3.2</span>AlineaciÃ³n de Contenidos
         </h2>
-        <p class="text-sm mb-4">Grid permite controlar la posición de los elementos tanto a nivel de contenedor (tracks) como de celda individual (ítems).</p>
+        <p class="text-sm mb-4">Grid permite controlar la posiciÃ³n de los elementos tanto a nivel de contenedor (tracks) como de celda individual (Ã­tems).</p>
 
         <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
             <div>
-                <h3 class="font-semibold text-amber-800 mb-2">Alineación del Contenedor (Tracks)</h3>
-                <p class="text-xs mb-2 text-gray-600">Distribuye el espacio sobrante si el grid es más pequeño que su contenedor.</p>
+                <h3 class="font-semibold text-amber-800 mb-2">AlineaciÃ³n del Contenedor (Tracks)</h3>
+                <p class="text-xs mb-2 text-gray-600">Distribuye el espacio sobrante si el grid es mÃ¡s pequeÃ±o que su contenedor.</p>
                 <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
     display: grid;
     /* Eje Horizontal (X) */
@@ -988,16 +989,16 @@ grid-template-columns: repeat(
 }</pre>
             </div>
             <div>
-                <h3 class="font-semibold text-amber-800 mb-2">Alineación de Ítems (Celdas)</h3>
-                <p class="text-xs mb-2 text-gray-600">Controla la posición del contenido dentro de su propia área asignada.</p>
+                <h3 class="font-semibold text-amber-800 mb-2">AlineaciÃ³n de Ãtems (Celdas)</h3>
+                <p class="text-xs mb-2 text-gray-600">Controla la posiciÃ³n del contenido dentro de su propia Ã¡rea asignada.</p>
                 <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
-    /* Alineación global para todos los hijos */
+    /* AlineaciÃ³n global para todos los hijos */
     justify-items: start | center | end | stretch;
     align-items: start | center | end | stretch;
 }
 
 .item-especifico {
-    /* Sobrescribir solo para este ítem */
+    /* Sobrescribir solo para este Ã­tem */
     justify-self: center;
     align-self: end;
 }</pre>
@@ -1007,17 +1008,17 @@ grid-template-columns: repeat(
         <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
             <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
                 <h4 class="text-xs font-bold text-amber-900 uppercase mb-1">Eje Inline (Justify)</h4>
-                <p class="text-[11px] text-amber-800">Alineación a lo largo de la fila (horizontal en español).</p>
+                <p class="text-[11px] text-amber-800">AlineaciÃ³n a lo largo de la fila (horizontal en espaÃ±ol).</p>
             </div>
             <div class="p-3 bg-gray-50 border-l-4 border-gray-400 rounded">
                 <h4 class="text-xs font-bold text-gray-900 uppercase mb-1">Eje Block (Align)</h4>
-                <p class="text-[11px] text-gray-800">Alineación a lo largo de la columna (vertical en español).</p>
+                <p class="text-[11px] text-gray-800">AlineaciÃ³n a lo largo de la columna (vertical en espaÃ±ol).</p>
             </div>
         </div>
     </section>
 
     <p class="text-sm mt-4 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
-        <strong>Tip:</strong> Usa la unidad <code>fr</code> (fractional unit) para ocupar una fracción del espacio libre disponible, lo que facilita el diseño fluido sin cálculos manuales.
+        <strong>Tip:</strong> Usa la unidad <code>fr</code> (fractional unit) para ocupar una fracciÃ³n del espacio libre disponible, lo que facilita el diseÃ±o fluido sin cÃ¡lculos manuales.
     </p>
 </section>
       <!-- SUBGRID -->
@@ -1196,11 +1197,11 @@ grid-template-columns: repeat(
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
-          <span class="orden">7</span>Flexbox vs Grid: ¿Cuándo usar cada uno?
+          <span class="orden">7</span>Flexbox vs Grid: Â¿CuÃ¡ndo usar cada uno?
         </h2>
         <p class="text-sm mb-4">
-          No son tecnologías rivales, sino complementarias. La clave está en
-          entender qué problema resuelve mejor cada una.
+          No son tecnologÃ­as rivales, sino complementarias. La clave estÃ¡ en
+          entender quÃ© problema resuelve mejor cada una.
         </p>
 
         <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
@@ -1209,19 +1210,19 @@ grid-template-columns: repeat(
             <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
               <li>
                 <strong>Layout unidimensional:</strong> Necesitas distribuir
-                elementos en una sola dirección (fila O columna).
+                elementos en una sola direcciÃ³n (fila O columna).
               </li>
               <li>
-                <strong>Componentes pequeños:</strong> Navbars, grupos de
+                <strong>Componentes pequeÃ±os:</strong> Navbars, grupos de
                 botones, cards internas, toolbars, footers simples.
               </li>
               <li>
-                <strong>El contenido manda:</strong> No sabes cuántos elementos
-                habrá y quieres que se adapten al espacio disponible.
+                <strong>El contenido manda:</strong> No sabes cuÃ¡ntos elementos
+                habrÃ¡ y quieres que se adapten al espacio disponible.
               </li>
               <li>
-                <strong>Alineación baseline:</strong> Necesitas alinear textos
-                por su línea base (exclusivo de Flexbox).
+                <strong>AlineaciÃ³n baseline:</strong> Necesitas alinear textos
+                por su lÃ­nea base (exclusivo de Flexbox).
               </li>
               <li>
                 <strong>Auto-margins:</strong> Quieres empujar elementos con
@@ -1251,11 +1252,11 @@ grid-template-columns: repeat(
                 Y columnas a la vez.
               </li>
               <li>
-                <strong>Estructura de página:</strong> Header, sidebar, main,
+                <strong>Estructura de pÃ¡gina:</strong> Header, sidebar, main,
                 footer... el layout general del sitio.
               </li>
               <li>
-                <strong>El diseño manda:</strong> Ya tienes la estructura en
+                <strong>El diseÃ±o manda:</strong> Ya tienes la estructura en
                 mente y quieres que los elementos encajen en ella.
               </li>
               <li>
@@ -1269,7 +1270,7 @@ grid-template-columns: repeat(
             </ul>
             <pre
               class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3"
->/* Layout de página completo */
+>/* Layout de pÃ¡gina completo */
 .page {
     display: grid;
     grid-template-areas:
@@ -1279,7 +1280,7 @@ grid-template-columns: repeat(
     grid-template-columns: 250px 1fr;
 }
 
-/* Galería responsiva */
+/* GalerÃ­a responsiva */
 .gallery {
     display: grid;
     grid-template-columns:
@@ -1294,20 +1295,20 @@ grid-template-columns: repeat(
           <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
             <p class="text-xs text-amber-900">
               <strong>1. Grid para layout, Flex para componentes.</strong>
-              Usa Grid para la macro-estructura de la página y Flexbox para la
-              micro-alineación dentro de los componentes.
+              Usa Grid para la macro-estructura de la pÃ¡gina y Flexbox para la
+              micro-alineaciÃ³n dentro de los componentes.
             </p>
           </div>
           <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
             <p class="text-xs text-amber-900">
               <strong>2. Si pones width a todos los flex items, usa Grid.</strong>
               Cuando empiezas a fijar anchos en todos los hijos de un flex container,
-              es señal de que necesitas la estructura de Grid.
+              es seÃ±al de que necesitas la estructura de Grid.
             </p>
           </div>
           <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
             <p class="text-xs text-amber-900">
-              <strong>3. Contenido vs Diseño.</strong>
+              <strong>3. Contenido vs DiseÃ±o.</strong>
               Flex deja que el contenido determine el layout.
               Grid impone una estructura donde el contenido encaja.
             </p>
@@ -1315,7 +1316,7 @@ grid-template-columns: repeat(
           <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
             <p class="text-xs text-amber-900">
               <strong>4. Pueden (y deben) combinarse.</strong>
-              Un layout Grid de página puede contener componentes con Flex internamente.
+              Un layout Grid de pÃ¡gina puede contener componentes con Flex internamente.
               No es uno u otro, es uno Y otro.
             </p>
           </div>
@@ -1326,11 +1327,11 @@ grid-template-columns: repeat(
           <div class="text-xs space-y-1">
             <div class="flex gap-2 items-center">
               <span class="bg-blue-200 text-blue-900 px-2 py-0.5 rounded font-mono w-14 text-center shrink-0">Flex</span>
-              <span class="text-gray-600">Unidimensional &bull; Contenido dicta el tamaño &bull; Componentes &bull; Alineación</span>
+              <span class="text-gray-600">Unidimensional &bull; Contenido dicta el tamaÃ±o &bull; Componentes &bull; AlineaciÃ³n</span>
             </div>
             <div class="flex gap-2 items-center">
               <span class="bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-mono w-14 text-center shrink-0">Grid</span>
-              <span class="text-gray-600">Bidimensional &bull; Diseño dicta la estructura &bull; Páginas &bull; Layout</span>
+              <span class="text-gray-600">Bidimensional &bull; DiseÃ±o dicta la estructura &bull; PÃ¡ginas &bull; Layout</span>
             </div>
           </div>
         </div>
@@ -1352,10 +1353,10 @@ grid-template-columns: repeat(
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
-          <span class="orden">8</span>Padding vs Margin: ¿Cuál usar?
+          <span class="orden">8</span>Padding vs Margin: Â¿CuÃ¡l usar?
         </h2>
         <p class="text-sm mb-4">
-          Aunque ambos crean "espacio en blanco", su comportamiento técnico es
+          Aunque ambos crean "espacio en blanco", su comportamiento tÃ©cnico es
           radicalmente opuesto.
         </p>
 
@@ -1369,7 +1370,7 @@ grid-template-columns: repeat(
                 </h4>
                 <p class="text-xs text-blue-800 mt-1">
                   Es el espacio <strong>dentro</strong> del borde. Afecta al
-                  tamaño del elemento y muestra el color de fondo.
+                  tamaÃ±o del elemento y muestra el color de fondo.
                 </p>
               </div>
               <div
@@ -1387,11 +1388,11 @@ grid-template-columns: repeat(
 
             <ul class="list-disc pl-5 mt-4 space-y-2 text-sm text-gray-700">
               <li>
-                <strong>Clickability:</strong> El padding aumenta el área
+                <strong>Clickability:</strong> El padding aumenta el Ã¡rea
                 clickable (en botones); el margin no.
               </li>
               <li>
-                <strong>Colapso:</strong> Los márgenes verticales pueden
+                <strong>Colapso:</strong> Los mÃ¡rgenes verticales pueden
                 "colapsar" (unirse), el padding nunca.
               </li>
               <li>
@@ -1399,9 +1400,9 @@ grid-template-columns: repeat(
                 padding, pero no en el margin.
               </li>
               <li>
-                <strong>Regla de oro de componentes:</strong> Un componente bien diseñado debería
-                definir su propio Padding (cómo se ve por dentro), pero lo ideal
-                es que el Margin (cómo se separa de otros) lo defina el
+                <strong>Regla de oro de componentes:</strong> Un componente bien diseÃ±ado deberÃ­a
+                definir su propio Padding (cÃ³mo se ve por dentro), pero lo ideal
+                es que el Margin (cÃ³mo se separa de otros) lo defina el
                 contenedor padre o una clase de utilidad, para que el componente
                 sea reutilizable en cualquier sitio.
               </li>
@@ -1414,21 +1415,21 @@ grid-template-columns: repeat(
             <pre
               class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs font-mono leading-relaxed"
             >
-/* ✅ BIEN: Separación externa */
+/* âœ… BIEN: SeparaciÃ³n externa */
 .card {
     margin-bottom: 20px; 
 }
 
-/* ✅ BIEN: Respiración interna */
+/* âœ… BIEN: RespiraciÃ³n interna */
 .card-content {
     padding: 1.5rem;
     background-color: white;
 }
 
-/* ❌ MAL: Usar margin para separar el 
+/* âŒ MAL: Usar margin para separar el 
    texto del borde de su propio contenedor */
 .bad-card p {
-    margin: 20px; /* El fondo se cortará antes del texto */
+    margin: 20px; /* El fondo se cortarÃ¡ antes del texto */
 }</pre
             >
             <div class="mt-3 p-3 bg-amber-50 rounded border border-amber-200">
@@ -1443,6 +1444,57 @@ grid-template-columns: repeat(
           </div>
         </div>
       </section>
+        <!-- RECURSOS -->
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">9</span>Recursos y herramientas
+            </h2>
+            <p class="text-sm mb-4">Referencias y utilidades para trabajar CSS con calidad y eficiencia.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-amber-100 rounded-lg p-3 bg-amber-50/30">
+                    <h3 class="font-semibold text-amber-800 mb-2">Referencia t&eacute;cnica</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank" class="text-amber-700 hover:underline font-medium block">MDN Web Docs</a>
+                            <span class="text-gray-500">Documentaci&oacute;n oficial y completa de CSS.</span>
+                        </li>
+                        <li>
+                            <a href="https://web.dev/learn/css/" target="_blank" class="text-amber-700 hover:underline font-medium block">Learn CSS (web.dev)</a>
+                            <span class="text-gray-500">Curso con ejemplos pr&aacute;cticos y buenas pr&aacute;cticas.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-amber-100 rounded-lg p-3 bg-amber-50/30">
+                    <h3 class="font-semibold text-amber-800 mb-2">Compatibilidad</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://caniuse.com/" target="_blank" class="text-amber-700 hover:underline font-medium block">Can I Use</a>
+                            <span class="text-gray-500">Soporte por navegador para propiedades y funciones.</span>
+                        </li>
+                        <li>
+                            <a href="https://stateofcss.com/" target="_blank" class="text-amber-700 hover:underline font-medium block">State of CSS</a>
+                            <span class="text-gray-500">Tendencias y estado actual del ecosistema.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-amber-100 rounded-lg p-3 bg-amber-50/30">
+                    <h3 class="font-semibold text-amber-800 mb-2">Herramientas</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://css-tricks.com/" target="_blank" class="text-amber-700 hover:underline font-medium block">CSS-Tricks</a>
+                            <span class="text-gray-500">Gu&iacute;as visuales y patrones comunes.</span>
+                        </li>
+                        <li>
+                            <a href="https://polypane.app/css-media-query-generator/" target="_blank" class="text-amber-700 hover:underline font-medium block">Media Query Generator</a>
+                            <span class="text-gray-500">Utilidad r&aacute;pida para generar media queries.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
 
     <nav
@@ -1472,3 +1524,4 @@ grid-template-columns: repeat(
     </footer>
   </body>
 </html>
+

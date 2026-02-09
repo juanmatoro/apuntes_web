@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +45,7 @@
         </div>
     </header>
 
-    <!-- NAVEGACIÓN INTERNA DEL TEMA -->
+    <!-- NAVEGACIÃ“N INTERNA DEL TEMA -->
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
@@ -54,6 +54,7 @@
             <a href="#pseudo-clases-formulario" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Estados de formulario</a>
             <a href="#pseudo-clases-seleccion" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Selecci&oacute;n de elementos</a>
             <a href="#pseudo-clases-busqueda" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">B&uacute;squeda</a>
+        <a href="#recursos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Recursos</a>
         </div>
     </nav>
 
@@ -76,7 +77,7 @@
     color: gray;
 }
 .external-link::after {
-    content: " ↗";
+    content: " â†—";
 }</pre>
                 </div>
                 <div>
@@ -102,7 +103,7 @@ p::first-line {
     font-weight: bold;
 }
 summary::marker {
-    content: "▶ ";
+    content: "â–¶ ";
 }</pre>
                 </div>
                 <div>
@@ -204,7 +205,7 @@ input:invalid { border-color: red; }
 input:required { border-left: 3px solid orange; }</pre>
         </section>
 
-        <!-- PSEUDO-CLASES SELECCIÓN -->
+        <!-- PSEUDO-CLASES SELECCIÃ“N -->
         <section id="pseudo-clases-seleccion" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">4</span>Selecci&oacute;n de elementos
@@ -237,7 +238,7 @@ input:required { border-left: 3px solid orange; }</pre>
 :nth-child(2 of .active) /* 2do elemento .active */</pre>
         </section>
 
-        <!-- PSEUDO-CLASES BÚSQUEDA -->
+        <!-- PSEUDO-CLASES BÃšSQUEDA -->
         <section id="pseudo-clases-busqueda" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">5</span>B&uacute;squeda y coincidencia
@@ -277,7 +278,57 @@ label:has(+ input:required)::after {
             <p class="text-sm text-gray-600 mb-2">Elementos sin contenido (ni texto ni hijos).</p>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">p:empty { display: none; }</pre>
         </section>
+        <!-- RECURSOS -->
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6</span>Recursos y herramientas
+            </h2>
+            <p class="text-sm mb-4">Referencias y utilidades para trabajar CSS con calidad y eficiencia.</p>
 
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-amber-100 rounded-lg p-3 bg-amber-50/30">
+                    <h3 class="font-semibold text-amber-800 mb-2">Referencia t&eacute;cnica</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank" class="text-amber-700 hover:underline font-medium block">MDN Web Docs</a>
+                            <span class="text-gray-500">Documentaci&oacute;n oficial y completa de CSS.</span>
+                        </li>
+                        <li>
+                            <a href="https://web.dev/learn/css/" target="_blank" class="text-amber-700 hover:underline font-medium block">Learn CSS (web.dev)</a>
+                            <span class="text-gray-500">Curso con ejemplos pr&aacute;cticos y buenas pr&aacute;cticas.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-amber-100 rounded-lg p-3 bg-amber-50/30">
+                    <h3 class="font-semibold text-amber-800 mb-2">Compatibilidad</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://caniuse.com/" target="_blank" class="text-amber-700 hover:underline font-medium block">Can I Use</a>
+                            <span class="text-gray-500">Soporte por navegador para propiedades y funciones.</span>
+                        </li>
+                        <li>
+                            <a href="https://stateofcss.com/" target="_blank" class="text-amber-700 hover:underline font-medium block">State of CSS</a>
+                            <span class="text-gray-500">Tendencias y estado actual del ecosistema.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-amber-100 rounded-lg p-3 bg-amber-50/30">
+                    <h3 class="font-semibold text-amber-800 mb-2">Herramientas</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://css-tricks.com/" target="_blank" class="text-amber-700 hover:underline font-medium block">CSS-Tricks</a>
+                            <span class="text-gray-500">Gu&iacute;as visuales y patrones comunes.</span>
+                        </li>
+                        <li>
+                            <a href="https://polypane.app/css-media-query-generator/" target="_blank" class="text-amber-700 hover:underline font-medium block">Media Query Generator</a>
+                            <span class="text-gray-500">Utilidad r&aacute;pida para generar media queries.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
 
     <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
@@ -291,3 +342,4 @@ label:has(+ input:required)::after {
     </footer>
 </body>
 </html>
+
