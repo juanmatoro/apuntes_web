@@ -171,6 +171,11 @@
           >Multi-column</a
         >
         <a
+          href="#flex-vs-grid"
+          class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
+          >Flex vs Grid</a
+        >
+        <a
           href="#spacing-logic"
           class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200"
           >Padding vs Margin</a
@@ -1186,11 +1191,168 @@ grid-template-columns: repeat(
           </div>
         </div>
       </section>
+      <!-- FLEX VS GRID -->
+      <section id="flex-vs-grid" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+        <h2
+          class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+        >
+          <span class="orden">7</span>Flexbox vs Grid: ¿Cuándo usar cada uno?
+        </h2>
+        <p class="text-sm mb-4">
+          No son tecnologías rivales, sino complementarias. La clave está en
+          entender qué problema resuelve mejor cada una.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">Usa Flexbox cuando...</h3>
+            <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+              <li>
+                <strong>Layout unidimensional:</strong> Necesitas distribuir
+                elementos en una sola dirección (fila O columna).
+              </li>
+              <li>
+                <strong>Componentes pequeños:</strong> Navbars, grupos de
+                botones, cards internas, toolbars, footers simples.
+              </li>
+              <li>
+                <strong>El contenido manda:</strong> No sabes cuántos elementos
+                habrá y quieres que se adapten al espacio disponible.
+              </li>
+              <li>
+                <strong>Alineación baseline:</strong> Necesitas alinear textos
+                por su línea base (exclusivo de Flexbox).
+              </li>
+              <li>
+                <strong>Auto-margins:</strong> Quieres empujar elementos con
+                <code>margin-left: auto</code> o similar.
+              </li>
+            </ul>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3"
+>/* Navbar: una fila de elementos */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Grupo de botones */
+.btn-group {
+    display: flex;
+    gap: 0.5rem;
+}</pre>
+          </div>
+          <div>
+            <h3 class="font-semibold text-amber-800 mb-2">Usa Grid cuando...</h3>
+            <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+              <li>
+                <strong>Layout bidimensional:</strong> Necesitas controlar filas
+                Y columnas a la vez.
+              </li>
+              <li>
+                <strong>Estructura de página:</strong> Header, sidebar, main,
+                footer... el layout general del sitio.
+              </li>
+              <li>
+                <strong>El diseño manda:</strong> Ya tienes la estructura en
+                mente y quieres que los elementos encajen en ella.
+              </li>
+              <li>
+                <strong>Elementos superpuestos:</strong> Necesitas que elementos
+                compartan celdas del grid (overlap).
+              </li>
+              <li>
+                <strong>Consistencia entre filas:</strong> Si al hacer wrap con
+                Flex los elementos se desalinean, Grid mantiene las columnas.
+              </li>
+            </ul>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3"
+>/* Layout de página completo */
+.page {
+    display: grid;
+    grid-template-areas:
+        "header  header"
+        "sidebar main"
+        "footer  footer";
+    grid-template-columns: 250px 1fr;
+}
+
+/* Galería responsiva */
+.gallery {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}</pre>
+          </div>
+        </div>
+
+        <h3 class="font-semibold text-amber-800 mt-6 mb-3">Reglas de Oro (CSS-Tricks)</h3>
+        <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+          <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
+            <p class="text-xs text-amber-900">
+              <strong>1. Grid para layout, Flex para componentes.</strong>
+              Usa Grid para la macro-estructura de la página y Flexbox para la
+              micro-alineación dentro de los componentes.
+            </p>
+          </div>
+          <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
+            <p class="text-xs text-amber-900">
+              <strong>2. Si pones width a todos los flex items, usa Grid.</strong>
+              Cuando empiezas a fijar anchos en todos los hijos de un flex container,
+              es señal de que necesitas la estructura de Grid.
+            </p>
+          </div>
+          <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
+            <p class="text-xs text-amber-900">
+              <strong>3. Contenido vs Diseño.</strong>
+              Flex deja que el contenido determine el layout.
+              Grid impone una estructura donde el contenido encaja.
+            </p>
+          </div>
+          <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
+            <p class="text-xs text-amber-900">
+              <strong>4. Pueden (y deben) combinarse.</strong>
+              Un layout Grid de página puede contener componentes con Flex internamente.
+              No es uno u otro, es uno Y otro.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 bg-gray-50 border border-dashed border-gray-300 rounded">
+          <h4 class="text-xs font-bold text-gray-700 uppercase mb-2">Resumen Visual</h4>
+          <div class="text-xs space-y-1">
+            <div class="flex gap-2 items-center">
+              <span class="bg-blue-200 text-blue-900 px-2 py-0.5 rounded font-mono w-14 text-center shrink-0">Flex</span>
+              <span class="text-gray-600">Unidimensional &bull; Contenido dicta el tamaño &bull; Componentes &bull; Alineación</span>
+            </div>
+            <div class="flex gap-2 items-center">
+              <span class="bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-mono w-14 text-center shrink-0">Grid</span>
+              <span class="text-gray-600">Bidimensional &bull; Diseño dicta la estructura &bull; Páginas &bull; Layout</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-sm mt-4 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
+          <strong>Fuente:</strong> Basado en
+          <a href="https://css-tricks.com/quick-whats-the-difference-between-flexbox-and-grid/" target="_blank" rel="noopener noreferrer" class="text-amber-900 font-bold underline hover:text-amber-700">
+            What's the Difference Between Flexbox and Grid?</a>,
+          <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener noreferrer" class="text-amber-900 font-bold underline hover:text-amber-700">
+            A Complete Guide to Flexbox</a> y
+          <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank" rel="noopener noreferrer" class="text-amber-900 font-bold underline hover:text-amber-700">
+            A Complete Guide to CSS Grid</a>
+          de CSS-Tricks.
+        </p>
+      </section>
+
+      <!-- PADDING VS MARGIN -->
       <section id="spacing-logic" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
         <h2
           class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
         >
-          <span class="orden">7</span>Padding vs Margin: ¿Cuál usar?
+          <span class="orden">8</span>Padding vs Margin: ¿Cuál usar?
         </h2>
         <p class="text-sm mb-4">
           Aunque ambos crean "espacio en blanco", su comportamiento técnico es
