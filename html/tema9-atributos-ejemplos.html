@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tema 6: Tablas - Apuntes HTML</title>
+    <title>Ejemplos Tema 9: Atributos Globales y Buenas Pr&aacute;cticas - Apuntes HTML</title>
+    <meta name="description" content="Ejemplos pr&aacute;cticos del Tema 9 de HTML: atributos globales y data-*.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" type="image/png" href="../favicon.ico">
@@ -16,7 +17,7 @@
             <a href="../index.html#html" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
                 <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">HTML</span>
             </a>
-            <h1 class="flex-1 text-lg font-semibold truncate">Tema 6: Tablas</h1>
+            <h1 class="flex-1 text-lg font-semibold truncate">Ejemplos Tema 9: Atributos Globales y Buenas Pr&aacute;cticas</h1>
             <div class="relative tema-dropdown">
                 <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
                     <span>Temas</span>
@@ -31,10 +32,10 @@
                     <a href="tema3-enlaces.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">3. Enlaces</a>
                     <a href="tema4-imagenes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">4. Im&aacute;genes</a>
                     <a href="tema5-listas.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">5. Listas</a>
-                    <a href="tema6-tablas.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">6. Tablas</a>
+                    <a href="tema6-tablas.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Tablas</a>
                     <a href="tema7-formularios.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. Formularios</a>
                     <a href="tema8-semantica.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Sem&aacute;ntica HTML5</a>
-                    <a href="tema9-atributos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. Atributos globales</a>
+                    <a href="tema9-atributos.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">9. Atributos globales</a>
                     <a href="tema10-accesibilidad.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Accesibilidad</a>
                     <a href="tema11-seo.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. SEO</a>
                     <a href="tema12-seo-ia.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. SEO para IA</a>
@@ -47,60 +48,43 @@
     </header>
 
     <div data-component="breadcrumb"></div>
-    
-    <div class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
-        <a href="tema6-tablas-ejemplos.html" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-amber-900 text-white rounded hover:bg-amber-800 no-underline">
-            Ver ejemplos del tema
-        </a>
-    </div>
-<main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
-        <!-- TABLAS -->
-        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">id y class</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+        <section id="id-class" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">9</span>Tablas
+                <span class="orden">1</span>id y class
             </h2>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;table&gt;</code>: contenedor de la tabla</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;thead&gt;</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;tbody&gt;</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;tfoot&gt;</code>: secciones</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;tr&gt;</code>: fila (table row)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;th&gt;</code>: celda de encabezado</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;td&gt;</code>: celda de datos</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">colspan</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">rowspan</code>: combinar celdas</li>
-            </ul>
-            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
-                <table class="w-full border-collapse text-sm">
-                    <thead>
-                        <tr>
-                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Producto</th>
-                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Precio</th>
-                            <th class="bg-amber-900 text-white border border-gray-300 px-3 py-1.5 text-left">Stock</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="border border-gray-300 px-3 py-1.5">Laptop</td>
-                            <td class="border border-gray-300 px-3 py-1.5">999&euro;</td>
-                            <td class="border border-gray-300 px-3 py-1.5">15</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="border border-gray-300 px-3 py-1.5">Mouse</td>
-                            <td class="border border-gray-300 px-3 py-1.5">25&euro;</td>
-                            <td class="border border-gray-300 px-3 py-1.5">50</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;div id="hero" class="card destacado"&gt;...&lt;/div&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                <div class="border border-amber-200 rounded p-2 text-sm">#hero .card.destacado</div> New-Section
+                </div>
             </div>
         </section>
+
     </main>
 
-    <div data-component="footer-nav"></div>
-    <div data-component="footer"></div>
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema9-atributos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Volver al tema</a>
+        <span class="w-36"></span>
+        <span class="w-36"></span>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes HTML &mdash; Ejemplos Tema 9</p>
+    </footer>
 
     <script src="../assets/js/components.js"></script>
 </body>
 </html>
-
-
-
-
-

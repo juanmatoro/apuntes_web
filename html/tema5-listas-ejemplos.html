@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos Tema 5: Listas y Contenedores - Apuntes HTML</title>
+    <meta name="description" content="Ejemplos pr&aacute;cticos del Tema 5 de HTML: listas, anidaci&oacute;n y contenedores.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+            <a href="../index.html#html" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
+                <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">HTML</span>
+            </a>
+            <h1 class="flex-1 text-lg font-semibold truncate">Ejemplos Tema 5: Listas y Contenedores</h1>
+            <div class="relative tema-dropdown">
+                <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
+                    <span>Temas</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden">
+                    <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas HTML</div>
+                    <a href="tema1-estructura.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">1. Estructura b&aacute;sica</a>
+                    <a href="tema2-texto.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Formato de texto</a>
+                    <a href="tema3-enlaces.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">3. Enlaces</a>
+                    <a href="tema4-imagenes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">4. Im&aacute;genes</a>
+                    <a href="tema5-listas.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">5. Listas</a>
+                    <a href="tema6-tablas.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Tablas</a>
+                    <a href="tema7-formularios.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. Formularios</a>
+                    <a href="tema8-semantica.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Sem&aacute;ntica HTML5</a>
+                    <a href="tema9-atributos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. Atributos globales</a>
+                    <a href="tema10-accesibilidad.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Accesibilidad</a>
+                    <a href="tema11-seo.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. SEO</a>
+                    <a href="tema12-seo-ia.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. SEO para IA</a>
+                    <div class="border-t border-gray-100 mt-2 pt-2">
+                        <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div data-component="breadcrumb"></div>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#ul" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Lista no ordenada</a>
+            <a href="#ol" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Lista ordenada</a>
+            <a href="#dl" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Lista de definiciones</a>
+            <a href="#anidada" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Anidaci&oacute;n</a>
+            <a href="#contenedores" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Div y Span</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+        <section id="ul" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Lista no ordenada
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                    <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md text-sm">
+                        <ul class="list-disc pl-5">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ol" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Lista ordenada
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;ol&gt;
+  &lt;li&gt;Planificar&lt;/li&gt;
+  &lt;li&gt;Dise&ntilde;ar&lt;/li&gt;
+  &lt;li&gt;Desarrollar&lt;/li&gt;
+&lt;/ol&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                    <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md text-sm">
+                        <ol class="list-decimal pl-5">
+                            <li>Planificar</li>
+                            <li>Dise&ntilde;ar</li>
+                            <li>Desarrollar</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dl" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Lista de definiciones
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;Estructura&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Dise&ntilde;o&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                    <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md text-sm">
+                        <dl>
+                            <dt class="font-semibold">HTML</dt>
+                            <dd class="mb-2">Estructura</dd>
+                            <dt class="font-semibold">CSS</dt>
+                            <dd>Dise&ntilde;o</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="anidada" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Listas anidadas
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;ul&gt;
+  &lt;li&gt;Frontend
+    &lt;ul&gt;
+      &lt;li&gt;HTML&lt;/li&gt;
+      &lt;li&gt;CSS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Backend&lt;/li&gt;
+&lt;/ul&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                    <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md text-sm">
+                        <ul class="list-disc pl-5">
+                            <li>Frontend
+                                <ul class="list-disc pl-5">
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                </ul>
+                            </li>
+                            <li>Backend</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contenedores" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>Div y Span (contenedores)
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;div class="card"&gt;
+  &lt;h3&gt;T&iacute;tulo&lt;/h3&gt;
+  &lt;p&gt;Contenido dentro de un bloque.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Texto con un &lt;span&gt;detalle&lt;/span&gt; inline.&lt;/p&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                    <div class="bg-gray-50 border border-dashed border-gray-300 p-3 rounded-md text-sm space-y-2">
+                        <div class="border border-amber-200 rounded p-2">
+                            <h3 class="font-semibold">T&iacute;tulo</h3>
+                            <p>Contenido dentro de un bloque.</p>
+                        </div>
+                        <p>Texto con un <span class="bg-amber-100 px-1 rounded">detalle</span> inline.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema5-listas.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Volver al tema</a>
+        <span class="w-36"></span>
+        <span class="w-36"></span>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes HTML &mdash; Ejemplos Tema 5</p>
+    </footer>
+
+    <script src="../assets/js/components.js"></script>
+</body>
+</html>

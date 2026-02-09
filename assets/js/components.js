@@ -236,7 +236,8 @@ function generarBreadcrumb(info) {
     const nav = document.createElement('nav');
     nav.className = 'bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto';
 
-    let html = `<a href="${basePath}index.html" class="text-amber-900 no-underline hover:underline">Índice</a>`;
+    const indexHref = info ? `${basePath}${info.config.carpeta}/index.html` : `${basePath}index.html`;
+    let html = `<a href="${indexHref}" class="text-amber-900 no-underline hover:underline">Índice</a>`;
 
     if (info) {
         html += `
