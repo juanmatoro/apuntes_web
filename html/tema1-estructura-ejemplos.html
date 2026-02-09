@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tema 1: Estructura b&aacute;sica y Metadatos - Apuntes HTML</title>
+    <title>Ejemplos Tema 1: Estructura b&aacute;sica y Metadatos - Apuntes HTML</title>
+    <meta name="description" content="Ejemplos pr&aacute;cticos del Tema 1 de HTML: estructura b&aacute;sica y metadatos.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" type="image/png" href="../favicon.ico">
@@ -16,7 +17,7 @@
             <a href="../index.html#html" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
                 <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">HTML</span>
             </a>
-            <h1 class="flex-1 text-lg font-semibold truncate">Tema 1: Estructura b&aacute;sica y Metadatos</h1>
+            <h1 class="flex-1 text-lg font-semibold truncate">Ejemplos Tema 1: Estructura b&aacute;sica y Metadatos</h1>
             <div class="relative tema-dropdown">
                 <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
                     <span>Temas</span>
@@ -51,76 +52,92 @@
         <span class="text-gray-400 mx-1">&rsaquo;</span>
         HTML
         <span class="text-gray-400 mx-1">&rsaquo;</span>
-        Tema 1
+        Ejemplos Tema 1
     </nav>
 
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
-            <a href="#estructura-basica" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Estructura b&aacute;sica</a>
+            <a href="#estructura" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Estructura</a>
             <a href="#metadatos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Metadatos</a>
         </div>
     </nav>
 
-    <div class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
-        <a href="tema1-estructura-ejemplos.html" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-amber-900 text-white rounded hover:bg-amber-800 no-underline">
-            Ver ejemplos del tema
-        </a>
-    </div>
-
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
-        <!-- ESTRUCTURA BÁSICA -->
-        <section id="estructura-basica" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+
+        <!-- ESTRUCTURA -->
+        <section id="estructura" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">1</span>Estructura b&aacute;sica de HTML
+                <span class="orden">1</span>Estructura b&aacute;sica
             </h2>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li>Todo documento HTML comienza con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;!DOCTYPE html&gt;</code> (declara HTML5)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;html&gt;</code>: elemento ra&iacute;z que contiene todo el documento</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;head&gt;</code>: metadatos, t&iacute;tulo, enlaces a CSS/JS (no visible)</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;body&gt;</code>: contenido visible de la p&aacute;gina</li>
-            </ul>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
+            <p class="text-sm mb-3">Ejemplo m&iacute;nimo de documento HTML5 con estructura correcta.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
 &lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Mi p&aacute;gina&lt;/title&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Mi p&aacute;gina&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;!-- Contenido aqu&iacute; --&gt;
+  &lt;header&gt;Logo&lt;/header&gt;
+  &lt;main&gt;Contenido&lt;/main&gt;
+  &lt;footer&gt;Footer&lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                    <div class="border border-dashed border-amber-200 rounded-md p-3 bg-amber-50/30">
+                        <div class="bg-white border border-amber-200 rounded p-2 text-xs text-center">Header</div>
+                        <div class="bg-white border border-amber-200 rounded p-4 text-xs text-center my-2">Main</div>
+                        <div class="bg-white border border-amber-200 rounded p-2 text-xs text-center">Footer</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- METADATOS -->
         <section id="metadatos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">2</span>Metadatos (head)
+                <span class="orden">2</span>Metadatos esenciales
             </h2>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;meta charset="UTF-8"&gt;</code>: codificaci&oacute;n de caracteres</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;meta name="viewport"&gt;</code>: responsive en m&oacute;viles</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;title&gt;</code>: t&iacute;tulo en la pesta&ntilde;a del navegador</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;link&gt;</code>: enlaza CSS externos</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;script&gt;</code>: enlaza o incluye JavaScript</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">&lt;meta name="description"&gt;</code>: SEO</li>
-            </ul>
-            <div class="bg-gray-50 border border-dashed border-gray-300 p-3 mt-3 rounded-md">
-                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;link rel="stylesheet" href="estilos.css"&gt;
-&lt;script src="app.js"&gt;&lt;/script&gt;</pre>
+            <p class="text-sm mb-3">Ejemplo de metadatos imprescindibles para SEO y responsive.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Mi p&aacute;gina&lt;/title&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;Resumen de la p&aacute;gina&quot;&gt;
+&lt;/head&gt;</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Notas</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><strong>viewport</strong> evita escalado incorrecto en m&oacute;viles.</li>
+                        <li><strong>description</strong> mejora el snippet en buscadores.</li>
+                        <li><strong>title</strong> debe ser &uacute;nico y descriptivo.</li>
+                    </ul>
+                </div>
             </div>
         </section>
+
     </main>
 
     <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
-        <span class="w-36"></span>
+        <a href="tema1-estructura.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Volver al tema</a>
         <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al &iacute;ndice</a>
-        <a href="tema2-texto.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 2 &rarr;</a>
+        <span class="w-36"></span>
     </nav>
 
     <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
-        <p>Apuntes HTML &mdash; Tema 1 de 11</p>
+        <p>Apuntes HTML &mdash; Ejemplos Tema 1</p>
     </footer>
 </body>
 </html>
