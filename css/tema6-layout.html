@@ -342,6 +342,89 @@ header, footer {
             </div>
           </div>
         </section>
+        <section id="layout-grid" class="mt-6 min-w-0">
+          <h2
+            class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"
+          >
+            <span class="orden">0.2</span>El mismo Layout con Grid
+          </h2>
+          <p class="text-sm mb-4">
+            El mismo resultado (footer siempre al fondo) se puede lograr con
+            <strong>CSS Grid</strong>, usando filas explícitas y la unidad
+            <code>fr</code> para que el contenido principal ocupe todo el
+            espacio disponible.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
+            <div class="space-y-3">
+              <h3 class="font-semibold text-amber-800 mb-2">
+                Sticky Footer con Grid
+              </h3>
+              <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                <li>
+                  <strong>Display: grid:</strong> Convierte el
+                  <code>body</code> en un contenedor de cuadrícula.
+                </li>
+                <li>
+                  <strong>grid-template-rows:</strong> Definimos tres filas:
+                  <code>auto</code> para header y footer (se ajustan a su
+                  contenido) y <code>1fr</code> para el main (ocupa todo el
+                  espacio restante).
+                </li>
+                <li>
+                  <strong>Sin flex-grow:</strong> No hace falta asignar
+                  propiedades a los hijos; la definición de filas del
+                  contenedor es suficiente.
+                </li>
+              </ul>
+
+              <div
+                class="bg-amber-50 p-3 rounded border-l-4 border-amber-500 text-xs"
+              >
+                <strong>Tip:</strong> Con Grid defines la estructura completa
+                en el <strong>contenedor</strong>, mientras que con Flexbox
+                necesitas configurar también los <strong>hijos</strong>
+                (<code>flex-grow</code>).
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-amber-800 mb-2">CSS Necesario</h3>
+
+              <pre
+                class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs font-mono leading-relaxed"
+              >
+/* 1. Contenedor grid con 3 filas */
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+  margin: 0;
+}
+
+/* 2. No necesitamos nada más.
+   - header → fila auto (su contenido)
+   - main   → fila 1fr  (todo el resto)
+   - footer → fila auto (su contenido)
+*/</pre
+              >
+
+              <h3 class="font-semibold text-amber-800 mt-4 mb-2">
+                Comparación rápida
+              </h3>
+              <div class="text-xs space-y-1">
+                <div class="flex gap-2">
+                  <span class="bg-gray-200 text-gray-700 px-2 py-0.5 rounded font-mono w-16 text-center">Flex</span>
+                  <span class="text-gray-600">Configuras padre <strong>+</strong> hijos (<code>flex-grow: 1</code>)</span>
+                </div>
+                <div class="flex gap-2">
+                  <span class="bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-mono w-16 text-center">Grid</span>
+                  <span class="text-gray-600">Solo configuras el padre (<code>grid-template-rows</code>)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
 
       <!-- DISPLAY -->
@@ -876,6 +959,56 @@ grid-template-columns: repeat(
         A Complete Guide to CSS Grid
     </a> de CSS-Tricks.
 </p>
+    </section>
+    <section id="grid-alignment" class="mt-6 min-w-0">
+        <h2 class="text-l font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+            <span class="orden">3.2</span>Alineación de Contenidos
+        </h2>
+        <p class="text-sm mb-4">Grid permite controlar la posición de los elementos tanto a nivel de contenedor (tracks) como de celda individual (ítems).</p>
+
+        <div class="grid md:grid-cols-2 gap-6 [&>*]:min-w-0">
+            <div>
+                <h3 class="font-semibold text-amber-800 mb-2">Alineación del Contenedor (Tracks)</h3>
+                <p class="text-xs mb-2 text-gray-600">Distribuye el espacio sobrante si el grid es más pequeño que su contenedor.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
+    display: grid;
+    /* Eje Horizontal (X) */
+    justify-content: start | center | end | space-between;
+    
+    /* Eje Vertical (Y) */
+    align-content: start | center | end | space-around;
+
+    /* Atajo: place-content: [align] [justify] */
+    place-content: center space-between;
+}</pre>
+            </div>
+            <div>
+                <h3 class="font-semibold text-amber-800 mb-2">Alineación de Ítems (Celdas)</h3>
+                <p class="text-xs mb-2 text-gray-600">Controla la posición del contenido dentro de su propia área asignada.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.container {
+    /* Alineación global para todos los hijos */
+    justify-items: start | center | end | stretch;
+    align-items: start | center | end | stretch;
+}
+
+.item-especifico {
+    /* Sobrescribir solo para este ítem */
+    justify-self: center;
+    align-self: end;
+}</pre>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
+            <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
+                <h4 class="text-xs font-bold text-amber-900 uppercase mb-1">Eje Inline (Justify)</h4>
+                <p class="text-[11px] text-amber-800">Alineación a lo largo de la fila (horizontal en español).</p>
+            </div>
+            <div class="p-3 bg-gray-50 border-l-4 border-gray-400 rounded">
+                <h4 class="text-xs font-bold text-gray-900 uppercase mb-1">Eje Block (Align)</h4>
+                <p class="text-[11px] text-gray-800">Alineación a lo largo de la columna (vertical en español).</p>
+            </div>
+        </div>
     </section>
 
     <p class="text-sm mt-4 p-2 bg-amber-50 border-l-4 border-amber-500 rounded">
