@@ -33,7 +33,10 @@
             padding: 6px 12px;
             border-radius: 999px;
             display: inline-block;
-            transform: rotate(-8deg) translateY(4px);
+            transition: transform 300ms ease;
+        }
+        .demo-badge:hover {
+            transform: rotate(8deg) translateY(4px);
         }
         @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
@@ -64,32 +67,36 @@
             padding: 12px;
             background: #fffaf3;
         }
+        .demo-scroll-wrapper {
+            timeline-scope: --scroll-box;
+        }
         .demo-scroll-box {
             height: 140px;
             overflow: auto;
             border-radius: 12px;
             border: 1px solid #fde68a;
             background: #fff7ed;
-            scroll-timeline-name: --demo-scroll;
-            scroll-timeline-axis: block;
+            scroll-timeline-name: --scroll-box;
         }
         .demo-scroll-track {
             height: 6px;
             background: #fde68a;
             border-radius: 999px;
-            overflow: hidden;
-            margin-bottom: 10px;
+            overflow: clip;
+            margin-bottom: 8px;
         }
         .demo-scroll-content {
-            padding: 12px;
+            padding: 12px 12px 16px 12px;
             min-height: 360px;
         }
         .demo-scroll-bar {
             height: 100%;
             background: #f59e0b;
             width: 25%;
-            animation: fill-from-25 linear;
-            animation-timeline: --demo-scroll;
+            animation-name: fill-from-25;
+            animation-duration: auto;
+            animation-timing-function: linear;
+            animation-timeline: --scroll-box;
             animation-range: 0% 100%;
         }
     </style>
@@ -179,6 +186,9 @@
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.demo-badge {
+    transition: transform 300ms ease;
+}
+.demo-badge:hover {
     transform: rotate(-8deg) translateY(4px);
 }</pre>
                 </div>
@@ -186,7 +196,7 @@
                     <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
                     <div class="demo-card">
                         <span class="demo-badge text-xs">-30%</span>
-                        <span class="ml-2 text-xs text-gray-700">Sello inclinado sobre una tarjeta.</span>
+                        <span class="ml-2 text-xs text-gray-700">Pasa el cursor para inclinar el sello.</span>
                     </div>
                 </div>
             </div>
@@ -229,19 +239,23 @@
     from { width: 25%; }
     to { width: 100%; }
 }
-.demo-scroll-box {
-    scroll-timeline-name: --demo-scroll;
-    scroll-timeline-axis: block;
+.wrapper {
+    timeline-scope: --scroll-box;
+}
+.scroll-box {
+    scroll-timeline-name: --scroll-box;
 }
 .reading-bar {
-    animation: fill-from-25 linear;
-    animation-timeline: --demo-scroll;
+    animation-name: fill-from-25;
+    animation-duration: auto;
+    animation-timing-function: linear;
+    animation-timeline: --scroll-box;
     animation-range: 0% 100%;
 }</pre>
                 </div>
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
-                    <div class="demo-card">
+                    <div class="demo-card demo-scroll-wrapper">
                         <div class="demo-scroll-track">
                             <div class="demo-scroll-bar"></div>
                         </div>
