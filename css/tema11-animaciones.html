@@ -94,6 +94,14 @@
     background: blue;
     transform: scale(1.05);
 }</pre>
+                    <h4 class="font-semibold text-amber-800 mt-3 mb-2 text-sm">Definici&oacute;n de cada propiedad</h4>
+                    <ul class="list-disc pl-5 text-xs text-gray-600">
+                        <li><strong>transition-property:</strong> define qu&eacute; propiedades cambian de forma gradual. Solo las que indiques (o <code>all</code>) se animan.</li>
+                        <li><strong>transition-duration:</strong> tiempo que tarda la transici&oacute;n en completarse, desde el valor inicial al final.</li>
+                        <li><strong>transition-timing-function:</strong> curva de velocidad del movimiento (c&oacute;mo acelera y desacelera).</li>
+                        <li><strong>transition-delay:</strong> espera antes de comenzar la transici&oacute;n (no afecta a la duraci&oacute;n).</li>
+                        <li><strong>transition (atajo):</strong> combina propiedad, duraci&oacute;n, funci&oacute;n y delay. Puedes encadenar varias transiciones separadas por comas.</li>
+                    </ul>
                 </div>
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Timing functions</h3>
@@ -109,6 +117,16 @@
 
     /* Steps (discreto) */
     steps(4, end);</pre>
+                    <h4 class="font-semibold text-amber-800 mt-3 mb-2 text-sm">Qu&eacute; hace cada valor</h4>
+                    <ul class="list-disc pl-5 text-xs text-gray-600">
+                        <li><strong>ease:</strong> aceleraci&oacute;n suave al inicio y desaceleraci&oacute;n al final; es el valor por defecto.</li>
+                        <li><strong>linear:</strong> mantiene la misma velocidad todo el tiempo (sin aceleraciones).</li>
+                        <li><strong>ease-in:</strong> empieza lento y va acelerando hacia el final.</li>
+                        <li><strong>ease-out:</strong> arranca r&aacute;pido y termina lento.</li>
+                        <li><strong>ease-in-out:</strong> lento al inicio y al final, m&aacute;s r&aacute;pido en el centro.</li>
+                        <li><strong>cubic-bezier(...):</strong> curva personalizada con 4 puntos de control para ajustar el ritmo con exactitud.</li>
+                        <li><strong>steps(n, end/start):</strong> movimiento a saltos en <code>n</code> pasos; &uacute;til para contadores o sprites.</li>
+                    </ul>
                 </div>
             </div>
 
@@ -119,6 +137,7 @@
                 <li><strong>Otras:</strong> color, background-color, border-color, box-shadow, filter</li>
                 <li><strong>Evitar:</strong> width, height, margin (causan reflow)</li>
             </ul>
+
         </section>
 
         <!-- TRANSFORMACIONES -->
@@ -184,6 +203,7 @@
     transform-style: flat | preserve-3d;  /* Para 3D anidado */
     backface-visibility: visible | hidden;  /* Cara trasera */
 }</pre>
+
         </section>
 
         <!-- ANIMACIONES -->
@@ -240,6 +260,7 @@
         transition-duration: 0.01ms !important;
     }
 }</pre>
+
         </section>
 
         <!-- SCROLL ANIMATIONS -->
@@ -302,6 +323,7 @@
     animation: progress linear;
     animation-timeline: --my-timeline;
 }</pre>
+
         </section>
 
         <!-- VIEW TRANSITIONS -->
@@ -371,6 +393,7 @@ dialog {
         transform: translateY(-20px);
     }
 }</pre>
+
         </section>
         <!-- RECURSOS -->
         <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">

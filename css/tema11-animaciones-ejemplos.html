@@ -8,6 +8,91 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" type="image/png" href="../favicon.ico">
+    <style>
+        .demo-card {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 12px;
+            padding: 14px;
+        }
+        .demo-btn {
+            background: #f59e0b;
+            color: #ffffff;
+            padding: 10px 16px;
+            border-radius: 10px;
+            display: inline-block;
+            transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+        .demo-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+        .demo-badge {
+            background: #10b981;
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 999px;
+            display: inline-block;
+            transform: rotate(-8deg) translateY(4px);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            70% { transform: scale(1.15); opacity: 0.6; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fill-from-25 {
+            from { width: 25%; }
+            to { width: 100%; }
+        }
+        .demo-ping {
+            background: #3b82f6;
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 999px;
+            display: inline-block;
+            animation: pulse 1.2s ease-in-out infinite;
+        }
+        .demo-bar {
+            height: 6px;
+            background: #f59e0b;
+            border-radius: 999px;
+            width: 0%;
+        }
+        .demo-frame {
+            border: 1px dashed #f59e0b;
+            border-radius: 12px;
+            padding: 12px;
+            background: #fffaf3;
+        }
+        .demo-scroll-box {
+            height: 140px;
+            overflow: auto;
+            border-radius: 12px;
+            border: 1px solid #fde68a;
+            background: #fff7ed;
+            scroll-timeline-name: --demo-scroll;
+            scroll-timeline-axis: block;
+        }
+        .demo-scroll-track {
+            height: 6px;
+            background: #fde68a;
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .demo-scroll-content {
+            padding: 12px;
+            min-height: 360px;
+        }
+        .demo-scroll-bar {
+            height: 100%;
+            background: #f59e0b;
+            width: 25%;
+            animation: fill-from-25 linear;
+            animation-timeline: --demo-scroll;
+            animation-range: 0% 100%;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
 
@@ -52,7 +137,11 @@
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
-            <a href="#" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Transiciones</a>
+            <a href="#transition" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Transiciones</a>
+            <a href="#transform" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Transformaciones</a>
+            <a href="#animations" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Animaciones</a>
+            <a href="#scroll" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Scroll-linked</a>
+            <a href="#view" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">View transitions</a>
         </div>
     </nav>
 
@@ -64,12 +153,143 @@
             <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.btn { transition: transform .2s ease; }
-.btn:hover { transform: translateY(-2px); }</pre>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.demo-btn {
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.demo-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}</pre>
                 </div>
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
-                <div class="text-xs text-gray-500">Feedback al pasar.</div> New-Section
+                    <div class="demo-card flex items-center justify-between gap-3">
+                        <span class="text-xs text-gray-700">Pasa el cursor para ver el cambio.</span>
+                        <a class="demo-btn text-xs" href="#">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="transform" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Transformaciones
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.demo-badge {
+    transform: rotate(-8deg) translateY(4px);
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                    <div class="demo-card">
+                        <span class="demo-badge text-xs">-30%</span>
+                        <span class="ml-2 text-xs text-gray-700">Sello inclinado sobre una tarjeta.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="animations" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Animaciones
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    70% { transform: scale(1.15); opacity: 0.6; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.demo-ping {
+    animation: pulse 1.2s ease-in-out infinite;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                    <div class="demo-card">
+                        <span class="demo-ping text-xs">Nuevo</span>
+                        <span class="ml-2 text-xs text-gray-700">Indicador con pulso suave.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="scroll" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Scroll-linked animations
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">@keyframes fill-from-25 {
+    from { width: 25%; }
+    to { width: 100%; }
+}
+.demo-scroll-box {
+    scroll-timeline-name: --demo-scroll;
+    scroll-timeline-axis: block;
+}
+.reading-bar {
+    animation: fill-from-25 linear;
+    animation-timeline: --demo-scroll;
+    animation-range: 0% 100%;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                    <div class="demo-card">
+                        <div class="demo-scroll-track">
+                            <div class="demo-scroll-bar"></div>
+                        </div>
+                        <div class="demo-scroll-box">
+                            <div class="demo-scroll-content">
+                                <p class="text-xs text-gray-700">Despl&aacute;zate dentro de esta caja para ver c&oacute;mo se rellena la barra superior.</p>
+                                <p class="text-xs text-gray-600 mt-3">Contenido de relleno para forzar el scroll. Sigue bajando...</p>
+                                <p class="text-xs text-gray-600 mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed.</p>
+                                <p class="text-xs text-gray-600 mt-3">Morbi feugiat, leo a varius consequat, risus ligula aliquam erat.</p>
+                                <p class="text-xs text-gray-600 mt-3">Curabitur vitae justo nec ipsum feugiat facilisis.</p>
+                                <p class="text-xs text-gray-600 mt-3">Fin del contenido.</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-700 mt-2">La barra avanza con el scroll (soporte seg&uacute;n navegador).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="view" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>View Transitions API
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">.hero { view-transition-name: hero; }
+.hero-title { view-transition-name: title; }
+
+::view-transition-old(hero) {
+    animation: fade-out 200ms ease;
+}
+::view-transition-new(hero) {
+    animation: fade-in 200ms ease;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
+                    <div class="demo-frame">
+                        <div class="demo-card flex items-center gap-3">
+                            <div class="w-10 h-10 rounded bg-amber-200"></div>
+                            <div>
+                                <p class="text-xs font-semibold text-amber-900">Ofertas</p>
+                                <p class="text-xs text-gray-600">Transici&oacute;n entre p&aacute;ginas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">Se aprecia al navegar entre vistas con soporte compatible.</p>
                 </div>
             </div>
         </section>
