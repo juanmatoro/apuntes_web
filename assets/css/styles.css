@@ -79,6 +79,26 @@
     display: block;
 }
 
+/* ── NavegaciÃ³n interna dentro del header ── */
+header .internal-nav {
+    background: transparent;
+    border: 0;
+}
+
+header .internal-nav p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+header .internal-nav a {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+header .internal-nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
 /* Scrollbar del dropdown */
 .tema-dropdown-menu::-webkit-scrollbar {
     width: 6px;

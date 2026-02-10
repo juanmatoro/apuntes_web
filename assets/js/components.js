@@ -305,6 +305,27 @@ function generarFooter(info) {
 }
 
 /**
+ * Mueve la navegaciÃ³n interna ("En este tema") al header si existe
+ */
+function moverNavInternaAlHeader() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    const navs = Array.from(document.querySelectorAll('nav'));
+    const interna = navs.find(n => {
+        const label = n.querySelector('p');
+        return label && label.textContent.toLowerCase().includes('en este tema');
+    });
+
+    if (!interna) return;
+
+    interna.classList.add('internal-nav');
+    interna.classList.remove('bg-white', 'border-b', 'border-gray-200');
+
+    header.appendChild(interna);
+}
+
+/**
  * Inicializa los componentes en la página
  * Busca elementos con data-component y los reemplaza
  */
@@ -340,6 +361,8 @@ function initComponents() {
         const footer = generarFooter(info);
         footerPlaceholder.replaceWith(footer);
     }
+
+    moverNavInternaAlHeader();
 }
 
 /**
