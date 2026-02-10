@@ -45,7 +45,7 @@
         </div>
     </header>
 
-    <!-- NAVEGACIÃ“N INTERNA DEL TEMA -->
+    <!-- NAVEGACIÓN INTERNA DEL TEMA -->
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
@@ -67,7 +67,7 @@
     </div>
 <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto overflow-x-hidden">
 
-        <!-- COLORES BÃSICOS -->
+        <!-- COLORES BÁSICOS -->
         <section id="colores-basicos" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">1</span>Colores b&aacute;sicos
@@ -223,19 +223,19 @@ progress {
             </h2>
 
             <h3 class="font-semibold text-amber-800 mb-2">Absolutas</h3>
-            <p class="text-xs text-gray-600 mb-2 italic">Mantienen su tamaÃ±o independientemente de la configuraciÃ³n de la pantalla.</p>
+            <p class="text-xs text-gray-600 mb-2 italic">Mantienen su tamaño independientemente de la configuración de la pantalla.</p>
             <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">px</code> - **PÃ­xeles:** La unidad base digital (1px = 1 punto en pantalla).</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">cm</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">mm</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">in</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">pt</code> - **FÃ­sicas:** Ideales para @media print.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">px</code> - **Píxeles:** La unidad base digital (1px = 1 punto en pantalla).</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">cm</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">mm</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">in</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">pt</code> - **Físicas:** Ideales para @media print.</li>
             </ul>
 
             <h3 class="font-semibold text-amber-800 mt-3 mb-2">Relativas al texto</h3>
-            <p class="text-xs text-gray-600 mb-2 italic">Se ajustan segÃºn el tamaÃ±o de la fuente, mejorando la accesibilidad.</p>
+            <p class="text-xs text-gray-600 mb-2 italic">Se ajustan según el tamaño de la fuente, mejorando la accesibilidad.</p>
             <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">rem</code> - **Root EM:** Relativo al font-size del `<html>` (por defecto 16px). **Es la mÃ¡s recomendada.**</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">em</code> - **Elemento:** Relativo al tamaÃ±o de fuente del elemento padre (o del propio elemento).</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ch</code> - **Character:** Ancho del carÃ¡cter "0". Perfecto para limitar el ancho de pÃ¡rrafos y mejorar lectura.</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ex</code> - **X-height:** Altura de la letra "x" minÃºscula de la fuente actual.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">rem</code> - **Root EM:** Relativo al font-size del `<html>` (por defecto 16px). **Es la más recomendada.**</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">em</code> - **Elemento:** Relativo al tamaño de fuente del elemento padre (o del propio elemento).</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ch</code> - **Character:** Ancho del carácter "0". Perfecto para limitar el ancho de párrafos y mejorar lectura.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">ex</code> - **X-height:** Altura de la letra "x" minúscula de la fuente actual.</li>
             </ul>
 
     
@@ -247,12 +247,12 @@ progress {
         .card { font-size: 20px; }
         .card p { font-size: 1.5em; }  /* 20 * 1.5 = 30px (Relativo al padre) */
 
-        .txt { max-width: 60ch; }      /* El ancho ideal para lectura cÃ³moda */</pre>
+        .txt { max-width: 60ch; }      /* El ancho ideal para lectura cómoda */</pre>
 
         <h3 class="font-semibold text-amber-800 mt-4 mb-2">Porcentajes y Viewport</h3>
-        <p class="text-xs text-gray-600 mb-2 italic">Dimensiones basadas en el contenedor o el tamaÃ±o de la ventana.</p>
+        <p class="text-xs text-gray-600 mb-2 italic">Dimensiones basadas en el contenedor o el tamaño de la ventana.</p>
         <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
-            <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">%</code> - Relativo al tamaÃ±o del contenedor padre directo.</li>
+            <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">%</code> - Relativo al tamaño del contenedor padre directo.</li>
             <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vw</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vh</code> - 1% del ancho / alto de la ventana del navegador (Viewport).</li>
         </ul>
 
@@ -305,42 +305,42 @@ progress {
         <span class="orden">5</span>Unidades de viewport
     </h2>
 
-    <h3 class="font-semibold text-amber-800 mb-2">ClÃ¡sicas</h3>
-    <p class="text-xs text-gray-600 mb-2 italic">Basadas en el tamaÃ±o total de la ventana (incluyendo barras de UI).</p>
+    <h3 class="font-semibold text-amber-800 mb-2">Clásicas</h3>
+    <p class="text-xs text-gray-600 mb-2 italic">Basadas en el tamaño total de la ventana (incluyendo barras de UI).</p>
     <ul class="list-disc pl-5 space-y-1 text-sm">
         <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vw</code> - **1% Viewport Width:** Relativo al ancho total de la pantalla.</li>
         <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vh</code> - **1% Viewport Height:** Relativo al alto total de la pantalla.</li>
-        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vmin</code> - Toma el valor **mÃ¡s pequeÃ±o** entre vw y vh (Ãºtil para que algo quepa siempre en pantalla).</li>
-        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vmax</code> - Toma el valor **mÃ¡s grande** entre vw y vh.</li>
+        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vmin</code> - Toma el valor **más pequeño** entre vw y vh (útil para que algo quepa siempre en pantalla).</li>
+        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vmax</code> - Toma el valor **más grande** entre vw y vh.</li>
     </ul>
 
     
 
-    <h3 class="font-semibold text-amber-800 mt-4 mb-2">Variables Modernas <span class="text-amber-600 text-xs">(SoluciÃ³n para MÃ³viles)</span></h3>
+    <h3 class="font-semibold text-amber-800 mt-4 mb-2">Variables Modernas <span class="text-amber-600 text-xs">(Solución para Móviles)</span></h3>
     <p class="text-xs text-gray-600 mb-2 italic">Ajustan el alto ignorando o considerando las barras del navegador.</p>
     <ul class="list-disc pl-5 space-y-1 text-sm">
-        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">svh</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">svw</code> - **Small:** El espacio disponible cuando las barras del navegador estÃ¡n **expandidas** (el Ã¡rea mÃ¡s pequeÃ±a).</li>
-        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">lvh</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">lvw</code> - **Large:** El espacio cuando las barras estÃ¡n **ocultas** (el Ã¡rea mÃ¡s grande).</li>
-        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dvh</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dvw</code> - **Dynamic:** Se ajusta en tiempo real segÃºn si el usuario hace scroll y las barras aparecen o desaparecen.</li>
+        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">svh</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">svw</code> - **Small:** El espacio disponible cuando las barras del navegador están **expandidas** (el área más pequeña).</li>
+        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">lvh</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">lvw</code> - **Large:** El espacio cuando las barras están **ocultas** (el área más grande).</li>
+        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dvh</code> / <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dvw</code> - **Dynamic:** Se ajusta en tiempo real según si el usuario hace scroll y las barras aparecen o desaparecen.</li>
     </ul>
 
     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">
 .full-screen-hero {
-    min-height: 100dvh; /* Evita que el botÃ³n 'hacer scroll' quede tapado */
+    min-height: 100dvh; /* Evita que el botón 'hacer scroll' quede tapado */
 }
 
 .modal {
     max-height: 90svh;  /* Asegura que el modal no se corte con el navegador */
 }</pre>
 
-    <h3 class="font-semibold text-amber-800 mt-4 mb-2">Unidades LÃ³gicas</h3>
-    <p class="text-xs text-gray-600 mb-2 italic">Dependen de la direcciÃ³n del texto (idiomas horizontales vs verticales).</p>
+    <h3 class="font-semibold text-amber-800 mt-4 mb-2">Unidades Lógicas</h3>
+    <p class="text-xs text-gray-600 mb-2 italic">Dependen de la dirección del texto (idiomas horizontales vs verticales).</p>
     <ul class="list-disc pl-5 space-y-1 text-sm">
-        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vi</code> - **Inline:** Equivale al ancho en espaÃ±ol, pero al alto en japonÃ©s vertical.</li>
-        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vb</code> - **Block:** Equivale al alto en espaÃ±ol, pero al ancho en japonÃ©s vertical.</li>
+        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vi</code> - **Inline:** Equivale al ancho en español, pero al alto en japonés vertical.</li>
+        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">vb</code> - **Block:** Equivale al alto en español, pero al ancho en japonés vertical.</li>
     </ul>
 </section>
-        <!-- PROPIEDADES LÃ“GICAS -->
+        <!-- PROPIEDADES LÓGICAS -->
         <section id="propiedades-logicas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">6</span>Propiedades l&oacute;gicas
@@ -472,5 +472,8 @@ progress {
     <script src="../assets/js/components.js"></script>
 </body>
 </html>
+
+
+
 
 

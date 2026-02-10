@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tema 3: Funciones y Custom Properties - Apuntes CSS</title>
-    <meta name="description" content="Funciones CSS: var(), calc(), min(), max(), clamp(), funciones matemÃ¡ticas y @property.">
+    <meta name="description" content="Funciones CSS: var(), calc(), min(), max(), clamp(), funciones matemáticas y @property.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" type="image/png" href="../favicon.ico">
@@ -33,12 +33,12 @@
                     <a href="tema6-layout.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Layout: Flexbox y Grid</a>
                     <a href="tema7-posicionamiento.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. Posicionamiento y Espaciado</a>
                     <a href="tema8-interacciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Interacciones y Scroll</a>
-                    <a href="tema9-texto.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. Texto y TipografÃ­a</a>
-                    <a href="tema10-graficos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Formas y GrÃ¡ficos</a>
-                    <a href="tema11-animaciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. CSS DinÃ¡mico</a>
+                    <a href="tema9-texto.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. Texto y Tipografía</a>
+                    <a href="tema10-graficos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Formas y Gráficos</a>
+                    <a href="tema11-animaciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. CSS Dinámico</a>
                     <a href="tema12-rwd.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. RWD y Accesibilidad</a>
                     <div class="border-t border-gray-100 mt-2 pt-2">
-                        <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al Ã­ndice</a>
+                        <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al índice</a>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
             <a href="#calc" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">calc()</a>
             <a href="#min-max-clamp" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">min/max/clamp</a>
             <a href="#tipografia-fluida" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Escalas y Fluidez</a>
-            <a href="#matematicas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">MatemÃ¡ticas</a>
+            <a href="#matematicas" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Matemáticas</a>
             <a href="#at-property" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">@property</a>
             <a href="#otras-funciones" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Otras funciones</a>
         <a href="#recursos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Recursos</a>
@@ -89,7 +89,7 @@
 
             <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">DefiniciÃ³n y uso</h3>
+                    <h3 class="font-semibold text-amber-800 mb-2">Definición y uso</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/* Definir variables globales */
 :root {
     --color-primary: #3b82f6;
@@ -126,14 +126,14 @@
 }
 
 .dark-theme {
-    --bg: #1a1a1a;  /* Sobrescribe en este Ã¡mbito */
+    --bg: #1a1a1a;  /* Sobrescribe en este ámbito */
 }
 
 .card {
-    background: var(--bg);  /* Hereda segÃºn contexto */
+    background: var(--bg);  /* Hereda según contexto */
 }</pre>
 
-            <h3 class="font-semibold text-amber-800 mt-4 mb-2">ManipulaciÃ³n con JavaScript</h3>
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Manipulación con JavaScript</h3>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// Leer variable
 getComputedStyle(document.documentElement)
     .getPropertyValue('--color-primary');
@@ -216,7 +216,7 @@ h1 {
 
         <section id="tipografia-fluida" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">4</span>Escalas y TipografÃ­a LÃ­quida
+                <span class="orden">4</span>Escalas y Tipografía Líquida
             </h2>
             <div class="bg-amber-50 border-l-4 border-amber-500 p-3 rounded mb-3 text-sm">
                 <p class="font-semibold text-amber-900 mb-1">Definici&oacute;n:</p>
@@ -313,7 +313,7 @@ h1 {
 
         <section id="matematicas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">5</span>Funciones matemÃ¡ticas avanzadas
+                <span class="orden">5</span>Funciones matemáticas avanzadas
             </h2>
             <div class="bg-amber-50 border-l-4 border-amber-500 p-3 rounded mb-4 text-sm">
                 <p class="font-semibold text-amber-900 mb-1">Definici&oacute;n:</p>
@@ -484,7 +484,7 @@ h1 {
 
         <section id="otras-funciones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">7</span>Otras funciones Ãºtiles
+                <span class="orden">7</span>Otras funciones útiles
             </h2>
 
             <div class="bg-amber-50 border-l-4 border-amber-500 p-3 rounded mb-3 text-sm">
@@ -542,7 +542,7 @@ h1 {
 
 /* Con fallback si no existe la variable */
 .app { padding-top: env(safe-area-inset-top, 20px); }</pre>
-            <!-- VisualizaciÃ³n de safe areas -->
+            <!-- Visualización de safe areas -->
             <div class="mt-3 bg-gray-50 p-3 rounded border border-gray-200 flex justify-center">
                 <div class="relative bg-gray-800 rounded-2xl" style="width:100px;height:170px">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-gray-900 rounded-b-lg" style="width:40px;height:12px"></div>
@@ -607,7 +607,7 @@ h1 {
 
     <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
         <a href="tema2-pseudos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&larr; Tema 2</a>
-        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al Ã­ndice</a>
+        <a href="../index.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">&uarr; Volver al índice</a>
         <a href="tema4-color-unidades.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-900 text-white no-underline rounded text-xs hover:bg-amber-800">Tema 4 &rarr;</a>
     </nav>
 
@@ -627,6 +627,7 @@ h1 {
     <script src="../assets/js/components.js"></script>
 </body>
 </html>
+
 
 
 

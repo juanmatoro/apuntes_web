@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Componentes reutilizables para los apuntes
  * Header con dropdown, Breadcrumb, Footer y navegación dinámica
  *
@@ -300,12 +300,12 @@ function generarFooter(info) {
     const temaActual = info ? info.tema.num : '?';
     const nombre = info ? info.config.nombre : 'Apuntes';
 
-    footer.innerHTML = `<p>Apuntes ${nombre} — Tema ${temaActual} de ${totalTemas}</p>`;
+    footer.innerHTML = `<p>Apuntes ${nombre} —  Tema ${temaActual} de ${totalTemas}</p>`;
     return footer;
 }
 
 /**
- * Mueve la navegaciÃ³n interna ("En este tema") al header si existe
+ * Mueve la navegación interna ("En este tema") al header si existe
  */
 function moverNavInternaAlHeader() {
     const header = document.querySelector('header');
@@ -412,3 +412,5 @@ window.ApuntesComponents = {
     generarFooter,
     initComponents
 };
+
+

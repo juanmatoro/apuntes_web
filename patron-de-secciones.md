@@ -1,4 +1,4 @@
-# Patrón de Secciones — Copiar y adaptar
+﻿# Patrón de Secciones — Copiar y adaptar
 
 ## Sección ancho completo con grid 2 columnas
 
@@ -141,3 +141,5 @@ La función `marcarScrollables()` en `assets/js/components.js` gestiona el indic
 ### No requiere cambios en el HTML
 
 Las tablas no necesitan wrapper especial ni clases adicionales. El script detecta automáticamente cualquier `<table>` y prepara su contenedor padre para el scroll horizontal.
+
+

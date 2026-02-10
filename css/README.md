@@ -1,4 +1,4 @@
-# Apuntes de CSS
+﻿# Apuntes de CSS
 
 Apuntes completos de CSS organizados en 12 temas, cubriendo desde conceptos básicos hasta características modernas (2024).
 
@@ -72,3 +72,4 @@ Basado en el archivo guía `css.review.full.es.md` que recopila información de:
 - HTML5
 - Tailwind CSS (CDN)
 - Estilos personalizados (`../assets/css/styles.css`)
+

@@ -1,4 +1,4 @@
-# JS en la Web
+﻿# JS en la Web
 
 - [JS en la Web](#js-en-la-web)
   - [Intro](#intro)
@@ -98,7 +98,7 @@ Todos ellos implementan a su manera el núcleo (core) del lenguaje JavaScript, c
 
 - Manejo de datos, textos, arrays, y expresiones regulares
 - No hay ninguna funcionalidad de las entradas y salidas
-- No hay funciones más sofisticadas: redes, almacenamiento, gráficos…
+- No hay funciones más sofisticadas: redes, almacenamiento, gráficos
 
 Los motores se integran en diversos entornos de ejecución
 
@@ -520,3 +520,5 @@ values['checkControl'] =
 ```
 
 ```
+
+

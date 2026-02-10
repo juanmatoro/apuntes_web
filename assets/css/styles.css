@@ -1,4 +1,4 @@
-/* ── Estilos custom que complementan Tailwind ── */
+﻿/* -- Estilos custom que complementan Tailwind -- */
 
 /* Numeración circular de temas */
 .orden {
@@ -59,7 +59,7 @@
     border-radius: 10px;
 }
 
-/* ── Dropdown de navegación de temas ── */
+/* -- Dropdown de navegación de temas -- */
 .tema-dropdown {
     position: relative;
 }
@@ -79,7 +79,7 @@
     display: block;
 }
 
-/* ── NavegaciÃ³n interna dentro del header ── */
+/* -- Navegación interna dentro del header -- */
 header .internal-nav {
     background: transparent;
     border: 0;
@@ -118,7 +118,7 @@ header .internal-nav a:hover {
     background: #aaa;
 }
 
-/* ── Indicador de scroll horizontal en bloques <pre> ── */
+/* -- Indicador de scroll horizontal en bloques <pre> -- */
 pre {
     scrollbar-width: thin;
     scrollbar-color: rgba(255,255,255,0.25) transparent;
@@ -140,7 +140,7 @@ pre.has-scroll.scrolled-end {
     mask-image: none;
 }
 
-/* ── Indicador de scroll horizontal en tablas ── */
+/* -- Indicador de scroll horizontal en tablas -- */
 .table-scroll {
     overflow-x: auto;
     scrollbar-width: thin;
@@ -162,7 +162,7 @@ pre.has-scroll.scrolled-end {
     mask-image: none;
 }
 
-/* ── Tarjetas de recursos (bibliografía) ── */
+/* -- Tarjetas de recursos (bibliografía) -- */
 .recurso-card {
     transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -171,3 +171,5 @@ pre.has-scroll.scrolled-end {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
+

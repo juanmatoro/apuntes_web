@@ -1,4 +1,4 @@
-# CSS
+﻿# CSS
 
 - [CSS](#css)
   - [1. CSS Concepts](#1-css-concepts)
@@ -68,11 +68,11 @@
   - [References](#references)
   - [Adds](#adds)
 
-🔥 Hot Feature in State of CSS 2024
-🧨 Hot Feature in State of CSS 2023
-☀️ Hot Feature in State of CSS 2022
-😎 Hot Feature in State of CSS 2021
-🌐 Important adds to the standard previous 2000
+Y" Hot Feature in State of CSS 2024
+Y Hot Feature in State of CSS 2023
+~?️ Hot Feature in State of CSS 2022
+Y~Z Hot Feature in State of CSS 2021
+YO Important adds to the standard previous 2000
 
 ## 1. CSS Concepts
 
@@ -88,7 +88,7 @@
 
 #### Anidamiento de selectores
 
-- 2️⃣0️⃣2️⃣3️⃣🧨🔥¿☀️? Anidamiento de selectores
+- 2️f0️f2️f3️fYY"¿~?️? Anidamiento de selectores
 
   ```css
   .parent {
@@ -104,7 +104,7 @@
 
 - `@scope`
 
-  > 2️⃣0️⃣2️⃣4️⃣🔥 nueva _regla de CSS_ que establece un nuevo ámbito de alcance para los selectores anidados dentro de ella, lo que permite controlar el alcance de los selectores anidados y evitar la repetición de selectores comunes.
+  > 2️f0️f2️f4️fY" nueva _regla de CSS_ que establece un nuevo ámbito de alcance para los selectores anidados dentro de ella, lo que permite controlar el alcance de los selectores anidados y evitar la repetición de selectores comunes.
 
   - @scope -> Limita el alcance al contenedor donde se declara. Usado en un \<style\> del HTML.
   - @scope (start) Limita el alcance inicial a partir del cuál se aplican los estilos.
@@ -126,7 +126,7 @@
 - Especificidad
 - Origen
 - Importancia
-- 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️ Capas de cascada: regla @layer
+- 2️f0️f2️f2️fY"Y~?️ Capas de cascada: regla @layer
 
 ### Especificidad
 
@@ -178,41 +178,41 @@
     - `:first-of-type` y `:last-of-type`
     - `:nth-child` y `:nth-of-type`
     - `:only-of-type`
-    - 2️⃣0️⃣2️⃣3️⃣🔥 `nth-child of S`
+    - 2️f0️f2️f3️fY" `nth-child of S`
       Pre-filter a set of child elements before applying nth-child to it.
 - Búsqueda de elementos
   - `:empty`
   - `:not()`
   - `:is()`
-  - 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️`:where()`
-  - 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️`:has()`
+  - 2️f0️f2️f2️fY"Y~?️`:where()`
+  - 2️f0️f2️f2️fY"Y~?️`:has()`
 
 ### Funciones y propiedades personalizadas (custom properties)
 
 - Concepto
 - Selectores funcionales: `:is()`, `:not()`
 - `attr()` y `url()`
-- 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️ `image()` (similar a url, añadiendo parámetros propios de la imagen)
+- 2️f0️f2️f2️fY"Y~?️ `image()` (similar a url, añadiendo parámetros propios de la imagen)
 
 - **Propiedades personalizadas** (custom properties)
 
-  > 🌐🧨☀️😎 _módulo CSS_ que permite la creación de propiedades personalizadas que se pueden usar repetidamente.
+  > YOY~?️Y~Z _módulo CSS_ que permite la creación de propiedades personalizadas que se pueden usar repetidamente.
 
   - acceso a propiedades personalizadas: `var()`
 
 - Expresiones matemáticas:
 
-  > 🔥🧨☀️😎 _funciones CSS_ para cálculos y comparaciones matemáticas básicos.
+  > Y"Y~?️Y~Z _funciones CSS_ para cálculos y comparaciones matemáticas básicos.
 
   - `calc(a,b)`
   - `min(a,b)` y `max(a,b)`
   - `clamp(minimum, ideal, maximum)`
 
-  > 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️ _funciones CSS_ para operaciones trigonométricas
+  > 2️f0️f2️f2️fY"Y~?️ _funciones CSS_ para operaciones trigonométricas
 
   - `sin()`, `cos()`, `tan()`, `asin()`, `acos()`, `atan()`, `atan2()`
 
-  > 2️⃣0️⃣2️⃣4️⃣🔥 nuevas _funciones CSS_ para mejorar cálculos y comparaciones matemáticas.
+  > 2️f0️f2️f4️fY" nuevas _funciones CSS_ para mejorar cálculos y comparaciones matemáticas.
 
   - Funciones de valor escalonado `round()`, `mod()`, `rem()`
   - Funciones relacionadas con el signo `sign()`, `abs()`
@@ -251,7 +251,7 @@
 
 - Colores de Gama Amplia (Wide Gamut): `lab()` y `lch()`, `oklab()` y `oklch()`
 
-  > 2️⃣0️⃣2️⃣3️⃣🔥🧨¿☀️? nuevas _funciones de color CSS_ que permiten especificar un color en un espacio de color particular, en lugar del espacio de color sRGB implícito en el que operan la mayoría de las otras funciones de color.
+  > 2️f0️f2️f3️fY"Y¿~?️? nuevas _funciones de color CSS_ que permiten especificar un color en un espacio de color particular, en lugar del espacio de color sRGB implícito en el que operan la mayoría de las otras funciones de color.
 
   - `lab()`: CIE L\*a\*b\* color space
   - `lch()`: CIE L\*C\*h color space
@@ -261,7 +261,7 @@
 - Dónde usar el color en las reglas CSS
 - Sintaxis de color relativa
 
-  > 2️⃣0️⃣2️⃣4️⃣🔥 nueva _sintaxis en CSS_ que permite definir un color en relación con otro color usando la palabra clave `from` y opcionalmente `calc()` para cualquiera de los valores de color.
+  > 2️f0️f2️f4️fY" nueva _sintaxis en CSS_ que permite definir un color en relación con otro color usando la palabra clave `from` y opcionalmente `calc()` para cualquiera de los valores de color.
 
   ```css
   .foo {
@@ -274,7 +274,7 @@
 
 - `color()`
 
-  > 2️⃣0️⃣2️⃣1️⃣🔥🧨☀️😎 nueva _notación funcional_ que permite especificar un color en un espacio de color particular, en lugar del espacio de color sRGB implícito en el que operan la mayoría de las otras funciones de color.
+  > 2️f0️f2️f1️fY"Y~?️Y~Z nueva _notación funcional_ que permite especificar un color en un espacio de color particular, en lugar del espacio de color sRGB implícito en el que operan la mayoría de las otras funciones de color.
 
   ```css
   .brightest-green {
@@ -284,7 +284,7 @@
 
 - `accent-color`
 
-  > 2️⃣0️⃣2️⃣1️⃣🔥🧨☀️😎 nueva _propiedad CSS_ que establece el color de acento para los controles de la interfaz de usuario generados por algunos elementos.
+  > 2️f0️f2️f1️fY"Y~?️Y~Z nueva _propiedad CSS_ que establece el color de acento para los controles de la interfaz de usuario generados por algunos elementos.
 
   ```css
   input[type="checkbox"] {
@@ -293,7 +293,7 @@
   ```
 
   - `color-mix`
-    > 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️ nueva _función de CSS_ que permite mezclar dos colores en un espacio de color específico, con un factor de mezcla opcional.
+    > 2️f0️f2️f2️fY"Y~?️ nueva _función de CSS_ que permite mezclar dos colores en un espacio de color específico, con un factor de mezcla opcional.
 
   ```css
   .teal {
@@ -302,7 +302,7 @@
   ```
 
 - `color-gamut`
-  > 2️⃣0️⃣2️⃣0️⃣😎 _característica de medios CSS_ que se puede usar para probar el rango aproximado de colores que son compatibles con el agente de usuario y el dispositivo de salida.
+  > 2️f0️f2️f0️fY~Z _característica de medios CSS_ que se puede usar para probar el rango aproximado de colores que son compatibles con el agente de usuario y el dispositivo de salida.
 
 ### Unidades de Medida
 
@@ -337,7 +337,7 @@
   - `vi` -> viewport inline Versión lógica inline de vw y/o vh (depende de la dirección de escritura)
   - `vb` -> viewport block Versión lógica en bloque de vw y/o vh (depende de la dirección de escritura)
 
-- 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️ Unidades de viewport variables: distinguen tres formas de medir el viewport: largue (todo), small (sin la barra de direcciones) y dynamic (cambia con el scroll)
+- 2️f0️f2️f2️fY"Y~?️ Unidades de viewport variables: distinguen tres formas de medir el viewport: largue (todo), small (sin la barra de direcciones) y dynamic (cambia con el scroll)
 
   - `svw` / `lvw` / `dvw` -> viewport width Relativo al ancho del navegador
   - `svh` / `lvh` / `dvh` -> viewport height Relativo al alto del navegador
@@ -348,7 +348,7 @@
 
 ### Propiedades Lógicas (Logical Properties)
 
-> 🌐🔥🧨☀️😎 _Propiedades CSS_ que proporcionan la capacidad de controlar el diseño a través de mapeos lógicos, en lugar de físicos, de dirección y dimensión. Útil en relación con los nuevos Modos de Escritura.
+> YOY"Y~?️Y~Z _Propiedades CSS_ que proporcionan la capacidad de controlar el diseño a través de mapeos lógicos, en lugar de físicos, de dirección y dimensión. stil en relación con los nuevos Modos de Escritura.
 
 - Terminología
 
@@ -375,11 +375,11 @@
 
 - Houdini Paint API
 
-  > 2️⃣0️⃣2️⃣0️⃣😎 nueva API de CSS
+  > 2️f0️f2️f0️fY~Z nueva API de CSS
 
 - Houdini Propiedades Personalizadas (@property)
 
-  > 2️⃣0️⃣2️⃣1️⃣🔥🧨☀️😎 nueva _regla @property de CSS_ es parte del conjunto de APIs de CSS Houdini, permite a los desarrolladores definir explícitamente sus propiedades personalizadas de CSS, permitiendo la verificación de tipos de propiedades, establecer valores predeterminados y definir si una propiedad puede heredar valores o no.
+  > 2️f0️f2️f1️fY"Y~?️Y~Z nueva _regla @property de CSS_ es parte del conjunto de APIs de CSS Houdini, permite a los desarrolladores definir explícitamente sus propiedades personalizadas de CSS, permitiendo la verificación de tipos de propiedades, establecer valores predeterminados y definir si una propiedad puede heredar valores o no.
 
   ```css
   @property --property-name {
@@ -395,7 +395,7 @@
 
 - Contenido y tamaño. Tamaño extrínseco vs. tamaño intrínseco
 
-  - 🌐🔥🧨☀️😎 Propiedades de tamaño intrínseco
+  - YOY"Y~?️Y~Z Propiedades de tamaño intrínseco
 
     - `min-content`
     - `max-content`
@@ -428,7 +428,7 @@
   - `width` / `height`
   - `aspect-ratio`
 
-    > 2️⃣0️⃣2️⃣0️⃣🔥🧨☀️😎 nueva _propiedad CSS_ que establece una relación de aspecto preferida para la caja, que se utilizará en el cálculo de tamaños automáticos y algunas otras funciones de diseño. Ej. uso con iFrames
+    > 2️f0️f2️f0️fY"Y~?️Y~Z nueva _propiedad CSS_ que establece una relación de aspecto preferida para la caja, que se utilizará en el cálculo de tamaños automáticos y algunas otras funciones de diseño. Ej. uso con iFrames
 
     ```css
     .container {
@@ -438,7 +438,7 @@
 
   - `object-fit`
 
-    > 😎 _propiedad CSS_ que establece cómo el contenido de un elemento reemplazado, como una \<img> o un \<video>, debe redimensionarse para ajustarse a su contenedor.
+    > Y~Z _propiedad CSS_ que establece cómo el contenido de un elemento reemplazado, como una \<img> o un \<video>, debe redimensionarse para ajustarse a su contenedor.
     > Los valores soportados que respetan la relación de aspecto son `contain` (mostrar todo), `cover` (mostrar lo más grande posible) y `scale-down`.
 
   - `object-position`
@@ -446,7 +446,7 @@
     > _propiedad CSS_ que establece la alineación del elemento reemplazado dentro de su caja.
 
 - Reglas de ruptura (break rules): `break-before`\*\*
-  > 2️⃣0️⃣2️⃣1️⃣😎 nueva _propiedad CSS_ que establece cómo deben comportarse las rupturas de página, columna o región antes de una caja generada (generated box). Si no hay una caja generada, se ignora la propiedad.
+  > 2️f0️f2️f1️fY~Z nueva _propiedad CSS_ que establece cómo deben comportarse las rupturas de página, columna o región antes de una caja generada (generated box). Si no hay una caja generada, se ignora la propiedad.
 
 ### Layout Tools
 
@@ -461,12 +461,12 @@
 
 ### Layout de múltiples columnas (Multi-column layout)
 
-> 🌐😎 _módulo de CSS_ que agrega soporte para layouts de múltiples columnas.
+> YOY~Z _módulo de CSS_ que agrega soporte para layouts de múltiples columnas.
 > El soporte incluye establecer el número de columnas en un layout, así como cómo debe fluir el contenido de columna en columna, los tamaños de los espacios entre columnas y las líneas divisorias de columnas, conocidas como reglas de columna (column rules), junto con su apariencia.
 
 ### Flexbox (Display flex)
 
-> 🌐😎 _módulo de CSS_ que define un modelo de caja CSS optimizado para el diseño de interfaces de usuario y la disposición de elementos en una dimensión.
+> YOY~Z _módulo de CSS_ que define un modelo de caja CSS optimizado para el diseño de interfaces de usuario y la disposición de elementos en una dimensión.
 > En el modelo de flex layout, los hijos de un contenedor flex pueden disponerse en cualquier dirección y pueden "flexionar" sus tamaños, ya sea creciendo para llenar el espacio no utilizado o encogiéndose para evitar desbordar el contenedor principal.
 > Tanto la alineación horizontal como la vertical de los hijos pueden manipularse fácilmente.
 
@@ -476,7 +476,7 @@
 - Controlar la dirección de los elementos
 - Envolver elementos flex
 - Controlar el espacio dentro de los elementos flex
-  > 2️⃣0️⃣2️⃣1️⃣🧨☀️😎 **Gap** nueva _propiedad CSS_ que establece los espacios (gutter) entre filas y columnas.
+  > 2️f0️f2️f1️fY~?️Y~Z **Gap** nueva _propiedad CSS_ que establece los espacios (gutter) entre filas y columnas.
   > Es una abreviatura para `row-gap` y `column-gap`.
 - Reordenar elementos flex
 - Alineación FlexBox
@@ -488,7 +488,7 @@
 
 ### Grid (Display grid)
 
-> 🌐😎 _módulo de CSS_ que sobresale en dividir una página en regiones principales o definir la relación en términos de tamaño, posición y capa, entre partes de un control construido a partir de primitivas HTML.
+> YOY~Z _módulo de CSS_ que sobresale en dividir una página en regiones principales o definir la relación en términos de tamaño, posición y capa, entre partes de un control construido a partir de primitivas HTML.
 
 - Descripción general y terminología de Grid
 - Filas y columnas
@@ -505,7 +505,7 @@
 
 #### SubGrid
 
-> 🌐🔥🧨☀️😎 _valor_ incluido en el Nivel 2 de la especificación de CSS Grid Layout para `grid-template-columns` y `grid-template-rows`.
+> YOY"Y~?️Y~Z _valor_ incluido en el Nivel 2 de la especificación de CSS Grid Layout para `grid-template-columns` y `grid-template-rows`.
 
 ```css
 .wrapper {
@@ -534,9 +534,9 @@
   - absoluto
   - fijo
   - sticky
-    > 2️⃣0️⃣2️⃣0️⃣😎 **sticky**: nuevo _valor_ para la propiedad CSS `position`
+    > 2️f0️f2️f0️fY~Z **sticky**: nuevo _valor_ para la propiedad CSS `position`
   - anchor
-    > 2️⃣0️⃣2️⃣3️⃣🔥🧨 **anchor**: nuevo _valor_ para la propiedad CSS `position`
+    > 2️f0️f2️f3️fY"Y **anchor**: nuevo _valor_ para la propiedad CSS `position`
 - Creación de espaciado consistente
 
 ### Z-index y contextos de apilamiento (stacking contexts)
@@ -571,7 +571,7 @@
 
 - `scroll-behavior`
 
-  > 🔥🧨☀️😎 _propiedad de CSS_ que establece si el desplazamiento se debe animar, y cómo, cuando se desplaza a un punto dentro de un contenedor de desplazamiento.
+  > Y"Y~?️Y~Z _propiedad de CSS_ que establece si el desplazamiento se debe animar, y cómo, cuando se desplaza a un punto dentro de un contenedor de desplazamiento.
 
   ```css
   .foo {
@@ -582,7 +582,7 @@
 
 - `overscroll-behavior` (modales)
 
-  > 🔥🧨☀️😎 _propiedad CSS_ que establece lo que hace un navegador al alcanzar el límite de un área de desplazamiento. Es una abreviatura para `overscroll-behavior-x` y `overscroll-behavior-y`.
+  > Y"Y~?️Y~Z _propiedad CSS_ que establece lo que hace un navegador al alcanzar el límite de un área de desplazamiento. Es una abreviatura para `overscroll-behavior-x` y `overscroll-behavior-y`.
 
   ```css
   .foo {
@@ -594,12 +594,12 @@
 
 - `overflow-anchor`
 
-  > 😎 _propiedad CSS_ que proporciona una forma de optar por no participar en el comportamiento de anclaje de desplazamiento del navegador, que ajusta la posición de desplazamiento para minimizar los cambios de contenido.
+  > Y~Z _propiedad CSS_ que proporciona una forma de optar por no participar en el comportamiento de anclaje de desplazamiento del navegador, que ajusta la posición de desplazamiento para minimizar los cambios de contenido.
   > Cambiar el valor de esta propiedad generalmente solo es necesario si experimentas problemas.
 
 - `scrollbar-gutter`
 
-  > 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️ nueva _propiedad CSS_ que permite a los autores reservar espacio para la barra de desplazamiento, evitando cambios no deseados en el diseño a medida que el contenido crece y también evitando elementos visuales innecesarios cuando no se necesita desplazamiento.
+  > 2️f0️f2️f2️fY"Y~?️ nueva _propiedad CSS_ que permite a los autores reservar espacio para la barra de desplazamiento, evitando cambios no deseados en el diseño a medida que el contenido crece y también evitando elementos visuales innecesarios cuando no se necesita desplazamiento.
 
   ```css
   .container {
@@ -609,7 +609,7 @@
 
 #### CSS Scroll Snap
 
-> 🔥🧨☀️😎 _módulo de CSS_ que introduce posiciones de ajuste de desplazamiento, que imponen las posiciones de desplazamiento en las que puede terminar el puerto de desplazamiento de un contenedor de desplazamiento después de que se haya completado una operación de desplazamiento.
+> Y"Y~?️Y~Z _módulo de CSS_ que introduce posiciones de ajuste de desplazamiento, que imponen las posiciones de desplazamiento en las que puede terminar el puerto de desplazamiento de un contenedor de desplazamiento después de que se haya completado una operación de desplazamiento.
 > Las posiciones de ajuste de desplazamiento se pueden usar para implementar desplazamiento paginado, desplazamiento de carrusel y otras interacciones de desplazamiento basadas en posiciones.
 > Incluye las propiedades `scroll-snap-type`, `scroll-snap-align`, `scroll-snap-stop`, `scroll-snap-margin`, `scroll-padding`, `scroll-padding-block`, `scroll-padding-inline`.
 
@@ -628,9 +628,9 @@
 ### Otras acciones
 
 - `touch-action`
-  > 2️⃣0️⃣2️⃣0️⃣🧨☀️😎 _propiedad CSS_ que establece cómo se puede manipular la región de un elemento por un usuario de pantalla táctil (por ejemplo, mediante funciones de zoom integradas en el navegador).
+  > 2️f0️f2️f0️fY~?️Y~Z _propiedad CSS_ que establece cómo se puede manipular la región de un elemento por un usuario de pantalla táctil (por ejemplo, mediante funciones de zoom integradas en el navegador).
 - `pointer-events`
-  > 2️⃣0️⃣2️⃣0️⃣😎 _propiedad CSS_ que establece en qué circunstancias (si las hay) un elemento gráfico en particular puede convertirse en el objetivo de eventos de puntero.
+  > 2️f0️f2️f0️fY~Z _propiedad CSS_ que establece en qué circunstancias (si las hay) un elemento gráfico en particular puede convertirse en el objetivo de eventos de puntero.
 
 ## 5. Elementos de CSS: Texto y escritura
 
@@ -658,7 +658,7 @@
 
 - `text-wrap`
 
-  > 2️⃣0️⃣2️⃣3️⃣🧨 nueva _propiedad CSS_ que controla cómo se debe distribuir el texto en un contenedor de bloque cuando el texto supera el ancho del contenedor.
+  > 2️f0️f2️f3️fY nueva _propiedad CSS_ que controla cómo se debe distribuir el texto en un contenedor de bloque cuando el texto supera el ancho del contenedor.
   > Los valores de la propiedad son `wrap`, `nowrap`, `balance`, `pretty`, `stable`.
 
   ```css
@@ -668,7 +668,7 @@
   }
   ```
 
-  2️⃣0️⃣2️⃣4️⃣🔥 _valor de la propiedad_: `pretty`
+  2️f0️f2️f4️fY" _valor de la propiedad_: `pretty`
 
   ```css
   .pretty {
@@ -680,27 +680,27 @@
 
 - `font-variant`
 
-  > 😎 _propiedad abreviada de CSS_ que permite establecer todas las variantes de fuente para una fuente
+  > Y~Z _propiedad abreviada de CSS_ que permite establecer todas las variantes de fuente para una fuente
   > (`font-variant-alternates`, `font-variant-caps`, `font-variant-east-asian`, `font-variant-ligatures`, `font-variant-numeric`).
-  > 2️⃣0️⃣2️⃣0️⃣ 😎 La propiedad `font-variant-numeric` de CSS controla el uso de glifos alternativos para números, fracciones y marcadores ordinales.
+  > 2️f0️f2️f0️f Y~Z La propiedad `font-variant-numeric` de CSS controla el uso de glifos alternativos para números, fracciones y marcadores ordinales.
 
 - Pseudo-elementos
 
   - `::first-letter` & `::first-line`
   - `::selection`
   - `initial-letter`
-    > 2️⃣0️⃣2️⃣4️⃣🔥¿😎? nueva _propiedad CSS_ que establece el estilo para letras iniciales caídas, elevadas y hundidas.
+    > 2️f0️f2️f4️fY"¿Y~Z? nueva _propiedad CSS_ que establece el estilo para letras iniciales caídas, elevadas y hundidas.
 
 - `font-display`
 
-  > 2️⃣0️⃣2️⃣0️⃣🔥🧨☀️😎 nuevo _descriptor_ que determina cómo se muestra una fuente en función de si y cuándo se descarga y está lista para usar
+  > 2️f0️f2️f0️fY"Y~?️Y~Z nuevo _descriptor_ que determina cómo se muestra una fuente en función de si y cuándo se descarga y está lista para usar
 
 - `-webkit-line-clamp`
 
-  > 2️⃣0️⃣2️⃣0️⃣🔥🧨☀️ _propiedad CSS_ que permite limitar el contenido de un contenedor de bloque al número especificado de líneas.
+  > 2️f0️f2️f0️fY"Y~?️ _propiedad CSS_ que permite limitar el contenido de un contenedor de bloque al número especificado de líneas.
 
 - **Fuentes variables** (diferentes variantes de un tipo de letra en un solo archivo)
-  > 2️⃣0️⃣2️⃣1️⃣🔥🧨☀️😎 nueva evolución de la _especificación de fuentes OpenType_ que permite incorporar muchas variaciones diferentes de un tipo de letra en un solo archivo, en lugar de tener un archivo de fuente separado para cada ancho, peso o estilo.
+  > 2️f0️f2️f1️fY"Y~?️Y~Z nueva evolución de la _especificación de fuentes OpenType_ que permite incorporar muchas variaciones diferentes de un tipo de letra en un solo archivo, en lugar de tener un archivo de fuente separado para cada ancho, peso o estilo.
   > Permiten acceder a todas las variaciones contenidas en un archivo de fuente dado a través de CSS y una sola referencia @font-face.
 
 ### Listas
@@ -711,7 +711,7 @@
   - `list-style-image`
   - `list-style-type`
 - `::marker`
-  > 2️⃣0️⃣2️⃣1️⃣🧨☀️😎 nuevo _pseudo-elemento_ que selecciona el cuadro de marcador de un elemento de lista, que generalmente contiene una viñeta o número.
+  > 2️f0️f2️f1️fY~?️Y~Z nuevo _pseudo-elemento_ que selecciona el cuadro de marcador de un elemento de lista, que generalmente contiene una viñeta o número.
   > Funciona en cualquier elemento o pseudo-elemento configurado para display: list-item, como los elementos \<li> y \<summary>.
   - Cuadro de marcador (Marker box)
   - Estilos de marcador (Marker styles)
@@ -719,7 +719,7 @@
 
 ### Modos de escritura CSS
 
-> 🌐🔥🧨☀️😎 _Modos de escritura CSS_ es un nuevo _módulo CSS_ que define varios modos de escritura internacionales, como
+> YOY"Y~?️Y~Z _Modos de escritura CSS_ es un nuevo _módulo CSS_ que define varios modos de escritura internacionales, como
 
 - left-to-right (por ejemplo, utilizado por escrituras latinas e índicas),
 - right-to-left (por ejemplo, utilizado por escrituras hebreas o árabes),
@@ -760,13 +760,13 @@ Properties
 
 #### Formas (shapes)
 
-> 🌐😎 _especificación CSS_ 'Shapes' describe formas geométricas para su uso en CSS.
+> YOY~Z _especificación CSS_ 'Shapes' describe formas geométricas para su uso en CSS.
 > Para la especificación de Nivel 1, las formas CSS se pueden aplicar a elementos flotantes.
 > La especificación define varias formas de definir una forma en un elemento flotante, haciendo que las líneas de envoltura se ajusten alrededor de la forma en lugar de seguir el rectángulo de la caja del elemento.
 
 #### Enmascaramiento y recorte
 
-> 🌐😎 _módulo CSS_ que define medios, incluidos el enmascaramiento y el recorte, para ocultar parcial o totalmente partes de elementos visuales.
+> YOY~Z _módulo CSS_ que define medios, incluidos el enmascaramiento y el recorte, para ocultar parcial o totalmente partes de elementos visuales.
 
 - Propiedades: `clip-path`, y `shape-outside`
   > `clip-path`: nueva _propiedad CSS_ que crea una región de recorte que establece qué parte de un elemento debe mostrarse.
@@ -774,7 +774,7 @@ Properties
 - Funciones: `circle()`, `ellipse()`, `inset()` y `polygon()`
 - Propiedad `offset-path`
 
-  > 2️⃣0️⃣2️⃣4️⃣🔥 nueva _propiedad de CSS_
+  > 2️f0️f2️f4️fY" nueva _propiedad de CSS_
 
   ```css
   .blueBox {
@@ -813,7 +813,7 @@ Properties
 
 #### Gradiente cónico: `conic-gradient()`
 
-> 2️⃣0️⃣2️⃣1️⃣🔥🧨☀️😎 nueva _función CSS_ que crea una imagen consistente en un gradiente con transiciones de color rotadas alrededor de un punto central (en lugar de irradiar desde el centro).
+> 2️f0️f2️f1️fY"Y~?️Y~Z nueva _función CSS_ que crea una imagen consistente en un gradiente con transiciones de color rotadas alrededor de un punto central (en lugar de irradiar desde el centro).
 > Ejemplos de gradientes cónicos incluyen gráficos de tarta (pie charts) y ruedas de color (color wheels).
 > El resultado de la función `conic-gradient()` es un objeto del tipo de datos \<gradient>, que es un tipo especial de \<image>.
 
@@ -821,7 +821,7 @@ Properties
 
 - La propiedad de **filtro** (`filter`)
 
-  > 🌐🔥🧨☀️😎 _propiedad CSS_ que aplica efectos gráficos como desenfoque o cambio de color a un elemento.
+  > YOY"Y~?️Y~Z _propiedad CSS_ que aplica efectos gráficos como desenfoque o cambio de color a un elemento.
   > Los filtros se utilizan comúnmente para ajustar la representación de imágenes, fondos y bordes.
 
   - `blur()`
@@ -844,7 +844,7 @@ Properties
 
 - **Filtro de fondo** (`backdrop-filter`)
 
-  > 2️⃣0️⃣2️⃣0️⃣🧨☀️😎 _Propiedad CSS_ que permite aplicar efectos gráficos como desenfoque (blurring) o cambio de color al área detrás de un elemento.
+  > 2️f0️f2️f0️fY~?️Y~Z _Propiedad CSS_ que permite aplicar efectos gráficos como desenfoque (blurring) o cambio de color al área detrás de un elemento.
   > Debido a que se aplica a todo lo que está detrás del elemento, para ver el efecto debes hacer que el elemento o su fondo sea al menos parcialmente transparente.
 
   ```css
@@ -857,7 +857,7 @@ Properties
 
 - ¿Qué es un modo de mezcla?
 
-  > 🌐🔥🧨☀️😎 _tipo de dato CSS_ que describe cómo deben aparecer los colores cuando los elementos se superponen.
+  > YOY"Y~?️Y~Z _tipo de dato CSS_ que describe cómo deben aparecer los colores cuando los elementos se superponen.
 
 - Propiedades `mix-blend-mode` y `background-blend-mode`
 
@@ -918,7 +918,7 @@ Properties
 - Sesgo (skew)
   - `skew()`, `skewX()`, `skewY()`
 - Perspectiva: propiedad `perspective`
-  > 😎 _Propiedad CSS_ que determina la distancia entre el plano z=0 y el usuario para dar a un elemento posicionado en 3D algo de perspectiva.
+  > Y~Z _Propiedad CSS_ que determina la distancia entre el plano z=0 y el usuario para dar a un elemento posicionado en 3D algo de perspectiva.
 
 ### Animaciones
 
@@ -940,7 +940,7 @@ Una serie de propiedades de CSS permiten definir líneas de tiempo basadas en el
 
 - `scroll-timeline`
 
-  > 2️⃣0️⃣2️⃣4️⃣🔥¿😎? nueva _propiedad de CSS_ que permite crear lineas de tiempo 'con nombre' para aplicar animaciones que se sincronizan con el desplazamiento de la página.
+  > 2️f0️f2️f4️fY"¿Y~Z? nueva _propiedad de CSS_ que permite crear lineas de tiempo 'con nombre' para aplicar animaciones que se sincronizan con el desplazamiento de la página.
 
   ```css
   .element {
@@ -953,7 +953,7 @@ Una serie de propiedades de CSS permiten definir líneas de tiempo basadas en el
 
 - `view-timeline`
 
-  > 2️⃣0️⃣2️⃣4️⃣🔥 nueva _propiedad de CSS_ que permite crear lineas de tiempo 'con nombre' para animaciones que se sincronizan con la vista del usuario.
+  > 2️f0️f2️f4️fY" nueva _propiedad de CSS_ que permite crear lineas de tiempo 'con nombre' para animaciones que se sincronizan con la vista del usuario.
 
   ```css
   @keyframes scroll {
@@ -970,7 +970,7 @@ Una serie de propiedades de CSS permiten definir líneas de tiempo basadas en el
 
 - `scroll()`, `view()`
 
-  > 2️⃣0️⃣2️⃣4️⃣🔥 nuevas _funciones de CSS_ que utilizan una línea de tiempo anónima.
+  > 2️f0️f2️f4️fY" nuevas _funciones de CSS_ que utilizan una línea de tiempo anónima.
   > En el caso de scroll(), basada en el desplazamiento de scroll.
   > En el caso de view(), basada en la vista del usuario.
 
@@ -992,7 +992,7 @@ Una serie de propiedades de CSS permiten definir líneas de tiempo basadas en el
 
 ### ViewTransitions API
 
-> 2️⃣0️⃣2️⃣3️⃣🔥🧨 nueva _API de CSS_ que permite a los desarrolladores crear transiciones de vista personalizadas y animaciones de desplazamiento en la web.
+> 2️f0️f2️f3️fY"Y nueva _API de CSS_ que permite a los desarrolladores crear transiciones de vista personalizadas y animaciones de desplazamiento en la web.
 > Se puede transicionar root o elementos definidos con un `view-transition-name` compartido en varias páginas, aplicando una transición CSS definido con `@keyframes`.
 
 ```css
@@ -1022,7 +1022,7 @@ Una serie de propiedades de CSS permiten definir líneas de tiempo basadas en el
 
 ### Animación por propiedades discretas
 
-> 2️⃣0️⃣2️⃣4️⃣🔥 nueva _API de CSS_ que permite aplicar fácilmente animaciones de entrada y salida para elementos desplegables (dismissible) como diálogos y popovers.
+> 2️f0️f2️f4️fY" nueva _API de CSS_ que permite aplicar fácilmente animaciones de entrada y salida para elementos desplegables (dismissible) como diálogos y popovers.
 
 ```css
 /*   IS-OPEN STATE   */
@@ -1056,13 +1056,13 @@ dialog {
 
 - Notación tradicional: `@media (max-width: 600px) {...}`
 - Notación moderna (con operadores lógicos): `@media (width >= 600px) {...}`
-- 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️ Notación de rango: `@media (400px < width < 1000px)) {...}`
+- 2️f0️f2️f2️fY"Y~?️ Notación de rango: `@media (400px < width < 1000px)) {...}`
 
 #### Container queries
 
 - **container size queries**
 
-  > 2️⃣0️⃣2️⃣3️⃣🔥🧨¿☀️?¿😎? nueva _regla de CSS_ que permite modificar los estilos dependiendo del tamaño de un contenedor padre (o ancestro) específico.
+  > 2️f0️f2️f3️fY"Y¿~?️?¿Y~Z? nueva _regla de CSS_ que permite modificar los estilos dependiendo del tamaño de un contenedor padre (o ancestro) específico.
 
   ```css
   .container {
@@ -1079,7 +1079,7 @@ dialog {
 
 - **container style queries**
 
-  > 2️⃣0️⃣2️⃣4️⃣🔥 nueva _regla de CSS_ que permite modificar los estilos dependiendo de las propiedades css de un contenedor padre (o ancestro) específico.
+  > 2️f0️f2️f4️fY" nueva _regla de CSS_ que permite modificar los estilos dependiendo de las propiedades css de un contenedor padre (o ancestro) específico.
 
   ```css
   .container {
@@ -1098,7 +1098,7 @@ dialog {
 
 - `image-set()`
 
-  > 2️⃣0️⃣2️⃣3️⃣🧨🔥¿☀️? nueva _función de CSS_ que permite proporcionar para el background una lista de imágenes junto con sus tamaños y densidades, y dejar que el navegador seleccione la imagen más adecuada en función de las condiciones de visualización.
+  > 2️f0️f2️f3️fYY"¿~?️? nueva _función de CSS_ que permite proporcionar para el background una lista de imágenes junto con sus tamaños y densidades, y dejar que el navegador seleccione la imagen más adecuada en función de las condiciones de visualización.
 
   ```css
   .element {
@@ -1110,7 +1110,7 @@ dialog {
 
 - `prefers-reduced-motion`
 
-  > 2️⃣0️⃣2️⃣0️⃣🔥🧨☀️😎 nueva _característica de medios_ que se utiliza para detectar si el usuario ha solicitado que el sistema minimice la cantidad de movimiento no esencial que utiliza.
+  > 2️f0️f2️f0️fY"Y~?️Y~Z nueva _característica de medios_ que se utiliza para detectar si el usuario ha solicitado que el sistema minimice la cantidad de movimiento no esencial que utiliza.
 
   ```css
   @media (prefers-reduced-motion) {
@@ -1122,7 +1122,7 @@ dialog {
 
 - `prefers-color-scheme`
 
-  > 2️⃣0️⃣2️⃣0️⃣🔥🧨☀️😎 nueva _característica de medios_ que se utiliza para detectar si el usuario ha solicitado un tema de color claro u oscuro.
+  > 2️f0️f2️f0️fY"Y~?️Y~Z nueva _característica de medios_ que se utiliza para detectar si el usuario ha solicitado un tema de color claro u oscuro.
 
   ```css
   @media (prefers-color-scheme: dark) {
@@ -1135,7 +1135,7 @@ dialog {
 
 - `prefers-reduced-data`
 
-  > 2️⃣0️⃣2️⃣1️⃣🔥🧨☀️😎 nueva _característica de medios_ que se utiliza para detectar si el usuario ha solicitado contenido web que consuma menos tráfico de internet.
+  > 2️f0️f2️f1️fY"Y~?️Y~Z nueva _característica de medios_ que se utiliza para detectar si el usuario ha solicitado contenido web que consuma menos tráfico de internet.
 
   ```css
   @media (prefers-reduced-data: reduce) {
@@ -1147,7 +1147,7 @@ dialog {
 
 - `color-scheme`
 
-  > 2️⃣0️⃣2️⃣1️⃣🔥🧨☀️😎 nueva _propiedad CSS_ que permite a un elemento indicar en qué esquemas de color puede renderizado cómodamente.
+  > 2️f0️f2️f1️fY"Y~?️Y~Z nueva _propiedad CSS_ que permite a un elemento indicar en qué esquemas de color puede renderizado cómodamente.
 
   ```css
   .html {
@@ -1157,7 +1157,7 @@ dialog {
 
 - `prefers-contrast`
 
-  > 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️ nueva _característica de medios_ que se utiliza para detectar si el usuario ha solicitado contenido web que cumpla con ciertos niveles de contraste.
+  > 2️f0️f2️f2️fY"Y~?️ nueva _característica de medios_ que se utiliza para detectar si el usuario ha solicitado contenido web que cumpla con ciertos niveles de contraste.
 
   ```css
   @media (prefers-contrast: more) {
@@ -1169,7 +1169,7 @@ dialog {
 
 - `forced-colors`
 
-  > 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️ nueva _característica de medios_ que se utiliza para detectar si el usuario ha solicitado contenido web que cumpla con ciertos niveles de color.
+  > 2️f0️f2️f2️fY"Y~?️ nueva _característica de medios_ que se utiliza para detectar si el usuario ha solicitado contenido web que cumpla con ciertos niveles de color.
 
   ```css
   @media (forced-colors: active) {
@@ -1181,11 +1181,11 @@ dialog {
 
 - `color-contrast()`
 
-  > 2️⃣0️⃣2️⃣1️⃣🧨☀️😎 nueva _notación funcional_ que toma un valor de color y lo compara con una lista de otros valores de color, seleccionando el que tenga el mayor contraste de la lista.
+  > 2️f0️f2️f1️fY~?️Y~Z nueva _notación funcional_ que toma un valor de color y lo compara con una lista de otros valores de color, seleccionando el que tenga el mayor contraste de la lista.
 
 - `:focus-visible`
 
-  > 2️⃣0️⃣2️⃣2️⃣🔥🧨☀️ nueva _pseudo-clase_ que se aplica a un elemento que recibe el enfoque del teclado, pero solo si el enfoque no se realiza con un mouse u otro dispositivo de puntero.
+  > 2️f0️f2️f2️fY"Y~?️ nueva _pseudo-clase_ que se aplica a un elemento que recibe el enfoque del teclado, pero solo si el enfoque no se realiza con un mouse u otro dispositivo de puntero.
 
   ```css
   .focus-visible-only:focus-visible {
@@ -1199,7 +1199,7 @@ dialog {
 
 - `light-dark()`
 
-  > 2️⃣0️⃣2️⃣4️⃣🔥 nueva _función de CSS_ que selecciona un valor de una lista de valores basándose en si el usuario ha solicitado un tema de color claro u oscuro.
+  > 2️f0️f2️f4️fY" nueva _función de CSS_ que selecciona un valor de una lista de valores basándose en si el usuario ha solicitado un tema de color claro u oscuro.
 
   ```css
   code {
@@ -1209,32 +1209,32 @@ dialog {
 
 #### Accesibilidad en HTML
 
-- 😎 **tabindex** (HTML)
+- Y~Z **tabindex** (HTML)
 
   - atributo _global de HTML_ que indica que su elemento puede recibir el enfoque y dónde participa en la navegación secuencial del teclado (generalmente con la tecla Tab, de ahí el nombre).
 
-- 😎 **ARIA HTML**
+- Y~Z **ARIA HTML**
   - conjunto de _atributos HTML_ que definen formas de hacer que el contenido web y las aplicaciones web (especialmente aquellas desarrolladas con JavaScript) sean más accesibles para personas con discapacidades.
 
 ### Rendimiento (Performance)
 
 - Consultas de soporte de características o consulta de características (`@supports`)
 
-  > 🔥🧨☀️😎 _regla CSS_ para especificar declaraciones que dependen del soporte de un navegador para una o más características específicas de CSS.
+  > Y"Y~?️Y~Z _regla CSS_ para especificar declaraciones que dependen del soporte de un navegador para una o más características específicas de CSS.
   > La regla puede colocarse en el nivel superior de tu código o anidarse dentro de cualquier otra regla condicional.
 
 - `content-visibility`
 
-  > 2️⃣0️⃣2️⃣0️⃣🧨☀️😎 nueva _propiedad CSS_ que permite al agente de usuario omitir el trabajo de renderizado de un elemento, incluyendo el diseño y la pintura, hasta que sea necesario. Mejora el rendimiento.
+  > 2️f0️f2️f0️fY~?️Y~Z nueva _propiedad CSS_ que permite al agente de usuario omitir el trabajo de renderizado de un elemento, incluyendo el diseño y la pintura, hasta que sea necesario. Mejora el rendimiento.
 
 - `containment`
 
-  > 😎 _propiedad CSS_ que permite a un autor indicar que un elemento y su contenido son, en la medida de lo posible, independientes del resto del árbol del documento.
+  > Y~Z _propiedad CSS_ que permite a un autor indicar que un elemento y su contenido son, en la medida de lo posible, independientes del resto del árbol del documento.
   > Esto permite al navegador recalcar el diseño, estilo, pintura, tamaño o cualquier combinación de ellos para un área limitada del DOM y no toda la página, lo que lleva a beneficios obvios de rendimiento.
 
 - `will-change`
 
-  > ☀️😎 _propiedad CSS_ que sugiere a los navegadores cómo se espera que cambie un elemento. Los navegadores pueden configurar optimizaciones antes de que un elemento cambie realmente. Este tipo de optimizaciones pueden aumentar la capacidad de respuesta de una página al realizar trabajos potencialmente costosos antes de que realmente se requieran.
+  > ~?️Y~Z _propiedad CSS_ que sugiere a los navegadores cómo se espera que cambie un elemento. Los navegadores pueden configurar optimizaciones antes de que un elemento cambie realmente. Este tipo de optimizaciones pueden aumentar la capacidad de respuesta de una página al realizar trabajos potencialmente costosos antes de que realmente se requieran.
 
 ## References
 
@@ -1243,15 +1243,17 @@ dialog {
 - [State of CSS](https://stateofcss.com/en-US)
   Encuestas sobre el estado de CSS desde 2021 hasta 2024
 
-- [📖 ☀️Lenguaje CSS](https://lenguajecss.com/css/)
+- [Y"- ~?️Lenguaje CSS](https://lenguajecss.com/css/)
   Colección de artículos de Manz.dev
 
-- [📋 🌍Designing in the Browser](https://www.youtube.com/playlist?list=PLNYkxOF6rcIDI0QtJvW6vKonTxn6azCsD)
+- [Y"< YODesigning in the Browser](https://www.youtube.com/playlist?list=PLNYkxOF6rcIDI0QtJvW6vKonTxn6azCsD)
   Lista de reproducción de vídeos de Una Kravets (Chrome for Developers) sobre diseño en el navegador
 
 ## Adds
 
-- 🧨☀️ object-view-box
-- 🧨 linear()
-- 🧨☀️ font-palette
-- 🧨☀️ shadow-DOM properties
+- Y~?️ object-view-box
+- Y linear()
+- Y~?️ font-palette
+- Y~?️ shadow-DOM properties
+
+
