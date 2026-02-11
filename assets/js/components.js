@@ -52,6 +52,7 @@ const TEMAS_CONFIG = {
         carpeta: 'js',
         color: 'yellow',
         temas: [
+            { num: 0, slug: 'fundamentos', titulo: 'Fundamentos y Glosario' },
             { num: 1, slug: 'intro', titulo: 'Introducción y Entorno' },
             { num: 2, slug: 'sintaxis', titulo: 'Sintaxis y Variables' },
             { num: 3, slug: 'control', titulo: 'Control de Flujo' },
@@ -412,5 +413,4 @@ window.ApuntesComponents = {
     generarFooter,
     initComponents
 };
-
 

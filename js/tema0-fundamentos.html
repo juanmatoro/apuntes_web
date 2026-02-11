@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 0: Fundamentos y Glosario - Apuntes JavaScript</title>
+    <meta name="description" content="Introducción clara y concisa a JavaScript y glosario de términos fundamentales: ECMAScript, motor, runtime, DOM, parsing, render tree, layout y paint.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <div data-component="header" data-titulo="Tema 0: Fundamentos y Glosario"></div>
+    <div data-component="breadcrumb"></div>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#que-es" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Qué es JavaScript</a>
+            <a href="#ecmascript" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">ECMAScript y JS</a>
+            <a href="#web" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">JS en la Web</a>
+            <a href="#glosario" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Glosario</a>
+            <a href="#recursos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Recursos</a>
+        </div>
+    </nav>
+
+    <div class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <a href="tema0-fundamentos-ejemplos.html" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-yellow-700 text-white rounded hover:bg-yellow-600 no-underline">
+            Ver ejemplos del tema
+        </a>
+    </div>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <section id="que-es" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Qué es JavaScript
+            </h2>
+            <p class="text-sm mb-3"><strong>JavaScript</strong> es el lenguaje que aporta la capa interactiva de una web. Según <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">web.dev/learn/javascript</code>, complementa la estructura (HTML) y la presentación (CSS), permitiendo cambiar contenido y comportamiento en respuesta a eventos y lógica interna.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 [&>*]:min-w-0">
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-1">HTML</h3>
+                    <p class="text-xs">Estructura del documento.</p>
+                </div>
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-1">CSS</h3>
+                    <p class="text-xs">Presentación y estilos visuales.</p>
+                </div>
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-1">JavaScript</h3>
+                    <p class="text-xs">Interactividad, lógica y comportamiento.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ecmascript" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>ECMAScript y JavaScript
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>ECMAScript (ES)</strong> es el estándar (ECMA-262).</li>
+                <li><strong>JavaScript</strong> es la implementación más usada de ese estándar.</li>
+                <li>El estándar evoluciona por ediciones (ES2015, ES2016, ...).</li>
+            </ul>
+            <p class="text-sm mt-3 p-2 bg-yellow-50 border-l-4 border-yellow-500 rounded">Regla práctica: cuando hablamos de sintaxis y reglas del lenguaje, hablamos de ECMAScript; cuando hablamos de su uso real en navegador o Node.js, hablamos de JavaScript en un entorno concreto.</p>
+        </section>
+
+        <section id="web" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>JavaScript en la Web: mapa rápido
+            </h2>
+            <p class="text-sm mb-2">En navegador, JavaScript se ejecuta junto al motor de renderizado y puede leer/modificar el DOM.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">HTML + CSS + JS
+  -> Parsing (análisis)
+  -> DOM + CSSOM
+  -> Render Tree
+  -> Layout
+  -> Paint</pre>
+            <p class="text-xs text-gray-600 mt-2">Este flujo se desarrolla con más detalle en el Tema 1 (arquitectura del navegador).</p>
+        </section>
+
+        <section id="glosario" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Glosario fundamental
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Término</th>
+                            <th class="border border-yellow-200 p-2 text-left">Definición breve</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">JavaScript</td><td class="border border-gray-200 p-2">Lenguaje de programación de propósito general, muy usado en web para interacción y lógica.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">ECMAScript</td><td class="border border-gray-200 p-2">Estándar que define la sintaxis y semántica base del lenguaje.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Motor JS</td><td class="border border-gray-200 p-2">Componente que interpreta/ejecuta JavaScript (V8, SpiderMonkey, JavaScriptCore).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Runtime</td><td class="border border-gray-200 p-2">Entorno de ejecución con APIs disponibles (navegador, Node.js).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Parsing</td><td class="border border-gray-200 p-2">Análisis del código fuente para convertir texto en estructura que el motor entiende.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Token</td><td class="border border-gray-200 p-2">Unidad léxica mínima del código (palabras clave, literales, operadores).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Statement</td><td class="border border-gray-200 p-2">Instrucción que ejecuta una acción (por ejemplo, una declaración o asignación).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Expression</td><td class="border border-gray-200 p-2">Fragmento de código que produce un valor (por ejemplo, <code>2 + 2</code>).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">DOM</td><td class="border border-gray-200 p-2">Representación en árbol del documento HTML accesible desde JavaScript.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">CSSOM</td><td class="border border-gray-200 p-2">Representación en árbol de reglas CSS parseadas.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Render Tree</td><td class="border border-gray-200 p-2">Combinación de DOM + CSSOM para calcular qué se dibuja.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Layout</td><td class="border border-gray-200 p-2">Cálculo de tamaños y posiciones de los elementos en pantalla.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Paint</td><td class="border border-gray-200 p-2">Pintado final de píxeles en pantalla.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Web APIs</td><td class="border border-gray-200 p-2">APIs del navegador usadas por JS (DOM, fetch, localStorage, timers).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Type coercion</td><td class="border border-gray-200 p-2">Conversión implícita o explícita de un tipo de dato a otro.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Scope</td><td class="border border-gray-200 p-2">Región donde una variable existe y es accesible.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">5</span>Recursos y herramientas
+            </h2>
+            <p class="text-sm mb-4">Referencias y utilidades para consolidar los fundamentos del lenguaje.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Referencia técnica</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" class="text-yellow-700 hover:underline font-medium block">MDN JavaScript</a>
+                            <span class="text-gray-500">Referencia oficial del lenguaje y APIs web.</span>
+                        </li>
+                        <li>
+                            <a href="https://web.dev/learn/javascript" target="_blank" class="text-yellow-700 hover:underline font-medium block">Learn JavaScript (web.dev)</a>
+                            <span class="text-gray-500">Guía progresiva de fundamentos y buenas prácticas.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Modelo y especificación</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://tc39.es/ecma262/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ECMAScript (TC39)</a>
+                            <span class="text-gray-500">Especificación oficial del lenguaje.</span>
+                        </li>
+                        <li>
+                            <a href="https://javascript.info/" target="_blank" class="text-yellow-700 hover:underline font-medium block">javascript.info</a>
+                            <span class="text-gray-500">Explicaciones claras para afianzar conceptos base.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Herramientas</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.chrome.com/docs/devtools/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Chrome DevTools</a>
+                            <span class="text-gray-500">Inspección de DOM, depuración y rendimiento.</span>
+                        </li>
+                        <li>
+                            <a href="https://eslint.org/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ESLint</a>
+                            <span class="text-gray-500">Linter para calidad y consistencia de código.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+
+</body>
+</html>

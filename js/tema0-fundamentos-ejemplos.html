@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos Tema 0: Fundamentos y Glosario - Apuntes JavaScript</title>
+    <meta name="description" content="Ejemplos básicos del Tema 0 de JavaScript: expresiones, tipos y primer contacto con DOM.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-yellow-700 to-yellow-600 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+            <a href="../index.html#js" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
+                <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">JavaScript</span>
+            </a>
+            <h1 class="flex-1 text-lg font-semibold truncate">Ejemplos Tema 0: Fundamentos y Glosario</h1>
+            <a href="tema0-fundamentos.html" class="text-xs px-3 py-1.5 bg-white/20 rounded no-underline text-white hover:bg-white/30">Volver al tema</a>
+        </div>
+    </header>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
+        <a href="index.html" class="text-amber-900 no-underline hover:underline">Índice</a>
+        <span class="text-gray-400 mx-1">›</span>
+        JavaScript
+        <span class="text-gray-400 mx-1">›</span>
+        Tema 0 (ejemplos)
+    </nav>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#expresiones" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Expresiones</a>
+            <a href="#tipos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Tipos</a>
+            <a href="#dom" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">DOM</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+        <section id="expresiones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Statement vs Expression
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Código</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const total = 2 + 2;
+console.log(total);</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Idea clave</h3>
+                    <p class="text-sm"><code>2 + 2</code> es una <strong>expresión</strong> (produce valor). La línea completa con <code>const</code> es un <strong>statement</strong> (ejecuta acción).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tipos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Tipos y coerción
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Código</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">console.log(typeof 42);       // "number"
+console.log(typeof "42");     // "string"
+console.log("1" + 1);         // "11" (coerción)</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Idea clave</h3>
+                    <p class="text-sm">JavaScript es de tipado dinámico y aplica coerción en ciertas operaciones. Conviene conocer cuándo convierte tipos automáticamente.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dom" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Primer contacto con DOM
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Código</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const titulo = document.querySelector("h1");
+if (titulo) {
+  titulo.textContent = "JavaScript en acción";
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Idea clave</h3>
+                    <p class="text-sm">El DOM representa el HTML en memoria. Con JavaScript puedes leerlo y modificarlo en tiempo de ejecución.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema0-fundamentos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-yellow-700 text-white no-underline rounded text-xs hover:bg-yellow-600">&larr; Volver al tema</a>
+        <a href="tema1-intro.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-yellow-700 text-white no-underline rounded text-xs hover:bg-yellow-600">Ir al Tema 1 &rarr;</a>
+    </nav>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes JavaScript — Ejemplos Tema 0</p>
+    </footer>
+
+    <script src="../assets/js/components.js"></script>
+</body>
+</html>

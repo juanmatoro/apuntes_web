@@ -25,6 +25,7 @@
             <a href="#arquitecturas" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Arquitecturas web</a>
             <a href="#navegadores" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Navegadores</a>
             <a href="#motores" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Motores y Entornos JS</a>
+            <a href="#recursos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Recursos</a>
         </div>
     </nav>
 
@@ -34,6 +35,11 @@
             Ver ejemplos del tema
         </a>
     </div>
+
+    <div class="bg-yellow-50 border-b border-yellow-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-yellow-800">Antes de este tema, revisa <a href="tema0-fundamentos.html" class="underline font-semibold">Tema 0: Fundamentos y Glosario</a> para fijar conceptos base (DOM, parsing, render, runtime, etc.).</p>
+    </div>
+
 <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
 
         <!-- ARQUITECTURAS DE APLICACIONES WEB -->
@@ -203,6 +209,57 @@ const greet = (name) =&gt; `Hola, ${name}!`;
 var greet = function(name) {
     return "Hola, " + name + "!";
 };</pre>
+        </section>
+
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">4</span>Recursos y herramientas
+            </h2>
+            <p class="text-sm mb-4">Referencias y utilidades para profundizar en arquitectura web y entorno de ejecuci&oacute;n.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Referencia t&eacute;cnica</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" class="text-yellow-700 hover:underline font-medium block">MDN JavaScript</a>
+                            <span class="text-gray-500">Documentaci&oacute;n de lenguaje, runtime y Web APIs.</span>
+                        </li>
+                        <li>
+                            <a href="https://web.dev/learn/javascript" target="_blank" class="text-yellow-700 hover:underline font-medium block">Learn JavaScript (web.dev)</a>
+                            <span class="text-gray-500">Base conceptual para JavaScript en la web moderna.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Compatibilidad y est&aacute;ndar</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://caniuse.com/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Can I Use</a>
+                            <span class="text-gray-500">Compatibilidad de APIs y caracter&iacute;sticas por navegador.</span>
+                        </li>
+                        <li>
+                            <a href="https://tc39.es/ecma262/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ECMAScript (TC39)</a>
+                            <span class="text-gray-500">Especificaci&oacute;n oficial del lenguaje.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Herramientas</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.chrome.com/docs/devtools/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Chrome DevTools</a>
+                            <span class="text-gray-500">Paneles de red, rendimiento y depuraci&oacute;n de scripts.</span>
+                        </li>
+                        <li>
+                            <a href="https://babeljs.io/repl" target="_blank" class="text-yellow-700 hover:underline font-medium block">Babel REPL</a>
+                            <span class="text-gray-500">Compara c&oacute;digo moderno y salida transpilada al instante.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
     </main>
