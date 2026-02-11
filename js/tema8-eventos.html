@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 8: Eventos - Apuntes JavaScript</title>
+    <meta name="description" content="Eventos en JavaScript: listeners, objeto event, propagaci&oacute;n, delegaci&oacute;n y routing b&aacute;sico.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <!-- CABECERA PRINCIPAL -->
+    <div data-component="header"></div>
+
+    <!-- BREADCRUMB -->
+    <div data-component="breadcrumb"></div>
+
+    <!-- NAVEGACI&Oacute;N INTERNA DEL TEMA -->
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#eventos-intro" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Eventos</a>
+            <a href="#listeners" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Listeners</a>
+            <a href="#objeto-event" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Objeto event</a>
+            <a href="#propagacion" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Propagaci&oacute;n</a>
+            <a href="#tipos-eventos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Tipos</a>
+            <a href="#routing" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Routing</a>
+            <a href="#recursos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Recursos</a>
+        </div>
+    </nav>
+
+    <div class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <a href="tema8-eventos-ejemplos.html" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-yellow-700 text-white rounded hover:bg-yellow-600 no-underline">
+            Ver ejemplos del tema
+        </a>
+    </div>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- EVENTOS INTRO -->
+        <section id="eventos-intro" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Eventos y callbacks
+            </h2>
+            <p class="text-sm mb-3">Un evento es una acci&oacute;n que ocurre en la p&aacute;gina (click, teclado, scroll, carga...). En JavaScript se gestionan con funciones callback que se ejecutan cuando sucede ese evento.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Los eventos pueden venir del usuario o del propio navegador.</li>
+                <li>El navegador expone un sistema com&uacute;n de eventos para cualquier nodo del DOM.</li>
+            </ul>
+        </section>
+
+        <!-- LISTENERS -->
+        <section id="listeners" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>API de listeners
+            </h2>
+            <p class="text-sm mb-3">La forma recomendada de trabajar eventos es con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">addEventListener</code>.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Suscripci&oacute;n b&aacute;sica</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const btn = document.querySelector('#save');
+btn.addEventListener('click', (event) => {
+  console.log('Guardando...');
+});</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Quitar y disparar</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function onResize() {
+  console.log(window.innerWidth);
+}
+
+window.addEventListener('resize', onResize);
+window.removeEventListener('resize', onResize);
+window.dispatchEvent(new Event('resize'));</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- OBJETO EVENT -->
+        <section id="objeto-event" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Objeto <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">event</code>
+            </h2>
+            <p class="text-sm mb-3">El callback recibe un objeto con informaci&oacute;n del evento y control de su comportamiento.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Propiedades comunes</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">event.target</code> nodo que dispar&oacute; el evento.</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">event.currentTarget</code> nodo que escucha.</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">event.type</code> tipo de evento.</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">event.timeStamp</code> momento en que se produjo.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Control del flujo</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  // procesar datos sin recargar
+});</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROPAGACION -->
+        <section id="propagacion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Propagaci&oacute;n y delegaci&oacute;n
+            </h2>
+            <p class="text-sm mb-3">Los eventos burbujean por el &aacute;rbol DOM. Esto permite usar delegaci&oacute;n para manejar muchos elementos con un solo listener.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Delegaci&oacute;n de eventos</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const list = document.querySelector('#tasks');
+
+list.addEventListener('click', (event) => {
+  if (!event.target.matches('button[data-id]')) return;
+  const id = event.target.dataset.id;
+  removeTask(id);
+});</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Ventajas</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Menos listeners y mejor rendimiento.</li>
+                        <li>Funciona con elementos creados din&aacute;micamente.</li>
+                        <li>Centraliza la l&oacute;gica de interacci&oacute;n.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIPOS EVENTOS -->
+        <section id="tipos-eventos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">5</span>Tipos de eventos frecuentes
+            </h2>
+            <p class="text-sm mb-3">Algunos grupos habituales de eventos en aplicaciones web:</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Interacci&oacute;n de usuario</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Mouse: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">click</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dblclick</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">mouseenter</code>.</li>
+                        <li>Teclado: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">keydown</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">keyup</code>.</li>
+                        <li>Formulario: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">input</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">change</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">submit</code>.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Navegador y documento</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Ventana: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">resize</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">scroll</code>.</li>
+                        <li>Carga: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">DOMContentLoaded</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">load</code>.</li>
+                        <li>Errores: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">error</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">beforeunload</code>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROUTING -->
+        <section id="routing" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">6</span>Routing b&aacute;sico en front
+            </h2>
+            <p class="text-sm mb-3">En aplicaciones web, la URL puede decidir qu&eacute; contenido cargar. Una forma simple es leer <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">location.pathname</code> y ejecutar una funci&oacute;n por ruta.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">let page = location.pathname.split('/').at(-1).split('.').at(0);
+page = page || 'index';
+
+const router = {
+  portfolio: loadPortfolio,
+  about: loadAbout,
+  tasks: loadTasks,
+  contacts: loadContacts,
+  index: loadHome
+};
+
+router[page]?.();</pre>
+        </section>
+
+        <!-- RECURSOS -->
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">7</span>Recursos y herramientas
+            </h2>
+            <p class="text-sm mb-4">Referencias y utilidades para practicar eventos con criterio.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Referencia t&eacute;cnica</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener" target="_blank" class="text-yellow-700 hover:underline font-medium block">addEventListener (MDN)</a>
+                            <span class="text-gray-500">Uso completo del API de eventos.</span>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/Events" target="_blank" class="text-yellow-700 hover:underline font-medium block">Web Events (MDN)</a>
+                            <span class="text-gray-500">Listado y gu&iacute;a de tipos de eventos.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Arquitectura frontend</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/API/History_API" target="_blank" class="text-yellow-700 hover:underline font-medium block">History API</a>
+                            <span class="text-gray-500">Navegaci&oacute;n y estado sin recarga completa.</span>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/API/Location" target="_blank" class="text-yellow-700 hover:underline font-medium block">Location</a>
+                            <span class="text-gray-500">Lectura y gesti&oacute;n de rutas en cliente.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                    <h3 class="font-semibold text-yellow-800 mb-2">Herramientas</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://eslint.org/docs/latest/rules/no-unused-vars" target="_blank" class="text-yellow-700 hover:underline font-medium block">ESLint no-unused-vars</a>
+                            <span class="text-gray-500">Evita callbacks y listeners hu&eacute;rfanos.</span>
+                        </li>
+                        <li>
+                            <a href="https://prettier.io/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Prettier</a>
+                            <span class="text-gray-500">Formato consistente en handlers y callbacks.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- NAVEGACI&Oacute;N INFERIOR -->
+    <div data-component="footer-nav"></div>
+
+    <!-- FOOTER -->
+    <div data-component="footer"></div>
+
+</body>
+</html>

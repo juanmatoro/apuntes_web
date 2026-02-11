@@ -22,12 +22,13 @@
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
+        <a href="#definicion-partes" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Definici&oacute;n</a>
         <a href="#declaracion" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Declaraci&oacute;n</a>
         <a href="#parametros" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Par&aacute;metros</a>
         <a href="#scope-closure" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Scope y closure</a>
         <a href="#this-arrow" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">this y arrow</a>
         <a href="#buenas-practicas" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Buenas pr&aacute;cticas</a>
-        <a href=\
+        <a href="#recursos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Recursos</a>
       </div>
     </nav>
 
@@ -39,10 +40,85 @@
     </div>
 <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
 
+        <!-- DEFINICION -->
+        <section id="definicion-partes" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Definici&oacute;n y partes de una funci&oacute;n
+            </h2>
+            <p class="text-sm mb-3">Una <strong>funci&oacute;n</strong> es un bloque de c&oacute;digo reutilizable que puede recibir datos de entrada, ejecutar una tarea y devolver un resultado.</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Parte</th>
+                            <th class="border border-yellow-200 p-2 text-left">Qu&eacute; hace</th>
+                            <th class="border border-yellow-200 p-2 text-left">Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">Nombre</td>
+                            <td class="border border-gray-200 p-2">Identifica la funci&oacute;n para poder invocarla.</td>
+                            <td class="border border-gray-200 p-2"><code>saludar</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">Par&aacute;metros</td>
+                            <td class="border border-gray-200 p-2">Variables de entrada que recibe la funci&oacute;n.</td>
+                            <td class="border border-gray-200 p-2"><code>(nombre)</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">Cuerpo</td>
+                            <td class="border border-gray-200 p-2">Instrucciones que se ejecutan al llamar la funci&oacute;n.</td>
+                            <td class="border border-gray-200 p-2"><code>{ ... }</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">Valor de retorno</td>
+                            <td class="border border-gray-200 p-2">Resultado que entrega con <code>return</code>.</td>
+                            <td class="border border-gray-200 p-2"><code>return mensaje;</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">Invocaci&oacute;n</td>
+                            <td class="border border-gray-200 p-2">Ejecuci&oacute;n de la funci&oacute;n.</td>
+                            <td class="border border-gray-200 p-2"><code>saludar('Ana')</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">function saludar(nombre) {          // nombre + par&aacute;metro
+  const mensaje = `Hola ${nombre}`;  // cuerpo
+  return mensaje;                    // retorno
+}
+
+saludar('Ana');                      // invocaci&oacute;n</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Tipos de funciones seg&uacute;n retorno: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">void</code> y no <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">void</code></h3>
+            <p class="text-sm mb-3"><strong>Funci&oacute;n void</strong>: se ejecuta por su efecto (mostrar, guardar, actualizar) y no devuelve un valor &uacute;til. <strong>Funci&oacute;n no void</strong>: devuelve un valor que normalmente se usa en otra expresi&oacute;n o asignaci&oacute;n.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h4 class="font-semibold text-yellow-600 mb-2">Funci&oacute;n <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">void</code></h4>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function mostrarMensaje(nombre) {
+  console.log(`Hola ${nombre}`);
+  // no retorna valor &uacute;til
+}</pre>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-yellow-600 mb-2">Funci&oacute;n no <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">void</code></h4>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function sumar(a, b) {
+  return a + b; // retorna un number
+}
+
+const total = sumar(2, 3);</pre>
+                </div>
+            </div>
+        </section>
+
         <!-- DECLARACION -->
         <section id="declaracion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">1</span>Declaraci&oacute;n y expresi&oacute;n
+                <span class="orden">2</span>Declaraci&oacute;n y expresi&oacute;n
             </h2>
             <p class="text-sm mb-3">Las funciones se pueden declarar o asignar a variables como expresiones. Las declaraciones se <strong>elevan</strong> (hoisting), las expresiones no.</p>
 
@@ -69,7 +145,7 @@ const saludar2 = (nombre) =&gt; `Hola ${nombre}`;</pre>
         <!-- PARAMETROS -->
         <section id="parametros" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">2</span>Par&aacute;metros y valores por defecto
+                <span class="orden">3</span>Par&aacute;metros y valores por defecto
             </h2>
             <p class="text-sm mb-3">Puedes definir valores por defecto, capturar el resto de argumentos y usar <strong>destructuring</strong>.</p>
 
@@ -98,7 +174,7 @@ crearUsuario({ nombre: 'Ana', edad: 25 });</pre>
         <!-- SCOPE Y CLOSURE -->
         <section id="scope-closure" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">3</span>Scope y closures
+                <span class="orden">4</span>Scope y closures
             </h2>
             <p class="text-sm mb-3">El scope l&eacute;xico determina qu&eacute; variables est&aacute;n disponibles. Un <strong>closure</strong> es una funci&oacute;n que recuerda su entorno.</p>
 
@@ -128,7 +204,7 @@ inc(); // 2</pre>
         <!-- THIS Y ARROW -->
         <section id="this-arrow" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">4</span><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> y funciones flecha
+                <span class="orden">5</span><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> y funciones flecha
             </h2>
             <p class="text-sm mb-3">Las funciones flecha no tienen su propio <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code>; heredan el del contexto exterior.</p>
 
@@ -155,7 +231,7 @@ inc(); // 2</pre>
         <!-- BUENAS PRACTICAS -->
         <section id="buenas-practicas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">5</span>Buenas pr&aacute;cticas
+                <span class="orden">6</span>Buenas pr&aacute;cticas
             </h2>
             <ul class="list-disc pl-5 space-y-1 text-sm">
                 <li>Usa nombres verbales: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">getUser</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">createTask</code>.</li>
@@ -166,7 +242,7 @@ inc(); // 2</pre>
         <!-- RECURSOS -->
         <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
-                <span class="orden">6</span>Recursos y herramientas
+                <span class="orden">7</span>Recursos y herramientas
             </h2>
             <p class="text-sm mb-4">Referencias y utilidades para trabajar con calidad y eficiencia.</p>
 

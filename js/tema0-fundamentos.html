@@ -21,6 +21,7 @@
             <a href="#que-es" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Qué es JavaScript</a>
             <a href="#ecmascript" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">ECMAScript y JS</a>
             <a href="#web" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">JS en la Web</a>
+            <a href="#apis-navegador" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">APIs de navegador</a>
             <a href="#glosario" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Glosario</a>
             <a href="#recursos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Recursos</a>
         </div>
@@ -81,9 +82,85 @@
             <p class="text-xs text-gray-600 mt-2">Este flujo se desarrolla con más detalle en el Tema 1 (arquitectura del navegador).</p>
         </section>
 
+        <section id="apis-navegador" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>APIs de navegador (Web APIs)
+            </h2>
+            <p class="text-sm mb-3">Según MDN, las <strong>Web APIs</strong> son interfaces que expone el navegador para que JavaScript pueda interactuar con capacidades del entorno (red, almacenamiento, interfaz, sensores, historial, etc.). No forman parte del núcleo ECMAScript: pertenecen al <strong>runtime del navegador</strong>.</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">API</th>
+                            <th class="border border-yellow-200 p-2 text-left">Para qué sirve</th>
+                            <th class="border border-yellow-200 p-2 text-left">Ejemplo común</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code>DOM API</code></td>
+                            <td class="border border-gray-200 p-2">Leer y modificar el documento HTML.</td>
+                            <td class="border border-gray-200 p-2"><code>document.querySelector()</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code>Fetch API</code></td>
+                            <td class="border border-gray-200 p-2">Hacer peticiones HTTP asíncronas.</td>
+                            <td class="border border-gray-200 p-2"><code>fetch('/api')</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code>Web Storage API</code></td>
+                            <td class="border border-gray-200 p-2">Guardar pares clave-valor en el navegador.</td>
+                            <td class="border border-gray-200 p-2"><code>localStorage.setItem()</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code>Geolocation API</code></td>
+                            <td class="border border-gray-200 p-2">Obtener ubicación del usuario (con permiso).</td>
+                            <td class="border border-gray-200 p-2"><code>navigator.geolocation.getCurrentPosition()</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold"><code>History API</code></td>
+                            <td class="border border-gray-200 p-2">Gestionar historial y URL sin recargar.</td>
+                            <td class="border border-gray-200 p-2"><code>history.pushState()</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Ejemplo: Fetch API</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">async function cargarUsuarios() {
+  const res = await fetch('/api/users');
+  if (!res.ok) throw new Error('Error HTTP');
+  return res.json();
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Ejemplo: Web Storage API</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">localStorage.setItem('temaActual', 'fundamentos');
+const tema = localStorage.getItem('temaActual');
+console.log(tema);</pre>
+                </div>
+            </div>
+
+            <p class="text-sm mt-3 p-2 bg-yellow-50 border-l-4 border-yellow-500 rounded"><strong>Nota MDN:</strong> algunas APIs requieren permisos del usuario y/o contexto seguro (<code>https</code>), como geolocalización, cámara o micrófono.</p>
+
+            <div class="mt-4 border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+                <h3 class="font-semibold text-yellow-800 mb-2">Referencias MDN</h3>
+                <ul class="list-disc pl-5 space-y-1 text-xs">
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/API" target="_blank" class="text-yellow-700 hover:underline font-medium">Web APIs (índice)</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API" target="_blank" class="text-yellow-700 hover:underline font-medium">Fetch API</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/API/Web_Storage_API" target="_blank" class="text-yellow-700 hover:underline font-medium">Web Storage API</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/API/Geolocation_API" target="_blank" class="text-yellow-700 hover:underline font-medium">Geolocation API</a></li>
+                    <li><a href="https://developer.mozilla.org/es/docs/Web/API/History_API" target="_blank" class="text-yellow-700 hover:underline font-medium">History API</a></li>
+                </ul>
+            </div>
+        </section>
+
         <section id="glosario" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">4</span>Glosario fundamental
+                <span class="orden">5</span>Glosario fundamental
             </h2>
             <div class="overflow-x-auto">
                 <table class="w-full text-xs border-collapse mt-2">
@@ -117,7 +194,7 @@
 
         <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
-                <span class="orden">5</span>Recursos y herramientas
+                <span class="orden">6</span>Recursos y herramientas
             </h2>
             <p class="text-sm mb-4">Referencias y utilidades para consolidar los fundamentos del lenguaje.</p>
 
@@ -128,6 +205,10 @@
                         <li>
                             <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" class="text-yellow-700 hover:underline font-medium block">MDN JavaScript</a>
                             <span class="text-gray-500">Referencia oficial del lenguaje y APIs web.</span>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/es/docs/Web/API" target="_blank" class="text-yellow-700 hover:underline font-medium block">MDN Web APIs</a>
+                            <span class="text-gray-500">Índice general de APIs del navegador.</span>
                         </li>
                         <li>
                             <a href="https://web.dev/learn/javascript" target="_blank" class="text-yellow-700 hover:underline font-medium block">Learn JavaScript (web.dev)</a>

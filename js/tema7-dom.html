@@ -126,18 +126,21 @@ el.previousElementSibling;</pre>
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
                 <span class="orden">5</span>Creaci&oacute;n y modificaci&oacute;n
             </h2>
-            <p class="text-sm mb-3">Puedes crear nodos y modificar contenido, atributos y clases.</p>
+            <p class="text-sm mb-3">Puedes crear nodos y modificar contenido, atributos, clases y estructuras HTML con template strings.</p>
 
             <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-yellow-600 mb-2">Crear y a&ntilde;adir</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const li = document.createElement('li');
-li.textContent = 'Nuevo';
-list.appendChild(li);</pre>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const lista = document.querySelector('#tareas');
+const nuevaTarea = document.createElement('li');
+nuevaTarea.textContent = 'Estudiar DOM';
+nuevaTarea.classList.add('item');
+lista.append(nuevaTarea);</pre>
                 </div>
                 <div>
                     <h3 class="font-semibold text-yellow-600 mb-2">Atributos y clases</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">el.setAttribute('data-id', '7');
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const el = document.querySelector('.card');
+el.setAttribute('data-id', '7');
 el.classList.add('active');
 el.classList.toggle('hidden');</pre>
                 </div>
@@ -146,12 +149,21 @@ el.classList.toggle('hidden');</pre>
             <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-yellow-600 mb-2">innerHTML / textContent</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">title.textContent = 'Hola';
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const title = document.querySelector('h1');
+const container = document.querySelector('#mensaje');
+title.textContent = 'Hola';
 container.innerHTML = '&lt;strong&gt;OK&lt;/strong&gt;';</pre>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">insertAdjacentHTML</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">card.insertAdjacentHTML('beforeend', '<p>Nuevo</p>');</pre>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Template string + insertAdjacentHTML</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const card = document.querySelector('.card');
+const usuario = 'Ana';
+const rol = 'Admin';
+const html = `
+  &lt;p class="mb-1"&gt;&lt;strong&gt;${usuario}&lt;/strong&gt;&lt;/p&gt;
+  &lt;small&gt;${rol}&lt;/small&gt;
+`;
+card.insertAdjacentHTML('beforeend', html);</pre>
                 </div>
             </div>
         </section>
