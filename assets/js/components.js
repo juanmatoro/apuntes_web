@@ -61,13 +61,10 @@ const TEMAS_CONFIG = {
             { num: 6, slug: 'objetos', titulo: 'Objetos' },
             { num: 7, slug: 'dom', titulo: 'DOM' },
             { num: 8, slug: 'eventos', titulo: 'Eventos' },
-            { num: 9, slug: 'formularios', titulo: 'Formularios y Datos' },
-            { num: 10, slug: 'componentes', titulo: 'Componentes' },
-            { num: 11, slug: 'asincronia', titulo: 'Asincronía' },
-            { num: 12, slug: 'apis', titulo: 'APIs REST y Fetch' },
-            { num: 13, slug: 'modulos', titulo: 'Módulos' },
-            { num: 14, slug: 'poo', titulo: 'POO y Clases' },
-            { num: 15, slug: 'testing', titulo: 'Testing y Herramientas' }
+            { num: 9, slug: 'modulos', titulo: 'Módulos e importación' },
+            { num: 10, slug: 'gestion-datos', titulo: 'Gestión de datos' },
+            { num: 11, slug: 'componentes', titulo: 'Componentes' },
+            { num: 12, slug: 'asincronia', titulo: 'Asincronía en JS' }
         ]
     },
     ts: {
@@ -99,9 +96,10 @@ const TEMAS_CONFIG = {
 function detectarTemaActual() {
     const path = window.location.pathname;
     const filename = path.split('/').pop().replace('.html', '');
+    const baseFilename = filename.replace(/-ejemplos$/, '');
 
     for (const [categoria, config] of Object.entries(TEMAS_CONFIG)) {
-        const index = config.temas.findIndex(t => `tema${t.num}-${t.slug}` === filename);
+        const index = config.temas.findIndex(t => `tema${t.num}-${t.slug}` === baseFilename);
         if (index !== -1) {
             return {
                 categoria,

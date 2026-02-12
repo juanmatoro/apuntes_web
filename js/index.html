@@ -26,8 +26,14 @@
         </ul>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-5 py-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <main class="max-w-6xl mx-auto px-5 py-6 flex flex-col gap-6">
+        <section id="core-js" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">A</span>Core JS
+            </h2>
+            <p class="text-sm mb-4">Bloque centrado en el lenguaje: sintaxis, estructuras, funciones y modelos de datos.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 [&>*]:min-w-0">
             <div class="bg-white rounded-lg p-5 shadow">
                 <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">0</span>
                 <h3 class="text-yellow-700 font-semibold mb-1">Fundamentos y Glosario</h3>
@@ -96,7 +102,16 @@
                     <a href="tema6-objetos-ejemplos.html" class="text-xs px-2.5 py-1 bg-yellow-700 text-white rounded-full no-underline hover:bg-yellow-600">Ejemplos</a>
                 </div>
             </div>
+            </div>
+        </section>
 
+        <section id="js-web" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">B</span>JS en la Web
+            </h2>
+            <p class="text-sm mb-4">Bloque del entorno navegador: DOM, eventos y organizaci&oacute;n por m&oacute;dulos.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 [&>*]:min-w-0">
             <div class="bg-white rounded-lg p-5 shadow">
                 <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">7</span>
                 <h3 class="text-yellow-700 font-semibold mb-1">DOM</h3>
@@ -116,7 +131,56 @@
                     <a href="tema8-eventos-ejemplos.html" class="text-xs px-2.5 py-1 bg-yellow-700 text-white rounded-full no-underline hover:bg-yellow-600">Ejemplos</a>
                 </div>
             </div>
-        </div>
+            <div class="bg-white rounded-lg p-5 shadow">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">9</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">M&oacute;dulos e importaci&oacute;n</h3>
+                <p class="text-xs text-gray-500 mb-3">Carga de scripts, <code>type="module"</code>, <code>import/export</code>, importaci&oacute;n din&aacute;mica y diferencias con CommonJS.</p>
+                <div class="flex flex-wrap gap-2">
+                    <a href="tema9-modulos.html" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full border border-yellow-200 no-underline hover:bg-yellow-100">Tema</a>
+                    <a href="tema9-modulos-ejemplos.html" class="text-xs px-2.5 py-1 bg-yellow-700 text-white rounded-full no-underline hover:bg-yellow-600">Ejemplos</a>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section id="roadmap-propuesto" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">C</span>Siguientes Bloques Propuestos
+            </h2>
+            <p class="text-sm mb-4">Temas del plan original que no se pierden y quedan como continuaci&oacute;n natural del itinerario.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 [&>*]:min-w-0">
+                <div class="bg-white rounded-lg p-5 shadow border border-yellow-100">
+                    <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">10</span>
+                    <h3 class="text-yellow-700 font-semibold mb-1">Gesti&oacute;n de datos</h3>
+                    <p class="text-xs text-gray-500 mb-3">JSON, formularios, obtenci&oacute;n de datos, validaci&oacute;n y flujos de datos en frontend.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="tema10-gestion-datos.html" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full border border-yellow-200 no-underline hover:bg-yellow-100">Tema</a>
+                        <a href="tema10-gestion-datos-ejemplos.html" class="text-xs px-2.5 py-1 bg-yellow-700 text-white rounded-full no-underline hover:bg-yellow-600">Ejemplos</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-5 shadow border border-yellow-100">
+                    <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">11</span>
+                    <h3 class="text-yellow-700 font-semibold mb-1">Componentes</h3>
+                    <p class="text-xs text-gray-500 mb-3">Gu&iacute;as de estilo y composici&oacute;n de UI por componentes (incluyendo CRUD tipo ToDo).</p>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="tema11-componentes.html" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full border border-yellow-200 no-underline hover:bg-yellow-100">Tema</a>
+                        <a href="tema11-componentes-ejemplos.html" class="text-xs px-2.5 py-1 bg-yellow-700 text-white rounded-full no-underline hover:bg-yellow-600">Ejemplos</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-5 shadow border border-yellow-100">
+                    <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">12</span>
+                    <h3 class="text-yellow-700 font-semibold mb-1">Asincron&iacute;a en JS</h3>
+                    <p class="text-xs text-gray-500 mb-3">Promesas, <code>async/await</code>, gesti&oacute;n de errores y consumo de APIs REST con JSON.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="tema12-asincronia.html" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full border border-yellow-200 no-underline hover:bg-yellow-100">Tema</a>
+                        <a href="tema12-asincronia-ejemplos.html" class="text-xs px-2.5 py-1 bg-yellow-700 text-white rounded-full no-underline hover:bg-yellow-600">Ejemplos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">

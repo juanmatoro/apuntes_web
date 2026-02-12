@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 10: Gesti&oacute;n de datos - Apuntes JavaScript</title>
+    <meta name="description" content="JSON, formularios, validaci&oacute;n y persistencia local para gestionar datos en JavaScript.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <header class="bg-gradient-to-br from-yellow-700 to-yellow-600 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+            <a href="../index.html#js" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
+                <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">JavaScript</span>
+            </a>
+            <h1 class="flex-1 text-lg font-semibold truncate">Tema 10: Gesti&oacute;n de datos</h1>
+            <div class="relative tema-dropdown">
+                <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
+                    <span>Temas</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden">
+                    <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas JavaScript</div>
+                    <a href="tema0-fundamentos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">0. Fundamentos y Glosario</a>
+                    <a href="tema1-intro.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">1. Introducci&oacute;n y Entorno</a>
+                    <a href="tema2-sintaxis.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Sintaxis y Variables</a>
+                    <a href="tema3-control.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">3. Control de Flujo</a>
+                    <a href="tema4-funciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">4. Funciones</a>
+                    <a href="tema5-arrays.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">5. Arrays</a>
+                    <a href="tema6-objetos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Objetos</a>
+                    <a href="tema7-dom.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. DOM</a>
+                    <a href="tema8-eventos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Eventos</a>
+                    <a href="tema9-modulos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. M&oacute;dulos e importaci&oacute;n</a>
+                    <a href="tema10-gestion-datos.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">10. Gesti&oacute;n de datos</a>
+                    <a href="tema11-componentes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. Componentes</a>
+                    <a href="tema12-asincronia.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. Asincron&iacute;a en JS</a>
+
+                    <div class="border-t border-gray-100 mt-2 pt-2">
+                        <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div data-component="breadcrumb"></div>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#json" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">JSON</a>
+            <a href="#formularios" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Formularios</a>
+            <a href="#validacion" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Validaci&oacute;n</a>
+            <a href="#persistencia" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Persistencia local</a>
+            <a href="#recursos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Recursos</a>
+        </div>
+    </nav>
+
+    <div class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <a href="tema10-gestion-datos-ejemplos.html" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-yellow-700 text-white rounded hover:bg-yellow-600 no-underline">
+            Ver ejemplos del tema
+        </a>
+    </div>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="json" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>JSON como formato de intercambio
+            </h2>
+            <p class="text-sm mb-3">JSON es un formato de texto para representar datos estructurados. Se usa para enviar y guardar informaci&oacute;n.</p>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Serializar</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const user = { id: 1, nombre: 'Ana' };
+const json = JSON.stringify(user);</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Parsear</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const raw = '{"id":1,"nombre":"Ana"}';
+const user = JSON.parse(raw);</pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="formularios" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>Obtenci&oacute;n de datos desde formularios
+            </h2>
+            <p class="text-sm mb-3">Puedes leer controles del formulario por <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">FormData</code> o por acceso directo a inputs.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">form.addEventListener('submit', (event) =&gt; {
+  event.preventDefault();
+  const data = new FormData(form);
+  const payload = Object.fromEntries(data.entries());
+  console.log(payload);
+});</pre>
+        </section>
+
+        <section id="validacion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Validaci&oacute;n de datos
+            </h2>
+            <p class="text-sm mb-3">Valida tanto en UI (feedback r&aacute;pido) como en capa de negocio (reglas reales).</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function validarRegistro({ email, password }) {
+  const errores = [];
+  if (!email.includes('@')) errores.push('Email inv&aacute;lido');
+  if (password.length &lt; 8) errores.push('Password demasiado corta');
+  return errores;
+}</pre>
+        </section>
+
+        <section id="persistencia" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Persistencia local (localStorage)
+            </h2>
+            <p class="text-sm mb-3">Para datos peque&ntilde;os del cliente, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">localStorage</code> es pr&aacute;ctico si serializas a JSON.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const KEY = 'tasks';
+
+function saveTasks(tasks) {
+  localStorage.setItem(KEY, JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const raw = localStorage.getItem(KEY);
+  return raw ? JSON.parse(raw) : [];
+}</pre>
+        </section>
+
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">5</span>Recursos y herramientas
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" class="text-yellow-700 hover:underline">MDN JSON</a></li>
+                <li><a href="https://developer.mozilla.org/es/docs/Web/API/FormData" target="_blank" class="text-yellow-700 hover:underline">MDN FormData</a></li>
+                <li><a href="https://developer.mozilla.org/es/docs/Web/API/Window/localStorage" target="_blank" class="text-yellow-700 hover:underline">MDN localStorage</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

@@ -1,23 +1,21 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplos Tema 2: Sintaxis y Variables - Apuntes JavaScript</title>
-    <meta name="description" content="Ejemplos pr&aacute;cticos del Tema 2 de JS: variables y tipos.">
+    <title>Ejemplos Tema 11: Componentes - Apuntes JavaScript</title>
+    <meta name="description" content="Ejemplos pr&aacute;cticos de composici&oacute;n por componentes en JavaScript.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" type="image/png" href="../favicon.ico">
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
-
-    <!-- CABECERA PRINCIPAL -->
     <header class="bg-gradient-to-br from-yellow-700 to-yellow-600 text-white sticky top-0 z-50 shadow-md">
         <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
             <a href="../index.html#js" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
                 <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">JavaScript</span>
             </a>
-            <h1 class="flex-1 text-lg font-semibold truncate">Ejemplos Tema 2: Sintaxis y Variables</h1>
+            <h1 class="flex-1 text-lg font-semibold truncate">Ejemplos Tema 11: Componentes</h1>
             <div class="relative tema-dropdown">
                 <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
                     <span>Temas</span>
@@ -29,7 +27,7 @@
                     <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas JavaScript</div>
                     <a href="tema0-fundamentos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">0. Fundamentos y Glosario</a>
                     <a href="tema1-intro.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">1. Introducci&oacute;n y Entorno</a>
-                    <a href="tema2-sintaxis.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">2. Sintaxis y Variables</a>
+                    <a href="tema2-sintaxis.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Sintaxis y Variables</a>
                     <a href="tema3-control.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">3. Control de Flujo</a>
                     <a href="tema4-funciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">4. Funciones</a>
                     <a href="tema5-arrays.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">5. Arrays</a>
@@ -38,9 +36,8 @@
                     <a href="tema8-eventos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Eventos</a>
                     <a href="tema9-modulos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. M&oacute;dulos e importaci&oacute;n</a>
                     <a href="tema10-gestion-datos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Gesti&oacute;n de datos</a>
-                    <a href="tema11-componentes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. Componentes</a>
+                    <a href="tema11-componentes.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">11. Componentes</a>
                     <a href="tema12-asincronia.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. Asincron&iacute;a en JS</a>
-
                     <div class="border-t border-gray-100 mt-2 pt-2">
                         <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
                     </div>
@@ -51,44 +48,71 @@
 
     <div data-component="breadcrumb"></div>
 
-    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
-        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
-        <div class="flex flex-wrap gap-1.5">
-            <a href="#" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Variables</a>
-        </div>
-    </nav>
-
     <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
-        <section id="variables" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">1</span>Variables
+                <span class="orden">1</span>Componente funcional
             </h2>
-            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">let nombre = 'Ada';
-const edad = 30;</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
-                <div class="text-xs text-gray-500">Usa const por defecto.</div> New-Section
-                </div>
-            </div>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Badge({ texto, tipo = 'info' }) {
+  return `&lt;span class="badge badge-${tipo}"&gt;${texto}&lt;/span&gt;`;
+}</pre>
         </section>
 
+        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Composici&oacute;n
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Card({ titulo, body }) {
+  return `
+    &lt;article class="card"&gt;
+      &lt;h3&gt;${titulo}&lt;/h3&gt;
+      &lt;div&gt;${body}&lt;/div&gt;
+    &lt;/article&gt;
+  `;
+}</pre>
+        </section>
+
+        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Estado + render
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const state = { count: 0 };
+const root = document.querySelector('#app');
+
+function render() {
+  root.innerHTML = `&lt;button id="inc"&gt;Count: ${state.count}&lt;/button&gt;`;
+}
+
+root.addEventListener('click', (event) =&gt; {
+  if (event.target.id !== 'inc') return;
+  state.count += 1;
+  render();
+});
+
+render();</pre>
+        </section>
+
+        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>CRUD mini ToDo
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">let todos = [];
+
+function createTodo(texto) {
+  todos = [...todos, { id: Date.now(), texto }];
+}
+
+function deleteTodo(id) {
+  todos = todos.filter((todo) =&gt; todo.id !== id);
+}</pre>
+        </section>
     </main>
 
-    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
-        <a href="tema2-sintaxis.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-yellow-700 text-white no-underline rounded text-xs hover:bg-yellow-600">&larr; Volver al tema</a>
-        <span class="w-36"></span>
-        <span class="w-36"></span>
-    </nav>
-
+    <!-- NAVEGACI&Oacute;N INFERIOR -->
+    <div data-component="footer-nav"></div>
     <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
-        <p>Apuntes JavaScript &mdash; Ejemplos Tema 2</p>
+        <p>Apuntes JavaScript &mdash; Ejemplos Tema 11</p>
     </footer>
-
     <script src="../assets/js/components.js"></script>
 </body>
 </html>
-

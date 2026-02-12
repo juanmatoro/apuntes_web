@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 12: Asincron&iacute;a en JS - Apuntes JavaScript</title>
+    <meta name="description" content="Promesas, async/await, manejo de errores y consumo de APIs con fetch.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <header class="bg-gradient-to-br from-yellow-700 to-yellow-600 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+            <a href="../index.html#js" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
+                <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">JavaScript</span>
+            </a>
+            <h1 class="flex-1 text-lg font-semibold truncate">Tema 12: Asincron&iacute;a en JS</h1>
+            <div class="relative tema-dropdown">
+                <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
+                    <span>Temas</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden">
+                    <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas JavaScript</div>
+                    <a href="tema0-fundamentos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">0. Fundamentos y Glosario</a>
+                    <a href="tema1-intro.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">1. Introducci&oacute;n y Entorno</a>
+                    <a href="tema2-sintaxis.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Sintaxis y Variables</a>
+                    <a href="tema3-control.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">3. Control de Flujo</a>
+                    <a href="tema4-funciones.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">4. Funciones</a>
+                    <a href="tema5-arrays.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">5. Arrays</a>
+                    <a href="tema6-objetos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Objetos</a>
+                    <a href="tema7-dom.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. DOM</a>
+                    <a href="tema8-eventos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Eventos</a>
+                    <a href="tema9-modulos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. M&oacute;dulos e importaci&oacute;n</a>
+                    <a href="tema10-gestion-datos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Gesti&oacute;n de datos</a>
+                    <a href="tema11-componentes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. Componentes</a>
+                    <a href="tema12-asincronia.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">12. Asincron&iacute;a en JS</a>
+
+                    <div class="border-t border-gray-100 mt-2 pt-2">
+                        <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div data-component="breadcrumb"></div>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#modelo" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Modelo as&iacute;ncrono</a>
+            <a href="#promesas" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Promesas</a>
+            <a href="#async-await" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">async/await</a>
+            <a href="#errores" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Errores</a>
+            <a href="#fetch" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Fetch + JSON</a>
+            <a href="#recursos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Recursos</a>
+        </div>
+    </nav>
+
+    <div class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <a href="tema12-asincronia-ejemplos.html" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-yellow-700 text-white rounded hover:bg-yellow-600 no-underline">
+            Ver ejemplos del tema
+        </a>
+    </div>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="modelo" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Modelo as&iacute;ncrono en JavaScript
+            </h2>
+            <p class="text-sm mb-3">JavaScript usa event loop: ejecuci&oacute;n principal + colas de tareas para operaciones no bloqueantes.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">console.log('A');
+setTimeout(() =&gt; console.log('B'), 0);
+console.log('C');
+// salida: A, C, B</pre>
+        </section>
+
+        <section id="promesas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>Promesas
+            </h2>
+            <p class="text-sm mb-3">Una promesa representa el resultado futuro de una operaci&oacute;n as&iacute;ncrona.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">fetch('/api/users')
+  .then((res) =&gt; res.json())
+  .then((data) =&gt; console.log(data))
+  .catch((error) =&gt; console.error(error));</pre>
+        </section>
+
+        <section id="async-await" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">async/await</code>
+            </h2>
+            <p class="text-sm mb-3">Es sintaxis sobre promesas para escribir flujo as&iacute;ncrono de forma m&aacute;s legible.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">async function loadUsers() {
+  const res = await fetch('/api/users');
+  const users = await res.json();
+  return users;
+}</pre>
+        </section>
+
+        <section id="errores" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Manejo de errores
+            </h2>
+            <p class="text-sm mb-3">En async/await, usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">try/catch</code>. En promesas usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">.catch()</code>.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">async function loadPosts() {
+  try {
+    const res = await fetch('/api/posts');
+    if (!res.ok) throw new Error('HTTP error');
+    return await res.json();
+  } catch (error) {
+    console.error('Fallo al cargar posts', error);
+    return [];
+  }
+}</pre>
+        </section>
+
+        <section id="fetch" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">5</span>Fetch y APIs JSON
+            </h2>
+            <p class="text-sm mb-3">La API <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">fetch</code> devuelve una promesa con la respuesta HTTP.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const payload = { nombre: 'Ana' };
+
+await fetch('/api/users', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(payload)
+});</pre>
+        </section>
+
+        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">6</span>Recursos y herramientas
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" class="text-yellow-700 hover:underline">MDN Promise</a></li>
+                <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/async_function" target="_blank" class="text-yellow-700 hover:underline">MDN async function</a></li>
+                <li><a href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API" target="_blank" class="text-yellow-700 hover:underline">MDN Fetch API</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

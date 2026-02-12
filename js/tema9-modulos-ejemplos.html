@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplos Tema 0: Fundamentos y Glosario - Apuntes JavaScript</title>
-    <meta name="description" content="Ejemplos básicos del Tema 0 de JavaScript: expresiones, tipos y primer contacto con DOM.">
+    <title>Ejemplos Tema 9: M&oacute;dulos e importaci&oacute;n - Apuntes JavaScript</title>
+    <meta name="description" content="Ejemplos pr&aacute;cticos del Tema 9 de JS: import/export y m&oacute;dulos.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" type="image/png" href="../favicon.ico">
@@ -16,7 +16,7 @@
             <a href="../index.html#js" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
                 <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">JavaScript</span>
             </a>
-            <h1 class="flex-1 text-lg font-semibold truncate">Ejemplos Tema 0: Fundamentos y Glosario</h1>
+            <h1 class="flex-1 text-lg font-semibold truncate">Ejemplos Tema 9: M&oacute;dulos e importaci&oacute;n</h1>
             <div class="relative tema-dropdown">
                 <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
                     <span>Temas</span>
@@ -26,7 +26,7 @@
                 </button>
                 <div class="tema-dropdown-menu absolute right-0 top-full mt-1 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-64 max-h-96 overflow-y-auto hidden">
                     <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100">Temas JavaScript</div>
-                    <a href="tema0-fundamentos.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">0. Fundamentos y Glosario</a>
+                    <a href="tema0-fundamentos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">0. Fundamentos y Glosario</a>
                     <a href="tema1-intro.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">1. Introducci&oacute;n y Entorno</a>
                     <a href="tema2-sintaxis.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">2. Sintaxis y Variables</a>
                     <a href="tema3-control.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">3. Control de Flujo</a>
@@ -35,10 +35,11 @@
                     <a href="tema6-objetos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">6. Objetos</a>
                     <a href="tema7-dom.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">7. DOM</a>
                     <a href="tema8-eventos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">8. Eventos</a>
-                    <a href="tema9-modulos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">9. M&oacute;dulos e importaci&oacute;n</a>
+                    <a href="tema9-modulos.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">9. M&oacute;dulos e importaci&oacute;n</a>
                     <a href="tema10-gestion-datos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">10. Gesti&oacute;n de datos</a>
                     <a href="tema11-componentes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. Componentes</a>
                     <a href="tema12-asincronia.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. Asincron&iacute;a en JS</a>
+
                     <div class="border-t border-gray-100 mt-2 pt-2">
                         <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
                     </div>
@@ -47,88 +48,97 @@
         </div>
     </header>
 
-    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 text-sm max-w-6xl mx-auto">
-        <a href="index.html" class="text-amber-900 no-underline hover:underline">Índice</a>
-        <span class="text-gray-400 mx-1">›</span>
-        JavaScript
-        <span class="text-gray-400 mx-1">›</span>
-        Tema 0 (ejemplos)
-    </nav>
+    <div data-component="breadcrumb"></div>
 
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
-            <a href="#expresiones" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Expresiones</a>
-            <a href="#tipos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Tipos</a>
-            <a href="#dom" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">DOM</a>
+            <a href="#script" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Script module</a>
+            <a href="#exports" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Export/import</a>
+            <a href="#dinamico" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Import din&aacute;mico</a>
+            <a href="#handlers" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">M&oacute;dulos + handlers</a>
         </div>
     </nav>
 
     <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
-        <section id="expresiones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+        <section id="script" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">1</span>Statement vs Expression
+                <span class="orden">1</span>Entrada con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">type="module"</code>
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- index.html --&gt;
+&lt;script type="module" src="./main.js"&gt;&lt;/script&gt;</pre>
+        </section>
+
+        <section id="exports" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Exports e imports
             </h2>
             <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Código</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const total = 2 + 2;
-console.log(total);</pre>
+                    <h3 class="font-semibold text-amber-800 mb-2">helpers.js</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">export function formatPrice(value) {
+  return `${value} â‚¬`;
+}
+
+export const IVA = 0.21;</pre>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Idea clave</h3>
-                    <p class="text-sm"><code>2 + 2</code> es una <strong>expresión</strong> (produce valor). La línea completa con <code>const</code> es un <strong>statement</strong> (ejecuta acción).</p>
+                    <h3 class="font-semibold text-amber-800 mb-2">main.js</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">import { formatPrice, IVA } from './helpers.js';
+
+const total = 100 + 100 * IVA;
+console.log(formatPrice(total));</pre>
                 </div>
             </div>
         </section>
 
-        <section id="tipos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+        <section id="dinamico" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">2</span>Tipos y coerción
+                <span class="orden">3</span>Import din&aacute;mico
             </h2>
-            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Código</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">console.log(typeof 42);       // "number"
-console.log(typeof "42");     // "string"
-console.log("1" + 1);         // "11" (coerción)</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Idea clave</h3>
-                    <p class="text-sm">JavaScript es de tipado dinámico y aplica coerción en ciertas operaciones. Conviene conocer cuándo convierte tipos automáticamente.</p>
-                </div>
-            </div>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const btn = document.querySelector('#btn-analytics');
+
+btn.addEventListener('click', async () =&gt; {
+  const { track } = await import('./analytics.js');
+  track('open_report');
+});</pre>
         </section>
 
-        <section id="dom" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+        <section id="handlers" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">3</span>Primer contacto con DOM
+                <span class="orden">4</span>M&oacute;dulos + handlers del DOM
             </h2>
             <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Código</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const titulo = document.querySelector("h1");
-if (titulo) {
-  titulo.textContent = "JavaScript en acción";
+                    <h3 class="font-semibold text-amber-800 mb-2">ui/todoView.js</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">export function bindTodoEvents(listEl, onDelete) {
+  listEl.addEventListener('click', (event) =&gt; {
+    const btn = event.target.closest('button[data-id]');
+    if (!btn) return;
+    onDelete(btn.dataset.id);
+  });
 }</pre>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-amber-800 mb-2">Idea clave</h3>
-                    <p class="text-sm">El DOM representa el HTML en memoria. Con JavaScript puedes leerlo y modificarlo en tiempo de ejecución.</p>
+                    <h3 class="font-semibold text-amber-800 mb-2">main.js</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">import { bindTodoEvents } from './ui/todoView.js';
+import { removeTodo } from './state/todos.js';
+
+const listEl = document.querySelector('#todo-list');
+bindTodoEvents(listEl, removeTodo);</pre>
                 </div>
             </div>
         </section>
     </main>
 
-    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
-        <a href="tema0-fundamentos.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-yellow-700 text-white no-underline rounded text-xs hover:bg-yellow-600">&larr; Volver al tema</a>
-        <a href="tema1-intro.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-yellow-700 text-white no-underline rounded text-xs hover:bg-yellow-600">Ir al Tema 1 &rarr;</a>
-    </nav>
+    <!-- NAVEGACI&Oacute;N INFERIOR -->
+    <div data-component="footer-nav"></div>
 
     <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
-        <p>Apuntes JavaScript — Ejemplos Tema 0</p>
+        <p>Apuntes JavaScript &mdash; Ejemplos Tema 9</p>
     </footer>
 
     <script src="../assets/js/components.js"></script>
 </body>
 </html>
+

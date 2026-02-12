@@ -1,5 +1,28 @@
 ﻿# JS en la Web
 
+## Índice de temas (ruta actual + propuestos)
+
+### A. Core JS
+
+- 0. Fundamentos y glosario
+- 1. Introducción y entorno
+- 2. Sintaxis y variables
+- 3. Control de flujo
+- 4. Funciones
+- 5. Arrays
+- 6. Objetos
+
+### B. JS en la Web
+
+- 7. DOM
+- 8. Eventos
+- 9. Módulos e importación de ficheros JS
+
+### C. Siguientes bloques propuestos
+
+- 10. Gestión de datos (JSON, formularios, validación, obtención de datos)
+- 11. Componentes (guías de estilo, composición, CRUD)
+- 12. Asincronía en JS (promesas, async/await, errores, APIs REST)
 - [JS en la Web](#js-en-la-web)
   - [Intro](#intro)
     - [Arquitecturas de aplicaciones web](#arquitecturas-de-aplicaciones-web)
@@ -520,5 +543,6 @@ values['checkControl'] =
 ```
 
 ```
+
 
 
