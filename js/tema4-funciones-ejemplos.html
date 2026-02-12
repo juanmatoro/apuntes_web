@@ -100,6 +100,22 @@ const resta = ejecutar(8, 3, function(x, y) {
 });
 
 const producto = ejecutar(8, 3, (x, y) =&gt; x * y);</pre>
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">Callbacks en timers y handlers</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">setTimeout(() =&gt; {
+  console.log('Han pasado 2 segundos');
+}, 2000);
+
+const boton = document.querySelector('#btn-guardar');
+boton.addEventListener('click', () =&gt; {
+  console.log('Guardando...');
+});
+
+function onScroll() {
+  console.log('Scroll detectado');
+}
+
+window.addEventListener('scroll', onScroll);
+window.removeEventListener('scroll', onScroll);</pre>
         </section>
 
         <section id="hof" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
@@ -117,6 +133,16 @@ function crearMultiplicador(factor) {
 
 const por2 = crearMultiplicador(2);
 por2(6); // 12</pre>
+            <h3 class="font-semibold text-amber-800 mt-4 mb-2">M&aacute;s HOF reales</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nombres = ['ana', 'luis', 'marta'];
+const mayus = nombres.map(nombre =&gt; nombre.toUpperCase());
+
+const precios = [20, 35, 50, 12];
+const caros = precios.filter(precio =&gt; precio > 30);
+
+setInterval(() =&gt; {
+  console.log('Actualizando reloj...');
+}, 1000); // API que recibe callback</pre>
         </section>
 
         <section id="errores-comunes" class="bg-white rounded-lg p-4 shadow w-full min-w-0">

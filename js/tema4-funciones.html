@@ -268,9 +268,26 @@ const resultado = ejecutarOperacion(10, 5, (x, y) =&gt; x - y);
             <h3 class="font-semibold text-yellow-600 mt-4 mb-2">D&oacute;nde se usan mucho</h3>
             <ul class="list-disc pl-5 space-y-1 text-sm">
                 <li>M&eacute;todos de arrays como <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">map</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">filter</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">reduce</code>.</li>
-                <li>Eventos del DOM (handlers).</li>
+                <li>Timers como <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">setTimeout</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">setInterval</code>.</li>
+                <li>Eventos del DOM (handlers) con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">addEventListener</code>.</li>
                 <li>Operaciones as&iacute;ncronas.</li>
             </ul>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Ejemplos reales: timers y handlers</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">setTimeout(() =&gt; {
+  console.log('Se ejecuta despu&eacute;s de 1 segundo');
+}, 1000); // callback
+
+button.addEventListener('click', () =&gt; {
+  console.log('Click detectado');
+}); // callback (handler)
+
+function onResize() {
+  console.log('Ventana redimensionada');
+}
+
+window.addEventListener('resize', onResize);
+window.removeEventListener('resize', onResize); // quitar handler</pre>
         </section>
 
         <!-- HOF -->
@@ -320,9 +337,18 @@ por10(7); // 70</pre>
             <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Cu&aacute;ndo usarlas</h3>
             <ul class="list-disc pl-5 space-y-1 text-sm">
                 <li>Procesamiento de arrays: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">map</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">filter</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">reduce</code>.</li>
-                <li>Manejo de eventos y asincron&iacute;a (callbacks, promesas, handlers).</li>
+                <li>Manejo de eventos y asincron&iacute;a (callbacks, promesas, handlers y timers).</li>
                 <li>Crear utilidades reutilizables: validadores, formateadores, loggers, middlewares.</li>
             </ul>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">HOF en APIs del d&iacute;a a d&iacute;a</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">[1, 2, 3].map(n =&gt; n * 2); // map es HOF
+
+setTimeout(() =&gt; console.log('tick'), 500); // recibe callback
+
+form.addEventListener('submit', (e) =&gt; {
+  e.preventDefault();
+}); // addEventListener recibe callback</pre>
 
             <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Errores comunes</h3>
             <ul class="list-disc pl-5 space-y-1 text-sm">
@@ -463,8 +489,6 @@ inc(); // 2</pre>
 
 </body>
 </html>
-
-
 
 
 
