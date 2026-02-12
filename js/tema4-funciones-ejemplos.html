@@ -47,7 +47,11 @@
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
-            <a href="#" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Declaraci&oacute;n</a>
+            <a href="#decl" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Declaraci&oacute;n</a>
+            <a href="#anonimas-arrow" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">An&oacute;nimas y arrow</a>
+            <a href="#callbacks" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Callbacks</a>
+            <a href="#hof" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">HOF</a>
+            <a href="#errores-comunes" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Errores comunes</a>
         </div>
     </nav>
 
@@ -59,15 +63,84 @@
             <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function suma(a, b) { return a + b; }</pre>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function suma(a, b) {
+  return a + b;
+}</pre>
                 </div>
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
-                <div class="text-xs text-gray-500">suma(2, 3) = 5</div> New-Section
+                    <div class="text-xs text-gray-500">suma(2, 3) = 5</div>
                 </div>
             </div>
         </section>
 
+        <section id="anonimas-arrow" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Funciones an&oacute;nimas y arrow
+            </h2>
+            <p class="text-sm mb-3">Una funci&oacute;n an&oacute;nima no tiene nombre. Las arrow permiten escribir versiones m&aacute;s compactas.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const saludar = function(nombre) {
+  return `Hola ${nombre}`;
+};
+
+const saludarCorto = nombre =&gt; `Hola ${nombre}`; // m&iacute;nima expresi&oacute;n (estilo lambda)</pre>
+        </section>
+
+        <section id="callbacks" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Funciones callback
+            </h2>
+            <p class="text-sm mb-3">Un callback es una funci&oacute;n que se pasa como argumento para ser ejecutada por otra funci&oacute;n.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function ejecutar(a, b, callback) {
+  return callback(a, b);
+}
+
+const resta = ejecutar(8, 3, function(x, y) {
+  return x - y;
+});
+
+const producto = ejecutar(8, 3, (x, y) =&gt; x * y);</pre>
+        </section>
+
+        <section id="hof" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Funciones HOF
+            </h2>
+            <p class="text-sm mb-3">Una HOF recibe o devuelve funciones. Cuando recibe una funci&oacute;n, esa funci&oacute;n es el callback.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nums = [1, 2, 3, 4, 5];
+
+const pares = nums.filter(n =&gt; n % 2 === 0); // filter es HOF, callback: n =&gt; n % 2 === 0
+
+function crearMultiplicador(factor) {
+  return n =&gt; n * factor; // HOF que devuelve funci&oacute;n
+}
+
+const por2 = crearMultiplicador(2);
+por2(6); // 12</pre>
+        </section>
+
+        <section id="errores-comunes" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>Errores comunes
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// Error 1: confundir callback con HOF
+const cb = n =&gt; n * 2; // callback
+// cb no es HOF por s&iacute; sola
+
+// Error 2: usar arrow como m&eacute;todo cuando necesitas this
+const usuario = {
+  nombre: 'Ana',
+  saludar: () =&gt; this.nombre // undefined en muchos contextos
+};
+
+// Correcto:
+const usuario2 = {
+  nombre: 'Ana',
+  saludar() {
+    return this.nombre;
+  }
+};</pre>
+        </section>
     </main>
 
     <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">

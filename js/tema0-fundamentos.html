@@ -110,7 +110,7 @@
                         </tr>
                         <tr>
                             <td class="border border-gray-200 p-2 font-semibold"><code>Web Storage API</code></td>
-                            <td class="border border-gray-200 p-2">Guardar pares clave-valor en el navegador.</td>
+                            <td class="border border-gray-200 p-2">Asignar y leer pares clave-valor en el navegador.</td>
                             <td class="border border-gray-200 p-2"><code>localStorage.setItem()</code></td>
                         </tr>
                         <tr>
@@ -162,6 +162,7 @@ console.log(tema);</pre>
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
                 <span class="orden">5</span>Glosario fundamental
             </h2>
+            <p class="text-sm mb-3 p-2 bg-yellow-50 border-l-4 border-yellow-500 rounded"><strong>Modelo mental recomendado:</strong> en JavaScript una variable <strong>referencia</strong> un valor, y una asignaci&oacute;n cambia qu&eacute; valor referencia ese nombre. Evitamos pensar en "cajas" donde se guardan cosas porque produce errores al razonar sobre el c&oacute;digo.</p>
             <div class="overflow-x-auto">
                 <table class="w-full text-xs border-collapse mt-2">
                     <thead>
@@ -171,14 +172,30 @@ console.log(tema);</pre>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Valor</td><td class="border border-gray-200 p-2">Dato concreto con el que trabaja el programa (por ejemplo, <code>42</code>, <code>'hola'</code>, <code>true</code>).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Variable</td><td class="border border-gray-200 p-2">Nombre que referencia un valor. En JS hablamos de asignar valores a variables.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Asignaci&oacute;n</td><td class="border border-gray-200 p-2">Operaci&oacute;n de vincular un valor a una variable (por ejemplo, <code>x = 10</code>).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Declaraci&oacute;n</td><td class="border border-gray-200 p-2">Introducci&oacute;n de un identificador en el c&oacute;digo, por ejemplo con <code>let</code>, <code>const</code> o <code>function</code>.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Sentencia (Statement)</td><td class="border border-gray-200 p-2">Instrucci&oacute;n completa que ejecuta una acci&oacute;n (declarar, asignar, controlar flujo).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Expresi&oacute;n (Expression)</td><td class="border border-gray-200 p-2">Fragmento de c&oacute;digo que produce un valor (por ejemplo, <code>2 + 2</code>).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Operador</td><td class="border border-gray-200 p-2">S&iacute;mbolo o palabra que opera sobre valores (por ejemplo, <code>+</code>, <code>===</code>, <code>&amp;&amp;</code>).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Literal</td><td class="border border-gray-200 p-2">Valor escrito directamente en el c&oacute;digo fuente (por ejemplo, <code>'Ana'</code>, <code>3.14</code>, <code>{}</code>).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Tipo de dato</td><td class="border border-gray-200 p-2">Categor&iacute;a de un valor (por ejemplo, <code>string</code>, <code>number</code>, <code>boolean</code>, <code>object</code>).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Primitivo</td><td class="border border-gray-200 p-2">Valor no objeto y de sem&aacute;ntica simple (<code>string</code>, <code>number</code>, <code>boolean</code>, <code>null</code>, <code>undefined</code>, <code>symbol</code>, <code>bigint</code>).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Objeto</td><td class="border border-gray-200 p-2">Valor de tipo <code>object</code> formado por pares clave-valor.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Array</td><td class="border border-gray-200 p-2">Objeto especial para colecciones ordenadas de valores.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Funci&oacute;n</td><td class="border border-gray-200 p-2">Valor invocable que encapsula una secuencia de instrucciones y puede devolver un resultado.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Par&aacute;metro / argumento</td><td class="border border-gray-200 p-2">Par&aacute;metro: nombre en la definici&oacute;n de funci&oacute;n. Argumento: valor que se pasa al llamarla.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Retorno</td><td class="border border-gray-200 p-2">Valor que una funci&oacute;n devuelve mediante <code>return</code>.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Condicional</td><td class="border border-gray-200 p-2">Estructura que decide qu&eacute; bloque ejecutar seg&uacute;n una condici&oacute;n (<code>if</code>, <code>switch</code>).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Bucle</td><td class="border border-gray-200 p-2">Estructura de repetici&oacute;n de instrucciones (<code>for</code>, <code>while</code>).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Comentario</td><td class="border border-gray-200 p-2">Texto que documenta c&oacute;digo y no se ejecuta.</td></tr>
                         <tr><td class="border border-gray-200 p-2 font-semibold">JavaScript</td><td class="border border-gray-200 p-2">Lenguaje de programación de propósito general, muy usado en web para interacción y lógica.</td></tr>
                         <tr><td class="border border-gray-200 p-2 font-semibold">ECMAScript</td><td class="border border-gray-200 p-2">Estándar que define la sintaxis y semántica base del lenguaje.</td></tr>
                         <tr><td class="border border-gray-200 p-2 font-semibold">Motor JS</td><td class="border border-gray-200 p-2">Componente que interpreta/ejecuta JavaScript (V8, SpiderMonkey, JavaScriptCore).</td></tr>
                         <tr><td class="border border-gray-200 p-2 font-semibold">Runtime</td><td class="border border-gray-200 p-2">Entorno de ejecución con APIs disponibles (navegador, Node.js).</td></tr>
                         <tr><td class="border border-gray-200 p-2 font-semibold">Parsing</td><td class="border border-gray-200 p-2">Análisis del código fuente para convertir texto en estructura que el motor entiende.</td></tr>
                         <tr><td class="border border-gray-200 p-2 font-semibold">Token</td><td class="border border-gray-200 p-2">Unidad léxica mínima del código (palabras clave, literales, operadores).</td></tr>
-                        <tr><td class="border border-gray-200 p-2 font-semibold">Statement</td><td class="border border-gray-200 p-2">Instrucción que ejecuta una acción (por ejemplo, una declaración o asignación).</td></tr>
-                        <tr><td class="border border-gray-200 p-2 font-semibold">Expression</td><td class="border border-gray-200 p-2">Fragmento de código que produce un valor (por ejemplo, <code>2 + 2</code>).</td></tr>
                         <tr><td class="border border-gray-200 p-2 font-semibold">DOM</td><td class="border border-gray-200 p-2">Representación en árbol del documento HTML accesible desde JavaScript.</td></tr>
                         <tr><td class="border border-gray-200 p-2 font-semibold">CSSOM</td><td class="border border-gray-200 p-2">Representación en árbol de reglas CSS parseadas.</td></tr>
                         <tr><td class="border border-gray-200 p-2 font-semibold">Render Tree</td><td class="border border-gray-200 p-2">Combinación de DOM + CSSOM para calcular qué se dibuja.</td></tr>

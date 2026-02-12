@@ -44,11 +44,24 @@
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
                 <span class="orden">1</span>Objetos b&aacute;sicos
             </h2>
-            <p class="text-sm mb-3">Un objeto es una colecci&oacute;n de pares <strong>clave-valor</strong> que representa una entidad o concepto. Las claves son strings o symbols y los valores pueden ser cualquier tipo.</p>
+            <p class="text-sm mb-3">Un objeto es un <strong>dato compuesto</strong> de tipo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">object</code> formado por pares <strong>clave-valor</strong> que representan una entidad o concepto. Cada clave (nombre de propiedad) es string o symbol, y cada valor puede ser cualquier tipo de dato.</p>
             <ul class="list-disc pl-5 space-y-1 text-sm">
                 <li>Ideal para agrupar datos relacionados bajo un mismo nombre.</li>
                 <li>El orden de las propiedades no es lo importante, lo importante es la clave.</li>
+                <li>Modelo mental: piensa en una "ficha" con etiquetas (claves) y su contenido (valores).</li>
             </ul>
+
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Modelo mental del objeto</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const persona = {
+  nombre: 'Ana',    // clave: nombre  | valor: 'Ana' (string)
+  edad: 25,         // clave: edad    | valor: 25 (number)
+  activo: true      // clave: activo  | valor: true (boolean)
+};
+
+// Tipo de dato del objeto completo:
+typeof persona; // "object"</pre>
+            </div>
 
             <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>

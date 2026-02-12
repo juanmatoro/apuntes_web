@@ -12,6 +12,7 @@
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
 
+    
     <!-- CABECERA PRINCIPAL -->
     <div data-component="header"></div>
 
@@ -25,6 +26,8 @@
         <a href="#definicion-partes" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Definici&oacute;n</a>
         <a href="#declaracion" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Declaraci&oacute;n</a>
         <a href="#parametros" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Par&aacute;metros</a>
+        <a href="#callbacks" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Callbacks</a>
+        <a href="#hof" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">HOF</a>
         <a href="#scope-closure" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Scope y closure</a>
         <a href="#this-arrow" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">this y arrow</a>
         <a href="#buenas-practicas" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Buenas pr&aacute;cticas</a>
@@ -120,7 +123,7 @@ const total = sumar(2, 3);</pre>
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
                 <span class="orden">2</span>Declaraci&oacute;n y expresi&oacute;n
             </h2>
-            <p class="text-sm mb-3">Las funciones se pueden declarar o asignar a variables como expresiones. Las declaraciones se <strong>elevan</strong> (hoisting), las expresiones no.</p>
+            <p class="text-sm mb-3">En JavaScript una funci&oacute;n puede escribirse como <strong>declaraci&oacute;n</strong> o como <strong>expresi&oacute;n asignada</strong>. Aqu&iacute; aparece el <strong>hoisting</strong> (elevaci&oacute;n): el motor registra ciertas declaraciones antes de ejecutar l&iacute;nea por l&iacute;nea.</p>
 
             <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
@@ -138,8 +141,83 @@ saludar('Ana');</pre>
 };
 
 const saludar2 = (nombre) =&gt; `Hola ${nombre}`;</pre>
+                    <p class="text-sm mt-2">Las funciones escritas como expresi&oacute;n pueden ser <strong>an&oacute;nimas</strong> (sin nombre), por ejemplo al asignarlas a una constante o al pasarlas como argumento.</p>
+                    <p class="text-sm mt-2">Una arrow con retorno impl&iacute;cito y una sola expresi&oacute;n es una forma de <strong>m&iacute;nima expresi&oacute;n</strong>; en otros lenguajes se conoce como estilo <strong>lambda</strong>.</p>
                 </div>
             </div>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Funciones an&oacute;nimas: d&oacute;nde aparecen</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">setTimeout(function() {
+  console.log('Han pasado 1000ms');
+}, 1000);
+
+const dobles = [1, 2, 3].map(function(n) {
+  return n * 2;
+});
+
+const dobles2 = [1, 2, 3].map(n =&gt; n * 2); // arrow en m&iacute;nima expresi&oacute;n (lambda)</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Hoisting en variables y funciones</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Caso</th>
+                            <th class="border border-yellow-200 p-2 text-left">Qu&eacute; pasa antes de ejecutar</th>
+                            <th class="border border-yellow-200 p-2 text-left">Se puede usar antes de la l&iacute;nea</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-200 p-2"><code>function foo() {}</code></td>
+                            <td class="border border-gray-200 p-2">Se eleva nombre + cuerpo completo.</td>
+                            <td class="border border-gray-200 p-2">S&iacute;.</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2"><code>var x</code></td>
+                            <td class="border border-gray-200 p-2">Se eleva solo la declaraci&oacute;n. Queda en <code>undefined</code>.</td>
+                            <td class="border border-gray-200 p-2">S&iacute;, pero suele causar errores l&oacute;gicos.</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2"><code>let x</code> / <code>const x</code></td>
+                            <td class="border border-gray-200 p-2">Se elevan, pero quedan en zona temporal muerta (TDZ).</td>
+                            <td class="border border-gray-200 p-2">No. Da <code>ReferenceError</code>.</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2"><code>const fn = () =&gt; {}</code></td>
+                            <td class="border border-gray-200 p-2">La variable se eleva con TDZ; la funci&oacute;n existe al asignar.</td>
+                            <td class="border border-gray-200 p-2">No, hasta llegar a la asignaci&oacute;n.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Declaraci&oacute;n (s&iacute; se eleva)</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">saludar('Ana'); // funciona
+
+function saludar(nombre) {
+  return `Hola ${nombre}`;
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Asignaci&oacute;n con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">const</code> (TDZ)</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">saludar('Ana'); // ReferenceError
+
+const saludar = (nombre) =&gt; {
+  return `Hola ${nombre}`;
+};</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">&iquest;Por qu&eacute; hoy se prefiere asignar funciones a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">const</code>?</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Hace expl&iacute;cito el orden de ejecuci&oacute;n: no dependes de llamar funciones "antes" por hoisting.</li>
+                <li>Evita reasignaciones accidentales del identificador de la funci&oacute;n.</li>
+                <li>Mantiene un estilo uniforme con otras expresiones (callbacks, m&eacute;todos cortos, funciones flecha).</li>
+                <li>Reduce errores de mantenimiento en archivos grandes al obligar a declarar antes de usar.</li>
+            </ul>
         </section>
 
         <!-- PARAMETROS -->
@@ -171,10 +249,92 @@ crearUsuario({ nombre: 'Ana', edad: 25 });</pre>
             </div>
         </section>
 
+        <!-- CALLBACKS -->
+        <section id="callbacks" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Funciones callback
+            </h2>
+            <p class="text-sm mb-3">Una <strong>funci&oacute;n callback</strong> es una funci&oacute;n que se pasa como argumento a otra funci&oacute;n para que esta la ejecute en un momento determinado.</p>
+            <p class="text-sm mb-3">Muchas callbacks se escriben como funciones <strong>an&oacute;nimas</strong> (incluyendo funciones flecha), aunque tambi&eacute;n pueden ser funciones con nombre.</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Ejemplo base</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function ejecutarOperacion(a, b, callback) {
+  return callback(a, b);
+}
+
+const resultado = ejecutarOperacion(10, 5, (x, y) =&gt; x - y);
+// callback: (x, y) =&gt; x - y</pre>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">D&oacute;nde se usan mucho</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>M&eacute;todos de arrays como <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">map</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">filter</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">reduce</code>.</li>
+                <li>Eventos del DOM (handlers).</li>
+                <li>Operaciones as&iacute;ncronas.</li>
+            </ul>
+        </section>
+
+        <!-- HOF -->
+        <section id="hof" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">5</span>Funciones HOF (Higher-Order Functions)
+            </h2>
+            <p class="text-sm mb-3">Una <strong>HOF</strong> es una funci&oacute;n que <strong>recibe funciones como argumento</strong>, <strong>devuelve funciones</strong>, o ambas. Cuando recibe una funci&oacute;n como argumento, esa funci&oacute;n act&uacute;a como <strong>callback</strong>.</p>
+            <p class="text-sm mb-3"><strong>Importante:</strong> la HOF no es el callback; la HOF es la que orquesta y el callback es la l&oacute;gica que se inyecta.</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Sintaxis base</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function procesar(datos, callback) {
+  return callback(datos); // recibe funci&oacute;n
+}
+
+function crearMultiplicador(factor) {
+  return (n) =&gt; n * factor; // devuelve funci&oacute;n
+}</pre>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Uso cl&aacute;sico: reciben callback</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nums = [1, 2, 3, 4, 5];
+
+const dobles = nums.map(n =&gt; n * 2);
+const pares = nums.filter(n =&gt; n % 2 === 0);
+const suma = nums.reduce((acc, n) =&gt; acc + n, 0);</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Uso cl&aacute;sico: devuelven funci&oacute;n</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const por2 = crearMultiplicador(2);
+const por10 = crearMultiplicador(10);
+
+por2(7);  // 14
+por10(7); // 70</pre>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Qu&eacute; las hace especiales</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Separan el <strong>qu&eacute;</strong> del <strong>c&oacute;mo</strong>: describes la transformaci&oacute;n sin bucles manuales.</li>
+                <li>Mejoran reutilizaci&oacute;n: una HOF sirve para muchos casos cambiando solo el callback.</li>
+                <li>Facilitan composici&oacute;n: puedes encadenar operaciones peque&ntilde;as y legibles.</li>
+                <li>Encajan con closures para crear funciones configuradas (factory functions).</li>
+            </ul>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Cu&aacute;ndo usarlas</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Procesamiento de arrays: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">map</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">filter</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">reduce</code>.</li>
+                <li>Manejo de eventos y asincron&iacute;a (callbacks, promesas, handlers).</li>
+                <li>Crear utilidades reutilizables: validadores, formateadores, loggers, middlewares.</li>
+            </ul>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Errores comunes</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Confundir HOF con callback:</strong> no son sin&oacute;nimos. La HOF recibe/devuelve funciones; el callback es la funci&oacute;n que se pasa.</li>
+                <li><strong>Asumir que toda callback es HOF:</strong> una callback no "contiene" callbacks por defecto, solo es una funci&oacute;n pasada como argumento.</li>
+            </ul>
+        </section>
+
         <!-- SCOPE Y CLOSURE -->
         <section id="scope-closure" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">4</span>Scope y closures
+                <span class="orden">6</span>Scope y closures
             </h2>
             <p class="text-sm mb-3">El scope l&eacute;xico determina qu&eacute; variables est&aacute;n disponibles. Un <strong>closure</strong> es una funci&oacute;n que recuerda su entorno.</p>
 
@@ -204,7 +364,7 @@ inc(); // 2</pre>
         <!-- THIS Y ARROW -->
         <section id="this-arrow" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">5</span><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> y funciones flecha
+                <span class="orden">7</span><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> y funciones flecha
             </h2>
             <p class="text-sm mb-3">Las funciones flecha no tienen su propio <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code>; heredan el del contexto exterior.</p>
 
@@ -226,12 +386,15 @@ inc(); // 2</pre>
 };</pre>
                 </div>
             </div>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Error com&uacute;n con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code></h3>
+            <p class="text-sm mb-3">No uses arrow como m&eacute;todo de objeto cuando necesites el <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> del propio objeto.</p>
         </section>
 
         <!-- BUENAS PRACTICAS -->
         <section id="buenas-practicas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">6</span>Buenas pr&aacute;cticas
+                <span class="orden">8</span>Buenas pr&aacute;cticas
             </h2>
             <ul class="list-disc pl-5 space-y-1 text-sm">
                 <li>Usa nombres verbales: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">getUser</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">createTask</code>.</li>
@@ -242,7 +405,7 @@ inc(); // 2</pre>
         <!-- RECURSOS -->
         <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
-                <span class="orden">7</span>Recursos y herramientas
+                <span class="orden">9</span>Recursos y herramientas
             </h2>
             <p class="text-sm mb-4">Referencias y utilidades para trabajar con calidad y eficiencia.</p>
 
