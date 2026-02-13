@@ -52,6 +52,32 @@
             </ul>
 
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Notaci&oacute;n de objetos en JS</h3>
+                <ul class="list-disc pl-5 space-y-1 text-sm mb-2">
+                    <li>La notaci&oacute;n punto <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj.clave</code> se usa cuando conoces la propiedad y es un identificador v&aacute;lido.</li>
+                    <li>La notaci&oacute;n con corchetes <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj[ ... ]</code> eval&uacute;a lo que hay dentro y lo usa como nombre de propiedad.</li>
+                    <li>Dentro de <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">[]</code> puedes pasar un string fijo: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj['nombre']</code>.</li>
+                    <li>Tambi&eacute;n puedes pasar una variable: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj[clave]</code>, ideal cuando la clave cambia en tiempo de ejecuci&oacute;n.</li>
+                    <li>Usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">[]</code> cuando la propiedad tiene guiones/espacios o cuando la clave es din&aacute;mica.</li>
+                    <li>Con corchetes puedes leer y tambi&eacute;n escribir: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj['activa'] = true</code>.</li>
+                </ul>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const producto = {
+  id: 101,
+  nombre: 'Teclado',
+  'precio-base': 29.99,
+};
+
+producto.nombre;           // 'Teclado' (notaci&oacute;n punto)
+producto['nombre'];         // 'Teclado' (string fijo)
+producto['precio-base'];    // 29.99 (clave con guion)
+
+const clave = 'id';
+producto[clave];            // 101 (clave din&aacute;mica)
+
+producto['stock'] = 8;      // escritura con corchetes</pre>
+            </div>
+
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2">Modelo mental del objeto</h3>
                 <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const persona = {
   nombre: 'Ana',    // clave: nombre  | valor: 'Ana' (string)

@@ -54,23 +54,37 @@
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
-            <a href="#" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Objeto</a>
+            <a href="#literal" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Notaci&oacute;n</a>
         </div>
     </nav>
 
     <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
         <section id="literal" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">1</span>Objeto literal
+                <span class="orden">1</span>Notaci&oacute;n de objetos
             </h2>
             <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const user = { nombre: 'Ada', edad: 30 };</pre>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const producto = {
+  id: 101,
+  nombre: 'Teclado',
+  'precio-base': 29.99,
+};
+
+producto.nombre;         // notaci&oacute;n punto
+producto['precio-base']; // notaci&oacute;n corchetes
+
+const clave = 'id';
+producto[clave];         // clave din&aacute;mica</pre>
                 </div>
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
-                <div class="text-xs text-gray-500">user.nombre</div> New-Section
+                    <div class="space-y-2 text-xs">
+                        <div class="rounded border border-amber-200 bg-amber-50/40 p-2"><code>producto.nombre</code> <span class="text-gray-500">-&gt; 'Teclado'</span></div>
+                        <div class="rounded border border-amber-200 bg-amber-50/40 p-2"><code>producto['precio-base']</code> <span class="text-gray-500">-&gt; 29.99</span></div>
+                        <div class="rounded border border-amber-200 bg-amber-50/40 p-2"><code>producto[clave]</code> <span class="text-gray-500">-&gt; 101</span></div>
+                    </div>
                 </div>
             </div>
         </section>
