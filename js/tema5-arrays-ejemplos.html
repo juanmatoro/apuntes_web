@@ -54,7 +54,16 @@
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
-            <a href="#" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">map</a>
+            <a href="#map" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">map</a>
+            <a href="#filter" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">filter</a>
+            <a href="#reduce" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">reduce</a>
+            <a href="#forEach" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">forEach</a>
+            <a href="#find" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">find</a>
+            <a href="#findIndex" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">findIndex</a>
+            <a href="#slice" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">slice</a>
+            <a href="#splice" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">splice</a>
+            <a href="#flat" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">flat</a>
+            <a href="#flatMap" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">flatMap</a>
         </div>
     </nav>
 
@@ -66,14 +75,141 @@
             <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">C&oacute;digo</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nums = [1,2,3];
-const dobles = nums.map(n =&gt; n * 2);</pre>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const productos = [
+  { nombre: 'Teclado', precio: 30 },
+  { nombre: 'Rat&oacute;n', precio: 20 }
+];
+
+const preciosConIva = productos.map(p =&gt; ({
+  ...p,
+  precio: +(p.precio * 1.21).toFixed(2)
+}));</pre>
                 </div>
                 <div>
                     <h3 class="font-semibold text-amber-800 mb-2">Vista previa</h3>
-                <div class="text-xs text-gray-500">[2, 4, 6]</div> New-Section
+                    <div class="text-xs text-gray-500">[{ nombre: 'Teclado', precio: 36.3 }, { nombre: 'Rat&oacute;n', precio: 24.2 }]</div>
                 </div>
             </div>
+        </section>
+
+        <section id="filter" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>filter
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const tareas = [
+  { id: 1, done: true },
+  { id: 2, done: false },
+  { id: 3, done: false }
+];
+
+const pendientes = tareas.filter(t =&gt; !t.done);</pre>
+            <div class="text-xs text-gray-500 mt-2">Uso real: mostrar solo tareas pendientes.</div>
+        </section>
+
+        <section id="reduce" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>reduce
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const carrito = [
+  { producto: 'Teclado', precio: 30, cantidad: 2 },
+  { producto: 'Rat&oacute;n', precio: 20, cantidad: 1 }
+];
+
+const total = carrito.reduce((acc, item) =&gt; {
+  return acc + item.precio * item.cantidad;
+}, 0);</pre>
+            <div class="text-xs text-gray-500 mt-2">Uso real: total de carrito.</div>
+        </section>
+
+        <section id="forEach" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>forEach
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const logs = [];
+const eventos = ['login', 'click', 'logout'];
+
+eventos.forEach((evento, i) =&gt; {
+  logs.push(`${i + 1}. ${evento}`);
+});</pre>
+            <div class="text-xs text-gray-500 mt-2">Uso real: registrar eventos o efectos secundarios.</div>
+        </section>
+
+        <section id="find" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>find
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const usuarios = [
+  { id: 101, nombre: 'Ana' },
+  { id: 102, nombre: 'Luis' }
+];
+
+const usuario = usuarios.find(u =&gt; u.id === 102);</pre>
+            <div class="text-xs text-gray-500 mt-2">Uso real: buscar un elemento por ID.</div>
+        </section>
+
+        <section id="findIndex" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6</span>findIndex
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const carrito = [
+  { id: 1, cantidad: 2 },
+  { id: 2, cantidad: 1 }
+];
+
+const idx = carrito.findIndex(item =&gt; item.id === 2);
+if (idx !== -1) carrito[idx].cantidad += 1;</pre>
+            <div class="text-xs text-gray-500 mt-2">Uso real: actualizar una posici&oacute;n concreta.</div>
+        </section>
+
+        <section id="slice" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">7</span>slice
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const resultados = [/* 100 elementos */];
+const pagina = 2;
+const porPagina = 10;
+
+const inicio = (pagina - 1) * porPagina;
+const fin = inicio + porPagina;
+const vista = resultados.slice(inicio, fin);</pre>
+            <div class="text-xs text-gray-500 mt-2">Uso real: paginaci&oacute;n en frontend.</div>
+        </section>
+
+        <section id="splice" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">8</span>splice
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const lista = ['A', 'B', 'C', 'D'];
+
+// Elimina 1 elemento en pos 1 e inserta 'X'
+const quitados = lista.splice(1, 1, 'X');
+// lista => ['A', 'X', 'C', 'D']
+// quitados => ['B']</pre>
+            <div class="text-xs text-gray-500 mt-2">Uso real: editar una lista en memoria.</div>
+        </section>
+
+        <section id="flat" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">9</span>flat
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const modulos = [
+  ['HTML', 'CSS'],
+  ['JS', 'TS']
+];
+
+const temas = modulos.flat();</pre>
+            <div class="text-xs text-gray-500 mt-2">Uso real: unificar grupos en una sola lista.</div>
+        </section>
+
+        <section id="flatMap" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">10</span>flatMap
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const frases = ['hola mundo', 'js moderno'];
+
+const palabras = frases.flatMap(f =&gt; f.split(' '));
+// ['hola', 'mundo', 'js', 'moderno']</pre>
+            <div class="text-xs text-gray-500 mt-2">Uso real: mapear y aplanar en una sola pasada.</div>
         </section>
 
     </main>

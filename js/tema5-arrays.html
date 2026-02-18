@@ -1,17 +1,19 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tema 5: Arrays - Apuntes JavaScript</title>
-    <meta name="description" content="Arrays en JavaScript: creaci&oacute;n, acceso, m&eacute;todos mutables e inmutables y uso en proyectos.">
+    <meta
+      name="description"
+      content="Arrays en JavaScript: creaci&oacute;n, acceso, m&eacute;todos mutables e inmutables y uso en proyectos."
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="icon" type="image/png" href="../favicon.ico">
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="icon" type="image/png" href="../favicon.ico" />
     <script src="../assets/js/components.js" defer></script>
-</head>
-<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
-
+  </head>
+  <body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
     <!-- CABECERA PRINCIPAL -->
     <div data-component="header"></div>
 
@@ -19,204 +21,191 @@
     <div data-component="breadcrumb"></div>
 
     <!-- NAVEGACI&Oacute;N INTERNA DEL TEMA -->
-    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
-        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
-        <div class="flex flex-wrap gap-1.5">
-        <a href="#arrays-basico" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">B&aacute;sicos</a>
-        <a href="#metodos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">M&eacute;todos</a>
-        <a href="#iteracion" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Iteraci&oacute;n</a>
-        <a href="#patrones" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Patrones</a>
-        <a href="#recursos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Recursos</a>
+    <nav
+      class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto"
+    >
+      <p
+        class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide"
+      >
+        En este tema
+      </p>
+      <div class="flex flex-wrap gap-1.5">
+        <a
+          href="#arrays-basico"
+          class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200"
+          >B&aacute;sicos</a
+        >
+        <a
+          href="#iteracion"
+          class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200"
+          >Iteraci&oacute;n</a
+        >
+        <a
+          href="#metodos"
+          class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200"
+          >M&eacute;todos</a
+        >
+
+        <a
+          href="#patrones"
+          class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200"
+          >Patrones</a
+        >
+        <a
+          href="#recursos"
+          class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200"
+          >Recursos</a
+        >
       </div>
     </nav>
 
-    
-    <div class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
-        <a href="tema5-arrays-ejemplos.html" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-yellow-700 text-white rounded hover:bg-yellow-600 no-underline">
-            Ver ejemplos del tema
-        </a>
+    <div
+      class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto"
+    >
+      <a
+        href="tema5-arrays-ejemplos.html"
+        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-yellow-700 text-white rounded hover:bg-yellow-600 no-underline"
+      >
+        Ver ejemplos del tema
+      </a>
     </div>
-<main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+      <!-- ARRAYS BASICOS -->
+      <section
+        id="arrays-basico"
+        class="bg-white rounded-lg p-4 shadow w-full min-w-0"
+      >
+        <h2
+          class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3"
+        >
+          <span class="orden">1</span>Arrays b&aacute;sicos
+        </h2>
+        <p class="text-sm mb-3">
+          Un array es una colección ordenada de valores. Se accede por
+          índice (desde 0). ((En JavaScript, los arrays pueden contener cualquier tipo de dato, incluso otros arrays o funciones. y su notacion es con corchetes [] para crear y acceder a elementos.))
+        </p>
 
-        <!-- ARRAYS BASICOS -->
-        <section id="arrays-basico" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">1</span>Arrays b&aacute;sicos
-            </h2>
-            <p class="text-sm mb-3">Un array es una colecci&oacute;n ordenada de valores. Se accede por &iacute;ndice (desde 0).</p>
-
-            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
-                <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">Creaci&oacute;n y acceso</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const colores = ['rojo', 'verde', 'azul'];
+        <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+          <div>
+            <h3 class="font-semibold text-yellow-600 mb-2">
+              Creaci&oacute;n y acceso
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+const colores = ['rojo', 'verde', 'azul'];
 
 colores[0]; // 'rojo'
 colores.length; // 3
-colores.at(-1); // 'azul'</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">Array con tipos mixtos</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const data = [1, 'hola', true, { x: 1 }];
+colores.at(-1); // 'azul'</pre
+            >
+          </div>
+          <div>
+            <h3 class="font-semibold text-yellow-600 mb-2">
+              Array con tipos mixtos
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+const data = [1, 'hola', true, { x: 1 }];
 
-Array.isArray(data); // true</pre>
-                </div>
-            </div>
-        </section>
+Array.isArray(data); // true</pre
+            >
+          </div>
+        </div>
+      </section>
 
-        <!-- METODOS -->
-        <section id="metodos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">2</span>M&eacute;todos de arrays m&aacute;s usados
-            </h2>
-            <p class="text-sm mb-3">Metodos HOF usan un callback</p>
+      <!-- ITERACION -->
+      <section
+        id="iteracion"
+        class="bg-white rounded-lg p-4 shadow w-full min-w-0"
+      >
+        <h2
+          class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3"
+        >
+          <span class="orden">2</span>Iteraci&oacute;n y tipos de bucle
+        </h2>
+        <p class="text-sm mb-3">
+          Iterar es repetir una acci&oacute;n sobre los elementos de un array.
+          Cada bucle encaja mejor en un tipo de problema.
+        </p>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-xs border-collapse mt-2">
-                    <thead>
-                        <tr class="bg-yellow-100">
-                            <th class="border border-yellow-200 p-2 text-left">M&eacute;todo</th>
-                            <th class="border border-yellow-200 p-2 text-left">&iquest;Modifica el original?</th>
-                            <th class="border border-yellow-200 p-2 text-left">&iquest;Qu&eacute; devuelve?</th>
-                            <th class="border border-yellow-200 p-2 text-left">Prop&oacute;sito principal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>map</code></td>
-                            <td class="border border-gray-200 p-2">No</td>
-                            <td class="border border-gray-200 p-2">Nuevo array</td>
-                            <td class="border border-gray-200 p-2">Transformar datos</td>
-                        </tr>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>filter</code></td>
-                            <td class="border border-gray-200 p-2">No</td>
-                            <td class="border border-gray-200 p-2">Nuevo array</td>
-                            <td class="border border-gray-200 p-2">Descartar elementos</td>
-                        </tr>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>reduce</code></td>
-                            <td class="border border-gray-200 p-2">No</td>
-                            <td class="border border-gray-200 p-2">Un solo valor</td>
-                            <td class="border border-gray-200 p-2">Acumular / Agrupar</td>
-                        </tr>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>forEach</code></td>
-                            <td class="border border-gray-200 p-2">No (pero invita a hacerlo)</td>
-                            <td class="border border-gray-200 p-2"><code>undefined</code></td>
-                            <td class="border border-gray-200 p-2">Ejecutar efectos (ej. un <code>console.log</code>)</td>
-                        </tr>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>find</code></td>
-                            <td class="border border-gray-200 p-2">No</td>
-                            <td class="border border-gray-200 p-2">Un elemento</td>
-                            <td class="border border-gray-200 p-2">Buscar un objeto espec&iacute;fico</td>
-                        </tr>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>slice</code></td>
-                            <td class="border border-gray-200 p-2">No</td>
-                            <td class="border border-gray-200 p-2">Nuevo array</td>
-                            <td class="border border-gray-200 p-2">Cortar una parte del array</td>
-                        </tr>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>splice</code></td>
-                            <td class="border border-gray-200 p-2">S&iacute;</td>
-                            <td class="border border-gray-200 p-2">Elementos eliminados</td>
-                            <td class="border border-gray-200 p-2">Insertar o borrar elementos</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs border-collapse mt-2">
+            <thead>
+              <tr class="bg-yellow-100">
+                <th class="border border-yellow-200 p-2 text-left">Bucle</th>
+                <th class="border border-yellow-200 p-2 text-left">
+                  Cu&aacute;ndo usarlo
+                </th>
+                <th class="border border-yellow-200 p-2 text-left">
+                  Uso pr&aacute;ctico
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>for</code></td>
+                <td class="border border-gray-200 p-2">
+                  Necesitas &iacute;ndice o control fino.
+                </td>
+                <td class="border border-gray-200 p-2">
+                  Recorrido por posiciones, saltos personalizados.
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>while</code></td>
+                <td class="border border-gray-200 p-2">
+                  No conoces cu&aacute;ntas vueltas habr&aacute;.
+                </td>
+                <td class="border border-gray-200 p-2">
+                  Reintentos hasta cumplir condici&oacute;n.
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2">
+                  <code>do...while</code>
+                </td>
+                <td class="border border-gray-200 p-2">
+                  El bloque debe ejecutarse al menos una vez.
+                </td>
+                <td class="border border-gray-200 p-2">
+                  Lectura/validaci&oacute;n inicial obligatoria.
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2">
+                  <code>for...of</code>
+                </td>
+                <td class="border border-gray-200 p-2">
+                  Quieres valores directos del array.
+                </td>
+                <td class="border border-gray-200 p-2">
+                  Procesar elementos sin manejar &iacute;ndices.
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>forEach</code></td>
+                <td class="border border-gray-200 p-2">
+                  Quieres iterar de forma declarativa con callback.
+                </td>
+                <td class="border border-gray-200 p-2">
+                  Efectos por elemento (logs, pintar UI, acumuladores externos).
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
-                <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">Transformar, filtrar y buscar</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const precios = [20, 35, 50, 12];
-
-const conIva = precios.map(p => p * 1.21);
-const caros = precios.filter(p => p > 30);
-const primeroCaro = precios.find(p => p > 30);</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">Acumular, cortar y editar</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nums = [10, 20, 30, 40];
-const total = nums.reduce((acc, n) => acc + n, 0); // 100
-const tramo = nums.slice(1, 3); // [20, 30]
-
-const copia = [...nums];
-const quitados = copia.splice(1, 2, 25, 35);
-// copia => [10, 25, 35, 40]
-// quitados => [20, 30]</pre>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
-                <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">Mutables (modifican el original)</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nums = [3, 1, 2];
-nums.push(4);     // [3,1,2,4]
-nums.pop();       // [3,1,2]
-nums.sort();      // [1,2,3]</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">Inmutables (devuelven nuevo array)</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const nums = [3, 1, 2];
-const ordenado = nums.toSorted(); // [1,2,3]
-const pares = nums.filter(n => n % 2 === 0);
-const dobles = nums.map(n => n * 2);</pre>
-                </div>
-            </div>
-        </section>
-
-        <!-- ITERACION -->
-        <section id="iteracion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">3</span>Iteraci&oacute;n y tipos de bucle
-            </h2>
-            <p class="text-sm mb-3">Iterar es repetir una acci&oacute;n sobre los elementos de un array. Cada bucle encaja mejor en un tipo de problema.</p>
-
-            <div class="overflow-x-auto">
-                <table class="w-full text-xs border-collapse mt-2">
-                    <thead>
-                        <tr class="bg-yellow-100">
-                            <th class="border border-yellow-200 p-2 text-left">Bucle</th>
-                            <th class="border border-yellow-200 p-2 text-left">Cu&aacute;ndo usarlo</th>
-                            <th class="border border-yellow-200 p-2 text-left">Uso pr&aacute;ctico</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>for</code></td>
-                            <td class="border border-gray-200 p-2">Necesitas &iacute;ndice o control fino.</td>
-                            <td class="border border-gray-200 p-2">Recorrido por posiciones, saltos personalizados.</td>
-                        </tr>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>while</code></td>
-                            <td class="border border-gray-200 p-2">No conoces cu&aacute;ntas vueltas habr&aacute;.</td>
-                            <td class="border border-gray-200 p-2">Reintentos hasta cumplir condici&oacute;n.</td>
-                        </tr>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>do...while</code></td>
-                            <td class="border border-gray-200 p-2">El bloque debe ejecutarse al menos una vez.</td>
-                            <td class="border border-gray-200 p-2">Lectura/validaci&oacute;n inicial obligatoria.</td>
-                        </tr>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>for...of</code></td>
-                            <td class="border border-gray-200 p-2">Quieres valores directos del array.</td>
-                            <td class="border border-gray-200 p-2">Procesar elementos sin manejar &iacute;ndices.</td>
-                        </tr>
-                        <tr>
-                            <td class="border border-gray-200 p-2"><code>forEach</code></td>
-                            <td class="border border-gray-200 p-2">Quieres iterar de forma declarativa con callback.</td>
-                            <td class="border border-gray-200 p-2">Efectos por elemento (logs, pintar UI, acumuladores externos).</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
-                <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2"><code>for</code> y <code>for...of</code></h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const items = ['a', 'b', 'c'];
+        <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
+          <div>
+            <h3 class="font-semibold text-yellow-600 mb-2">
+              <code>for</code> y <code>for...of</code>
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+const items = ['a', 'b', 'c'];
 
 for (let i = 0; i < items.length; i++) {
   console.log(i, items[i]); // con &iacute;ndice
@@ -224,11 +213,17 @@ for (let i = 0; i < items.length; i++) {
 
 for (const item of items) {
   console.log(item); // solo valor
-}</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2"><code>while</code>, <code>do...while</code> y <code>forEach</code></h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">let intentos = 0;
+}</pre
+            >
+          </div>
+          <div>
+            <h3 class="font-semibold text-yellow-600 mb-2">
+              <code>while</code>, <code>do...while</code> y <code>forEach</code>
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+let intentos = 0;
 let ok = false;
 while (!ok && intentos < 3) {
   intentos++;
@@ -243,39 +238,305 @@ do {
 const tareas = ['leer', 'practicar', 'repasar'];
 tareas.forEach((t, i) => {
   console.log(i, t);
-});</pre>
-                </div>
-            </div>
+});</pre
+            >
+          </div>
+        </div>
 
-            <div class="mt-4 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
-                <h3 class="font-semibold text-yellow-700 mb-2">Regla r&aacute;pida</h3>
-                <ul class="list-disc pl-5 space-y-1 text-sm">
-                    <li>Array con &iacute;ndice: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for</code>.</li>
-                    <li>Array solo por valor: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for...of</code>.</li>
-                    <li>Efectos por elemento con callback: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">forEach</code>.</li>
-                    <li>Iteraciones indeterminadas: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">while</code>.</li>
-                    <li>Al menos una ejecuci&oacute;n: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">do...while</code>.</li>
-                </ul>
-            </div>
-        </section>
+        <div
+          class="mt-4 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3"
+        >
+          <h3 class="font-semibold text-yellow-700 mb-2">
+            Regla r&aacute;pida
+          </h3>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li>
+              Array con &iacute;ndice:
+              <code
+                class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                >for</code
+              >.
+            </li>
+            <li>
+              Array solo por valor:
+              <code
+                class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                >for...of</code
+              >.
+            </li>
+            <li>
+              Efectos por elemento con callback:
+              <code
+                class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                >forEach</code
+              >.
+            </li>
+            <li>
+              Iteraciones indeterminadas:
+              <code
+                class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                >while</code
+              >.
+            </li>
+            <li>
+              Al menos una ejecuci&oacute;n:
+              <code
+                class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono"
+                >do...while</code
+              >.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-        <!-- PATRONES -->
-        <section id="patrones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">4</span>Patrones de uso en proyectos
-            </h2>
-            <p class="text-sm mb-3">En la web, los arrays se usan para renderizar listas, filtrar datos y gestionar estados.</p>
+      <!-- METODOS -->
+      <section
+        id="metodos"
+        class="bg-white rounded-lg p-4 shadow w-full min-w-0"
+      >
+        <h2
+          class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3"
+        >
+          <span class="orden">3</span>M&eacute;todos de arrays m&aacute;s usados
+        </h2>
+        <p class="text-sm mb-3">Metodos</p>
 
-            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
-                <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">Render de listas</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const tasks = ['A', 'B', 'C'];
+        <h3 class="font-semibold text-yellow-600 mb-2">
+          M&eacute;todos HOF (reciben callback)
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs border-collapse mt-2">
+            <thead>
+              <tr class="bg-yellow-100">
+                <th class="border border-yellow-200 p-2 text-left">
+                  M&eacute;todo
+                </th>
+                <th class="border border-yellow-200 p-2 text-left">
+                  &iquest;Modifica el original?
+                </th>
+                <th class="border border-yellow-200 p-2 text-left">
+                  &iquest;Qu&eacute; devuelve?
+                </th>
+                <th class="border border-yellow-200 p-2 text-left">
+                  Prop&oacute;sito principal
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>map</code></td>
+                <td class="border border-gray-200 p-2">No</td>
+                <td class="border border-gray-200 p-2">Nuevo array</td>
+                <td class="border border-gray-200 p-2">Transformar datos</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>filter</code></td>
+                <td class="border border-gray-200 p-2">No</td>
+                <td class="border border-gray-200 p-2">Nuevo array</td>
+                <td class="border border-gray-200 p-2">Descartar elementos</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>reduce</code></td>
+                <td class="border border-gray-200 p-2">No</td>
+                <td class="border border-gray-200 p-2">Un solo valor</td>
+                <td class="border border-gray-200 p-2">Acumular / Agrupar</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>forEach</code></td>
+                <td class="border border-gray-200 p-2">
+                  No (pero invita a hacerlo)
+                </td>
+                <td class="border border-gray-200 p-2">
+                  <code>undefined</code>
+                </td>
+                <td class="border border-gray-200 p-2">
+                  Ejecutar efectos (ej. un <code>console.log</code>)
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>find</code></td>
+                <td class="border border-gray-200 p-2">No</td>
+                <td class="border border-gray-200 p-2">
+                  Un elemento, el primero que cumpla la condición
+                </td>
+                <td class="border border-gray-200 p-2">
+                  Buscar un objeto específico
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2">
+                  <code>findIndex</code>
+                </td>
+                <td class="border border-gray-200 p-2">No</td>
+                <td class="border border-gray-200 p-2">
+                  Índice del primer elemento que cumpla, o <code>-1</code> si no
+                  cumple ninguno
+                </td>
+                <td class="border border-gray-200 p-2">
+                  Encontrar la posición de un elemento
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>flatMap</code></td>
+                <td class="border border-gray-200 p-2">No</td>
+                <td class="border border-gray-200 p-2">
+                  Nuevo array aplanado 1 nivel
+                </td>
+                <td class="border border-gray-200 p-2">
+                  Mapear y aplanar en una sola operación
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="font-semibold text-yellow-600 mt-4 mb-2">
+          M&eacute;todos no HOF
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs border-collapse mt-2">
+            <thead>
+              <tr class="bg-yellow-100">
+                <th class="border border-yellow-200 p-2 text-left">
+                  M&eacute;todo
+                </th>
+                <th class="border border-yellow-200 p-2 text-left">
+                  &iquest;Modifica el original?
+                </th>
+                <th class="border border-yellow-200 p-2 text-left">
+                  &iquest;Qu&eacute; devuelve?
+                </th>
+                <th class="border border-yellow-200 p-2 text-left">
+                  Prop&oacute;sito principal
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>slice</code></td>
+                <td class="border border-gray-200 p-2">No</td>
+                <td class="border border-gray-200 p-2">Nuevo array</td>
+                <td class="border border-gray-200 p-2">
+                  Cortar una parte del array
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>flat</code></td>
+                <td class="border border-gray-200 p-2">No</td>
+                <td class="border border-gray-200 p-2">Nuevo array aplanado</td>
+                <td class="border border-gray-200 p-2">
+                  Aplanar arrays anidados
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2"><code>splice</code></td>
+                <td class="border border-gray-200 p-2">S&iacute;</td>
+                <td class="border border-gray-200 p-2">Elementos eliminados</td>
+                <td class="border border-gray-200 p-2">
+                  Insertar o borrar elementos
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-4 [&>*]:min-w-0">
+          <div>
+            <h3 class="font-semibold text-yellow-600 mb-2">
+              Transformar, filtrar y buscar
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+const precios = [20, 35, 50, 12];
+
+const conIva = precios.map(p => p * 1.21);
+const caros = precios.filter(p => p > 30);
+const primeroCaro = precios.find(p => p > 30);</pre
+            >
+          </div>
+          <div>
+            <h3 class="font-semibold text-yellow-600 mb-2">
+              Acumular, cortar y editar
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+const nums = [10, 20, 30, 40];
+const total = nums.reduce((acc, n) => acc + n, 0); // 100
+const tramo = nums.slice(1, 3); // [20, 30]
+
+const copia = [...nums];
+const quitados = copia.splice(1, 2, 25, 35);
+// copia => [10, 25, 35, 40]
+// quitados => [20, 30]</pre
+            >
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+          <div>
+            <h3 class="font-semibold text-yellow-600 mb-2">
+              Mutables (modifican el original)
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+const nums = [3, 1, 2];
+nums.push(4);     // [3,1,2,4]
+nums.pop();       // [3,1,2]
+nums.sort();      // [1,2,3]</pre
+            >
+          </div>
+          <div>
+            <h3 class="font-semibold text-yellow-600 mb-2">
+              Inmutables (devuelven nuevo array)
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+const nums = [3, 1, 2];
+const ordenado = nums.toSorted(); // [1,2,3]
+const pares = nums.filter(n => n % 2 === 0);
+const dobles = nums.map(n => n * 2);</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- PATRONES -->
+      <section
+        id="patrones"
+        class="bg-white rounded-lg p-4 shadow w-full min-w-0"
+      >
+        <h2
+          class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3"
+        >
+          <span class="orden">4</span>Patrones de uso en proyectos
+        </h2>
+        <p class="text-sm mb-3">
+          En la web, los arrays se usan para renderizar listas, filtrar datos y
+          gestionar estados.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+          <div>
+            <h3 class="font-semibold text-yellow-600 mb-2">Render de listas</h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+const tasks = ['A', 'B', 'C'];
 const html = tasks.map(t => `&lt;li&gt;${t}&lt;/li&gt;`).join('');
-list.innerHTML = html;</pre>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">Ejemplo: Tres en raya</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const board = ['X', '', 'O', '', 'X', '', '', '', 'O'];
+list.innerHTML = html;</pre
+            >
+          </div>
+          <div>
+            <h3 class="font-semibold text-yellow-600 mb-2">
+              Ejemplo: Tres en raya
+            </h3>
+            <pre
+              class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs"
+            >
+const board = ['X', '', 'O', '', 'X', '', '', '', 'O'];
 const winner = checkWinner(board);
 
 function checkWinner(cells) {
@@ -287,61 +548,115 @@ function checkWinner(cells) {
   return lines.find(([a, b, c]) =>
     cells[a] && cells[a] === cells[b] && cells[a] === cells[c]
   );
-}</pre>
-                </div>
-            </div>
-        </section>
-        <!-- RECURSOS -->
-        <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
-                <span class="orden">5</span>Recursos y herramientas
-            </h2>
-            <p class="text-sm mb-4">Referencias y utilidades para trabajar con calidad y eficiencia.</p>
+}</pre
+            >
+          </div>
+        </div>
+      </section>
+      <!-- RECURSOS -->
+      <section
+        id="recursos"
+        class="bg-white rounded-lg p-4 shadow w-full min-w-0"
+      >
+        <h2
+          class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3"
+        >
+          <span class="orden">5</span>Recursos y herramientas
+        </h2>
+        <p class="text-sm mb-4">
+          Referencias y utilidades para trabajar con calidad y eficiencia.
+        </p>
 
-            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
-                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
-                    <h3 class="font-semibold text-yellow-800 mb-2">Referencia t&eacute;cnica</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li>
-                            <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" class="text-yellow-700 hover:underline font-medium block">MDN JavaScript</a>
-                            <span class="text-gray-500">Referencia oficial del lenguaje.</span>
-                        </li>
-                        <li>
-                            <a href="https://javascript.info/" target="_blank" class="text-yellow-700 hover:underline font-medium block">javascript.info</a>
-                            <span class="text-gray-500">Gu&iacute;a completa y ejemplos claros.</span>
-                        </li>
-                    </ul>
-                </div>
+        <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+          <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+            <h3 class="font-semibold text-yellow-800 mb-2">
+              Referencia t&eacute;cnica
+            </h3>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a
+                  href="https://developer.mozilla.org/es/docs/Web/JavaScript"
+                  target="_blank"
+                  class="text-yellow-700 hover:underline font-medium block"
+                  >MDN JavaScript</a
+                >
+                <span class="text-gray-500"
+                  >Referencia oficial del lenguaje.</span
+                >
+              </li>
+              <li>
+                <a
+                  href="https://javascript.info/"
+                  target="_blank"
+                  class="text-yellow-700 hover:underline font-medium block"
+                  >javascript.info</a
+                >
+                <span class="text-gray-500"
+                  >Gu&iacute;a completa y ejemplos claros.</span
+                >
+              </li>
+            </ul>
+          </div>
 
-                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
-                    <h3 class="font-semibold text-yellow-800 mb-2">Compatibilidad y calidad</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li>
-                            <a href="https://caniuse.com/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Can I Use</a>
-                            <span class="text-gray-500">Compatibilidad de APIs y features.</span>
-                        </li>
-                        <li>
-                            <a href="https://tc39.es/ecma262/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ECMAScript</a>
-                            <span class="text-gray-500">Especificaci&oacute;n del lenguaje.</span>
-                        </li>
-                    </ul>
-                </div>
+          <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+            <h3 class="font-semibold text-yellow-800 mb-2">
+              Compatibilidad y calidad
+            </h3>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a
+                  href="https://caniuse.com/"
+                  target="_blank"
+                  class="text-yellow-700 hover:underline font-medium block"
+                  >Can I Use</a
+                >
+                <span class="text-gray-500"
+                  >Compatibilidad de APIs y features.</span
+                >
+              </li>
+              <li>
+                <a
+                  href="https://tc39.es/ecma262/"
+                  target="_blank"
+                  class="text-yellow-700 hover:underline font-medium block"
+                  >ECMAScript</a
+                >
+                <span class="text-gray-500"
+                  >Especificaci&oacute;n del lenguaje.</span
+                >
+              </li>
+            </ul>
+          </div>
 
-                <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
-                    <h3 class="font-semibold text-yellow-800 mb-2">Herramientas</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li>
-                            <a href="https://eslint.org/" target="_blank" class="text-yellow-700 hover:underline font-medium block">ESLint</a>
-                            <span class="text-gray-500">Linter para calidad y consistencia.</span>
-                        </li>
-                        <li>
-                            <a href="https://prettier.io/" target="_blank" class="text-yellow-700 hover:underline font-medium block">Prettier</a>
-                            <span class="text-gray-500">Formateo autom&aacute;tico de c&oacute;digo.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+          <div class="border border-yellow-100 rounded-lg p-3 bg-yellow-50/30">
+            <h3 class="font-semibold text-yellow-800 mb-2">Herramientas</h3>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a
+                  href="https://eslint.org/"
+                  target="_blank"
+                  class="text-yellow-700 hover:underline font-medium block"
+                  >ESLint</a
+                >
+                <span class="text-gray-500"
+                  >Linter para calidad y consistencia.</span
+                >
+              </li>
+              <li>
+                <a
+                  href="https://prettier.io/"
+                  target="_blank"
+                  class="text-yellow-700 hover:underline font-medium block"
+                  >Prettier</a
+                >
+                <span class="text-gray-500"
+                  >Formateo autom&aacute;tico de c&oacute;digo.</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- NAVEGACI&Oacute;N INFERIOR -->
@@ -349,28 +664,5 @@ function checkWinner(cells) {
 
     <!-- FOOTER -->
     <div data-component="footer"></div>
-
-</body>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

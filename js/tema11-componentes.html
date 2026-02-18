@@ -52,6 +52,7 @@
     <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
+            <a href="#csr" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Client-Side Rendering</a>
             <a href="#modelo" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Modelo de componente</a>
             <a href="#render" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Render</a>
             <a href="#estado" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Estado</a>
@@ -67,6 +68,67 @@
     </div>
 
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="csr" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Client-Side Rendering (CSR)
+            </h2>
+            <p class="text-sm mb-3">En CSR el servidor entrega un HTML pr&aacute;cticamente vac&iacute;o. Es JavaScript quien genera y actualiza todo el contenido en el navegador, manipulando el DOM directamente. Este modelo es la base de la arquitectura de componentes.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">SSR &mdash; Server-Side Rendering</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                        <li>El servidor genera el HTML completo.</li>
+                        <li>El navegador recibe HTML ya renderizado.</li>
+                        <li>Cada navegaci&oacute;n recarga la p&aacute;gina.</li>
+                        <li>Menor control din&aacute;mico desde el cliente.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">CSR &mdash; Client-Side Rendering</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                        <li>El servidor entrega un HTML m&iacute;nimo (shell).</li>
+                        <li>JS construye la UI en el navegador.</li>
+                        <li>Las actualizaciones no recargan la p&aacute;gina.</li>
+                        <li>Permite componentes reutilizables y estado.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="font-semibold text-yellow-600 mb-2">Flujo CSR</h3>
+            <div class="flex flex-wrap items-center gap-2 text-xs mb-4">
+                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-mono">1. Navegador pide la p&aacute;gina</span>
+                <span class="text-gray-400">&rarr;</span>
+                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-mono">2. Servidor devuelve HTML vac&iacute;o + &lt;script&gt;</span>
+                <span class="text-gray-400">&rarr;</span>
+                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-mono">3. JS se ejecuta y renderiza componentes</span>
+                <span class="text-gray-400">&rarr;</span>
+                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-mono">4. Eventos actualizan el estado &rarr; re-render</span>
+            </div>
+
+            <h3 class="font-semibold text-yellow-600 mb-2">HTML shell t&iacute;pico en CSR</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">&lt;!-- El servidor solo entrega esto --&gt;
+&lt;body&gt;
+  &lt;div id="app"&gt;&lt;/div&gt;   &lt;!-- contenedor vac&iacute;o --&gt;
+  &lt;script src="app.js"&gt;&lt;/script&gt;  &lt;!-- JS construye todo --&gt;
+&lt;/body&gt;</pre>
+
+            <h3 class="font-semibold text-yellow-600 mb-2">Punto de entrada del render</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">const state = { items: [] };
+
+function renderApp() {
+  const root = document.getElementById('app');
+  root.innerHTML = App(state);   // genera HTML desde JS
+  bindEvents();                  // re-enlaza eventos tras cada render
+}
+
+renderApp();  // primer render al cargar la p&aacute;gina</pre>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded p-3 text-sm">
+                <strong class="text-yellow-800">Clave:</strong> en CSR la fuente de verdad es el <strong>estado en memoria</strong> (un objeto JS), no el HTML. Cuando el estado cambia, se vuelve a generar el HTML completo del componente afectado.
+            </div>
+        </section>
+
         <section id="modelo" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
                 <span class="orden">1</span>Modelo de componente
