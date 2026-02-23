@@ -68,11 +68,15 @@
     </div>
 
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+
+        <!-- ══════════════════════════════════════════════════════════
+             1. CSR — El punto de partida: HTML vacío
+             ══════════════════════════════════════════════════════════ -->
         <section id="csr" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
                 <span class="orden">1</span>Client-Side Rendering (CSR)
             </h2>
-            <p class="text-sm mb-3">En CSR el servidor entrega un HTML pr&aacute;cticamente vac&iacute;o. Es JavaScript quien genera y actualiza todo el contenido en el navegador, manipulando el DOM directamente. Este modelo es la base de la arquitectura de componentes.</p>
+            <p class="text-sm mb-3">Vamos a construir una peque&ntilde;a app de tareas (Todo) formada completamente por componentes JS. Para ello usamos CSR: el servidor entrega un HTML vac&iacute;o y JavaScript construye y actualiza toda la interfaz en el navegador.</p>
 
             <div class="grid md:grid-cols-2 gap-4 mb-4 [&>*]:min-w-0">
                 <div>
@@ -101,102 +105,221 @@
                 <span class="text-gray-400">&rarr;</span>
                 <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-mono">2. Servidor devuelve HTML vac&iacute;o + &lt;script&gt;</span>
                 <span class="text-gray-400">&rarr;</span>
-                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-mono">3. JS se ejecuta y renderiza componentes</span>
+                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-mono">3. JS monta los componentes en los placeholders</span>
                 <span class="text-gray-400">&rarr;</span>
                 <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-mono">4. Eventos actualizan el estado &rarr; re-render</span>
             </div>
 
-            <h3 class="font-semibold text-yellow-600 mb-2">HTML shell t&iacute;pico en CSR</h3>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">&lt;!-- El servidor solo entrega esto --&gt;
+            <h3 class="font-semibold text-yellow-600 mb-2">El HTML shell de nuestra app</h3>
+            <p class="text-sm mb-2">Todo lo que el servidor entrega son unos <strong>placeholders</strong> vac&iacute;os y el <code class="bg-gray-100 px-1 rounded">&lt;script&gt;</code>. Cada placeholder tiene un atributo <code class="bg-gray-100 px-1 rounded">data-component</code> que JS usar&aacute; para localizar el hueco y sustituirlo por el componente real.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">&lt;!-- index.html: solo el esqueleto, sin contenido visible --&gt;
 &lt;body&gt;
-  &lt;div id="app"&gt;&lt;/div&gt;   &lt;!-- contenedor vac&iacute;o --&gt;
-  &lt;script src="app.js"&gt;&lt;/script&gt;  &lt;!-- JS construye todo --&gt;
+  &lt;div data-component="header"&gt;&lt;/div&gt;   &lt;!-- JS colocar&aacute; el Header aqu&iacute; --&gt;
+  &lt;div data-component="form"&gt;&lt;/div&gt;     &lt;!-- JS colocar&aacute; el Form aqu&iacute; --&gt;
+  &lt;div id="list-root"&gt;&lt;/div&gt;             &lt;!-- contenedor estable para la lista --&gt;
+  &lt;script src="app.js"&gt;&lt;/script&gt;        &lt;!-- JS construye todo lo anterior --&gt;
 &lt;/body&gt;</pre>
 
-            <h3 class="font-semibold text-yellow-600 mb-2">Punto de entrada del render</h3>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">const state = { items: [] };
-
-function renderApp() {
-  const root = document.getElementById('app');
-  root.innerHTML = App(state);   // genera HTML desde JS
-  bindEvents();                  // re-enlaza eventos tras cada render
-}
-
-renderApp();  // primer render al cargar la p&aacute;gina</pre>
-
             <div class="bg-yellow-50 border border-yellow-200 rounded p-3 text-sm">
-                <strong class="text-yellow-800">Clave:</strong> en CSR la fuente de verdad es el <strong>estado en memoria</strong> (un objeto JS), no el HTML. Cuando el estado cambia, se vuelve a generar el HTML completo del componente afectado.
+                <strong class="text-yellow-800">Clave:</strong> en CSR la fuente de verdad es el <strong>estado en memoria</strong> (un objeto JS), no el HTML. Cuando el estado cambia, JS regenera el HTML del componente afectado y lo vuelve a pintar.
             </div>
         </section>
 
+        <!-- ══════════════════════════════════════════════════════════
+             2. MODELO — Primer componente: Header
+             ══════════════════════════════════════════════════════════ -->
         <section id="modelo" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">1</span>Modelo de componente
+                <span class="orden">2</span>Modelo de componente &mdash; Header
             </h2>
-            <p class="text-sm mb-3">Un componente encapsula estructura, comportamiento y reglas de actualizaci&oacute;n de una parte de la UI.</p>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function TodoItem(todo) {
-  return `&lt;li data-id="${todo.id}"&gt;${todo.texto}&lt;/li&gt;`;
-}</pre>
-        </section>
+            <p class="text-sm mb-3">El primer componente que montamos es el <strong>Header</strong>. Es el m&aacute;s sencillo: se pinta una sola vez y nunca cambia. El patr&oacute;n es siempre el mismo: <em>crear el nodo, estilarlo, inyectarle HTML con datos y sustituir el placeholder</em>.</p>
 
-        <section id="render" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">2</span>Render y composici&oacute;n
-            </h2>
-            <p class="text-sm mb-3">Componer componentes es combinar piezas peque&ntilde;as para construir vistas completas.</p>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function TodoList(todos) {
-  const items = todos.map(TodoItem).join('');
-  return `&lt;ul&gt;${items}&lt;/ul&gt;`;
-}</pre>
-        </section>
-
-        <section id="estado" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">3</span>Estado y actualizaci&oacute;n
-            </h2>
-            <p class="text-sm mb-3">El estado vive en una capa central y la vista se vuelve a renderizar cuando ese estado cambia.</p>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const state = { todos: [] };
-
-function setState(partial) {
-  Object.assign(state, partial);
-  renderApp();
-}</pre>
-        </section>
-
-        <section id="crud" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">4</span>Flujo CRUD b&aacute;sico
-            </h2>
-            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+            <div class="grid md:grid-cols-2 gap-4 mb-4 [&>*]:min-w-0">
                 <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">Operaciones</h3>
-                    <ul class="list-disc pl-5 space-y-1 text-sm">
-                        <li>Create: agregar elemento</li>
-                        <li>Read: listar elementos</li>
-                        <li>Update: editar estado</li>
-                        <li>Delete: eliminar elemento</li>
-                    </ul>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Placeholder en index.html</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">&lt;!-- hueco vac&iacute;o; JS lo sustituye al cargar --&gt;
+&lt;div data-component="header"&gt;&lt;/div&gt;</pre>
+                    <p class="text-xs text-gray-500 mt-2">El atributo <code class="bg-gray-100 px-1 rounded">data-component</code> actúa como identificador. JS lo localiza con <code class="bg-gray-100 px-1 rounded">querySelector</code>.</p>
                 </div>
                 <div>
-                    <h3 class="font-semibold text-yellow-600 mb-2">Ejemplo</h3>
-                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function addTodo(texto) {
-  const todo = { id: crypto.randomUUID(), texto };
-  setState({ todos: [...state.todos, todo] });
-}</pre>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Componente en app.js</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// 1. DEFINICI&Oacute;N: construye el nodo, no lo inserta
+function Header(app) {
+
+  // createElement crea el elemento en memoria (no en la p&aacute;gina)
+  const el = document.createElement('header');
+
+  // className asigna las clases CSS al nodo
+  el.className = 'bg-blue-700 text-white p-4 text-xl';
+
+  // innerHTML rellena el interior con datos recibidos como par&aacute;metro
+  el.innerHTML = `&lt;h1&gt;${app.titulo}&lt;/h1&gt;`;
+
+  return el;  // devuelve el nodo listo (a&uacute;n fuera del DOM)
+}
+
+// 2. MONTAJE: localiza el placeholder y lo sustituye por el nodo
+const ph = document.querySelector('[data-component="header"]');
+ph.replaceWith(Header({ titulo: 'Mis Tareas' }));</pre>
                 </div>
+            </div>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded p-3 text-sm">
+                <strong class="text-yellow-800">Principio clave:</strong> el componente no sabe d&oacute;nde va a vivir. Solo construye el nodo y lo devuelve. Es el c&oacute;digo de montaje (fuera de la funci&oacute;n) quien decide d&oacute;nde insertarlo con <code class="bg-gray-100 px-1 rounded">replaceWith</code>.
             </div>
         </section>
 
+        <!-- ══════════════════════════════════════════════════════════
+             3. RENDER — Composición: TodoItem + TodoList
+             ══════════════════════════════════════════════════════════ -->
+        <section id="render" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Render y composici&oacute;n &mdash; TodoList
+            </h2>
+            <p class="text-sm mb-3">La lista de tareas cambia con cada acci&oacute;n del usuario, por lo que necesita re-renderizarse. Usamos dos componentes anidados: <code class="bg-gray-100 px-1 rounded">TodoItem</code> genera el HTML de <em>una</em> tarea; <code class="bg-gray-100 px-1 rounded">TodoList</code> los compone todos y los inyecta en su contenedor.</p>
+            <p class="text-sm mb-3">A diferencia del Header (que usa <code class="bg-gray-100 px-1 rounded">createElement</code> + <code class="bg-gray-100 px-1 rounded">replaceWith</code>), aqu&iacute; los componentes devuelven <strong>strings HTML</strong> que se asignan v&iacute;a <code class="bg-gray-100 px-1 rounded">innerHTML</code> al contenedor estable <code class="bg-gray-100 px-1 rounded">#list-root</code>, lo que permite re-pintar la lista entera de forma sencilla.</p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">// TodoItem: recibe un objeto todo y devuelve su HTML como string.
+// Se compone dentro de TodoList, no necesita createElement.
+function TodoItem(todo) {
+  // data-id almacena el id en el DOM para poder borrarlo después
+  return `&lt;li class="flex justify-between p-2 border-b" data-id="${todo.id}"&gt;
+    &lt;span&gt;${todo.texto}&lt;/span&gt;
+    &lt;button data-id="${todo.id}"&gt;Eliminar&lt;/button&gt;
+  &lt;/li&gt;`;
+}
+
+// TodoList: compone varios TodoItem y devuelve HTML string.
+// Cada llamada genera el HTML completo y actualizado de la lista.
+function TodoList(todos) {
+  if (todos.length === 0) return '&lt;p class="text-gray-400"&gt;Sin tareas.&lt;/p&gt;';
+  return `&lt;ul&gt;${todos.map(TodoItem).join('')}&lt;/ul&gt;`;
+}
+
+// renderList: inyecta la lista en su contenedor estable (#list-root).
+// Se llama cada vez que el estado cambia para actualizar la vista.
+function renderList(todos) {
+  document.getElementById('list-root').innerHTML = TodoList(todos);
+}</pre>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded p-3 text-sm">
+                <strong class="text-yellow-800">Composici&oacute;n:</strong> <code class="bg-gray-100 px-1 rounded">TodoList</code> no sabe c&oacute;mo se pinta cada tarea; delega ese detalle en <code class="bg-gray-100 px-1 rounded">TodoItem</code>. Cada componente tiene una &uacute;nica responsabilidad.
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════
+             4. ESTADO — setState dispara el re-render
+             ══════════════════════════════════════════════════════════ -->
+        <section id="estado" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Estado y actualizaci&oacute;n
+            </h2>
+            <p class="text-sm mb-3">El <strong>estado</strong> es el &uacute;nico objeto que contiene los datos de la app. <code class="bg-gray-100 px-1 rounded">setState</code> aplica cualquier cambio sobre &eacute;l y acto seguido llama a <code class="bg-gray-100 px-1 rounded">renderList</code> y <code class="bg-gray-100 px-1 rounded">bindEvents</code> para que la vista refleje el nuevo estado.</p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mb-3">// Estado central: fuente de verdad de la app
+const state = { todos: [] };
+
+// setState: mezcla los cambios en el estado y actualiza la vista.
+// Nunca se modifica state directamente desde fuera de esta función.
+function setState(cambios) {
+  Object.assign(state, cambios);  // aplica los cambios: state.todos = [...]
+  renderList(state.todos);        // pinta la lista con los nuevos datos
+  bindEvents();                   // re-enlaza eventos al HTML recién generado
+}
+
+// Arranque: montamos los componentes estáticos y pintamos la lista inicial
+document.querySelector('[data-component="header"]')
+  .replaceWith(Header({ titulo: 'Mis Tareas' }));
+
+document.querySelector('[data-component="form"]')
+  .replaceWith(Form());   // Form es otro componente (input + botón Añadir)
+
+renderList(state.todos);  // lista vacía al inicio
+bindEvents();             // prepara los listeners desde el primer render</pre>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded p-3 text-sm">
+                <strong class="text-yellow-800">Regla de oro:</strong> el DOM es una <em>consecuencia</em> del estado, nunca al rev&eacute;s. Nunca modificar el DOM directamente; siempre pasar por <code class="bg-gray-100 px-1 rounded">setState</code> para mantener estado y vista sincronizados.
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════
+             5. CRUD — Operaciones y enlace de eventos
+             ══════════════════════════════════════════════════════════ -->
+        <section id="crud" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">5</span>Flujo CRUD b&aacute;sico
+            </h2>
+            <p class="text-sm mb-3">Cada operaci&oacute;n modifica el estado (nunca el DOM directamente) y <code class="bg-gray-100 px-1 rounded">setState</code> se encarga del re-render. <code class="bg-gray-100 px-1 rounded">bindEvents</code> debe llamarse tras cada render porque el HTML nuevo no conserva los listeners del anterior.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Operaciones sobre el estado</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// CREATE: a&ntilde;ade una tarea nueva al array
+function addTodo(texto) {
+  const todo = { id: crypto.randomUUID(), texto };
+  setState({ todos: [...state.todos, todo] });
+}
+
+// READ: ya implementado en renderList + TodoList
+
+// DELETE: filtra el array eliminando el id
+function deleteTodo(id) {
+  setState({ todos: state.todos.filter(t => t.id !== id) });
+}
+
+// UPDATE: sustituye el item modificado (mismo patr&oacute;n)
+function updateTodo(id, texto) {
+  setState({
+    todos: state.todos.map(t => t.id === id ? { ...t, texto } : t)
+  });
+}</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Enlace de eventos</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// bindEvents: asigna listeners al HTML recién generado.
+// Se llama tras cada setState porque innerHTML destruye
+// el HTML anterior junto con sus listeners.
+function bindEvents() {
+
+  // Botones "Eliminar" de cada tarea
+  document.querySelectorAll('[data-id]').forEach(btn => {
+    btn.addEventListener('click', () => deleteTodo(btn.dataset.id));
+  });
+
+  // Botón "Añadir" del formulario
+  document.querySelector('#btn-add')
+    ?.addEventListener('click', () => {
+      const input = document.querySelector('#input-todo');
+      if (input.value.trim()) {
+        addTodo(input.value.trim());
+        input.value = '';  // limpiar el campo tras añadir
+      }
+    });
+}</pre>
+                </div>
+            </div>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded p-3 text-sm mt-3">
+                <strong class="text-yellow-800">Por qu&eacute; re-enlazar eventos:</strong> cada vez que se asigna <code class="bg-gray-100 px-1 rounded">innerHTML</code>, los nodos anteriores desaparecen y con ellos sus listeners. <code class="bg-gray-100 px-1 rounded">bindEvents</code> siempre trabaja sobre el HTML reci&eacute;n generado.
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════
+             6. RECURSOS — Buenas prácticas
+             ══════════════════════════════════════════════════════════ -->
         <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
-                <span class="orden">5</span>Recursos y herramientas
+                <span class="orden">6</span>Buenas pr&aacute;cticas
             </h2>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li>Composici&oacute;n por funciones puras para vistas simples.</li>
-                <li>Separar estado, render y handlers.</li>
-                <li>Escalar a framework cuando crece la complejidad.</li>
+            <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                <li><strong>Funciones puras para componentes:</strong> mismos datos &rarr; mismo HTML. Sin efectos secundarios dentro del componente.</li>
+                <li><strong>Un solo estado central:</strong> nunca modificar el DOM directamente; siempre pasar por <code class="bg-gray-100 px-1 rounded">setState</code>.</li>
+                <li><strong>Separar capas:</strong> estado / componentes (HTML) / montaje / eventos. Cada capa tiene una responsabilidad.</li>
+                <li><strong>Re-renderizar solo lo que cambia:</strong> en nuestra app solo actualizamos <code class="bg-gray-100 px-1 rounded">#list-root</code>, no toda la p&aacute;gina.</li>
+                <li><strong>Escalar a framework</strong> (React, Vue, Svelte...) cuando el n&uacute;mero de componentes o la l&oacute;gica de estado crezcan demasiado.</li>
             </ul>
         </section>
+
     </main>
 
     <div data-component="footer-nav"></div>

@@ -68,37 +68,545 @@
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
         <section id="clases" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3"><span class="orden">1</span>Clases y objetos</h2>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Usuario {
-  constructor(nombre) {
+
+            <p class="text-sm mb-3">Una <strong>clase</strong> es una <strong>plantilla</strong> que describe la estructura y el comportamiento que tendr&aacute;n los objetos creados a partir de ella. Un <strong>objeto</strong> (o <em>instancia</em>) es cada copia concreta creada desde esa plantilla con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new</code>. La clase define <em>qu&eacute;</em> propiedades y m&eacute;todos existir&aacute;n; el objeto <em>contiene</em> los valores reales.</p>
+
+            <!-- Clase vs Objeto -->
+            <div class="grid md:grid-cols-2 gap-4 mb-3 [&>*]:min-w-0">
+                <div class="border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-1">Clase &mdash; la plantilla</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Se declara <strong>una sola vez</strong> con la palabra <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code>.</li>
+                        <li>No ocupa memoria para datos; s&oacute;lo describe la forma.</li>
+                        <li>Define propiedades (datos) y m&eacute;todos (comportamiento).</li>
+                        <li>Por convenci&oacute;n su nombre empieza en <strong>may&uacute;scula</strong>.</li>
+                    </ul>
+                </div>
+                <div class="border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-1">Objeto &mdash; la instancia</h3>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>Se crea con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new NombreClase(...)</code>.</li>
+                        <li>Cada instancia tiene sus <strong>propios valores</strong> de datos.</li>
+                        <li>Comparte los m&eacute;todos con todas las dem&aacute;s instancias (v&iacute;a prototipo).</li>
+                        <li>Puedes crear tantos objetos como necesites de una misma clase.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Anatomía de una clase -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Anatom&iacute;a completa de una clase</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Usuario {
+  // 1. CAMPO DE CLASE  — valor por defecto compartido en la definici&oacute;n
+  rol = 'invitado';
+
+  // 2. CONSTRUCTOR — se ejecuta autom&aacute;ticamente al hacer new Usuario(...)
+  constructor(nombre, email) {
+    // 3. PROPIEDAD DE INSTANCIA — cada objeto tiene la suya propia
     this.nombre = nombre;
+    this.email  = email;
   }
+
+  // 4. M&Eacute;TODO DE INSTANCIA — funciones que operan sobre this
   saludar() {
-    return `Hola, ${this.nombre}`;
+    return `Hola, soy ${this.nombre}`;
+  }
+
+  // 5. GETTER — propiedad calculada de s&oacute;lo lectura
+  get resumen() {
+    return `${this.nombre} &lt;${this.email}&gt;`;
+  }
+
+  // 6. SETTER — propiedad calculada con escritura controlada
+  set nombreCompleto(valor) {
+    this.nombre = valor.trim();
+  }
+
+  // 7. M&Eacute;TODO EST&Aacute;TICO — pertenece a la clase, no a las instancias
+  static crear(nombre, email) {
+    return new Usuario(nombre, email);
   }
 }</pre>
+            </div>
+
+            <!-- Constructor -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">El <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">constructor</code></h3>
+                <p class="text-sm mb-2">Es el m&eacute;todo especial que JavaScript llama <strong>autom&aacute;ticamente</strong> al ejecutar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new</code>. Se usa para recibir los datos iniciales y asignarlos como propiedades con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code>. Solo puede haber <strong>uno por clase</strong>. Si no lo escribes, JavaScript lo genera vac&iacute;o internamente.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Producto {
+  constructor(nombre, precio) {
+    this.nombre = nombre;   // propiedad de instancia
+    this.precio = precio;
+  }
+}
+
+const p1 = new Producto('Teclado', 49);  // llama al constructor
+const p2 = new Producto('Rat&oacute;n', 25);
+
+console.log(p1.nombre);  // 'Teclado'
+console.log(p2.precio);  // 25</pre>
+            </div>
+
+            <!-- this -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> &mdash; referencia al objeto actual</h3>
+                <p class="text-sm mb-2">Dentro de una clase, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> apunta siempre al <strong>objeto concreto</strong> sobre el que se est&aacute; llamando el m&eacute;todo. Permite leer y escribir las propiedades de esa instancia espec&iacute;fica.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Contador {
+  constructor() {
+    this.valor = 0;       // cada instancia tiene su propio valor
+  }
+  incrementar() {
+    this.valor++;         // modifica la instancia que llama al m&eacute;todo
+  }
+}
+
+const a = new Contador();
+const b = new Contador();
+a.incrementar();
+a.incrementar();
+
+console.log(a.valor);  // 2
+console.log(b.valor);  // 0  — b no se ha tocado</pre>
+            </div>
+
+            <!-- Propiedades de instancia vs campos de clase -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Propiedades de instancia vs campos de clase</h3>
+                <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 mb-1">Propiedad de instancia (en constructor)</p>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Coche {
+  constructor(marca) {
+    this.marca = marca;  // cada objeto
+  }                      // tiene su propio valor
+}</pre>
+                    </div>
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 mb-1">Campo de clase (valor por defecto)</p>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Coche {
+  ruedas = 4;  // valor inicial igual
+               // para todos los objetos
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Métodos estáticos -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">M&eacute;todos est&aacute;ticos (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">static</code>)</h3>
+                <p class="text-sm mb-2">Pertenecen a la <strong>clase</strong>, no a sus instancias. Se llaman directamente sobre la clase y no tienen acceso a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> de instancia. Son &uacute;tiles como <em>funciones de utilidad</em> o <em>f&aacute;bricas</em> de objetos.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class MathUtils {
+  static sumar(a, b) { return a + b; }
+}
+
+MathUtils.sumar(3, 4);   // 7  — se llama en la clase
+// new MathUtils().sumar  — ERROR: no existe en la instancia</pre>
+            </div>
+
+            <!-- Getters y Setters -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Getters y Setters</h3>
+                <p class="text-sm mb-2">Permiten acceder o modificar datos como si fueran una propiedad normal, pero ejecutando l&oacute;gica interna. El <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">get</code> devuelve un valor calculado; el <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">set</code> intercepta la asignaci&oacute;n.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Temperatura {
+  constructor(celsius) {
+    this._celsius = celsius;
+  }
+  get fahrenheit() {
+    return this._celsius * 1.8 + 32;   // calculado al leer
+  }
+  set celsius(valor) {
+    if (valor &lt; -273.15) throw new Error('Temperatura inv&aacute;lida');
+    this._celsius = valor;             // validado al escribir
+  }
+}
+
+const t = new Temperatura(100);
+t.fahrenheit;       // 212  — se lee como propiedad, sin ()
+t.celsius = 0;      // pasa por el setter</pre>
+            </div>
+
+            <!-- Crear instancias y new -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Crear instancias con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new</code> e <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">instanceof</code></h3>
+                <p class="text-sm mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new</code> crea un nuevo objeto, llama al constructor y devuelve la instancia. <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">instanceof</code> comprueba si un objeto fue creado a partir de una clase (o hereda de ella).</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Animal { }
+class Perro extends Animal { }
+
+const rex = new Perro();
+
+rex instanceof Perro;   // true
+rex instanceof Animal;  // true  — hereda de Animal
+rex instanceof Object;  // true  — todo objeto hereda de Object</pre>
+            </div>
+
         </section>
         <section id="herencia" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3"><span class="orden">2</span>Herencia</h2>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Admin extends Usuario {
-  borrarUsuario(id) {
-    return `Usuario ${id} eliminado`;
+
+            <p class="text-sm mb-3">La <strong>herencia</strong> permite que una clase <em>hija</em> adquiera autom&aacute;ticamente las propiedades y m&eacute;todos de una clase <em>padre</em>, pudiendo adem&aacute;s a&ntilde;adir o sobrescribir comportamiento. Se declara con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code>. El objetivo es reutilizar c&oacute;digo y expresar relaciones del tipo <em>&ldquo;es un&rdquo;</em>: un <code>Admin</code> <em>es un</em> <code>Usuario</code>.</p>
+
+            <!-- extends básico -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code> &mdash; heredar de una clase padre</h3>
+                <p class="text-sm mb-2">La clase hija hereda <strong>todas</strong> las propiedades y m&eacute;todos p&uacute;blicos y protegidos del padre. No es necesario reescribirlos; est&aacute;n disponibles directamente en las instancias de la hija.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Animal {
+  constructor(nombre) {
+    this.nombre = nombre;
   }
-}</pre>
+  describir() {
+    return `Soy ${this.nombre}`;
+  }
+}
+
+class Perro extends Animal {
+  ladrar() {
+    return '¡Guau!';
+  }
+}
+
+const rex = new Perro('Rex');
+rex.describir();  // 'Soy Rex'  — heredado del padre
+rex.ladrar();     // '¡Guau!'  — propio de Perro</pre>
+            </div>
+
+            <!-- super() en el constructor -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">super()</code> &mdash; llamar al constructor del padre</h3>
+                <p class="text-sm mb-2">Si la clase hija define su propio <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">constructor</code>, <strong>debe llamar a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">super(...)</code> antes de usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code></strong>. <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">super()</code> ejecuta el constructor del padre y prepara el objeto. Despu&eacute;s puedes a&ntilde;adir propiedades propias de la hija.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Usuario {
+  constructor(nombre, email) {
+    this.nombre = nombre;
+    this.email  = email;
+  }
+  saludar() {
+    return `Hola, soy ${this.nombre}`;
+  }
+}
+
+class Admin extends Usuario {
+  constructor(nombre, email, nivel) {
+    super(nombre, email);   // 1&ordm; — inicializa lo del padre
+    this.nivel = nivel;     // 2&ordm; — agrega lo propio de Admin
+  }
+  borrar(id) {
+    return `[Admin Nv.${this.nivel}] Eliminado: ${id}`;
+  }
+}
+
+const a = new Admin('Ana', 'ana@web.com', 3);
+a.saludar();     // 'Hola, soy Ana'  — heredado
+a.borrar(42);    // '[Admin Nv.3] Eliminado: 42'  — propio</pre>
+            </div>
+
+            <!-- super en métodos -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">super.metodo()</code> &mdash; llamar a un m&eacute;todo del padre</h3>
+                <p class="text-sm mb-2">Dentro de un m&eacute;todo sobrescrito, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">super.metodo()</code> permite ejecutar la versi&oacute;n del padre <strong>y luego extenderla</strong>, sin tener que copiar su c&oacute;digo.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Animal {
+  hablar() {
+    return 'El animal hace un sonido';
+  }
+}
+
+class Gato extends Animal {
+  hablar() {
+    const base = super.hablar();   // ejecuta el del padre
+    return `${base}... concretamente: ¡Miau!`;
+  }
+}
+
+new Gato().hablar();
+// 'El animal hace un sonido... concretamente: ¡Miau!'</pre>
+            </div>
+
+            <!-- Sobreescritura de métodos -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Sobreescritura de m&eacute;todos (<em>override</em>)</h3>
+                <p class="text-sm mb-2">Si la hija define un m&eacute;todo con el <strong>mismo nombre</strong> que el padre, la versi&oacute;n de la hija sustituye a la del padre en las instancias de esa hija. El padre no se ve afectado.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Forma {
+  area() { return 0; }
+}
+
+class Circulo extends Forma {
+  constructor(radio) {
+    super();
+    this.radio = radio;
+  }
+  area() {                              // sobreescribe el del padre
+    return Math.PI * this.radio ** 2;
+  }
+}
+
+class Cuadrado extends Forma {
+  constructor(lado) {
+    super();
+    this.lado = lado;
+  }
+  area() { return this.lado ** 2; }    // sobreescribe el del padre
+}
+
+new Circulo(5).area();   // 78.53...
+new Cuadrado(4).area();  // 16
+new Forma().area();      // 0  — el padre no cambia</pre>
+            </div>
+
+            <!-- Cadena de herencia -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Cadena de herencia y reglas clave</h3>
+                <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li>JavaScript solo soporta <strong>herencia simple</strong>: una clase hija tiene exactamente un padre.</li>
+                        <li>La cadena puede tener varios niveles: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">A → B → C</code>.</li>
+                        <li>Toda clase hereda implícitamente de <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object</code> si no se especifica padre.</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">super()</code> es obligatorio en el constructor de la hija si &eacute;sta lo define.</li>
+                    </ul>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class A { saludo() { return 'Hola'; } }
+class B extends A { }       // hereda de A
+class C extends B { }       // hereda de B y A
+
+const c = new C();
+c.saludo();          // 'Hola'  — sube la cadena
+c instanceof C;      // true
+c instanceof A;      // true</pre>
+                </div>
+            </div>
+
         </section>
         <section id="encapsulacion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3"><span class="orden">3</span>Encapsulaci&oacute;n</h2>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Cuenta {
-  #saldo = 0;
-  depositar(monto) { this.#saldo += monto; }
-  get saldo() { return this.#saldo; }
-}</pre>
+
+            <p class="text-sm mb-3">La <strong>encapsulaci&oacute;n</strong> consiste en <strong>ocultar los detalles internos</strong> de un objeto y exponer solo lo necesario. El objetivo es proteger el estado interno de modificaciones accidentales y forzar que cualquier cambio pase por una l&oacute;gica controlada. En JavaScript moderno se consigue con <strong>campos privados</strong> (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code>) y con getters/setters.</p>
+
+            <!-- Campos privados # -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Campos privados con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code></h3>
+                <p class="text-sm mb-2">Un campo declarado con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code> delante de su nombre <strong>solo es accesible dentro de la propia clase</strong>. Cualquier intento de leerlo o escribirlo desde fuera lanza un <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">SyntaxError</code>. Deben declararse en el cuerpo de la clase antes de usarse.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Cuenta {
+  #saldo = 0;               // campo privado — invisible desde fuera
+
+  depositar(monto) {
+    if (monto &lt;= 0) throw new Error('Monto inv&aacute;lido');
+    this.#saldo += monto;   // acceso v&aacute;lido: estamos dentro de la clase
+  }
+
+  retirar(monto) {
+    if (monto &gt; this.#saldo) throw new Error('Saldo insuficiente');
+    this.#saldo -= monto;
+  }
+
+  get saldo() {             // getter p&uacute;blico — lectura controlada
+    return this.#saldo;
+  }
+}
+
+const c = new Cuenta();
+c.depositar(100);
+c.saldo;          // 100  — se lee v&iacute;a el getter
+c.#saldo;         // SyntaxError — acceso directo prohibido</pre>
+            </div>
+
+            <!-- Convención _ vs # -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Convenci&oacute;n <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">_propiedad</code> vs campo privado real <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#propiedad</code></h3>
+                <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 mb-1">Convenci&oacute;n antigua (no es privado de verdad)</p>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Caja {
+  constructor() {
+    this._valor = 0;  // solo una se&ntilde;al visual
+  }
+}
+const b = new Caja();
+b._valor = 99;  // accesible igualmente</pre>
+                    </div>
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 mb-1">Campo privado real (ES2022+)</p>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Caja {
+  #valor = 0;      // privado de verdad
+}
+const b = new Caja();
+b.#valor = 99;   // SyntaxError</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Métodos privados -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">M&eacute;todos privados con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code></h3>
+                <p class="text-sm mb-2">Igual que los campos, los m&eacute;todos tambi&eacute;n pueden ser privados. Se usan para l&oacute;gica interna que no debe exponerse al exterior.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Procesador {
+  #log(msg) {                       // m&eacute;todo privado
+    console.log(`[interno] ${msg}`);
+  }
+
+  procesar(dato) {
+    this.#log(`procesando: ${dato}`);  // uso interno v&aacute;lido
+    return dato.toUpperCase();
+  }
+}
+
+const p = new Procesador();
+p.procesar('hola');   // funciona
+p.#log('test');       // SyntaxError</pre>
+            </div>
+
+            <!-- Getters y setters como API pública -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Getters y setters como API p&uacute;blica</h3>
+                <p class="text-sm mb-2">El patr&oacute;n habitual de encapsulaci&oacute;n es: campo privado (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code>) para el dato bruto + getter para leerlo + setter para modificarlo con validaci&oacute;n.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Usuario {
+  #nombre;
+  #edad;
+
+  constructor(nombre, edad) {
+    this.#nombre = nombre;
+    this.edad = edad;        // usa el setter desde el constructor
+  }
+
+  get nombre() { return this.#nombre; }
+
+  get edad() { return this.#edad; }
+  set edad(valor) {
+    if (typeof valor !== 'number' || valor &lt; 0) throw new Error('Edad inv&aacute;lida');
+    this.#edad = valor;
+  }
+}
+
+const u = new Usuario('Ana', 25);
+u.nombre;        // 'Ana'
+u.edad = -1;     // Error: Edad inv&aacute;lida
+u.edad = 26;     // v&aacute;lido</pre>
+            </div>
+
+            <!-- Campos y métodos estáticos privados -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Campos est&aacute;ticos privados</h3>
+                <p class="text-sm mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">static #campo</code> combina las dos restricciones: pertenece a la clase (no a instancias) y es privado. &Uacute;til para contadores o configuraci&oacute;n interna compartida.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Registro {
+  static #contador = 0;       // privado y est&aacute;tico
+
+  constructor() {
+    Registro.#contador++;
+  }
+
+  static total() {
+    return Registro.#contador;
+  }
+}
+
+new Registro();
+new Registro();
+Registro.total();    // 2
+Registro.#contador;  // SyntaxError</pre>
+            </div>
+
         </section>
+
         <section id="prototipos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3"><span class="orden">4</span>Modelo prototipal</h2>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Animal(nombre) {
+
+            <p class="text-sm mb-3">JavaScript no es un lenguaje de clases puro: internamente todo funciona mediante <strong>prototipos</strong>. Cada objeto tiene una referencia oculta a otro objeto llamado su <strong>prototipo</strong> (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">[[Prototype]]</code>). Cuando accedes a una propiedad que no existe en el objeto, el motor sube por la <em>cadena de prototipos</em> hasta encontrarla o llegar a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">null</code>. La sintaxis <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code> es <em>az&uacute;car sint&aacute;ctico</em> sobre este mecanismo.</p>
+
+            <!-- Cadena de prototipos -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">La cadena de prototipos</h3>
+                <p class="text-sm mb-2">Al buscar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj.propiedad</code>, JavaScript sigue este orden: <strong>1)</strong> el propio objeto → <strong>2)</strong> su prototipo → <strong>3)</strong> el prototipo del prototipo → … → <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.prototype</code> → <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">null</code>.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const animal = { respirar() { return 'inhala/exhala'; } };
+const perro  = Object.create(animal);   // perro hereda de animal
+perro.ladrar = function () { return '¡Guau!'; };
+
+perro.ladrar();    // '¡Guau!'       — propio de perro
+perro.respirar();  // 'inhala/exhala' — viene de animal (prototipo)
+
+Object.getPrototypeOf(perro) === animal;  // true</pre>
+            </div>
+
+            <!-- Función constructora -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Funci&oacute;n constructora (estilo ES5)</h3>
+                <p class="text-sm mb-2">Antes de <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code>, se usaban <strong>funciones constructoras</strong> invocadas con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new</code>. Los m&eacute;todos se a&ntilde;ad&iacute;an a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">NombreFunc.prototype</code> para que todas las instancias los compartieran sin duplicarlos en memoria.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Animal(nombre) {
+  this.nombre = nombre;       // propiedad de instancia
+}
+
+// el m&eacute;todo se guarda en el prototipo, no en cada objeto
+Animal.prototype.hablar = function () {
+  return `${this.nombre} hace un sonido`;
+};
+
+const rex = new Animal('Rex');
+rex.hablar();                  // 'Rex hace un sonido'
+rex.hasOwnProperty('nombre');  // true  — propio del objeto
+rex.hasOwnProperty('hablar');  // false — viene del prototipo</pre>
+            </div>
+
+            <!-- class es azúcar sintáctico -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code> es az&uacute;car sint&aacute;ctico sobre prototipos</h3>
+                <p class="text-sm mb-2">Ambas formas producen exactamente el mismo resultado interno. La sintaxis <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code> es m&aacute;s clara y legible, pero por debajo sigue usando el sistema prototipal.</p>
+                <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 mb-1">Con funci&oacute;n constructora</p>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Perro(nombre) {
   this.nombre = nombre;
 }
-Animal.prototype.hablar = function () { return `${this.nombre} hace ruido`; };</pre>
+Perro.prototype.ladrar = function () {
+  return '¡Guau!';
+};</pre>
+                    </div>
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 mb-1">Con sintaxis <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code> (equivalente)</p>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Perro {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+  ladrar() { return '¡Guau!'; }
+}</pre>
+                    </div>
+                </div>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-2">// En ambos casos el resultado es id&eacute;ntico:
+typeof Perro;                        // 'function'  — las clases son funciones
+typeof Perro.prototype.ladrar;       // 'function'
+new Perro('Rex') instanceof Perro;   // true</pre>
+            </div>
+
+            <!-- Object.create -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.create()</code> &mdash; herencia directa de prototipo</h3>
+                <p class="text-sm mb-2">Crea un objeto nuevo cuyo prototipo es exactamente el objeto que le pasas. Es la forma m&aacute;s directa de trabajar con la cadena de prototipos sin constructores.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const vehiculo = {
+  arrancar() { return `${this.modelo} arrancado`; }
+};
+
+const coche = Object.create(vehiculo);
+coche.modelo = 'Seat';
+
+coche.arrancar();                         // 'Seat arrancado'
+Object.getPrototypeOf(coche) === vehiculo; // true</pre>
+            </div>
+
+            <!-- Inspecionar prototype -->
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Inspecionar y verificar la cadena</h3>
+                <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.getPrototypeOf(obj)</code> — devuelve el prototipo del objeto.</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj.hasOwnProperty('clave')</code> — <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">true</code> solo si la propiedad es propia (no heredada).</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj instanceof Clase</code> — verifica si <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Clase.prototype</code> est&aacute; en la cadena.</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">'clave' in obj</code> — <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">true</code> si existe en el objeto <em>o</em> en su cadena.</li>
+                    </ul>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class A { metodo() {} }
+class B extends A {}
+
+const b = new B();
+
+Object.getPrototypeOf(b) === B.prototype;  // true
+b.hasOwnProperty('metodo');                // false
+'metodo' in b;                             // true
+b instanceof A;                            // true</pre>
+                </div>
+            </div>
+
         </section>
     </main>
 
