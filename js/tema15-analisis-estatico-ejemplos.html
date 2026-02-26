@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplos Tema 14: Vite - Apuntes JavaScript</title>
-    <meta name="description" content="Ejemplos pr&aacute;cticos del Tema 14 de JS: setup de Vite, aliases, variables de entorno y build.">
+    <title>Ejemplos Tema 15: An&aacute;lisis est&aacute;tico - Apuntes JavaScript</title>
+    <meta name="description" content="Ejemplos de configuraci&oacute;n de ESLint, Prettier y checks de c&oacute;digo en CI.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" type="image/png" href="../favicon.ico">
@@ -15,7 +15,7 @@
             <a href="../index.html#js" class="flex items-center gap-2 text-white no-underline hover:opacity-80">
                 <span class="bg-white/20 px-3 py-1 rounded font-bold text-lg">JavaScript</span>
             </a>
-            <h1 class="flex-1 text-lg font-semibold truncate">Ejemplos Tema 14: Vite</h1>
+            <h1 class="flex-1 text-lg font-semibold truncate">Ejemplos Tema 15: An&aacute;lisis est&aacute;tico</h1>
             <div class="relative tema-dropdown">
                 <button class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded text-sm font-medium transition-colors">
                     <span>Temas</span>
@@ -39,8 +39,8 @@
                     <a href="tema11-componentes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. Componentes</a>
                     <a href="tema12-asincronia.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. Asincron&iacute;a en JS</a>
                     <a href="tema13-poo.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">13. POO y Clases</a>
-                    <a href="tema14-vite.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">14. Vite</a>
-                    <a href="tema15-analisis-estatico.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">15. An&aacute;lisis est&aacute;tico</a>
+                    <a href="tema14-vite.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">14. Vite</a>
+                    <a href="tema15-analisis-estatico.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">15. An&aacute;lisis est&aacute;tico</a>
                     <div class="border-t border-gray-100 mt-2 pt-2">
                         <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
                     </div>
@@ -53,57 +53,78 @@
 
     <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
         <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">1</span>Crear proyecto y arrancar
-            </h2>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">npm create vite@latest mi-app
-cd mi-app
-npm install
-npm run dev</pre>
-        </section>
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"><span class="orden">1</span>Config ESLint m&iacute;nima</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// eslint.config.js
+import js from '@eslint/js';
 
-        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">2</span>Alias de rutas
-            </h2>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// vite.config.js
-import { defineConfig } from 'vite';
-import { fileURLToPath, URL } from 'node:url';
-
-export default defineConfig({
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+export default [
+  js.configs.recommended,
+  {
+    rules: {
+      'no-unused-vars': 'warn',
+      'no-console': 'off'
     }
   }
-});</pre>
+];</pre>
         </section>
 
         <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">3</span>Variables de entorno con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">import.meta.env</code>
-            </h2>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// .env
-VITE_API_URL=https://api.ejemplo.com
-
-// src/main.js
-const apiUrl = import.meta.env.VITE_API_URL;
-console.log(apiUrl);</pre>
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"><span class="orden">2</span>Config Prettier</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// .prettierrc
+{
+  "semi": true,
+  "singleQuote": true,
+  "printWidth": 100
+}</pre>
         </section>
 
         <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
-                <span class="orden">4</span>Build y preview
-            </h2>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">npm run build
-npm run preview</pre>
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"><span class="orden">3</span>Script unificado de calidad</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">{
+  "scripts": {
+    "quality": "npm run lint && npm run format:check && npm run typecheck"
+  }
+}</pre>
+        </section>
+
+        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"><span class="orden">4</span>Workflow de CI (GitHub Actions)</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">name: quality
+on: [push, pull_request]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run quality</pre>
+        </section>
+
+        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3"><span class="orden">5</span>Pre-commit con Husky + lint-staged</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">npm install -D husky lint-staged
+npx husky init
+
+// package.json
+{
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{json,md,css,html}": ["prettier --write"]
+  }
+}
+
+// .husky/pre-commit
+npx lint-staged</pre>
         </section>
     </main>
 
     <div data-component="footer-nav"></div>
 
     <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
-        <p>Apuntes JavaScript &mdash; Ejemplos Tema 14</p>
+        <p>Apuntes JavaScript &mdash; Ejemplos Tema 15</p>
     </footer>
     <script src="../assets/js/components.js"></script>
 </body>
