@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tema 13: POO y Clases - Apuntes JavaScript</title>
-    <meta name="description" content="Programación orientada a objetos en JavaScript: clases, herencia, encapsulación y prototipos.">
+    <meta name="description" content="ProgramaciÃ³n orientada a objetos en JavaScript: clases, herencia, encapsulaciÃ³n y prototipos.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="icon" type="image/png" href="../favicon.ico">
@@ -40,7 +40,7 @@
                     <a href="tema11-componentes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">11. Componentes</a>
                     <a href="tema12-asincronia.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">12. Asincron&iacute;a en JS</a>
                     <a href="tema13-poo.html" class="block px-4 py-2 text-sm text-amber-900 bg-amber-50 font-medium">13. POO y Clases</a>
-                    <a href="tema14-testing.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">14. Testing y Herramientas</a>
+                    <a href="tema14-vite.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">14. Vite</a>
                     <div class="border-t border-gray-100 mt-2 pt-2">
                         <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
                     </div>
@@ -93,36 +93,36 @@
                 </div>
             </div>
 
-            <!-- Anatomía de una clase -->
+            <!-- AnatomÃ­a de una clase -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2">Anatom&iacute;a completa de una clase</h3>
                 <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Usuario {
-  // 1. CAMPO DE CLASE  — valor por defecto compartido en la definici&oacute;n
+  // 1. CAMPO DE CLASE  â€” valor por defecto compartido en la definici&oacute;n
   rol = 'invitado';
 
-  // 2. CONSTRUCTOR — se ejecuta autom&aacute;ticamente al hacer new Usuario(...)
+  // 2. CONSTRUCTOR â€” se ejecuta autom&aacute;ticamente al hacer new Usuario(...)
   constructor(nombre, email) {
-    // 3. PROPIEDAD DE INSTANCIA — cada objeto tiene la suya propia
+    // 3. PROPIEDAD DE INSTANCIA â€” cada objeto tiene la suya propia
     this.nombre = nombre;
     this.email  = email;
   }
 
-  // 4. M&Eacute;TODO DE INSTANCIA — funciones que operan sobre this
+  // 4. M&Eacute;TODO DE INSTANCIA â€” funciones que operan sobre this
   saludar() {
     return `Hola, soy ${this.nombre}`;
   }
 
-  // 5. GETTER — propiedad calculada de s&oacute;lo lectura
+  // 5. GETTER â€” propiedad calculada de s&oacute;lo lectura
   get resumen() {
     return `${this.nombre} &lt;${this.email}&gt;`;
   }
 
-  // 6. SETTER — propiedad calculada con escritura controlada
+  // 6. SETTER â€” propiedad calculada con escritura controlada
   set nombreCompleto(valor) {
     this.nombre = valor.trim();
   }
 
-  // 7. M&Eacute;TODO EST&Aacute;TICO — pertenece a la clase, no a las instancias
+  // 7. M&Eacute;TODO EST&Aacute;TICO â€” pertenece a la clase, no a las instancias
   static crear(nombre, email) {
     return new Usuario(nombre, email);
   }
@@ -166,7 +166,7 @@ a.incrementar();
 a.incrementar();
 
 console.log(a.valor);  // 2
-console.log(b.valor);  // 0  — b no se ha tocado</pre>
+console.log(b.valor);  // 0  â€” b no se ha tocado</pre>
             </div>
 
             <!-- Propiedades de instancia vs campos de clase -->
@@ -191,7 +191,7 @@ console.log(b.valor);  // 0  — b no se ha tocado</pre>
                 </div>
             </div>
 
-            <!-- Métodos estáticos -->
+            <!-- MÃ©todos estÃ¡ticos -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2">M&eacute;todos est&aacute;ticos (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">static</code>)</h3>
                 <p class="text-sm mb-2">Pertenecen a la <strong>clase</strong>, no a sus instancias. Se llaman directamente sobre la clase y no tienen acceso a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> de instancia. Son &uacute;tiles como <em>funciones de utilidad</em> o <em>f&aacute;bricas</em> de objetos.</p>
@@ -199,8 +199,8 @@ console.log(b.valor);  // 0  — b no se ha tocado</pre>
   static sumar(a, b) { return a + b; }
 }
 
-MathUtils.sumar(3, 4);   // 7  — se llama en la clase
-// new MathUtils().sumar  — ERROR: no existe en la instancia</pre>
+MathUtils.sumar(3, 4);   // 7  â€” se llama en la clase
+// new MathUtils().sumar  â€” ERROR: no existe en la instancia</pre>
             </div>
 
             <!-- Getters y Setters -->
@@ -221,7 +221,7 @@ MathUtils.sumar(3, 4);   // 7  — se llama en la clase
 }
 
 const t = new Temperatura(100);
-t.fahrenheit;       // 212  — se lee como propiedad, sin ()
+t.fahrenheit;       // 212  â€” se lee como propiedad, sin ()
 t.celsius = 0;      // pasa por el setter</pre>
             </div>
 
@@ -235,8 +235,8 @@ class Perro extends Animal { }
 const rex = new Perro();
 
 rex instanceof Perro;   // true
-rex instanceof Animal;  // true  — hereda de Animal
-rex instanceof Object;  // true  — todo objeto hereda de Object</pre>
+rex instanceof Animal;  // true  â€” hereda de Animal
+rex instanceof Object;  // true  â€” todo objeto hereda de Object</pre>
             </div>
 
         </section>
@@ -245,7 +245,7 @@ rex instanceof Object;  // true  — todo objeto hereda de Object</pre>
 
             <p class="text-sm mb-3">La <strong>herencia</strong> permite que una clase <em>hija</em> adquiera autom&aacute;ticamente las propiedades y m&eacute;todos de una clase <em>padre</em>, pudiendo adem&aacute;s a&ntilde;adir o sobrescribir comportamiento. Se declara con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code>. El objetivo es reutilizar c&oacute;digo y expresar relaciones del tipo <em>&ldquo;es un&rdquo;</em>: un <code>Admin</code> <em>es un</em> <code>Usuario</code>.</p>
 
-            <!-- extends básico -->
+            <!-- extends bÃ¡sico -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code> &mdash; heredar de una clase padre</h3>
                 <p class="text-sm mb-2">La clase hija hereda <strong>todas</strong> las propiedades y m&eacute;todos p&uacute;blicos y protegidos del padre. No es necesario reescribirlos; est&aacute;n disponibles directamente en las instancias de la hija.</p>
@@ -260,13 +260,13 @@ rex instanceof Object;  // true  — todo objeto hereda de Object</pre>
 
 class Perro extends Animal {
   ladrar() {
-    return '¡Guau!';
+    return 'Â¡Guau!';
   }
 }
 
 const rex = new Perro('Rex');
-rex.describir();  // 'Soy Rex'  — heredado del padre
-rex.ladrar();     // '¡Guau!'  — propio de Perro</pre>
+rex.describir();  // 'Soy Rex'  â€” heredado del padre
+rex.ladrar();     // 'Â¡Guau!'  â€” propio de Perro</pre>
             </div>
 
             <!-- super() en el constructor -->
@@ -285,8 +285,8 @@ rex.ladrar();     // '¡Guau!'  — propio de Perro</pre>
 
 class Admin extends Usuario {
   constructor(nombre, email, nivel) {
-    super(nombre, email);   // 1&ordm; — inicializa lo del padre
-    this.nivel = nivel;     // 2&ordm; — agrega lo propio de Admin
+    super(nombre, email);   // 1&ordm; â€” inicializa lo del padre
+    this.nivel = nivel;     // 2&ordm; â€” agrega lo propio de Admin
   }
   borrar(id) {
     return `[Admin Nv.${this.nivel}] Eliminado: ${id}`;
@@ -294,11 +294,11 @@ class Admin extends Usuario {
 }
 
 const a = new Admin('Ana', 'ana@web.com', 3);
-a.saludar();     // 'Hola, soy Ana'  — heredado
-a.borrar(42);    // '[Admin Nv.3] Eliminado: 42'  — propio</pre>
+a.saludar();     // 'Hola, soy Ana'  â€” heredado
+a.borrar(42);    // '[Admin Nv.3] Eliminado: 42'  â€” propio</pre>
             </div>
 
-            <!-- super en métodos -->
+            <!-- super en mÃ©todos -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">super.metodo()</code> &mdash; llamar a un m&eacute;todo del padre</h3>
                 <p class="text-sm mb-2">Dentro de un m&eacute;todo sobrescrito, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">super.metodo()</code> permite ejecutar la versi&oacute;n del padre <strong>y luego extenderla</strong>, sin tener que copiar su c&oacute;digo.</p>
@@ -311,15 +311,15 @@ a.borrar(42);    // '[Admin Nv.3] Eliminado: 42'  — propio</pre>
 class Gato extends Animal {
   hablar() {
     const base = super.hablar();   // ejecuta el del padre
-    return `${base}... concretamente: ¡Miau!`;
+    return `${base}... concretamente: Â¡Miau!`;
   }
 }
 
 new Gato().hablar();
-// 'El animal hace un sonido... concretamente: ¡Miau!'</pre>
+// 'El animal hace un sonido... concretamente: Â¡Miau!'</pre>
             </div>
 
-            <!-- Sobreescritura de métodos -->
+            <!-- Sobreescritura de mÃ©todos -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2">Sobreescritura de m&eacute;todos (<em>override</em>)</h3>
                 <p class="text-sm mb-2">Si la hija define un m&eacute;todo con el <strong>mismo nombre</strong> que el padre, la versi&oacute;n de la hija sustituye a la del padre en las instancias de esa hija. El padre no se ve afectado.</p>
@@ -347,7 +347,7 @@ class Cuadrado extends Forma {
 
 new Circulo(5).area();   // 78.53...
 new Cuadrado(4).area();  // 16
-new Forma().area();      // 0  — el padre no cambia</pre>
+new Forma().area();      // 0  â€” el padre no cambia</pre>
             </div>
 
             <!-- Cadena de herencia -->
@@ -356,8 +356,8 @@ new Forma().area();      // 0  — el padre no cambia</pre>
                 <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
                     <ul class="list-disc pl-5 space-y-1 text-sm">
                         <li>JavaScript solo soporta <strong>herencia simple</strong>: una clase hija tiene exactamente un padre.</li>
-                        <li>La cadena puede tener varios niveles: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">A → B → C</code>.</li>
-                        <li>Toda clase hereda implícitamente de <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object</code> si no se especifica padre.</li>
+                        <li>La cadena puede tener varios niveles: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">A â†’ B â†’ C</code>.</li>
+                        <li>Toda clase hereda implÃ­citamente de <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object</code> si no se especifica padre.</li>
                         <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">super()</code> es obligatorio en el constructor de la hija si &eacute;sta lo define.</li>
                     </ul>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class A { saludo() { return 'Hola'; } }
@@ -365,7 +365,7 @@ class B extends A { }       // hereda de A
 class C extends B { }       // hereda de B y A
 
 const c = new C();
-c.saludo();          // 'Hola'  — sube la cadena
+c.saludo();          // 'Hola'  â€” sube la cadena
 c instanceof C;      // true
 c instanceof A;      // true</pre>
                 </div>
@@ -382,7 +382,7 @@ c instanceof A;      // true</pre>
                 <h3 class="font-semibold text-yellow-700 mb-2">Campos privados con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code></h3>
                 <p class="text-sm mb-2">Un campo declarado con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code> delante de su nombre <strong>solo es accesible dentro de la propia clase</strong>. Cualquier intento de leerlo o escribirlo desde fuera lanza un <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">SyntaxError</code>. Deben declararse en el cuerpo de la clase antes de usarse.</p>
                 <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Cuenta {
-  #saldo = 0;               // campo privado — invisible desde fuera
+  #saldo = 0;               // campo privado â€” invisible desde fuera
 
   depositar(monto) {
     if (monto &lt;= 0) throw new Error('Monto inv&aacute;lido');
@@ -394,18 +394,18 @@ c instanceof A;      // true</pre>
     this.#saldo -= monto;
   }
 
-  get saldo() {             // getter p&uacute;blico — lectura controlada
+  get saldo() {             // getter p&uacute;blico â€” lectura controlada
     return this.#saldo;
   }
 }
 
 const c = new Cuenta();
 c.depositar(100);
-c.saldo;          // 100  — se lee v&iacute;a el getter
-c.#saldo;         // SyntaxError — acceso directo prohibido</pre>
+c.saldo;          // 100  â€” se lee v&iacute;a el getter
+c.#saldo;         // SyntaxError â€” acceso directo prohibido</pre>
             </div>
 
-            <!-- Convención _ vs # -->
+            <!-- ConvenciÃ³n _ vs # -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2">Convenci&oacute;n <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">_propiedad</code> vs campo privado real <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#propiedad</code></h3>
                 <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
@@ -430,7 +430,7 @@ b.#valor = 99;   // SyntaxError</pre>
                 </div>
             </div>
 
-            <!-- Métodos privados -->
+            <!-- MÃ©todos privados -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2">M&eacute;todos privados con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code></h3>
                 <p class="text-sm mb-2">Igual que los campos, los m&eacute;todos tambi&eacute;n pueden ser privados. Se usan para l&oacute;gica interna que no debe exponerse al exterior.</p>
@@ -450,7 +450,7 @@ p.procesar('hola');   // funciona
 p.#log('test');       // SyntaxError</pre>
             </div>
 
-            <!-- Getters y setters como API pública -->
+            <!-- Getters y setters como API pÃºblica -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2">Getters y setters como API p&uacute;blica</h3>
                 <p class="text-sm mb-2">El patr&oacute;n habitual de encapsulaci&oacute;n es: campo privado (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code>) para el dato bruto + getter para leerlo + setter para modificarlo con validaci&oacute;n.</p>
@@ -478,7 +478,7 @@ u.edad = -1;     // Error: Edad inv&aacute;lida
 u.edad = 26;     // v&aacute;lido</pre>
             </div>
 
-            <!-- Campos y métodos estáticos privados -->
+            <!-- Campos y mÃ©todos estÃ¡ticos privados -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2">Campos est&aacute;ticos privados</h3>
                 <p class="text-sm mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">static #campo</code> combina las dos restricciones: pertenece a la clase (no a instancias) y es privado. &Uacute;til para contadores o configuraci&oacute;n interna compartida.</p>
@@ -510,18 +510,18 @@ Registro.#contador;  // SyntaxError</pre>
             <!-- Cadena de prototipos -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2">La cadena de prototipos</h3>
-                <p class="text-sm mb-2">Al buscar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj.propiedad</code>, JavaScript sigue este orden: <strong>1)</strong> el propio objeto → <strong>2)</strong> su prototipo → <strong>3)</strong> el prototipo del prototipo → … → <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.prototype</code> → <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">null</code>.</p>
+                <p class="text-sm mb-2">Al buscar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj.propiedad</code>, JavaScript sigue este orden: <strong>1)</strong> el propio objeto â†’ <strong>2)</strong> su prototipo â†’ <strong>3)</strong> el prototipo del prototipo â†’ â€¦ â†’ <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.prototype</code> â†’ <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">null</code>.</p>
                 <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const animal = { respirar() { return 'inhala/exhala'; } };
 const perro  = Object.create(animal);   // perro hereda de animal
-perro.ladrar = function () { return '¡Guau!'; };
+perro.ladrar = function () { return 'Â¡Guau!'; };
 
-perro.ladrar();    // '¡Guau!'       — propio de perro
-perro.respirar();  // 'inhala/exhala' — viene de animal (prototipo)
+perro.ladrar();    // 'Â¡Guau!'       â€” propio de perro
+perro.respirar();  // 'inhala/exhala' â€” viene de animal (prototipo)
 
 Object.getPrototypeOf(perro) === animal;  // true</pre>
             </div>
 
-            <!-- Función constructora -->
+            <!-- FunciÃ³n constructora -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2">Funci&oacute;n constructora (estilo ES5)</h3>
                 <p class="text-sm mb-2">Antes de <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code>, se usaban <strong>funciones constructoras</strong> invocadas con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new</code>. Los m&eacute;todos se a&ntilde;ad&iacute;an a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">NombreFunc.prototype</code> para que todas las instancias los compartieran sin duplicarlos en memoria.</p>
@@ -536,11 +536,11 @@ Animal.prototype.hablar = function () {
 
 const rex = new Animal('Rex');
 rex.hablar();                  // 'Rex hace un sonido'
-rex.hasOwnProperty('nombre');  // true  — propio del objeto
-rex.hasOwnProperty('hablar');  // false — viene del prototipo</pre>
+rex.hasOwnProperty('nombre');  // true  â€” propio del objeto
+rex.hasOwnProperty('hablar');  // false â€” viene del prototipo</pre>
             </div>
 
-            <!-- class es azúcar sintáctico -->
+            <!-- class es azÃºcar sintÃ¡ctico -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code> es az&uacute;car sint&aacute;ctico sobre prototipos</h3>
                 <p class="text-sm mb-2">Ambas formas producen exactamente el mismo resultado interno. La sintaxis <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code> es m&aacute;s clara y legible, pero por debajo sigue usando el sistema prototipal.</p>
@@ -551,7 +551,7 @@ rex.hasOwnProperty('hablar');  // false — viene del prototipo</pre>
   this.nombre = nombre;
 }
 Perro.prototype.ladrar = function () {
-  return '¡Guau!';
+  return 'Â¡Guau!';
 };</pre>
                     </div>
                     <div>
@@ -560,12 +560,12 @@ Perro.prototype.ladrar = function () {
   constructor(nombre) {
     this.nombre = nombre;
   }
-  ladrar() { return '¡Guau!'; }
+  ladrar() { return 'Â¡Guau!'; }
 }</pre>
                     </div>
                 </div>
                 <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-2">// En ambos casos el resultado es id&eacute;ntico:
-typeof Perro;                        // 'function'  — las clases son funciones
+typeof Perro;                        // 'function'  â€” las clases son funciones
 typeof Perro.prototype.ladrar;       // 'function'
 new Perro('Rex') instanceof Perro;   // true</pre>
             </div>
@@ -590,10 +590,10 @@ Object.getPrototypeOf(coche) === vehiculo; // true</pre>
                 <h3 class="font-semibold text-yellow-700 mb-2">Inspecionar y verificar la cadena</h3>
                 <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
                     <ul class="list-disc pl-5 space-y-1 text-sm">
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.getPrototypeOf(obj)</code> — devuelve el prototipo del objeto.</li>
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj.hasOwnProperty('clave')</code> — <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">true</code> solo si la propiedad es propia (no heredada).</li>
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj instanceof Clase</code> — verifica si <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Clase.prototype</code> est&aacute; en la cadena.</li>
-                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">'clave' in obj</code> — <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">true</code> si existe en el objeto <em>o</em> en su cadena.</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.getPrototypeOf(obj)</code> â€” devuelve el prototipo del objeto.</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj.hasOwnProperty('clave')</code> â€” <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">true</code> solo si la propiedad es propia (no heredada).</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj instanceof Clase</code> â€” verifica si <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Clase.prototype</code> est&aacute; en la cadena.</li>
+                        <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">'clave' in obj</code> â€” <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">true</code> si existe en el objeto <em>o</em> en su cadena.</li>
                     </ul>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class A { metodo() {} }
 class B extends A {}
@@ -617,3 +617,4 @@ b instanceof A;                            // true</pre>
     <div data-component="footer"></div>
 </body>
 </html>
+

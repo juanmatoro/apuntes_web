@@ -66,7 +66,7 @@ const TEMAS_CONFIG = {
             { num: 11, slug: 'componentes', titulo: 'Componentes' },
             { num: 12, slug: 'asincronia', titulo: 'Asincronía en JS' },
             { num: 13, slug: 'poo', titulo: 'POO y Clases' },
-            { num: 14, slug: 'testing', titulo: 'Testing y Herramientas' }
+            { num: 14, slug: 'vite', titulo: 'Vite' }
         ]
     },
     ts: {
@@ -413,4 +413,5 @@ window.ApuntesComponents = {
     generarFooter,
     initComponents
 };
+
 
