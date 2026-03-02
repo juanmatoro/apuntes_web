@@ -21,6 +21,8 @@
             <a href="#flujo" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Flujo de trabajo</a>
             <a href="#setup" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Setup inicial</a>
             <a href="#buenas-practicas" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Buenas practicas</a>
+            <a href="#repaso-intro-md" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Repaso intro.md</a>
+            <a href="#referencias" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Referencias</a>
         </div>
     </nav>
 
@@ -76,6 +78,48 @@ package.json</pre>
                 <li>Evitar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">any</code> salvo casos justificados.</li>
                 <li>Separar codigo fuente (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">src</code>) de salida (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dist</code>).</li>
                 <li>Usar ESLint + Prettier para mantener consistencia.</li>
+            </ul>
+        </section>
+
+        <section id="repaso-intro-md" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">5</span>Repaso de 01.intro.md</h2>
+
+            <h3 class="font-semibold text-blue-600 mt-3 mb-2">Lenguajes en la web y evolucion del estandar ECMAScript</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>HTML estructura contenido, CSS lo presenta y JS/TS agrega logica y comportamiento.</li>
+                <li>TypeScript se apoya en ECMAScript y compila a JavaScript estandar.</li>
+                <li>Versiones clave: ES5 (base legacy), ES6 (modulos, clases, let/const), ES2017 (async/await), ES2020+ (mejoras continuas).</li>
+            </ul>
+
+            <h3 class="font-semibold text-blue-600 mt-4 mb-2">Estructura del lenguaje</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Sintaxis: sentencias, expresiones, bloques y palabras reservadas.</li>
+                <li>Identificadores claros y consistentes (camelCase, PascalCase para tipos/clases).</li>
+                <li>Modo estricto: evita errores silenciosos y mejora la seguridad del codigo.</li>
+            </ul>
+
+            <h3 class="font-semibold text-blue-600 mt-4 mb-2">Entornos JS y herramientas</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Navegador: consola, DOM y Web APIs.</li>
+                <li>Node.js: scripts, backend, tooling de build/test.</li>
+                <li>Playgrounds: utiles para experimentar rapido con tipos y snippets.</li>
+            </ul>
+
+            <h3 class="font-semibold text-blue-600 mt-4 mb-2">Modelo mental de datos</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Primitivos vs referenciados, mutabilidad y paso por valor/referencia.</li>
+                <li>Variables con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">let</code>/<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">const</code>, evitando magic numbers.</li>
+                <li>Casting/coercion: conversiones explicitas preferibles a conversiones implicitas.</li>
+            </ul>
+        </section>
+
+        <section id="referencias" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">6</span>Referencias recomendadas</h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Documentacion oficial de TypeScript (handbook y tsconfig).</li>
+                <li>MDN para JavaScript, Web APIs y asincronia.</li>
+                <li>ECMAScript spec para semantica formal del lenguaje.</li>
+                <li>Recursos de fundamentos y programacion funcional/asincrona para reforzar base de JS.</li>
             </ul>
         </section>
     </main>
