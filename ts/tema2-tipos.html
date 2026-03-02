@@ -22,6 +22,7 @@
             <a href="#scope-bloque" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Scope de bloque</a>
             <a href="#especiales" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Tipos especiales</a>
             <a href="#truthy-falsy-nullish" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Truthy/Falsy/Nullish</a>
+            <a href="#optional-chaining" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Optional chaining</a>
             <a href="#operadores" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Operadores e igualdad</a>
             <a href="#control-flujo" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Control de flujo</a>
         </div>
@@ -127,14 +128,62 @@ const modo = null ?? "auto"; // "auto"</pre>
             </ul>
         </section>
 
+        <section id="optional-chaining" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">7</span>Optional chaining (encadenamiento opcional)</h2>
+            <p class="text-sm mb-3">El operador <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">?.</code> corta la evaluacion cuando el valor previo es <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">null</code> o <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">undefined</code>, devolviendo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">undefined</code> en lugar de lanzar error.</p>
+
+            <h3 class="font-semibold text-blue-600 mt-3 mb-2">Tipos de operadores opcionales y aplicacion</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj?.prop</code>: acceso opcional a propiedad.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj?.[expr]</code>: acceso opcional por indice o clave dinamica.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">fn?.(...args)</code>: llamada opcional a funcion/metodo.</li>
+            </ul>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">type Usuario = {
+  perfil?: { nombre?: string };
+  tags?: string[];
+  saludar?: () => string;
+};
+
+const u: Usuario = {};
+
+const nombre = u.perfil?.nombre;   // undefined (sin error)
+const primerTag = u.tags?.[0];     // undefined
+const saludo = u.saludar?.();      // undefined
+
+// Combinacion recomendada con ?? para fallback real:
+const nombreSeguro = u.perfil?.nombre ?? "Anonimo";</pre>
+            <p class="text-sm mt-3">Usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">?.</code> para navegar estructuras opcionales, y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">??</code> para definir valor por defecto solo cuando falta dato.</p>
+        </section>
+
         <section id="operadores" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">7</span>Expresiones, operadores e igualdad</h2>
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">8</span>Expresiones, operadores e igualdad</h2>
             <ul class="list-disc pl-5 space-y-1 text-sm">
                 <li>Una expresion produce un valor; una sentencia controla ejecucion.</li>
                 <li>Operadores frecuentes: aritmeticos, asignacion, comparacion, logicos y ternario.</li>
                 <li>Para igualdad, prioriza <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">===</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">!==</code> sobre comparacion debil.</li>
                 <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.is()</code> es util para casos finos (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">NaN</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">-0</code>).</li>
             </ul>
+            <div class="overflow-x-auto mt-3">
+                <table class="w-full text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-blue-100">
+                            <th class="border border-blue-200 p-2 text-left">Tipo de operador</th>
+                            <th class="border border-blue-200 p-2 text-left">Ejemplos</th>
+                            <th class="border border-blue-200 p-2 text-left">Aplicacion de uso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Aritmeticos</td><td class="border border-gray-200 p-2"><code>+ - * / % **</code></td><td class="border border-gray-200 p-2">Calculos numericos.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Asignacion</td><td class="border border-gray-200 p-2"><code>= += -= ??=</code></td><td class="border border-gray-200 p-2">Actualizar estado de variables.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Comparacion</td><td class="border border-gray-200 p-2"><code>=== !== &gt; &lt;=</code></td><td class="border border-gray-200 p-2">Condiciones y validaciones.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Logicos</td><td class="border border-gray-200 p-2"><code>&amp;&amp; || !</code></td><td class="border border-gray-200 p-2">Composicion de reglas booleanas.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Nullish</td><td class="border border-gray-200 p-2"><code>??</code></td><td class="border border-gray-200 p-2">Fallback solo en <code>null</code>/<code>undefined</code>.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Ternario</td><td class="border border-gray-200 p-2"><code>cond ? a : b</code></td><td class="border border-gray-200 p-2">Expresiones condicionales breves.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">Optional chaining</td><td class="border border-gray-200 p-2"><code>?. ?.[ ] ?.()</code></td><td class="border border-gray-200 p-2">Acceso/llamada segura en estructuras opcionales.</td></tr>
+                    </tbody>
+                </table>
+            </div>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">const a = 0;
 const b = false;
 
@@ -143,7 +192,7 @@ console.log(a === b);  // false (tipos distintos)</pre>
         </section>
 
         <section id="control-flujo" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">8</span>Control de flujo y excepciones</h2>
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">9</span>Control de flujo y excepciones</h2>
             <p class="text-sm mb-2">Bloques esenciales de flujo: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">if</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">switch</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for...of</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">while</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">do...while</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">break</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">continue</code>.</p>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">try {
   const data = JSON.parse("{\"ok\": true}");
