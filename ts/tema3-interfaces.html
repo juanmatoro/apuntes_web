@@ -19,6 +19,8 @@
             <a href="#interfaces" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Interfaces</a>
             <a href="#types" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Type aliases</a>
             <a href="#comparativa" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Comparativa</a>
+            <a href="#indices" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Index signatures</a>
+            <a href="#merge" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Declaration merging</a>
         </div>
     </nav>
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
@@ -60,6 +62,33 @@ type Producto = {
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">type RespuestaOk = { ok: true; data: string[] };
 type RespuestaErr = { ok: false; error: string };
 type Respuesta = RespuestaOk | RespuestaErr;</pre>
+        </section>
+
+        <section id="indices" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">4</span>Index signatures y claves dinamicas</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">interface DiccionarioErrores {
+  [campo: string]: string;
+}
+
+const errores: DiccionarioErrores = {
+  email: "Formato invalido",
+  password: "Minimo 8 caracteres"
+};</pre>
+            <p class="text-sm mt-3">Para claves acotadas, prefiere <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Record&lt;Union, T&gt;</code> sobre index signature abierta.</p>
+        </section>
+
+        <section id="merge" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">5</span>Declaration merging (interfaces)</h2>
+            <p class="text-sm mb-2">Las interfaces con el mismo nombre pueden fusionarse automaticamente.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">interface Config {
+  apiUrl: string;
+}
+
+interface Config {
+  timeout: number;
+}
+
+const cfg: Config = { apiUrl: "/api", timeout: 3000 };</pre>
         </section>
     </main>
     <div data-component="footer-nav"></div>

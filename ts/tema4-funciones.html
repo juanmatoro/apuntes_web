@@ -20,6 +20,8 @@
             <a href="#inferencia-funciones" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Inferencia en funciones</a>
             <a href="#parametros" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Parametros</a>
             <a href="#overloads" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Overloads</a>
+            <a href="#scope-hoisting" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Scope y hoisting</a>
+            <a href="#destructuring-closures" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Destructuring y closures</a>
         </div>
     </nav>
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
@@ -72,6 +74,39 @@ function formatear(valor: number | Date): string {
   return valor.toFixed(2);
 }</pre>
             <p class="text-sm mt-3">Evita overloads excesivos; si son demasiados casos, usa un objeto de opciones tipado.</p>
+        </section>
+
+        <section id="scope-hoisting" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">5</span>Ambito (scope), hoisting y paso de argumentos</h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Las declaraciones de funcion se elevan (hoisting); expresiones de funcion no.</li>
+                <li>El scope lexico define desde donde una variable es visible.</li>
+                <li>Primitivos se pasan por valor; objetos por referencia compartida.</li>
+            </ul>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">saludo(); // OK
+function saludo() { console.log("hola"); }
+
+const persona = { nombre: "Ana" };
+function renombrar(p: { nombre: string }) { p.nombre = "Luis"; }
+renombrar(persona); // muta el objeto original</pre>
+        </section>
+
+        <section id="destructuring-closures" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">6</span>Des-estructuracion, spread/rest, callbacks y closures</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const user = { id: "u1", nombre: "Ana", rol: "admin" };
+const { nombre, ...resto } = user; // destructuring + rest
+
+const copia = { ...user }; // spread (shallow copy)
+
+function crearContador() {
+  let total = 0;
+  return () => ++total; // closure
+}
+
+const inc = crearContador();
+inc(); // 1
+inc(); // 2</pre>
+            <p class="text-sm mt-3">Incluye tambien patrones de funciones anidadas, funciones de orden superior e IIFE para aislamiento puntual.</p>
         </section>
     </main>
     <div data-component="footer-nav"></div>

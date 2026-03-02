@@ -19,6 +19,8 @@
             <a href="#modulos-es" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Modulos ES</a>
             <a href="#barrels" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Barrels</a>
             <a href="#namespaces" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Namespaces</a>
+            <a href="#metadata" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Metadatos</a>
+            <a href="#dinamica" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Import dinamico</a>
         </div>
     </nav>
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
@@ -48,6 +50,24 @@ export * from "./pedido";</pre>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">namespace MathExtra {
   export const doble = (n: number) =&gt; n * 2;
 }</pre>
+        </section>
+
+        <section id="metadata" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">4</span>Metadatos de modulos</h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Un modulo ES tiene scope propio y se ejecuta una sola vez (cacheado).</li>
+                <li>Las exportaciones son enlazadas en vivo (live bindings).</li>
+                <li>El analisis estatico de imports ayuda a tree-shaking en build.</li>
+            </ul>
+        </section>
+
+        <section id="dinamica" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">5</span>Importacion dinamica y modulos asincronos</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">async function cargarFeature() {
+  const mod = await import("./feature");
+  mod.init();
+}</pre>
+            <p class="text-sm mt-3">Util para carga diferida (lazy loading) y division de codigo por rutas o features.</p>
         </section>
     </main>
     <div data-component="footer-nav"></div>

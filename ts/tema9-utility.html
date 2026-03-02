@@ -19,6 +19,7 @@
             <a href="#mapeado" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Tipos mapeados</a>
             <a href="#objetos" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Transformar objetos</a>
             <a href="#funciones" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Funciones</a>
+            <a href="#nativos" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Objetos nativos</a>
         </div>
     </nav>
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
@@ -52,6 +53,22 @@ type Permisos = Record&lt;Roles, boolean&gt;;</pre>
 type ParamsSesion = Parameters&lt;typeof crearSesion&gt;;
 type ResultadoSesion = ReturnType&lt;typeof crearSesion&gt;;</pre>
             <p class="text-sm mt-3">Estas utilidades reducen duplicacion de tipos y evitan desalineaciones.</p>
+        </section>
+
+        <section id="nativos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">4</span>Repaso de objetos nativos de JS/TS</h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Wrappers: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">String</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Number</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Boolean</code> (usar primitivos por defecto).</li>
+                <li>Arrays: metodos mutables e inmutables (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">push</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">map</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">filter</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">reduce</code>).</li>
+                <li>Estructuras: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Set</code> (unicidad) y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Map</code> (clave-valor robusto).</li>
+                <li>Utilidades no instanciables: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Math</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">JSON</code>.</li>
+            </ul>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">const ids = new Set&lt;string&gt;(["a", "b", "a"]); // a, b
+const precios = new Map&lt;string, number&gt;([["p1", 10]]);
+
+const raw = JSON.stringify({ ok: true });
+const parsed = JSON.parse(raw) as { ok: boolean };
+const redondeado = Math.round(10.4);</pre>
         </section>
     </main>
     <div data-component="footer-nav"></div>

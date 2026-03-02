@@ -19,6 +19,8 @@
             <a href="#clases" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Clases</a>
             <a href="#acceso" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Modificadores</a>
             <a href="#herencia" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Herencia</a>
+            <a href="#prototipos" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Prototipos</a>
+            <a href="#accessors" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Getters y setters</a>
         </div>
     </nav>
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
@@ -63,6 +65,33 @@ class Admin extends UsuarioBase implements Imprimible {
   }
 }</pre>
             <p class="text-sm mt-3">Prioriza composicion sobre herencia profunda para mantener bajo acoplamiento.</p>
+        </section>
+
+        <section id="prototipos" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">4</span>Objetos, funciones constructoras y prototipos</h2>
+            <p class="text-sm mb-2">Las clases de ES6 son azucar sintactico sobre prototipos. Entender la cadena de prototipos ayuda a depurar y modelar mejor.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Persona(this: any, nombre: string) {
+  this.nombre = nombre;
+}
+(Persona as any).prototype.saludar = function () {
+  return `Hola ${this.nombre}`;
+};</pre>
+        </section>
+
+        <section id="accessors" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">5</span>Accessors: getters y setters</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Cuenta {
+  private _saldo = 0;
+
+  get saldo(): number {
+    return this._saldo;
+  }
+
+  set saldo(valor: number) {
+    if (valor < 0) throw new Error("Saldo invalido");
+    this._saldo = valor;
+  }
+}</pre>
         </section>
     </main>
     <div data-component="footer-nav"></div>

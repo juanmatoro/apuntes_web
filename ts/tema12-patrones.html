@@ -19,6 +19,7 @@
             <a href="#condicionales" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Condicionales</a>
             <a href="#infer" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">infer</a>
             <a href="#branded" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Branded types</a>
+            <a href="#asincronia" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Asincronia</a>
         </div>
     </nav>
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
@@ -48,6 +49,36 @@ function crearEmail(valor: string): Email {
   return valor as Email;
 }</pre>
             <p class="text-sm mt-3">Este patron evita mezclar strings comunes con valores de dominio criticos.</p>
+        </section>
+
+        <section id="asincronia" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">4</span>Asincronia en JS/TS: repaso completo</h2>
+            <h3 class="font-semibold text-blue-600 mt-3 mb-2">Event loop, concurrencia y callbacks</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>JS ejecuta en un hilo principal con modelo concurrente via event loop.</li>
+                <li>Callbacks asincronas: timers, eventos, I/O.</li>
+                <li>Problema clasico: callback hell por anidacion profunda.</li>
+            </ul>
+
+            <h3 class="font-semibold text-blue-600 mt-4 mb-2">Promesas y microtasks</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const p = new Promise&lt;number&gt;((resolve) =&gt; setTimeout(() =&gt; resolve(42), 100));
+p.then(v =&gt; console.log(v)).catch(err =&gt; console.error(err));</pre>
+            <ul class="list-disc pl-5 space-y-1 text-sm mt-3">
+                <li>Encadenamiento con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">then/catch/finally</code>.</li>
+                <li>Metodos estaticos: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Promise.all</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">allSettled</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">race</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">any</code>.</li>
+            </ul>
+
+            <h3 class="font-semibold text-blue-600 mt-4 mb-2">Async/await, top-level await y fetch</h3>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">async function getUsers(): Promise&lt;unknown&gt; {
+  const resp = await fetch("https://jsonplaceholder.typicode.com/users");
+  if (!resp.ok) throw new Error("HTTP error");
+  return resp.json();
+}
+
+const data = await getUsers(); // top-level await (si el entorno lo permite)</pre>
+            <p class="text-sm mt-3">Top level await permite usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">await</code> en el modulo raiz cuando el entorno lo soporta.</p>
+            <p class="text-sm mt-2">Promisificacion: convertir APIs de callback a promesas para simplificar flujo y manejo de errores.</p>
+            <p class="text-sm mt-2">En consumo de Rest APIs, combina tipado de respuesta, validacion y manejo de errores HTTP.</p>
         </section>
     </main>
     <div data-component="footer-nav"></div>

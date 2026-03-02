@@ -21,6 +21,9 @@
             <a href="#inferencia" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Inferencia</a>
             <a href="#scope-bloque" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Scope de bloque</a>
             <a href="#especiales" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Tipos especiales</a>
+            <a href="#truthy-falsy-nullish" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Truthy/Falsy/Nullish</a>
+            <a href="#operadores" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Operadores e igualdad</a>
+            <a href="#control-flujo" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Control de flujo</a>
         </div>
     </nav>
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
@@ -101,6 +104,52 @@ console.log(estado); // "global"</pre>
 
 function log(msg: string): void {
   console.log(msg);
+}</pre>
+        </section>
+
+        <section id="truthy-falsy-nullish" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">6</span>Truthy vs Falsy vs Nullish</h2>
+            <p class="text-sm mb-3"><strong>Falsy</strong> son valores que JS trata como <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">false</code> en contextos booleanos: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">false</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">0</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">""</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">NaN</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">null</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">undefined</code>. Todo lo demas es <strong>truthy</strong>.</p>
+            <p class="text-sm mb-3"><strong>Nullish</strong> es solo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">null</code> o <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">undefined</code>.</p>
+
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// || usa logica falsy
+const paginaA = 0 || 1;      // 1 (0 es falsy)
+const nombreA = "" || "anon"; // "anon"
+
+// ?? usa logica nullish (solo null/undefined)
+const paginaB = 0 ?? 1;      // 0
+const nombreB = "" ?? "anon"; // ""
+const modo = null ?? "auto"; // "auto"</pre>
+
+            <ul class="list-disc pl-5 space-y-1 text-sm mt-3">
+                <li>Usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">||</code> cuando cualquier valor falsy deba activar fallback.</li>
+                <li>Usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">??</code> cuando solo quieras fallback para ausencia real de valor.</li>
+            </ul>
+        </section>
+
+        <section id="operadores" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">7</span>Expresiones, operadores e igualdad</h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Una expresion produce un valor; una sentencia controla ejecucion.</li>
+                <li>Operadores frecuentes: aritmeticos, asignacion, comparacion, logicos y ternario.</li>
+                <li>Para igualdad, prioriza <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">===</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">!==</code> sobre comparacion debil.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.is()</code> es util para casos finos (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">NaN</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">-0</code>).</li>
+            </ul>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">const a = 0;
+const b = false;
+
+console.log(a == b);   // true (coercion)
+console.log(a === b);  // false (tipos distintos)</pre>
+        </section>
+
+        <section id="control-flujo" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">8</span>Control de flujo y excepciones</h2>
+            <p class="text-sm mb-2">Bloques esenciales de flujo: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">if</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">switch</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">for...of</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">while</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">do...while</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">break</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">continue</code>.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">try {
+  const data = JSON.parse("{\"ok\": true}");
+  console.log(data.ok);
+} catch (error) {
+  console.error("JSON invalido", error);
 }</pre>
         </section>
     </main>

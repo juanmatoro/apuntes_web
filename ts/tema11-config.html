@@ -19,6 +19,8 @@
             <a href="#tsconfig" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">tsconfig</a>
             <a href="#strict" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Strict mode</a>
             <a href="#paths" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Paths y baseUrl</a>
+            <a href="#build" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Build escalable</a>
+            <a href="#declaration" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Tipos publicados</a>
         </div>
     </nav>
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
@@ -59,6 +61,34 @@
   }
 }</pre>
             <p class="text-sm mt-3">Recuerda alinear aliases con el bundler (Vite/Webpack) y con el test runner.</p>
+        </section>
+
+        <section id="build" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">4</span>Build escalable: incremental y referencias</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">{
+  "compilerOptions": {
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "composite": true
+  },
+  "references": [
+    { "path": "../core" },
+    { "path": "../ui" }
+  ]
+}</pre>
+            <p class="text-sm mt-3">Este enfoque acelera builds en monorepos y separa dependencias por paquetes.</p>
+        </section>
+
+        <section id="declaration" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">5</span>Publicacion de tipos (.d.ts)</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true
+  }
+}</pre>
+            <p class="text-sm mt-3">Imprescindible para librerias TS: tus consumidores reciben autocompletado y contratos tipados.</p>
         </section>
     </main>
     <div data-component="footer-nav"></div>
