@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 10: Modulos y Namespaces - Apuntes TypeScript</title>
+    <meta name="description" content="Modulos ES, export/import, barrel files y cuando evitar namespaces.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#modulos-es" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Modulos ES</a>
+            <a href="#barrels" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Barrels</a>
+            <a href="#namespaces" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Namespaces</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="modulos-es" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">1</span>Modulos ES</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// usuario.ts
+export interface Usuario { id: string; nombre: string; }
+export const crearUsuario = (id: string, nombre: string): Usuario =&gt; ({ id, nombre });
+
+// app.ts
+import { crearUsuario } from "./usuario";
+const u = crearUsuario("u1", "Ana");</pre>
+            <p class="text-sm mt-3">Usa siempre import/export, especialmente con bundlers modernos.</p>
+        </section>
+
+        <section id="barrels" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Barrel files</h2>
+            <p class="text-sm mb-2">Un archivo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">index.ts</code> puede reexportar simbolos para simplificar imports.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// dominio/index.ts
+export * from "./usuario";
+export * from "./pedido";</pre>
+        </section>
+
+        <section id="namespaces" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">3</span>Namespaces</h2>
+            <p class="text-sm mb-2">Son utiles en casos legacy o sin sistema de modulos, pero en proyectos modernos se prefieren modulos ES.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">namespace MathExtra {
+  export const doble = (n: number) =&gt; n * 2;
+}</pre>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

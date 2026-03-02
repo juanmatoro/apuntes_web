@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 7: Unions e Intersecciones - Apuntes TypeScript</title>
+    <meta name="description" content="Union types, intersection types y modelos discriminados para flujos seguros.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#unions" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Union types</a>
+            <a href="#intersecciones" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Intersecciones</a>
+            <a href="#discriminadas" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Unions discriminadas</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="unions" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">1</span>Union types</h2>
+            <p class="text-sm mb-2">Una union permite varios tipos posibles:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">type ID = string | number;
+
+function buscar(id: ID) {
+  return `Buscando ${id}`;
+}</pre>
+        </section>
+
+        <section id="intersecciones" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Intersecciones</h2>
+            <p class="text-sm mb-2">Combinan propiedades de multiples tipos:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">type Base = { id: string };
+type Auditable = { createdAt: Date };
+type Entidad = Base &amp; Auditable;
+
+const e: Entidad = { id: "1", createdAt: new Date() };</pre>
+        </section>
+
+        <section id="discriminadas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">3</span>Unions discriminadas</h2>
+            <p class="text-sm mb-2">Patron clave para modelar estados de UI o respuestas de API.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">type Ok = { status: "ok"; data: string[] };
+type Err = { status: "error"; message: string };
+type Resultado = Ok | Err;
+
+function render(r: Resultado): string {
+  if (r.status === "ok") return r.data.join(", ");
+  return `Error: ${r.message}`;
+}</pre>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

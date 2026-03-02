@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 4: Funciones Tipadas - Apuntes TypeScript</title>
+    <meta name="description" content="Parametros, retornos, opcionales, default, rest y overloads en TypeScript.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#firma" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Firma de funcion</a>
+            <a href="#inferencia-funciones" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Inferencia en funciones</a>
+            <a href="#parametros" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Parametros</a>
+            <a href="#overloads" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Overloads</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="firma" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">1</span>Firma de una funcion</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function sumar(a: number, b: number): number {
+  return a + b;
+}
+
+const restar = (a: number, b: number): number => a - b;</pre>
+            <p class="text-sm mt-3">Tipar retorno explicito es util en funciones publicas y librerias.</p>
+        </section>
+
+        <section id="inferencia-funciones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Inferencia en funciones y contextual typing</h2>
+            <p class="text-sm mb-2">TS infiere tipos de retorno y tambien tipos de parametros segun el contexto de uso.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// Inferencia de retorno (number)
+const multiplicar = (a: number, b: number) => a * b;
+
+// Contextual typing en callbacks
+const nums = [1, 2, 3];
+nums.map(n => n.toFixed(2)); // n es number por contexto
+
+// Cuando no hay contexto, conviene anotar
+const parse = (input: string): number => Number(input);</pre>
+        </section>
+
+        <section id="parametros" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">3</span>Parametros opcionales, default y rest</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function saludar(nombre: string, titulo?: string): string {
+  return titulo ? `${titulo} ${nombre}` : nombre;
+}
+
+function crearId(prefijo: string = "USR"): string {
+  return `${prefijo}-${Date.now()}`;
+}
+
+function media(...nums: number[]): number {
+  return nums.reduce((a, b) => a + b, 0) / nums.length;
+}</pre>
+        </section>
+
+        <section id="overloads" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">4</span>Overloads</h2>
+            <p class="text-sm mb-2">Permiten declarar varias firmas de llamada para una misma implementacion.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function formatear(valor: number): string;
+function formatear(valor: Date): string;
+function formatear(valor: number | Date): string {
+  if (valor instanceof Date) return valor.toISOString();
+  return valor.toFixed(2);
+}</pre>
+            <p class="text-sm mt-3">Evita overloads excesivos; si son demasiados casos, usa un objeto de opciones tipado.</p>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 6: Clases y POO - Apuntes TypeScript</title>
+    <meta name="description" content="Clases tipadas, modificadores de acceso, herencia e implementacion de interfaces.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#clases" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Clases</a>
+            <a href="#acceso" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Modificadores</a>
+            <a href="#herencia" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Herencia</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="clases" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">1</span>Clases tipadas</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Producto {
+  constructor(
+    public sku: string,
+    public nombre: string,
+    private precio: number
+  ) {}
+
+  getPrecio(): number {
+    return this.precio;
+  }
+}</pre>
+        </section>
+
+        <section id="acceso" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Modificadores de acceso</h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">public</code>: visible en cualquier lugar.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">private</code>: visible solo dentro de la clase.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">protected</code>: visible en clase y subclases.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">readonly</code>: asignable solo en declaracion o constructor.</li>
+            </ul>
+        </section>
+
+        <section id="herencia" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">3</span>Herencia e interfaces</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">interface Imprimible {
+  imprimir(): string;
+}
+
+class UsuarioBase {
+  constructor(protected id: string) {}
+}
+
+class Admin extends UsuarioBase implements Imprimible {
+  imprimir(): string {
+    return `Admin ${this.id}`;
+  }
+}</pre>
+            <p class="text-sm mt-3">Prioriza composicion sobre herencia profunda para mantener bajo acoplamiento.</p>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

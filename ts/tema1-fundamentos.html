@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 1: Fundamentos - Apuntes TypeScript</title>
+    <meta name="description" content="Que es TypeScript, flujo de compilacion, setup inicial y primer proyecto.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#que-es" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Que es TypeScript</a>
+            <a href="#flujo" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Flujo de trabajo</a>
+            <a href="#setup" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Setup inicial</a>
+            <a href="#buenas-practicas" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Buenas practicas</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="que-es" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">1</span>Que es TypeScript</h2>
+            <p class="text-sm mb-2"><strong>TypeScript</strong> es un superset de JavaScript que anade un sistema de tipos estatico y herramientas de analisis en tiempo de desarrollo.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Se escribe codigo <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">.ts</code> y se compila a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">.js</code>.</li>
+                <li>Ayuda a detectar errores antes de ejecutar la aplicacion.</li>
+                <li>Mejora el autocompletado y la refactorizacion en el editor.</li>
+            </ul>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">function saludar(nombre: string): string {
+  return `Hola ${nombre}`;
+}
+
+saludar("Ana"); // OK
+// saludar(42); // Error de tipos</pre>
+        </section>
+
+        <section id="flujo" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Flujo de trabajo</h2>
+            <ol class="list-decimal pl-5 space-y-1 text-sm">
+                <li>Escribes codigo TypeScript.</li>
+                <li>El compilador <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">tsc</code> valida tipos.</li>
+                <li>Se genera JavaScript compatible con tu entorno objetivo.</li>
+                <li>Ejecutas el resultado con navegador o Node.js.</li>
+            </ol>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">npx tsc --init
+npx tsc
+node dist/index.js</pre>
+        </section>
+
+        <section id="setup" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">3</span>Setup inicial</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">mkdir proyecto-ts
+cd proyecto-ts
+npm init -y
+npm i -D typescript
+npx tsc --init</pre>
+            <p class="text-sm mt-3 mb-2">Estructura recomendada:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">/src
+  index.ts
+/dist
+tsconfig.json
+package.json</pre>
+        </section>
+
+        <section id="buenas-practicas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">4</span>Buenas practicas iniciales</h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Activar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">strict</code> desde el primer dia.</li>
+                <li>Evitar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">any</code> salvo casos justificados.</li>
+                <li>Separar codigo fuente (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">src</code>) de salida (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">dist</code>).</li>
+                <li>Usar ESLint + Prettier para mantener consistencia.</li>
+            </ul>
+        </section>
+    </main>
+
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

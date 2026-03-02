@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 9: Utility Types - Apuntes TypeScript</title>
+    <meta name="description" content="Partial, Required, Pick, Omit, Record, ReturnType y utilidades comunes.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#mapeado" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Tipos mapeados</a>
+            <a href="#objetos" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Transformar objetos</a>
+            <a href="#funciones" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Funciones</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="mapeado" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">1</span>Utility types mas usados</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">interface Usuario {
+  id: string;
+  nombre: string;
+  email?: string;
+}
+
+type UsuarioParcial = Partial&lt;Usuario&gt;;
+type UsuarioCompleto = Required&lt;Usuario&gt;;</pre>
+        </section>
+
+        <section id="objetos" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Pick, Omit y Record</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">type UsuarioPublico = Pick&lt;Usuario, "id" | "nombre"&gt;;
+type UsuarioInterno = Omit&lt;Usuario, "email"&gt;;
+
+type Roles = "admin" | "editor" | "viewer";
+type Permisos = Record&lt;Roles, boolean&gt;;</pre>
+        </section>
+
+        <section id="funciones" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">3</span>Utilidades para funciones</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function crearSesion(userId: string, remember: boolean) {
+  return { token: "abc", userId, remember };
+}
+
+type ParamsSesion = Parameters&lt;typeof crearSesion&gt;;
+type ResultadoSesion = ReturnType&lt;typeof crearSesion&gt;;</pre>
+            <p class="text-sm mt-3">Estas utilidades reducen duplicacion de tipos y evitan desalineaciones.</p>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

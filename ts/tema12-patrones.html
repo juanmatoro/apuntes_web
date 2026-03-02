@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 12: Patrones Avanzados - Apuntes TypeScript</title>
+    <meta name="description" content="Tipos condicionales, infer, branded types y patrones avanzados para dominios robustos.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#condicionales" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Condicionales</a>
+            <a href="#infer" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">infer</a>
+            <a href="#branded" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Branded types</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="condicionales" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">1</span>Tipos condicionales</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">type EsString&lt;T&gt; = T extends string ? true : false;
+
+type A = EsString&lt;"hola"&gt;;  // true
+type B = EsString&lt;42&gt;;      // false</pre>
+            <p class="text-sm mt-3">Permiten modelar reglas de tipos segun condiciones declarativas.</p>
+        </section>
+
+        <section id="infer" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Extraccion con infer</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">type TipoRetorno&lt;T&gt; = T extends (...args: any[]) =&gt; infer R ? R : never;
+
+type Fn = (x: number) =&gt; Promise&lt;string&gt;;
+type R = TipoRetorno&lt;Fn&gt;; // Promise&lt;string&gt;</pre>
+        </section>
+
+        <section id="branded" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">3</span>Branded types para dominio</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">type Email = string &amp; { readonly __brand: "Email" };
+
+function crearEmail(valor: string): Email {
+  if (!valor.includes("@")) throw new Error("Email invalido");
+  return valor as Email;
+}</pre>
+            <p class="text-sm mt-3">Este patron evita mezclar strings comunes con valores de dominio criticos.</p>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

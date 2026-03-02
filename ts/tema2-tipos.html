@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 2: Tipos Basicos - Apuntes TypeScript</title>
+    <meta name="description" content="Tipos primitivos, arrays, tuplas, any, unknown, never y buenas practicas de tipado basico.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#primitivos" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Primitivos</a>
+            <a href="#colecciones" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Arrays y tuplas</a>
+            <a href="#inferencia" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Inferencia</a>
+            <a href="#scope-bloque" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Scope de bloque</a>
+            <a href="#especiales" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Tipos especiales</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="primitivos" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">1</span>Tipos primitivos</h2>
+            <p class="text-sm mb-3">Los mas usados son <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">string</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">number</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">boolean</code>.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">let nombre: string = "Marta";
+let edad: number = 30;
+let activo: boolean = true;</pre>
+            <p class="text-sm mt-3">Tambien existen <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">null</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">undefined</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">symbol</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">bigint</code>.</p>
+        </section>
+
+        <section id="colecciones" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Arrays y tuplas</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// Array de strings
+const tags: string[] = ["ts", "js", "web"];
+
+// Tupla: orden y tipo fijo por posicion
+const punto: [number, number] = [10, 20];</pre>
+            <ul class="list-disc pl-5 space-y-1 text-sm mt-3">
+                <li>Usa arrays cuando la longitud es variable.</li>
+                <li>Usa tuplas cuando cada posicion tiene significado concreto.</li>
+            </ul>
+        </section>
+
+        <section id="inferencia" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">3</span>Inferencia de tipos</h2>
+            <p class="text-sm mb-3">TypeScript puede inferir tipos sin anotarlos manualmente cuando el contexto es claro.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">let ciudad = "Madrid";   // string
+let anio = 2026;         // number
+let publicado = true;    // boolean
+
+const notas = [8, 9, 10]; // number[]
+
+// Si no hay contexto, conviene anotar:
+let valor; // any (si noImplicitAny esta desactivado)</pre>
+            <ul class="list-disc pl-5 space-y-1 text-sm mt-3">
+                <li>La inferencia reduce ruido, pero no sustituye contratos en APIs publicas.</li>
+                <li>Anota tipos cuando el dominio no es obvio o hay ambiguedad.</li>
+            </ul>
+        </section>
+
+        <section id="scope-bloque" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">4</span>Scope de bloque y variables repetidas</h2>
+            <p class="text-sm mb-3">Un bloque <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">{ ... }</code> crea un nuevo scope para <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">let</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">const</code>, permitiendo reutilizar nombres sin colisionar.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const estado = "global";
+
+{
+  const estado = "local"; // variable distinta (shadowing)
+  console.log(estado); // "local"
+}
+
+console.log(estado); // "global"</pre>
+            <p class="text-sm mt-3">Evita abusar del shadowing si reduce legibilidad, pero es util para delimitar contexto.</p>
+        </section>
+
+        <section id="especiales" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">5</span>Tipos especiales: any, unknown, void, never</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-blue-100">
+                            <th class="border border-blue-200 p-2 text-left">Tipo</th>
+                            <th class="border border-blue-200 p-2 text-left">Uso recomendado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">any</td><td class="border border-gray-200 p-2">Evitarlo; desactiva seguridad de tipos</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">unknown</td><td class="border border-gray-200 p-2">Datos externos que deben validarse antes de usar</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">void</td><td class="border border-gray-200 p-2">Funciones sin retorno util</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold">never</td><td class="border border-gray-200 p-2">Funciones que nunca terminan o siempre lanzan error</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">function fail(msg: string): never {
+  throw new Error(msg);
+}
+
+function log(msg: string): void {
+  console.log(msg);
+}</pre>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

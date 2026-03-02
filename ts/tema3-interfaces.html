@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3: Interfaces y Types - Apuntes TypeScript</title>
+    <meta name="description" content="Diferencias entre interface y type, extensiones, intersecciones y patrones de modelado.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#interfaces" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Interfaces</a>
+            <a href="#types" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Type aliases</a>
+            <a href="#comparativa" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Comparativa</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="interfaces" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">1</span>Interfaces</h2>
+            <p class="text-sm mb-3">Definen contratos para objetos, clases y funciones.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">interface Usuario {
+  id: string;
+  nombre: string;
+  activo?: boolean;
+}
+
+const u: Usuario = { id: "u1", nombre: "Ana" };</pre>
+            <p class="text-sm mt-3">Las interfaces pueden extender otras interfaces:</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">interface Admin extends Usuario {
+  permisos: string[];
+}</pre>
+        </section>
+
+        <section id="types" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Type aliases</h2>
+            <p class="text-sm mb-2">Los <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">type</code> sirven para nombrar cualquier tipo, no solo objetos.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">type ID = string | number;
+type Estado = "idle" | "loading" | "error";
+
+type Producto = {
+  sku: ID;
+  nombre: string;
+};</pre>
+        </section>
+
+        <section id="comparativa" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">3</span>Cuando usar cada uno</h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>interface</strong> para contratos de objetos extensibles y APIs publicas.</li>
+                <li><strong>type</strong> para uniones, intersecciones, tuplas y tipos derivados.</li>
+                <li>En la practica se combinan segun legibilidad y ergonomia.</li>
+            </ul>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs mt-3">type RespuestaOk = { ok: true; data: string[] };
+type RespuestaErr = { ok: false; error: string };
+type Respuesta = RespuestaOk | RespuestaErr;</pre>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>
