@@ -55,6 +55,9 @@
         <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
         <div class="flex flex-wrap gap-1.5">
             <a href="#literal" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Notaci&oacute;n</a>
+            <a href="#this-objeto" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">this en objeto</a>
+            <a href="#contexto" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">bind/call/apply</a>
+            <a href="#clases" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Clases</a>
         </div>
     </nav>
 
@@ -85,6 +88,107 @@ producto[clave];         // clave din&aacute;mica</pre>
                         <div class="rounded border border-amber-200 bg-amber-50/40 p-2"><code>producto['precio-base']</code> <span class="text-gray-500">-&gt; 29.99</span></div>
                         <div class="rounded border border-amber-200 bg-amber-50/40 p-2"><code>producto[clave]</code> <span class="text-gray-500">-&gt; 101</span></div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="this-objeto" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> en m&eacute;todos de objeto
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">M&eacute;todo tradicional</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const usuario = {
+  nombre: 'Ana',
+  saludar() {
+    return `Hola ${this.nombre}`;
+  }
+};
+
+usuario.saludar(); // 'Hola Ana'</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Arrow en objeto (error com&uacute;n)</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const usuario = {
+  nombre: 'Ana',
+  saludar: () =&gt; `Hola ${this.nombre}`
+};
+
+// this no apunta al objeto usuario</pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="contexto" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Control de contexto: bind, call y apply
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">bind para fijar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code></h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const persona = {
+  nombre: 'Luis',
+  saludar() {
+    return `Hola ${this.nombre}`;
+  }
+};
+
+const fn = persona.saludar;
+const saludoSeguro = fn.bind(persona);
+saludoSeguro(); // 'Hola Luis'</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">call y apply</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function presentar(ciudad, pais) {
+  return `${this.nombre} desde ${ciudad}, ${pais}`;
+}
+
+const persona = { nombre: 'Elena' };
+
+presentar.call(persona, 'Sevilla', 'ES');
+presentar.apply(persona, ['Sevilla', 'ES']);</pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="clases" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Funciones asociadas a clases
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">M&eacute;todos de instancia + getter</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Carrito {
+  #items = 0;
+
+  agregar() {
+    this.#items += 1;
+  }
+
+  get total() {
+    return this.#items;
+  }
+}
+
+const c = new Carrito();
+c.agregar();
+c.total; // 1</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">M&eacute;todo est&aacute;tico</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Usuario {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+
+  static anonimo() {
+    return new Usuario('Invitado');
+  }
+}
+
+const u = Usuario.anonimo();
+u.nombre; // 'Invitado'</pre>
                 </div>
             </div>
         </section>

@@ -88,6 +88,58 @@ const TEMAS_CONFIG = {
             { num: 11, slug: 'config', titulo: 'Configuración Avanzada' },
             { num: 12, slug: 'patrones', titulo: 'Patrones Avanzados' }
         ]
+    },
+    front: {
+        nombre: 'Frontend',
+        carpeta: 'front',
+        color: 'cyan',
+        temas: [
+            { num: 1, slug: 'arquitectura', titulo: 'Arquitectura Frontend' },
+            { num: 2, slug: 'componentes', titulo: 'Componentes y UI' },
+            { num: 3, slug: 'estado-datos', titulo: 'Estado y Datos' },
+            { num: 4, slug: 'frameworks', titulo: 'Frameworks: Astro y Angular' },
+            { num: 5, slug: 'testing-front', titulo: 'Testing Frontend' },
+            { num: 6, slug: 'build-deploy', titulo: 'Build y Deploy' }
+        ]
+    },
+    back: {
+        nombre: 'Backend',
+        carpeta: 'back',
+        color: 'sky',
+        temas: [
+            { num: 1, slug: 'node-runtime', titulo: 'Node Runtime' },
+            { num: 2, slug: 'express-http', titulo: 'Express y HTTP' },
+            { num: 3, slug: 'api-rest', titulo: 'API REST' },
+            { num: 4, slug: 'arquitectura-capas', titulo: 'Arquitectura por Capas' },
+            { num: 5, slug: 'auth-seguridad', titulo: 'Auth y Seguridad' },
+            { num: 6, slug: 'testing-observabilidad', titulo: 'Testing y Observabilidad' }
+        ]
+    },
+    bd: {
+        nombre: 'Bases de Datos',
+        carpeta: 'bd',
+        color: 'teal',
+        temas: [
+            { num: 1, slug: 'modelado-datos', titulo: 'Modelado de Datos' },
+            { num: 2, slug: 'sql-fundamental', titulo: 'SQL Fundamental' },
+            { num: 3, slug: 'sql-avanzado', titulo: 'SQL Avanzado' },
+            { num: 4, slug: 'nosql-documento', titulo: 'NoSQL y Documento' },
+            { num: 5, slug: 'prisma-orm', titulo: 'Prisma y ORM' },
+            { num: 6, slug: 'rendimiento-consistencia', titulo: 'Rendimiento y Consistencia' }
+        ]
+    },
+    fullstack: {
+        nombre: 'Fullstack',
+        carpeta: 'fullstack',
+        color: 'green',
+        temas: [
+            { num: 1, slug: 'vision-arquitectura', titulo: 'Visión y Arquitectura' },
+            { num: 2, slug: 'flujo-equipo-git', titulo: 'Flujo de Equipo y Git' },
+            { num: 3, slug: 'integracion-front-back', titulo: 'Integración Front-Back' },
+            { num: 4, slug: 'auth-end-to-end', titulo: 'Auth End-to-End' },
+            { num: 5, slug: 'testing-e2e', titulo: 'Testing E2E y Calidad' },
+            { num: 6, slug: 'ci-cd-despliegue', titulo: 'CI/CD y Despliegue' }
+        ]
     }
 };
 
@@ -162,6 +214,30 @@ const COLOR_CLASSES = {
         activeBg: 'bg-yellow-50',
         activeText: 'text-yellow-700',
         hoverBg: 'hover:bg-yellow-50'
+    },
+    cyan: {
+        headerBg: 'bg-gradient-to-br from-cyan-900 to-cyan-800',
+        btnBg: 'bg-cyan-800 hover:bg-cyan-700',
+        textColor: 'text-cyan-800',
+        activeBg: 'bg-cyan-50',
+        activeText: 'text-cyan-900',
+        hoverBg: 'hover:bg-cyan-50'
+    },
+    sky: {
+        headerBg: 'bg-gradient-to-br from-sky-900 to-sky-800',
+        btnBg: 'bg-sky-800 hover:bg-sky-700',
+        textColor: 'text-sky-800',
+        activeBg: 'bg-sky-50',
+        activeText: 'text-sky-900',
+        hoverBg: 'hover:bg-sky-50'
+    },
+    teal: {
+        headerBg: 'bg-gradient-to-br from-teal-900 to-teal-800',
+        btnBg: 'bg-teal-800 hover:bg-teal-700',
+        textColor: 'text-teal-800',
+        activeBg: 'bg-teal-50',
+        activeText: 'text-teal-900',
+        hoverBg: 'hover:bg-teal-50'
     }
 };
 

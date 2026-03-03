@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 5: Prisma y ORM - Apuntes</title>
+    <meta name="description" content="Schema, migraciones y uso de Prisma Client en proyectos TypeScript.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#schema" class="text-xs px-2.5 py-1 bg-teal-50 text-teal-800 rounded-full border border-teal-200 no-underline hover:bg-teal-100">Schema</a>
+            <a href="#migraciones" class="text-xs px-2.5 py-1 bg-teal-50 text-teal-800 rounded-full border border-teal-200 no-underline hover:bg-teal-100">Migraciones</a>
+            <a href="#cliente" class="text-xs px-2.5 py-1 bg-teal-50 text-teal-800 rounded-full border border-teal-200 no-underline hover:bg-teal-100">Cliente</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="schema" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-teal-800 border-b-2 border-teal-800 pb-1 mb-3"><span class="orden">1</span>Definir el schema</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">model Usuario {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  nombre String
+}</pre>
+        </section>
+        <section id="migraciones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-teal-800 border-b-2 border-teal-800 pb-1 mb-3"><span class="orden">2</span>Migraciones</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">npx prisma migrate dev --name init
+npx prisma generate</pre>
+            <p class="text-sm mt-3">Cada cambio estructural del schema debe versionarse como migracion.</p>
+        </section>
+        <section id="cliente" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-teal-800 border-b-2 border-teal-800 pb-1 mb-3"><span class="orden">3</span>Prisma Client</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const usuario = await prisma.usuario.findUnique({
+  where: { email: "ana@mail.com" }
+});</pre>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

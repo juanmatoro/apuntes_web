@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tema 2: Express y HTTP - Apuntes</title><meta name="description" content="Routing y middleware en Express."><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="../assets/css/styles.css"><link rel="icon" type="image/png" href="../favicon.ico"><script src="../assets/js/components.js" defer></script></head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+<div data-component="header"></div><div data-component="breadcrumb"></div>
+<nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto"><p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p><div class="flex flex-wrap gap-1.5"><a href="#routing" class="text-xs px-2.5 py-1 bg-sky-50 text-sky-800 rounded-full border border-sky-200 no-underline hover:bg-sky-100">Routing</a><a href="#middleware" class="text-xs px-2.5 py-1 bg-sky-50 text-sky-800 rounded-full border border-sky-200 no-underline hover:bg-sky-100">Middleware</a><a href="#errores" class="text-xs px-2.5 py-1 bg-sky-50 text-sky-800 rounded-full border border-sky-200 no-underline hover:bg-sky-100">Errores</a></div></nav>
+<main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+<section id="routing" class="bg-white rounded-lg p-4 shadow w-full min-w-0"><h2 class="text-xl font-bold text-sky-800 border-b-2 border-sky-800 pb-1 mb-3"><span class="orden">1</span>Rutas y controladores</h2><pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">app.get("/films", filmsController.getAll);</pre></section>
+<section id="middleware" class="bg-white rounded-lg p-4 shadow w-full min-w-0"><h2 class="text-xl font-bold text-sky-800 border-b-2 border-sky-800 pb-1 mb-3"><span class="orden">2</span>Pipeline middleware</h2><p class="text-sm">Orden t&iacute;pico: logging, parseo JSON, auth, validaci&oacute;n, controladores, errores.</p></section>
+<section id="errores" class="bg-white rounded-lg p-4 shadow w-full min-w-0"><h2 class="text-xl font-bold text-sky-800 border-b-2 border-sky-800 pb-1 mb-3"><span class="orden">3</span>Manejo de errores HTTP</h2><pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">app.use((err, _req, res, _next) => {
+  res.status(err.statusCode ?? 500).json({ error: err.message });
+});</pre></section>
+</main>
+<div data-component="footer-nav"></div><div data-component="footer"></div>
+</body>
+</html>
+

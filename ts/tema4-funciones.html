@@ -21,7 +21,9 @@
             <a href="#parametros" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Parametros</a>
             <a href="#overloads" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Overloads</a>
             <a href="#scope-hoisting" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Scope y hoisting</a>
+            <a href="#this-invocacion" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">this e invocacion</a>
             <a href="#destructuring-closures" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Destructuring y closures</a>
+            <a href="#structured-clone" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">structuredClone</a>
         </div>
     </nav>
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
@@ -91,10 +93,41 @@ function renombrar(p: { nombre: string }) { p.nombre = "Luis"; }
 renombrar(persona); // muta el objeto original</pre>
         </section>
 
+        <section id="this-invocacion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">6</span>Patrones de invocacion y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code></h2>
+            <p class="text-sm mb-3">Punto clave visto en el proyecto de clase: en JS/TS, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> depende de <strong>como llamas</strong> a la funcion, no de donde esta escrita.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj.metodo()</code>: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> es <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj</code>.</li>
+                <li>Llamada suelta <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">fn()</code>: en modo estricto, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> es <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">undefined</code>.</li>
+                <li>Arrow function hereda <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> lexico: no sirve para metodos que dependan de contexto dinamico.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">call/apply/bind</code> fuerzan o fijan el contexto.</li>
+            </ul>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function presentar(this: { nombre: string }, ciudad: string): string {
+  return `${this.nombre} - ${ciudad}`;
+}
+
+const user = { nombre: "Ana" };
+
+presentar.call(user, "Madrid");      // "Ana - Madrid"
+presentar.apply(user, ["Madrid"]);   // "Ana - Madrid"
+
+const fija = presentar.bind(user);
+fija("Sevilla");                     // "Ana - Sevilla"</pre>
+            <p class="text-sm mt-3">Relacion con el proyecto: este patron aparece en ejemplos de herencia con funciones constructoras, donde se usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Person.call(this, ...)</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Person.prototype.greet.apply(this)</code>.</p>
+        </section>
+
         <section id="destructuring-closures" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
-            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">6</span>Des-estructuracion, spread/rest, callbacks y closures</h2>
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">7</span>Des-estructuracion, spread/rest, callbacks y closures</h2>
+            <p class="text-sm mb-2"><strong>Destructuring</strong> extrae valores de objetos/arrays en variables de forma declarativa.</p>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const user = { id: "u1", nombre: "Ana", rol: "admin" };
 const { nombre, ...resto } = user; // destructuring + rest
+
+const nums = [10, 20, 30];
+const [primero, , tercero] = nums; // destructuring de array
+
+function printUser({ id, nombre }: { id: string; nombre: string }) {
+  console.log(id, nombre); // destructuring en parametros
+}
 
 const copia = { ...user }; // spread (shallow copy)
 
@@ -107,6 +140,39 @@ const inc = crearContador();
 inc(); // 1
 inc(); // 2</pre>
             <p class="text-sm mt-3">Incluye tambien patrones de funciones anidadas, funciones de orden superior e IIFE para aislamiento puntual.</p>
+        </section>
+
+        <section id="structured-clone" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">8</span>structuredClone: clonacion profunda real</h2>
+            <p class="text-sm mb-3"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">structuredClone()</code> crea una copia profunda de estructuras complejas (objetos anidados, arrays, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Map</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Set</code>, etc.).</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const original = {
+  user: { nombre: "Ana" },
+  tags: ["ts", "js"]
+};
+
+const deepCopy = structuredClone(original);
+deepCopy.user.nombre = "Luis";
+
+console.log(original.user.nombre); // "Ana" (no se modifica)</pre>
+
+            <div class="overflow-x-auto mt-3">
+                <table class="w-full text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-blue-100">
+                            <th class="border border-blue-200 p-2 text-left">Tecnica</th>
+                            <th class="border border-blue-200 p-2 text-left">Tipo de copia</th>
+                            <th class="border border-blue-200 p-2 text-left">Uso recomendado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-200 p-2 font-semibold"><code>{ ...obj }</code> / <code>[...arr]</code></td><td class="border border-gray-200 p-2">Shallow</td><td class="border border-gray-200 p-2">Copias simples sin anidamiento profundo.</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold"><code>JSON.parse(JSON.stringify(x))</code></td><td class="border border-gray-200 p-2">Deep parcial</td><td class="border border-gray-200 p-2">Solo datos serializables JSON (pierde tipos especiales).</td></tr>
+                        <tr><td class="border border-gray-200 p-2 font-semibold"><code>structuredClone(x)</code></td><td class="border border-gray-200 p-2">Deep</td><td class="border border-gray-200 p-2">Clonacion robusta de estado y estructuras anidadas.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-sm mt-3">Limite importante: no clona funciones ni nodos DOM; para esos casos usa patrones especificos de serializacion o reconstruccion.</p>
         </section>
     </main>
     <div data-component="footer-nav"></div>

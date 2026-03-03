@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 1: Vision y Arquitectura - Apuntes</title>
+    <meta name="description" content="Vision fullstack y arquitectura por capas de una aplicacion web moderna.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#vision" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">Vision</a>
+            <a href="#capas" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">Capas</a>
+            <a href="#flujo" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">Flujo request</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="vision" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">1</span>Que significa Fullstack</h2>
+            <p class="text-sm">Fullstack no es saber todo a nivel experto; es poder conectar <strong>front</strong>, <strong>back</strong> y <strong>BD</strong> con un criterio consistente.</p>
+        </section>
+        <section id="capas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">2</span>Arquitectura por capas</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">UI (Front)
+  -> API HTTP (Back)
+    -> Servicio / Dominio
+      -> Repositorio
+        -> Base de Datos</pre>
+            <p class="text-sm mt-3">Separar capas facilita pruebas, mantenimiento y evolucion del proyecto.</p>
+        </section>
+        <section id="flujo" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">3</span>Flujo de una peticion</h2>
+            <p class="text-sm">Cliente envia request, backend valida y aplica reglas de negocio, repositorio consulta BD y se devuelve una respuesta tipada al front.</p>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

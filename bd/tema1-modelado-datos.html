@@ -1,0 +1,47 @@
+ahora termina los temas de fullstack
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 1: Modelado de Datos - Apuntes</title>
+    <meta name="description" content="Entidades, relaciones y normalizacion para disenar modelos de datos robustos.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#entidades" class="text-xs px-2.5 py-1 bg-teal-50 text-teal-800 rounded-full border border-teal-200 no-underline hover:bg-teal-100">Entidades</a>
+            <a href="#relaciones" class="text-xs px-2.5 py-1 bg-teal-50 text-teal-800 rounded-full border border-teal-200 no-underline hover:bg-teal-100">Relaciones</a>
+            <a href="#normalizacion" class="text-xs px-2.5 py-1 bg-teal-50 text-teal-800 rounded-full border border-teal-200 no-underline hover:bg-teal-100">Normalizacion</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="entidades" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-teal-800 border-b-2 border-teal-800 pb-1 mb-3"><span class="orden">1</span>Entidad y atributo</h2>
+            <p class="text-sm">Una <strong>entidad</strong> representa un objeto del dominio (Usuario, Pedido) y los <strong>atributos</strong> describen sus propiedades.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">Usuario(id PK, email UNIQUE, nombre, fecha_alta)</pre>
+        </section>
+        <section id="relaciones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-teal-800 border-b-2 border-teal-800 pb-1 mb-3"><span class="orden">2</span>Cardinalidad y claves</h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>1:1</strong> perfil de usuario.</li>
+                <li><strong>1:N</strong> cliente y pedidos.</li>
+                <li><strong>N:M</strong> pedidos y productos (tabla intermedia).</li>
+            </ul>
+        </section>
+        <section id="normalizacion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-teal-800 border-b-2 border-teal-800 pb-1 mb-3"><span class="orden">3</span>Normalizacion</h2>
+            <p class="text-sm">Aplicar 1FN, 2FN y 3FN reduce duplicidad y anomal&iacute;as de actualizacion. Desnormaliza solo si tienes una razon de rendimiento medible.</p>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 2: Flujo de Equipo y Git - Apuntes</title>
+    <meta name="description" content="Trabajo en equipo con Git, ramas, pull requests y revisiones de codigo.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#ramas" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">Ramas</a>
+            <a href="#commits" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">Commits</a>
+            <a href="#pr" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">Pull Request</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="ramas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">1</span>Estrategia de ramas</h2>
+            <p class="text-sm">Modelo simple recomendado: `main` estable, `dev` integracion y `feature/*` para cada cambio concreto.</p>
+        </section>
+        <section id="commits" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">2</span>Commits utiles</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">git checkout -b feature/login-form
+git add .
+git commit -m "feat(front): valida email y password en login"</pre>
+            <p class="text-sm mt-3">Un commit debe representar una unidad de cambio comprensible.</p>
+        </section>
+        <section id="pr" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">3</span>Revision y merge</h2>
+            <p class="text-sm">En PR revisa impacto funcional, riesgos, deuda tecnica y pruebas. No hagas merge sin CI en verde.</p>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

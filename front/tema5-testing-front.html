@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tema 5: Testing Frontend - Apuntes</title><meta name="description" content="Pruebas frontend: unitarias, integraci&oacute;n y e2e."><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="../assets/css/styles.css"><link rel="icon" type="image/png" href="../favicon.ico"><script src="../assets/js/components.js" defer></script></head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+<div data-component="header"></div><div data-component="breadcrumb"></div>
+<nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto"><p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p><div class="flex flex-wrap gap-1.5"><a href="#tipos" class="text-xs px-2.5 py-1 bg-cyan-50 text-cyan-800 rounded-full border border-cyan-200 no-underline hover:bg-cyan-100">Tipos</a><a href="#vitest" class="text-xs px-2.5 py-1 bg-cyan-50 text-cyan-800 rounded-full border border-cyan-200 no-underline hover:bg-cyan-100">Vitest</a><a href="#cypress" class="text-xs px-2.5 py-1 bg-cyan-50 text-cyan-800 rounded-full border border-cyan-200 no-underline hover:bg-cyan-100">Cypress</a></div></nav>
+<main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+<section id="tipos" class="bg-white rounded-lg p-4 shadow w-full min-w-0"><h2 class="text-xl font-bold text-cyan-800 border-b-2 border-cyan-800 pb-1 mb-3"><span class="orden">1</span>Pir&aacute;mide de pruebas</h2><p class="text-sm">Prioriza unitarias, luego integraci&oacute;n y al final E2E para flujos cr&iacute;ticos.</p></section>
+<section id="vitest" class="bg-white rounded-lg p-4 shadow w-full min-w-0"><h2 class="text-xl font-bold text-cyan-800 border-b-2 border-cyan-800 pb-1 mb-3"><span class="orden">2</span>Pruebas con Vitest</h2><pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">import { describe, it, expect } from "vitest";
+describe("sum", () => {
+  it("adds numbers", () => expect(1 + 2).toBe(3));
+});</pre></section>
+<section id="cypress" class="bg-white rounded-lg p-4 shadow w-full min-w-0"><h2 class="text-xl font-bold text-cyan-800 border-b-2 border-cyan-800 pb-1 mb-3"><span class="orden">3</span>E2E con Cypress</h2><p class="text-sm">Automatiza navegaci&oacute;n real de usuario para validar rutas, formularios y autorizaci&oacute;n.</p></section>
+</main>
+<div data-component="footer-nav"></div><div data-component="footer"></div>
+</body>
+</html>
+

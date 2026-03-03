@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&Iacute;ndice Maestro Fullstack - Apuntes</title>
+    <meta name="description" content="Ruta maestra fullstack y mapeo de carpetas del proyecto IFCD0210_2024 a los apuntes.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-emerald-900 to-emerald-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Ruta Fullstack</h1>
+        <p class="opacity-90">&Iacute;ndice maestro y mapeo de contenidos</p>
+    </header>
+
+    <nav class="sticky top-0 z-50 bg-amber-950 shadow-md">
+        <ul class="max-w-6xl mx-auto flex justify-center gap-1 px-4 py-2 text-sm">
+            <li><a href="../index.html#fullstack" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">Fullstack</a></li>
+            <li><a href="../index.html#front" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">Front</a></li>
+            <li><a href="../index.html#back" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">Back</a></li>
+            <li><a href="../index.html#bd" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">BD</a></li>
+            <li><a href="../index.html#recursos" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">Recursos</a></li>
+        </ul>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-5 py-6 flex flex-col gap-6">
+        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-emerald-800 border-b-2 border-emerald-800 pb-1 mb-3"><span class="orden">1</span>Ruta propuesta</h2>
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <a href="../front/index.html" class="border border-emerald-200 rounded-lg p-3 bg-emerald-50/40 no-underline text-gray-800 hover:bg-emerald-100/60">
+                    <h3 class="font-semibold text-emerald-800 mb-1">Frontend</h3>
+                    <p class="text-xs text-gray-600">Interfaz, componentes, routing, estado, UX y testing de cliente.</p>
+                </a>
+                <a href="../back/index.html" class="border border-emerald-200 rounded-lg p-3 bg-emerald-50/40 no-underline text-gray-800 hover:bg-emerald-100/60">
+                    <h3 class="font-semibold text-emerald-800 mb-1">Backend</h3>
+                    <p class="text-xs text-gray-600">Servidor, APIs, middleware, autenticaci&oacute;n, capas y testing.</p>
+                </a>
+                <a href="../bd/index.html" class="border border-emerald-200 rounded-lg p-3 bg-emerald-50/40 no-underline text-gray-800 hover:bg-emerald-100/60">
+                    <h3 class="font-semibold text-emerald-800 mb-1">Base de Datos</h3>
+                    <p class="text-xs text-gray-600">Modelado, SQL/NoSQL, transacciones, Prisma y migraciones.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-emerald-800 border-b-2 border-emerald-800 pb-1 mb-3"><span class="orden">2</span>Temario Fullstack</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="border border-emerald-200 rounded-lg p-3 bg-emerald-50/40">
+                    <h3 class="font-semibold text-emerald-800 mb-1">Tema 1: Visi&oacute;n y arquitectura</h3>
+                    <p class="text-xs text-gray-600 mb-2">Arquitectura por capas y recorrido de una petici&oacute;n completa.</p>
+                    <a href="tema1-vision-arquitectura.html" class="text-xs px-2.5 py-1 bg-emerald-100 text-emerald-900 rounded-full border border-emerald-300 no-underline hover:bg-emerald-200">Abrir tema</a>
+                </div>
+                <div class="border border-emerald-200 rounded-lg p-3 bg-emerald-50/40">
+                    <h3 class="font-semibold text-emerald-800 mb-1">Tema 2: Flujo de equipo y Git</h3>
+                    <p class="text-xs text-gray-600 mb-2">Ramas, PR, convenciones y revisi&oacute;n de cambios.</p>
+                    <a href="tema2-flujo-equipo-git.html" class="text-xs px-2.5 py-1 bg-emerald-100 text-emerald-900 rounded-full border border-emerald-300 no-underline hover:bg-emerald-200">Abrir tema</a>
+                </div>
+                <div class="border border-emerald-200 rounded-lg p-3 bg-emerald-50/40">
+                    <h3 class="font-semibold text-emerald-800 mb-1">Tema 3: Integraci&oacute;n Front-Back</h3>
+                    <p class="text-xs text-gray-600 mb-2">Contrato API, validaci&oacute;n y manejo de errores compartido.</p>
+                    <a href="tema3-integracion-front-back.html" class="text-xs px-2.5 py-1 bg-emerald-100 text-emerald-900 rounded-full border border-emerald-300 no-underline hover:bg-emerald-200">Abrir tema</a>
+                </div>
+                <div class="border border-emerald-200 rounded-lg p-3 bg-emerald-50/40">
+                    <h3 class="font-semibold text-emerald-800 mb-1">Tema 4: Auth End-to-End</h3>
+                    <p class="text-xs text-gray-600 mb-2">Login, tokens, autorizaci&oacute;n y protecci&oacute;n de rutas.</p>
+                    <a href="tema4-auth-end-to-end.html" class="text-xs px-2.5 py-1 bg-emerald-100 text-emerald-900 rounded-full border border-emerald-300 no-underline hover:bg-emerald-200">Abrir tema</a>
+                </div>
+                <div class="border border-emerald-200 rounded-lg p-3 bg-emerald-50/40">
+                    <h3 class="font-semibold text-emerald-800 mb-1">Tema 5: Testing E2E y calidad</h3>
+                    <p class="text-xs text-gray-600 mb-2">Pir&aacute;mide de pruebas y cobertura de flujos cr&iacute;ticos.</p>
+                    <a href="tema5-testing-e2e.html" class="text-xs px-2.5 py-1 bg-emerald-100 text-emerald-900 rounded-full border border-emerald-300 no-underline hover:bg-emerald-200">Abrir tema</a>
+                </div>
+                <div class="border border-emerald-200 rounded-lg p-3 bg-emerald-50/40">
+                    <h3 class="font-semibold text-emerald-800 mb-1">Tema 6: CI/CD y despliegue</h3>
+                    <p class="text-xs text-gray-600 mb-2">Pipeline, entornos y observabilidad post-despliegue.</p>
+                    <a href="tema6-ci-cd-despliegue.html" class="text-xs px-2.5 py-1 bg-emerald-100 text-emerald-900 rounded-full border border-emerald-300 no-underline hover:bg-emerald-200">Abrir tema</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-emerald-800 border-b-2 border-emerald-800 pb-1 mb-3"><span class="orden">3</span>Mapeo IFCD0210_2024 -&gt; Apuntes</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-emerald-100">
+                            <th class="border border-emerald-200 p-2 text-left">Carpeta origen</th>
+                            <th class="border border-emerald-200 p-2 text-left">Bloque destino</th>
+                            <th class="border border-emerald-200 p-2 text-left">Secci&oacute;n propuesta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border border-gray-200 p-2"><code>3.HTML</code>, <code>4.CSS</code>, <code>5.JS</code>, <code>6.Astro</code>, <code>7.Accessibility</code>, <code>8.JS.Pro</code>, <code>17.ng</code>, <code>20.Test.Front</code></td><td class="border border-gray-200 p-2 font-semibold">Frontend</td><td class="border border-gray-200 p-2">Arquitectura cliente, UI, framework y pruebas front.</td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>9.Node</code>, <code>10.Node.Server</code>, <code>11.Express</code>, <code>12.Expres2</code>, <code>14.Expres</code>, <code>15.Films</code>, <code>19.Test</code></td><td class="border border-gray-200 p-2 font-semibold">Backend</td><td class="border border-gray-200 p-2">Node/Express, API REST, auth, middlewares y testing backend.</td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>13.DB</code>, <code>16.Prisma</code>, <code>15.Films/prisma</code></td><td class="border border-gray-200 p-2 font-semibold">BD</td><td class="border border-gray-200 p-2">Modelado E/R, SQL avanzado, ORM, migraciones y seeds.</td></tr>
+                        <tr><td class="border border-gray-200 p-2"><code>1.Git</code>, <code>21.CI.CD</code>, <code>22.review</code></td><td class="border border-gray-200 p-2 font-semibold">Transversal</td><td class="border border-gray-200 p-2">Flujo profesional, calidad, integraci&oacute;n continua y revisi&oacute;n.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-4">
+        <p>Apuntes Fullstack &mdash; &Iacute;ndice maestro</p>
+    </footer>
+</body>
+</html>

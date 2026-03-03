@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 5: Testing E2E y Calidad - Apuntes</title>
+    <meta name="description" content="Estrategia de pruebas fullstack: unitarias, integracion y end to end.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#piramide" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">Piramide</a>
+            <a href="#integracion" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">Integracion</a>
+            <a href="#e2e" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">E2E</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="piramide" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">1</span>Piramide de pruebas</h2>
+            <p class="text-sm">Muchas pruebas unitarias, algunas de integracion y pocas E2E bien elegidas para flujos criticos.</p>
+        </section>
+        <section id="integracion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">2</span>Pruebas de integracion</h2>
+            <p class="text-sm">Verifican que varias piezas colaboran bien: rutas + servicio + repositorio + base de datos de test.</p>
+        </section>
+        <section id="e2e" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">3</span>End-to-End</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">1) Login valido
+2) Crear recurso
+3) Ver recurso en listado
+4) Cerrar sesion</pre>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

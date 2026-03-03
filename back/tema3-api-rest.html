@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tema 3: API REST - Apuntes</title><meta name="description" content="Dise&ntilde;o de API REST."><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="../assets/css/styles.css"><link rel="icon" type="image/png" href="../favicon.ico"><script src="../assets/js/components.js" defer></script></head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+<div data-component="header"></div><div data-component="breadcrumb"></div>
+<nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto"><p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p><div class="flex flex-wrap gap-1.5"><a href="#recursos" class="text-xs px-2.5 py-1 bg-sky-50 text-sky-800 rounded-full border border-sky-200 no-underline hover:bg-sky-100">Recursos</a><a href="#contratos" class="text-xs px-2.5 py-1 bg-sky-50 text-sky-800 rounded-full border border-sky-200 no-underline hover:bg-sky-100">Contratos</a><a href="#versionado" class="text-xs px-2.5 py-1 bg-sky-50 text-sky-800 rounded-full border border-sky-200 no-underline hover:bg-sky-100">Versionado</a></div></nav>
+<main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+<section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0"><h2 class="text-xl font-bold text-sky-800 border-b-2 border-sky-800 pb-1 mb-3"><span class="orden">1</span>Dise&ntilde;o orientado a recursos</h2><p class="text-sm"><code>/films</code>, <code>/users</code>, <code>/reviews</code>; evita verbos en URL salvo acciones no CRUD.</p></section>
+<section id="contratos" class="bg-white rounded-lg p-4 shadow w-full min-w-0"><h2 class="text-xl font-bold text-sky-800 border-b-2 border-sky-800 pb-1 mb-3"><span class="orden">2</span>DTO y validaci&oacute;n</h2><p class="text-sm">Valida payload de entrada y normaliza salida para mantener estabilidad de clientes.</p></section>
+<section id="versionado" class="bg-white rounded-lg p-4 shadow w-full min-w-0"><h2 class="text-xl font-bold text-sky-800 border-b-2 border-sky-800 pb-1 mb-3"><span class="orden">3</span>Versionado y compatibilidad</h2><p class="text-sm">Versiona cuando cambie contrato p&uacute;blico (<code>/api/v2</code>) y evita romper consumidores actuales.</p></section>
+</main>
+<div data-component="footer-nav"></div><div data-component="footer"></div>
+</body>
+</html>
+

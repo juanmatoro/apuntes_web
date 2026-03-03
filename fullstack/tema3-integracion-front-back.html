@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3: Integracion Front-Back - Apuntes</title>
+    <meta name="description" content="Contratos API, DTOs y manejo de errores para integrar frontend y backend.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#contrato" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">Contrato API</a>
+            <a href="#dto" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">DTOs</a>
+            <a href="#errores" class="text-xs px-2.5 py-1 bg-green-50 text-green-800 rounded-full border border-green-200 no-underline hover:bg-green-100">Errores</a>
+        </div>
+    </nav>
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="contrato" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">1</span>Contrato estable</h2>
+            <p class="text-sm">Define forma de request/response y mantenla versionada. Si cambias contrato, comunica y migra clientes.</p>
+        </section>
+        <section id="dto" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">2</span>DTOs y tipado</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">type UsuarioDTO = {
+  id: number;
+  email: string;
+  nombre: string;
+};</pre>
+            <p class="text-sm mt-3">Un DTO evita filtrar internamente datos que no deben salir de backend.</p>
+        </section>
+        <section id="errores" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-green-800 border-b-2 border-green-800 pb-1 mb-3"><span class="orden">3</span>Manejo uniforme de errores</h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">{ "error": "VALIDATION_ERROR", "message": "Email invalido" }</pre>
+        </section>
+    </main>
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

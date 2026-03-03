@@ -24,10 +24,10 @@
         <div class="flex flex-wrap gap-1.5">
         <a href="#objetos-basico" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">B&aacute;sicos</a>
         <a href="#propiedades" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Propiedades</a>
+        <a href="#metodos-this" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">M&eacute;todos y this</a>
         <a href="#referencia" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Referencia</a>
         <a href="#destructuring" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Destructuring</a>
         <a href="#patrones" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Patrones</a>
-        <a href=\
       </div>
     </nav>
 
@@ -139,10 +139,116 @@ const user = {
             </div>
         </section>
 
+        <!-- METODOS, THIS Y CLASES -->
+        <section id="metodos-this" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>M&eacute;todos, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> y funciones en clases
+            </h2>
+            <p class="text-sm mb-3">En JavaScript, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code> no depende de d&oacute;nde se define la funci&oacute;n, sino de <strong>c&oacute;mo se invoca</strong>. En objetos y clases, entender esto evita muchos errores de contexto.</p>
+
+            <div class="border border-yellow-200 rounded-lg bg-yellow-50/40 p-3 mb-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Reglas r&aacute;pidas de <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code></h3>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Llamada de m&eacute;todo: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">obj.metodo()</code> -&gt; <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this === obj</code>.</li>
+                    <li>Funci&oacute;n suelta en modo estricto -&gt; <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this === undefined</code>.</li>
+                    <li>Arrow function no crea su propio <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">this</code>; hereda el del contexto exterior.</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">bind</code>/<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">call</code>/<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">apply</code> permiten fijar o cambiar el contexto expl&iacute;citamente.</li>
+                </ul>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0 mb-3">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Objeto: m&eacute;todo correcto</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const contador = {
+  valor: 0,
+  incrementar() {
+    this.valor += 1;
+    return this.valor;
+  }
+};</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Error t&iacute;pico con arrow en objeto</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const contador = {
+  valor: 0,
+  incrementar: () =&gt; {
+    // this NO es el objeto contador
+    return this.valor + 1;
+  }
+};</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0 mb-3">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">P&eacute;rdida de contexto y bind</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const usuario = {
+  nombre: 'Ana',
+  saludar() {
+    return `Hola ${this.nombre}`;
+  }
+};
+
+const fn = usuario.saludar;
+// fn(); // this es undefined (strict mode)
+
+const saludarFijo = usuario.saludar.bind(usuario);
+saludarFijo(); // 'Hola Ana'</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">call y apply</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function presentar(ciudad, pais) {
+  return `${this.nombre} desde ${ciudad}, ${pais}`;
+}
+
+const persona = { nombre: 'Luis' };
+presentar.call(persona, 'Valencia', 'ES');
+presentar.apply(persona, ['Valencia', 'ES']);</pre>
+                </div>
+            </div>
+
+            <div class="border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Funciones asociadas a clases</h3>
+                <ul class="list-disc pl-5 space-y-1 text-sm mb-2">
+                    <li>Los m&eacute;todos de clase viven en el <strong>prototype</strong> y se comparten entre instancias.</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">constructor</code> inicializa el estado al crear cada instancia con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new</code>.</li>
+                    <li>Los m&eacute;todos <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">static</code> pertenecen a la clase, no a la instancia.</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">get</code>/<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">set</code> exponen una API de propiedad con l&oacute;gica interna.</li>
+                </ul>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Cuenta {
+  #saldo = 0;
+
+  constructor(titular) {
+    this.titular = titular;
+  }
+
+  depositar(cantidad) {
+    this.#saldo += cantidad;
+  }
+
+  get saldo() {
+    return this.#saldo;
+  }
+
+  static desdeJSON(data) {
+    const c = new Cuenta(data.titular);
+    c.depositar(data.saldoInicial ?? 0);
+    return c;
+  }
+}</pre>
+            </div>
+
+            <div class="border border-yellow-200 rounded-lg bg-yellow-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Nota sobre modificadores en JavaScript</h3>
+                <p class="text-sm mb-2">En JS conviene mantenerlo simple: por defecto todo es p&uacute;blico, y para encapsular usa campos privados con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code>.</p>
+                <p class="text-sm">Los modificadores formales <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">public</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">private</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">protected</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">readonly</code> se trabajan a fondo en TypeScript (Tema 6 de TS).</p>
+            </div>
+        </section>
+
         <!-- REFERENCIA -->
         <section id="referencia" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">3</span>Referencia y mutabilidad
+                <span class="orden">4</span>Referencia y mutabilidad
             </h2>
             <p class="text-sm mb-3">Los objetos se comparan por referencia. Dos objetos con el mismo contenido no son iguales si son referencias distintas.</p>
             <ul class="list-disc pl-5 space-y-1 text-sm">
@@ -173,7 +279,7 @@ a.y; // 2</pre>
         <!-- DESTRUCTURING -->
         <section id="destructuring" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">4</span>Destructuring y rest
+                <span class="orden">5</span>Destructuring y rest
             </h2>
             <p class="text-sm mb-3">Extrae propiedades en variables de forma concisa. Puedes renombrar, dar valores por defecto y recoger el resto.</p>
             <ul class="list-disc pl-5 space-y-1 text-sm">
@@ -198,7 +304,7 @@ resto; // { edad: 25 }</pre>
         <!-- PATRONES -->
         <section id="patrones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">5</span>Patrones de uso
+                <span class="orden">6</span>Patrones de uso
             </h2>
             <p class="text-sm mb-3">Los objetos son ideales para representar entidades y pasar configuraci&oacute;n. Ayudan a evitar listas largas de par&aacute;metros.</p>
             <ul class="list-disc pl-5 space-y-1 text-sm">
@@ -226,7 +332,7 @@ resto; // { edad: 25 }</pre>
         <!-- RECURSOS -->
         <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
-                <span class="orden">6</span>Recursos y herramientas
+                <span class="orden">7</span>Recursos y herramientas
             </h2>
             <p class="text-sm mb-4">Referencias y utilidades para trabajar con calidad y eficiencia.</p>
 

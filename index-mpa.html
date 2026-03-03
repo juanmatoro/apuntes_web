@@ -1,0 +1,582 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apuntes - Desarrollo Web</title>
+    <meta name="description" content="Apuntes completos sobre la elaboraci&oacute;n de documentos web utilizando HTML y CSS, cubriendo desde conceptos b&aacute;sicos hasta t&eacute;cnicas avanzadas.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <header class="bg-gradient-to-br from-amber-900 to-amber-800 text-white py-6 px-5 text-center">
+        <h1 class="text-3xl font-bold mb-1">Desarrollo Web</h1>
+        <p class="opacity-90">HTML, CSS, JavaScript, TypeScript, Frontend, Backend y Bases de Datos</p>
+    </header>
+
+    <nav class="sticky top-0 z-50 bg-amber-950 shadow-md">
+        <ul class="max-w-6xl mx-auto flex justify-center gap-1 px-4 py-2 text-sm">
+            <li><a href="#html" data-nav="html" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">HTML</a></li>
+            <li><a href="#css" data-nav="css" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">CSS</a></li>
+            <li><a href="#js" data-nav="js" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">JavaScript</a></li>
+            <li><a href="#ts" data-nav="ts" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">TypeScript</a></li>
+            <li><a href="#fullstack" data-nav="fullstack" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">Fullstack</a></li>
+            <li><a href="#front" data-nav="front" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">Front</a></li>
+            <li><a href="#back" data-nav="back" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">Back</a></li>
+            <li><a href="#bd" data-nav="bd" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">BD</a></li>
+            <li><a href="#recursos" data-nav="recursos" class="nav-link px-4 py-1.5 rounded-full text-amber-100 hover:bg-amber-800 transition-colors">Recursos</a></li>
+        </ul>
+    </nav>
+
+    <section id="html" class="max-w-6xl mx-auto px-5 py-8">
+        <h2 class="text-2xl font-bold text-amber-900 border-b-2 border-amber-900 pb-2 mb-5">HTML</h2>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+            <a href="html/index.html" class="text-xs px-3 py-1 bg-amber-900 text-white rounded-full no-underline hover:bg-amber-800">Ver &iacute;ndice HTML</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <a href="html/tema1-estructura.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">1</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Estructura b&aacute;sica y Metadatos</h3>
+                <p class="text-xs text-gray-500">DOCTYPE, html, head, body, meta, title, link y script.</p>
+            </a>
+            <a href="html/tema2-texto.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">2</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Encabezados, P&aacute;rrafos y Texto</h3>
+                <p class="text-xs text-gray-500">Jerarqu&iacute;a h1-h6, p&aacute;rrafos, strong, em, mark y m&aacute;s.</p>
+            </a>
+            <a href="html/tema3-enlaces.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">3</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Enlaces</h3>
+                <p class="text-xs text-gray-500">Hiperv&iacute;nculos, anclas, target, rel, download y seguridad.</p>
+            </a>
+            <a href="html/tema4-imagenes.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">4</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Im&aacute;genes</h3>
+                <p class="text-xs text-gray-500">img, formatos, picture, srcset, SVG y optimizaci&oacute;n.</p>
+            </a>
+            <a href="html/tema5-listas.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">5</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Listas y Contenedores</h3>
+                <p class="text-xs text-gray-500">Listas ordenadas, desordenadas, definiciones, div y span.</p>
+            </a>
+            <a href="html/tema6-tablas.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">6</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Tablas</h3>
+                <p class="text-xs text-gray-500">table, thead, tbody, tfoot, tr, th, td, colspan y rowspan.</p>
+            </a>
+            <a href="html/tema7-formularios.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">7</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Formularios e Inputs</h3>
+                <p class="text-xs text-gray-500">Form, input, label, textarea, select, button y validaci&oacute;n.</p>
+            </a>
+            <a href="html/tema8-semantica.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">8</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Sem&aacute;ntica y Multimedia</h3>
+                <p class="text-xs text-gray-500">header, nav, main, article, aside, footer, video, audio.</p>
+            </a>
+            <a href="html/tema9-atributos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">9</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Atributos Globales y Buenas Pr&aacute;cticas</h3>
+                <p class="text-xs text-gray-500">id, class, style, data-*, accesibilidad y convenciones.</p>
+            </a>
+            <a href="html/tema10-accesibilidad.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">10</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Accesibilidad Web</h3>
+                <p class="text-xs text-gray-500">WCAG, ARIA, formularios accesibles, navegaci&oacute;n por teclado y validaci&oacute;n.</p>
+            </a>
+            <a href="html/tema11-seo.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">11</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Buenas pr&aacute;cticas SEO</h3>
+                <p class="text-xs text-gray-500">Title, meta description, Open Graph, datos estructurados y Core Web Vitals.</p>
+            </a>
+            <a href="html/tema12-seo-ia.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">12</span>
+                <h3 class="text-amber-900 font-semibold mb-1">SEO para IA (GEO)</h3>
+                <p class="text-xs text-gray-500">Buscadores generativos, RAG, llms.txt, token budget y E-E-A-T.</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="css" class="max-w-6xl mx-auto px-5 pb-8">
+        <h2 class="text-2xl font-bold text-amber-900 border-b-2 border-amber-900 pb-2 mb-5">CSS</h2>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+            <a href="css/index.html" class="text-xs px-3 py-1 bg-amber-900 text-white rounded-full no-underline hover:bg-amber-800">Ver &iacute;ndice CSS</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <a href="css/tema1-conceptos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">1</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Conceptos CSS</h3>
+                <p class="text-xs text-gray-500">Selectores, cascada, @layer, especificidad y herencia.</p>
+            </a>
+            <a href="css/tema2-pseudos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">2</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Pseudo-elementos y Pseudo-clases</h3>
+                <p class="text-xs text-gray-500">::before, ::after, :hover, :focus, :has(), :is(), :where().</p>
+            </a>
+            <a href="css/tema3-funciones.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">3</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Funciones y Custom Properties</h3>
+                <p class="text-xs text-gray-500">var(), calc(), min/max/clamp, @property y funciones matem&aacute;ticas.</p>
+            </a>
+            <a href="css/tema4-color-unidades.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">4</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Color y Unidades</h3>
+                <p class="text-xs text-gray-500">rgb, hsl, oklch, color-mix(), em, rem, vw, dvh y propiedades l&oacute;gicas.</p>
+            </a>
+            <a href="css/tema5-box-model.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">5</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Modelo de Caja</h3>
+                <p class="text-xs text-gray-500">Box model, box-sizing, aspect-ratio, object-fit y sizing keywords.</p>
+            </a>
+            <a href="css/tema6-layout.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">6</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Layout: Flexbox y Grid</h3>
+                <p class="text-xs text-gray-500">Display, Flexbox, CSS Grid, subgrid, gap y multi-column.</p>
+            </a>
+            <a href="css/tema7-posicionamiento.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">7</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Posicionamiento y Espaciado</h3>
+                <p class="text-xs text-gray-500">Position, sticky, anchor, z-index, margin, padding e inset.</p>
+            </a>
+            <a href="css/tema8-interacciones.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">8</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Interacciones y Scroll</h3>
+                <p class="text-xs text-gray-500">Focus, overflow, scroll-snap, scroll-behavior y touch-action.</p>
+            </a>
+            <a href="css/tema9-texto.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">9</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Texto y Tipograf&iacute;a</h3>
+                <p class="text-xs text-gray-500">Fuentes, font-*, text-wrap, line-clamp, listas y writing-mode.</p>
+            </a>
+            <a href="css/tema10-graficos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">10</span>
+                <h3 class="text-amber-900 font-semibold mb-1">Formas y Gr&aacute;ficos</h3>
+                <p class="text-xs text-gray-500">Bordes, clip-path, sombras, fondos, gradientes, filtros y blend modes.</p>
+            </a>
+            <a href="css/tema11-animaciones.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">11</span>
+                <h3 class="text-amber-900 font-semibold mb-1">CSS Din&aacute;mico</h3>
+                <p class="text-xs text-gray-500">Transiciones, transformaciones, @keyframes, scroll-timeline y view-transitions.</p>
+            </a>
+            <a href="css/tema12-rwd.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-amber-900 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">12</span>
+                <h3 class="text-amber-900 font-semibold mb-1">RWD, Accesibilidad y Rendimiento</h3>
+                <p class="text-xs text-gray-500">Media queries, container queries, prefers-*, @supports y optimizaci&oacute;n.</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="js" class="max-w-6xl mx-auto px-5 pb-8">
+        <h2 class="text-2xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-2 mb-5">JavaScript</h2>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+            <a href="js/index.html" class="text-xs px-3 py-1 bg-yellow-700 text-white rounded-full no-underline hover:bg-yellow-600">Ver &iacute;ndice JavaScript</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <a href="js/tema0-fundamentos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">0</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Fundamentos y Glosario</h3>
+                <p class="text-xs text-gray-500">Introducción al lenguaje y glosario de conceptos fundamentales para arrancar JS con base sólida.</p>
+            </a>
+            <a href="js/tema1-intro.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">1</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Introducci&oacute;n y Entorno</h3>
+                <p class="text-xs text-gray-500">Arquitecturas web, SPA/MPA, SSR/CSR, navegadores, motores JS y entornos.</p>
+            </a>
+            <a href="js/tema2-sintaxis.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">2</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Sintaxis y Variables</h3>
+                <p class="text-xs text-gray-500">let, const, var, tipos primitivos, operadores y coerci&oacute;n.</p>
+            </a>
+            <a href="js/tema3-control.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">3</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Control de Flujo</h3>
+                <p class="text-xs text-gray-500">if/else, switch, for, while, for...of, for...in y break/continue.</p>
+            </a>
+            <a href="js/tema4-funciones.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">4</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Funciones</h3>
+                <p class="text-xs text-gray-500">Declaraci&oacute;n, expresi&oacute;n, arrow functions, closures, scope y callbacks.</p>
+            </a>
+            <a href="js/tema5-arrays.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">5</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Arrays</h3>
+                <p class="text-xs text-gray-500">M&eacute;todos mutables e inmutables, destructuring, spread, map, filter y reduce.</p>
+            </a>
+            <a href="js/tema6-objetos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">6</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Objetos</h3>
+                <p class="text-xs text-gray-500">Propiedades, modelo mental, mutabilidad, Map, Set y JSON.</p>
+            </a>
+            <a href="js/tema7-dom.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">7</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">DOM</h3>
+                <p class="text-xs text-gray-500">Nodos, acceso al DOM, creaci&oacute;n, eliminaci&oacute;n, modificaci&oacute;n e innerHTML.</p>
+            </a>
+            <a href="js/tema8-eventos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">8</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Eventos</h3>
+                <p class="text-xs text-gray-500">addEventListener, propagaci&oacute;n, delegaci&oacute;n, categor&iacute;as y custom events.</p>
+            </a>
+            <a href="js/tema9-modulos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">9</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">M&oacute;dulos e Importaci&oacute;n</h3>
+                <p class="text-xs text-gray-500">Carga de scripts, type=&quot;module&quot;, import/export, importaci&oacute;n din&aacute;mica y ESM vs CJS.</p>
+            </a>
+            <a href="js/tema10-gestion-datos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">10</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Gesti&oacute;n de Datos</h3>
+                <p class="text-xs text-gray-500">JSON, formularios, validaci&oacute;n y persistencia local de datos en frontend.</p>
+            </a>
+            <a href="js/tema11-componentes.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">11</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Componentes</h3>
+                <p class="text-xs text-gray-500">Composici&oacute;n de UI por componentes, plantillas, estado y flujo CRUD.</p>
+            </a>
+            <a href="js/tema12-asincronia.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">12</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Asincron&iacute;a en JS</h3>
+                <p class="text-xs text-gray-500">Promesas, async/await, control de errores y consumo de APIs REST con fetch.</p>
+            </a>
+            <a href="js/tema13-poo.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">13</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">POO y Clases</h3>
+                <p class="text-xs text-gray-500">Clases, herencia, encapsulaci&oacute;n, campos privados y modelo prototipal.</p>
+            </a>
+            <a href="js/tema14-vite.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">14</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">Vite</h3>
+                <p class="text-xs text-gray-500">Setup inicial, servidor dev, build de producci&oacute;n y configuraci&oacute;n base de proyectos JS.</p>
+            </a>
+            <a href="js/tema15-analisis-estatico.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-yellow-700 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">15</span>
+                <h3 class="text-yellow-700 font-semibold mb-1">An&aacute;lisis est&aacute;tico de c&oacute;digo</h3>
+                <p class="text-xs text-gray-500">Uso de ESLint, Prettier y checks autom&aacute;ticos para mantener calidad de c&oacute;digo.</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="ts" class="max-w-6xl mx-auto px-5 pb-8">
+        <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-800 pb-2 mb-5">TypeScript</h2>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+            <a href="ts/index.html" class="text-xs px-3 py-1 bg-blue-800 text-white rounded-full no-underline hover:bg-blue-700">Ver &iacute;ndice TypeScript</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <a href="ts/tema1-fundamentos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">1</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Fundamentos</h3>
+                <p class="text-xs text-gray-500">Instalaci&oacute;n, tsconfig, compilaci&oacute;n, tipado b&aacute;sico y type inference.</p>
+            </a>
+            <a href="ts/tema2-tipos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">2</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Tipos B&aacute;sicos</h3>
+                <p class="text-xs text-gray-500">Primitivos, arrays, tuplas, enums, any, unknown, never y void.</p>
+            </a>
+            <a href="ts/tema3-interfaces.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">3</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Interfaces y Types</h3>
+                <p class="text-xs text-gray-500">Interface vs type, extensi&oacute;n, merge, readonly e index signatures.</p>
+            </a>
+            <a href="ts/tema4-funciones.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">4</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Funciones Tipadas</h3>
+                <p class="text-xs text-gray-500">Par&aacute;metros, retorno, overloads, callbacks y tipado de funciones.</p>
+            </a>
+            <a href="ts/tema5-genericos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">5</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Gen&eacute;ricos</h3>
+                <p class="text-xs text-gray-500">Funciones gen&eacute;ricas, constraints, keyof, infer y mapped types.</p>
+            </a>
+            <a href="ts/tema6-clases.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">6</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Clases y POO</h3>
+                <p class="text-xs text-gray-500">Clases, herencia, abstract, implements, visibilidad y decoradores.</p>
+            </a>
+            <a href="ts/tema7-unions.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">7</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Unions e Intersecciones</h3>
+                <p class="text-xs text-gray-500">Union types, intersection, literal types, discriminated unions y exhaustiveness.</p>
+            </a>
+            <a href="ts/tema8-narrowing.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">8</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Type Guards y Narrowing</h3>
+                <p class="text-xs text-gray-500">typeof, instanceof, in, is, asserts y control flow analysis.</p>
+            </a>
+            <a href="ts/tema9-utility.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">9</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Utility Types</h3>
+                <p class="text-xs text-gray-500">Partial, Required, Pick, Omit, Record, Exclude y Extract.</p>
+            </a>
+            <a href="ts/tema10-modulos.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">10</span>
+                <h3 class="text-blue-800 font-semibold mb-1">M&oacute;dulos y Namespaces</h3>
+                <p class="text-xs text-gray-500">ESM en TS, declaration files, .d.ts, ambient modules y triple-slash.</p>
+            </a>
+            <a href="ts/tema11-config.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">11</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Configuraci&oacute;n Avanzada</h3>
+                <p class="text-xs text-gray-500">tsconfig en profundidad, strict mode, paths, project references.</p>
+            </a>
+            <a href="ts/tema12-patrones.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <span class="inline-block bg-blue-800 text-white w-8 h-8 rounded-full text-center leading-8 font-bold mb-3">12</span>
+                <h3 class="text-blue-800 font-semibold mb-1">Patrones Avanzados</h3>
+                <p class="text-xs text-gray-500">Template literals, conditional types, branded types e integraci&oacute;n con frameworks.</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="fullstack" class="max-w-6xl mx-auto px-5 pb-8">
+        <h2 class="text-2xl font-bold text-emerald-800 border-b-2 border-emerald-800 pb-2 mb-5">Ruta Fullstack</h2>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+            <a href="fullstack/index.html" class="text-xs px-3 py-1 bg-emerald-800 text-white rounded-full no-underline hover:bg-emerald-700">Ver &iacute;ndice maestro</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <a href="front/index.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <h3 class="text-emerald-800 font-semibold mb-1">Frontend</h3>
+                <p class="text-xs text-gray-500">UI, componentes, routing, estado, pruebas de front y despliegue.</p>
+            </a>
+            <a href="back/index.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <h3 class="text-emerald-800 font-semibold mb-1">Backend</h3>
+                <p class="text-xs text-gray-500">Node, Express, API REST, middlewares, auth, testing y arquitectura.</p>
+            </a>
+            <a href="bd/index.html" class="tema-card block bg-white rounded-lg p-5 shadow no-underline text-gray-800">
+                <h3 class="text-emerald-800 font-semibold mb-1">Base de Datos</h3>
+                <p class="text-xs text-gray-500">Modelado E/R, SQL, normalizaci&oacute;n, transacciones, Prisma y migraciones.</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="front" class="max-w-6xl mx-auto px-5 pb-8">
+        <h2 class="text-2xl font-bold text-cyan-800 border-b-2 border-cyan-800 pb-2 mb-5">Frontend</h2>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+            <a href="front/index.html" class="text-xs px-3 py-1 bg-cyan-800 text-white rounded-full no-underline hover:bg-cyan-700">Ver &iacute;ndice Frontend</a>
+        </div>
+        <p class="text-sm text-gray-600">Bloque para arquitectura de cliente, UI, frameworks, estado y testing de interfaz.</p>
+    </section>
+
+    <section id="back" class="max-w-6xl mx-auto px-5 pb-8">
+        <h2 class="text-2xl font-bold text-sky-800 border-b-2 border-sky-800 pb-2 mb-5">Backend</h2>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+            <a href="back/index.html" class="text-xs px-3 py-1 bg-sky-800 text-white rounded-full no-underline hover:bg-sky-700">Ver &iacute;ndice Backend</a>
+        </div>
+        <p class="text-sm text-gray-600">Bloque para servidor, API, seguridad, capas de aplicaci&oacute;n y pruebas de backend.</p>
+    </section>
+
+    <section id="bd" class="max-w-6xl mx-auto px-5 pb-8">
+        <h2 class="text-2xl font-bold text-teal-800 border-b-2 border-teal-800 pb-2 mb-5">Bases de Datos</h2>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+            <a href="bd/index.html" class="text-xs px-3 py-1 bg-teal-800 text-white rounded-full no-underline hover:bg-teal-700">Ver &iacute;ndice BD</a>
+        </div>
+        <p class="text-sm text-gray-600">Bloque para dise&ntilde;o de datos, SQL, NoSQL, acceso desde backend y ORMs.</p>
+    </section>
+
+    <!-- Bibliografía y Recursos -->
+    <section id="recursos" class="max-w-6xl mx-auto px-5 py-8">
+        <h2 class="text-2xl font-bold text-gray-700 border-b-2 border-gray-400 pb-2 mb-8">Bibliograf&iacute;a y Recursos</h2>
+
+        <!-- HTML -->
+        <div class="mb-10">
+            <h3 class="text-lg font-bold text-amber-900 mb-4 flex items-center gap-2">
+                &#x1F680; HTML
+                <span class="text-sm font-normal text-gray-500">&mdash; La Estructura</span>
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 mb-2">&#x1F4D6; Consulta</span>
+                    <h4 class="text-amber-900 font-semibold text-sm mb-1">MDN Web Docs</h4>
+                    <p class="text-xs text-gray-500">La &ldquo;Biblia&rdquo; t&eacute;cnica. Documentaci&oacute;n oficial, clara y siempre actualizada.</p>
+                </a>
+                <a href="https://www.htmhell.dev/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 mb-2">&#x1F393; Aprendizaje</span>
+                    <h4 class="text-amber-900 font-semibold text-sm mb-1">HTML Hell</h4>
+                    <p class="text-xs text-gray-500">Te ense&ntilde;a qu&eacute; no hacer. Ideal para aprender accesibilidad y sem&aacute;ntica real.</p>
+                </a>
+                <a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 mb-2">&#x1F527; Utilidad</span>
+                    <h4 class="text-amber-900 font-semibold text-sm mb-1">Caniuse.com</h4>
+                    <p class="text-xs text-gray-500">Para verificar si una etiqueta o atributo funciona en todos los navegadores.</p>
+                </a>
+                <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 mb-2">&#x1F527; Utilidad</span>
+                    <h4 class="text-amber-900 font-semibold text-sm mb-1">W3C Validator</h4>
+                    <p class="text-xs text-gray-500">Herramienta para pegar tu c&oacute;digo y ver si cumple con los est&aacute;ndares oficiales.</p>
+                </a>
+                <a href="https://www.youtube.com/@jensimmons" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 mb-2">&#x1F464; Referente</span>
+                    <h4 class="text-amber-900 font-semibold text-sm mb-1">Jen Simmons</h4>
+                    <p class="text-xs text-gray-500">Evangelista de la web; aunque sabe de todo, su enfoque en la estructura es vital.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- CSS -->
+        <div class="mb-10">
+            <h3 class="text-lg font-bold text-amber-900 mb-4 flex items-center gap-2">
+                &#x1F3A8; CSS
+                <span class="text-sm font-normal text-gray-500">&mdash; El Dise&ntilde;o</span>
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <a href="https://css-tricks.com/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 mb-2">&#x1F4D6; Consulta</span>
+                    <h4 class="text-amber-900 font-semibold text-sm mb-1">CSS-Tricks</h4>
+                    <p class="text-xs text-gray-500">Art&iacute;culos profundos sobre Flexbox, Grid y gu&iacute;as visuales incre&iacute;bles.</p>
+                </a>
+                <a href="https://www.joshwcomeau.com/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 mb-2">&#x1F393; Aprendizaje</span>
+                    <h4 class="text-amber-900 font-semibold text-sm mb-1">Josh W. Comeau</h4>
+                    <p class="text-xs text-gray-500">Tutoriales interactivos con una est&eacute;tica impecable; explica el &ldquo;por qu&eacute;&rdquo; visual.</p>
+                </a>
+                <a href="https://9elements.github.io/fancy-border-radius/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 mb-2">&#x1F527; Utilidad</span>
+                    <h4 class="text-amber-900 font-semibold text-sm mb-1">Fancy Border Radius</h4>
+                    <p class="text-xs text-gray-500">Generador visual para crear formas org&aacute;nicas con CSS complejo de forma f&aacute;cil.</p>
+                </a>
+                <a href="https://cssgenerator.org/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 mb-2">&#x1F527; Utilidad</span>
+                    <h4 class="text-amber-900 font-semibold text-sm mb-1">CSS Generators</h4>
+                    <p class="text-xs text-gray-500">Herramientas para sombras (Glassmorphism), gradientes y layouts de Grid.</p>
+                </a>
+                <a href="https://www.youtube.com/@KevinPowell" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 mb-2">&#x1F464; Referente</span>
+                    <h4 class="text-amber-900 font-semibold text-sm mb-1">Kevin Powell</h4>
+                    <p class="text-xs text-gray-500">&ldquo;El rey del CSS&rdquo; en YouTube. Nadie explica mejor c&oacute;mo dominar el layout.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="mb-10">
+            <h3 class="text-lg font-bold text-yellow-700 mb-4 flex items-center gap-2">
+                &#x26A1; JavaScript
+                <span class="text-sm font-normal text-gray-500">&mdash; La L&oacute;gica</span>
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <a href="https://javascript.info/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 mb-2">&#x1F393; Aprendizaje</span>
+                    <h4 class="text-yellow-700 font-semibold text-sm mb-1">JavaScript.info</h4>
+                    <p class="text-xs text-gray-500">El curso de texto m&aacute;s completo, desde lo b&aacute;sico hasta lo avanzado (Promesas, Proxy).</p>
+                </a>
+                <a href="https://eloquentjavascript.net/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 mb-2">&#x1F393; Aprendizaje</span>
+                    <h4 class="text-yellow-700 font-semibold text-sm mb-1">Eloquent JavaScript</h4>
+                    <p class="text-xs text-gray-500">Libro gratuito online que profundiza en la filosof&iacute;a del lenguaje.</p>
+                </a>
+                <a href="https://excalidraw.com/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 mb-2">&#x1F527; Utilidad</span>
+                    <h4 class="text-yellow-700 font-semibold text-sm mb-1">Excalidraw</h4>
+                    <p class="text-xs text-gray-500">Pizarra virtual para dibujar diagramas de flujo y l&oacute;gica de algoritmos.</p>
+                </a>
+                <a href="https://jsonplaceholder.typicode.com/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 mb-2">&#x1F527; Utilidad</span>
+                    <h4 class="text-yellow-700 font-semibold text-sm mb-1">JSON Placeholder</h4>
+                    <p class="text-xs text-gray-500">Una API falsa para practicar peticiones fetch sin configurar un backend.</p>
+                </a>
+                <a href="https://github.com/getify/You-Dont-Know-JS" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 mb-2">&#x1F393; Aprendizaje</span>
+                    <h4 class="text-yellow-700 font-semibold text-sm mb-1">You Don't Know JS</h4>
+                    <p class="text-xs text-gray-500">Serie de libros gratuitos de Kyle Simpson que profundiza en los mecanismos internos de JavaScript.</p>
+                </a>
+                <a href="https://overreacted.io/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 mb-2">&#x1F464; Referente</span>
+                    <h4 class="text-yellow-700 font-semibold text-sm mb-1">Dan Abramov</h4>
+                    <p class="text-xs text-gray-500">Creador de Redux; sus reflexiones sobre c&oacute;mo pensar en c&oacute;digo son oro puro.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- TypeScript -->
+        <div>
+            <h3 class="text-lg font-bold text-blue-800 mb-4 flex items-center gap-2">
+                &#x1F6E1;&#xFE0F; TypeScript
+                <span class="text-sm font-normal text-gray-500">&mdash; La Seguridad</span>
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+                <a href="https://www.typescriptlang.org/play" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 mb-2">&#x1F527; Utilidad</span>
+                    <h4 class="text-blue-800 font-semibold text-sm mb-1">TS Playground</h4>
+                    <p class="text-xs text-gray-500">Editor online para probar c&oacute;digo TS y ver c&oacute;mo se transpila a JS al instante.</p>
+                </a>
+                <a href="https://www.totaltypescript.com/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 mb-2">&#x1F393; Aprendizaje</span>
+                    <h4 class="text-blue-800 font-semibold text-sm mb-1">Total TypeScript</h4>
+                    <p class="text-xs text-gray-500">(Matt Pocock) Los mejores tips para entender tipos complejos y gen&eacute;ricos.</p>
+                </a>
+                <a href="https://basarat.gitbook.io/typescript/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 mb-2">&#x1F4D6; Consulta</span>
+                    <h4 class="text-blue-800 font-semibold text-sm mb-1">TypeScript Deep Dive</h4>
+                    <p class="text-xs text-gray-500">Un libro online que explica los conceptos m&aacute;s oscuros del lenguaje de forma sencilla.</p>
+                </a>
+                <a href="https://zod.dev/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 mb-2">&#x1F527; Utilidad</span>
+                    <h4 class="text-blue-800 font-semibold text-sm mb-1">Zod</h4>
+                    <p class="text-xs text-gray-500">Librer&iacute;a esencial para validaci&oacute;n de esquemas que se integra perfecto con TS.</p>
+                </a>
+                <a href="https://www.mattpocock.com/" target="_blank" rel="noopener noreferrer" class="recurso-card block bg-white rounded-lg p-4 shadow no-underline text-gray-800">
+                    <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 mb-2">&#x1F464; Referente</span>
+                    <h4 class="text-blue-800 font-semibold text-sm mb-1">Matt Pocock</h4>
+                    <p class="text-xs text-gray-500">Actualmente la voz m&aacute;s activa y did&aacute;ctica sobre TypeScript en redes sociales.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-5 text-gray-400 text-xs border-t border-gray-200 mt-8">
+        <p>Apuntes de Desarrollo Web &mdash; HTML, CSS, JavaScript y TypeScript</p>
+    </footer>
+
+    <script>
+    (function() {
+        const ACTIVE_BG = {
+            html:     '#b45309',
+            css:      '#b45309',
+            js:       '#ca8a04',
+            ts:       '#1d4ed8',
+            fullstack:'#047857',
+            front:    '#155e75',
+            back:     '#075985',
+            bd:       '#0f766e',
+            recursos: '#4b5563'
+        };
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+        let currentActive = null;
+
+        function setActive(id) {
+            if (currentActive === id) return;
+            currentActive = id;
+
+            navLinks.forEach(link => {
+                const nav = link.dataset.nav;
+                if (nav === id) {
+                    link.style.backgroundColor = ACTIVE_BG[nav];
+                    link.style.color = '#ffffff';
+                } else {
+                    link.style.backgroundColor = '';
+                    link.style.color = '';
+                }
+            });
+        }
+
+        function updateActive() {
+            let closestId = null;
+            let closestDist = Infinity;
+            sections.forEach(sec => {
+                const top = sec.getBoundingClientRect().top;
+                const dist = Math.abs(top - 50);
+                if (dist < closestDist) {
+                    closestDist = dist;
+                    closestId = sec.id;
+                }
+            });
+            if (closestId) setActive(closestId);
+        }
+
+        window.addEventListener('scroll', updateActive, { passive: true });
+        updateActive();
+    })();
+    </script>
+</body>
+</html>

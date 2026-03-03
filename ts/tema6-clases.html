@@ -21,11 +21,18 @@
             <a href="#herencia" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Herencia</a>
             <a href="#prototipos" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Prototipos</a>
             <a href="#accessors" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Getters y setters</a>
+            <a href="#fuentes" class="text-xs px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 no-underline hover:bg-blue-100">Fuentes</a>
         </div>
     </nav>
     <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
         <section id="clases" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">1</span>Clases tipadas</h2>
+            <p class="text-sm mb-3">Una clase es una <strong>plantilla</strong> para crear objetos con la misma forma. TypeScript te ayuda a definir desde el inicio qu&eacute; datos y qu&eacute; tipos tiene cada instancia.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li><strong>Propiedad</strong>: dato que guarda estado (por ejemplo, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">nombre</code>).</li>
+                <li><strong>M&eacute;todo</strong>: acci&oacute;n de la clase (por ejemplo, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">getPrecio()</code>).</li>
+                <li><strong>Constructor</strong>: funci&oacute;n que se ejecuta al hacer <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new</code>.</li>
+            </ul>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Producto {
   constructor(
     public sku: string,
@@ -37,20 +44,139 @@
     return this.precio;
   }
 }</pre>
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Lectura r&aacute;pida del ejemplo</h3>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">public sku</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">public nombre</code> se pueden leer desde fuera.</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">private precio</code> solo puede usarse dentro de la clase.</li>
+                    <li>La clase expone el precio de forma controlada con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">getPrecio()</code>.</li>
+                </ul>
+            </div>
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Relaci&oacute;n con el proyecto de clase</h3>
+                <p class="text-sm mb-2">En <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">demo.-js/13-constructor.js</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">demo.-js/16-ES6-herencia.js</code> se ve que la versi&oacute;n con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code> es la forma moderna de expresar el patr&oacute;n constructor.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class User {
+  constructor(
+    public name: string,
+    public age: number = 22,
+    public role: "admin" | "user" = "user"
+  ) {}
+}</pre>
+            </div>
         </section>
 
-        <section id="acceso" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
-            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Modificadores de acceso</h2>
-            <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">public</code>: visible en cualquier lugar.</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">private</code>: visible solo dentro de la clase.</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">protected</code>: visible en clase y subclases.</li>
-                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">readonly</code>: asignable solo en declaracion o constructor.</li>
-            </ul>
+        <section id="acceso" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">2</span>Modificadores de acceso: cu&aacute;ndo usar cada uno</h2>
+            <p class="text-sm mb-3">Los modificadores en TypeScript definen la frontera de tu API de clase. La regla general es: exponer poco, encapsular lo inestable y dejar claro qu&eacute; puede cambiar.</p>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0 mb-3">
+                <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3">
+                    <h3 class="font-semibold text-blue-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">public</code> (API externa)</h3>
+                    <p class="text-sm mb-2">&Uacute;salo para propiedades o m&eacute;todos que s&iacute; quieres que consuman otros m&oacute;dulos.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class UserService {
+  public version = "1.0.0";
+
+  public healthcheck(): boolean {
+    return true;
+  }
+}</pre>
+                </div>
+                <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3">
+                    <h3 class="font-semibold text-blue-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">private</code> (encapsulaci&oacute;n interna)</h3>
+                    <p class="text-sm mb-2">&Uacute;salo cuando una propiedad no debe tocarse desde fuera ni desde subclases.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class PasswordValidator {
+  private minLen = 8;
+
+  public validate(pass: string): boolean {
+    return pass.length >= this.minLen;
+  }
+}
+
+const v = new PasswordValidator();
+// v.minLen; // Error TS: propiedad privada</pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0 mb-3">
+                <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3">
+                    <h3 class="font-semibold text-blue-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">protected</code> (extensi&oacute;n por herencia)</h3>
+                    <p class="text-sm mb-2">&Uacute;salo cuando el miembro debe ser invisible para consumidores, pero reutilizable por subclases.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class RepoBase {
+  protected log(msg: string): void {
+    console.log("[repo]", msg);
+  }
+}
+
+class UserRepo extends RepoBase {
+  save(): void {
+    this.log("guardando usuario"); // OK
+  }
+}
+
+// new RepoBase().log("x"); // Error TS</pre>
+                </div>
+                <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3">
+                    <h3 class="font-semibold text-blue-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">readonly</code> (inmutabilidad de referencia)</h3>
+                    <p class="text-sm mb-2">&Uacute;salo para datos que se fijan al crear la instancia y no deben reasignarse.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Order {
+  constructor(
+    public readonly id: string,
+    public total: number
+  ) {}
+}
+
+const o = new Order("A-1", 100);
+// o.id = "B-2"; // Error TS
+o.total = 120; // OK</pre>
+                </div>
+            </div>
+
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Criterio de dise&ntilde;o r&aacute;pido</h3>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Empieza con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">private</code> y abre a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">protected</code>/<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">public</code> solo si hay un caso real.</li>
+                    <li>Usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">readonly</code> para IDs, fechas de creaci&oacute;n y configuraci&oacute;n estable.</li>
+                    <li>Si algo es <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">public</code>, tr&aacute;talo como contrato: cambiarlo puede romper consumidores.</li>
+                </ul>
+            </div>
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Importante: <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">private</code> (TS) vs <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#private</code> (JS)</h3>
+                <ul class="list-disc pl-5 space-y-1 text-sm mb-2">
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">private</code> de TS es validaci&oacute;n de compilador.</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#campo</code> es privacidad real en tiempo de ejecuci&oacute;n (como en <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">demo.-js/14-class.js</code>).</li>
+                </ul>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Caja {
+  #saldo = 0; // privacidad real de JS
+  private etiqueta = "A"; // chequeado por TS
+
+  ingresar(n: number): void {
+    this.#saldo += n;
+  }
+}</pre>
+            </div>
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Miembros est&aacute;ticos y bloque <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">static {}</code></h3>
+                <p class="text-sm mb-2">Basado en el ejemplo del proyecto: usa est&aacute;ticos para estado compartido por clase (contadores, factor&iacute;as, configuraci&oacute;n).</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class User {
+  static usersNumber = 0;
+  static {
+    console.log("Clase User cargada");
+  }
+
+  constructor(public name: string) {
+    User.usersNumber++;
+  }
+}</pre>
+            </div>
         </section>
 
         <section id="herencia" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">3</span>Herencia e interfaces</h2>
+            <p class="text-sm mb-3">La <strong>herencia</strong> permite reutilizar una clase base. Las <strong>interfaces</strong> definen un contrato (qu&eacute; debe poder hacer una clase), sin imponer implementaci&oacute;n.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li>Usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code> cuando compartes comportamiento real entre clases.</li>
+                <li>Usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">implements</code> cuando solo quieres garantizar una forma com&uacute;n.</li>
+            </ul>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">interface Imprimible {
   imprimir(): string;
 }
@@ -64,22 +190,77 @@ class Admin extends UsuarioBase implements Imprimible {
     return `Admin ${this.id}`;
   }
 }</pre>
-            <p class="text-sm mt-3">Prioriza composicion sobre herencia profunda para mantener bajo acoplamiento.</p>
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Idea clave para no confundirte</h3>
+                <p class="text-sm">Si solo necesitas compartir datos/funciones entre 2-3 clases cercanas, herencia simple est&aacute; bien. Si la jerarqu&iacute;a crece, suele ser m&aacute;s mantenible componer objetos en lugar de encadenar muchas clases hijas.</p>
+            </div>
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Sobrescritura de m&eacute;todos y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">super</code></h3>
+                <p class="text-sm mb-2">Igual que en <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">demo.-js/16-ES6-herencia.js</code>: puedes redefinir un m&eacute;todo y reutilizar parte del comportamiento base.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Person {
+  greet(): void {
+    console.log("Hola");
+  }
+}
+
+class Admin extends Person {
+  override greet(): void {
+    super.greet();
+    console.log("Soy admin");
+  }
+}</pre>
+            </div>
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Composici&oacute;n (preferida en muchos casos)</h3>
+                <p class="text-sm mb-2">El proyecto tambi&eacute;n ilustra composici&oacute;n en la factura (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Invoice</code> contiene <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Company</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Product</code>).</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Product {
+  constructor(public name: string, public price: number) {}
+}
+class Invoice {
+  constructor(public product: Product, public amount: number) {}
+}</pre>
+            </div>
         </section>
 
         <section id="prototipos" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">4</span>Objetos, funciones constructoras y prototipos</h2>
-            <p class="text-sm mb-2">Las clases de ES6 son azucar sintactico sobre prototipos. Entender la cadena de prototipos ayuda a depurar y modelar mejor.</p>
+            <p class="text-sm mb-2">Las clases de ES6 son sintaxis m&aacute;s c&oacute;moda sobre prototipos. Cuando un m&eacute;todo no est&aacute; en el objeto, JavaScript lo busca en su prototipo.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li>Los datos propios viven en cada instancia.</li>
+                <li>Los m&eacute;todos comunes viven en <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">prototype</code> y se comparten.</li>
+            </ul>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Persona(this: any, nombre: string) {
   this.nombre = nombre;
 }
 (Persona as any).prototype.saludar = function () {
   return `Hola ${this.nombre}`;
 };</pre>
+            <p class="text-sm mt-3">Traducci&oacute;n mental: "cada persona guarda su <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">nombre</code>, pero todas comparten la misma funci&oacute;n <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">saludar</code>".</p>
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Sombra de propiedades (shadowing)</h3>
+                <p class="text-sm mb-2">En <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">demo.-js/10-proto.js</code> se ve: si escribes una propiedad con el mismo nombre, creas una local en la instancia y "tapas" la heredada.</p>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const base = { teeth: 32 };
+const user = Object.create(base);
+
+user.teeth; // 32 (heredada)
+user.teeth = 30;
+user.teeth; // 30 (propia)
+Object.hasOwn(user, "teeth"); // true</pre>
+            </div>
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Cadena de prototipos en herencia</h3>
+                <p class="text-sm">Cuando haces <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class Hija extends Base</code>, JS conecta autom&aacute;ticamente los prototipos (similar a <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.setPrototypeOf(Hija.prototype, Base.prototype)</code> del ejemplo con funciones constructoras).</p>
+            </div>
         </section>
 
         <section id="accessors" class="bg-white rounded-lg p-4 shadow basis-full md:basis-[calc(50%-0.5rem)] min-w-0">
             <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">5</span>Accessors: getters y setters</h2>
+            <p class="text-sm mb-3">Los accessors permiten exponer una propiedad como si fuera simple, pero con l&oacute;gica interna de lectura/escritura.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">get</code>: controla c&oacute;mo se lee un valor.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">set</code>: valida o transforma antes de guardar.</li>
+                <li>Son &uacute;tiles para proteger invariantes (por ejemplo, "el saldo nunca puede ser negativo").</li>
+            </ul>
             <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Cuenta {
   private _saldo = 0;
 
@@ -92,6 +273,31 @@ class Admin extends UsuarioBase implements Imprimible {
     this._saldo = valor;
   }
 }</pre>
+            <div class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 mt-3">
+                <h3 class="font-semibold text-blue-700 mb-2">Uso mental r&aacute;pido</h3>
+                <p class="text-sm">Desde fuera usas <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">cuenta.saldo</code> como propiedad normal. Por dentro, la clase decide si acepta o no el nuevo valor.</p>
+                <p class="text-sm mt-2"><strong>Estilo recomendado:</strong> en validaciones con error (<code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">throw</code>) usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">if</code> por claridad; reserva el ternario para asignaciones simples.</p>
+            </div>
+        </section>
+        <section id="fuentes" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-blue-700 border-b-2 border-blue-700 pb-1 mb-3"><span class="orden">6</span>Fuentes usadas para esta ampliaci&oacute;n</h2>
+            <p class="text-sm mb-3">Comparado con ejemplos y documentaci&oacute;n del proyecto de clase <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">8.JS.Test</code>.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm mb-3">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">demo.-js/13-constructor.js</code> (constructor + est&aacute;ticos).</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">demo.-js/14-class.js</code> (campos privados <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">#</code>, est&aacute;ticos, bloque <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">static {}</code>, composici&oacute;n).</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">demo.-js/15-constructor-herencia.js</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">16-ES6-herencia.js</code> (herencia y sobrescritura).</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">demo.-js/10-proto.js</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">10-proto2.js</code> (prototype chain y shadowing).</li>
+            </ul>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes" target="_blank" class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 no-underline hover:bg-blue-100">
+                    <p class="text-sm font-semibold text-blue-700">MDN: Classes</p>
+                    <p class="text-xs text-gray-600">Sintaxis, herencia, privados y est&aacute;ticos en JavaScript.</p>
+                </a>
+                <a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/objects-classes/README.md" target="_blank" class="border border-blue-200 rounded-lg bg-blue-50/40 p-3 no-underline hover:bg-blue-100">
+                    <p class="text-sm font-semibold text-blue-700">YDKJS: Objects &amp; Classes</p>
+                    <p class="text-xs text-gray-600">Modelo mental profundo de prototipos y clases.</p>
+                </a>
+            </div>
         </section>
     </main>
     <div data-component="footer-nav"></div>
