@@ -42,6 +42,8 @@
                     <a href="tema13-poo.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">13. POO y Clases</a>
                     <a href="tema14-vite.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">14. Vite</a>
                     <a href="tema15-analisis-estatico.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">15. An&aacute;lisis est&aacute;tico</a>
+                    <a href="tema16-programacion-funcional.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">16. Programaci&oacute;n funcional</a>
+                    <a href="tema17-patrones-ejecucion.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">17. Patrones de ejecuci&oacute;n</a>
 
                     <div class="border-t border-gray-100 mt-2 pt-2">
                         <a href="../index.html" class="block px-4 py-2 text-sm text-amber-900 hover:bg-amber-50 font-medium">&larr; Volver al &iacute;ndice</a>
@@ -60,6 +62,7 @@
             <a href="#async-await" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">async/await</a>
             <a href="#errores" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Errores</a>
             <a href="#fetch" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Fetch + JSON</a>
+            <a href="#patrones" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Patrones de ejecuci&oacute;n</a>
             <a href="#recursos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Recursos</a>
         </div>
     </nav>
@@ -136,9 +139,25 @@ await fetch('/api/users', {
 });</pre>
         </section>
 
+        <section id="patrones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">6</span>Patrones de ejecuci&oacute;n recomendados
+            </h2>
+            <p class="text-sm mb-3">En asincron&iacute;a real, la clave no es solo usar <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">await</code>, sino elegir el patr&oacute;n adecuado para cada carga.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Secuencial:</strong> cuando hay dependencia estricta entre pasos.</li>
+                <li><strong>Concurrente:</strong> con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Promise.all</code> para I/O independiente.</li>
+                <li><strong>Concurrencia limitada:</strong> lotes para evitar saturar recursos.</li>
+                <li><strong>Cancelaci&oacute;n:</strong> con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">AbortController</code> en solicitudes obsoletas.</li>
+            </ul>
+            <div class="mt-3 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                <p class="text-sm text-yellow-800">Referencia completa: <a href="tema17-patrones-ejecucion.html" class="underline font-semibold">Tema 17: Patrones de ejecuci&oacute;n</a>.</p>
+            </div>
+        </section>
+
         <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
-                <span class="orden">6</span>Recursos y herramientas
+                <span class="orden">7</span>Recursos y herramientas
             </h2>
             <ul class="list-disc pl-5 space-y-1 text-sm">
                 <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" class="text-yellow-700 hover:underline">MDN Promise</a></li>

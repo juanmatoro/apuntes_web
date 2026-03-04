@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos Tema 17: Patrones de ejecuci&oacute;n - Apuntes JavaScript</title>
+    <meta name="description" content="Ejemplos de patrones de ejecuci&oacute;n en JavaScript: event loop, Promise combinators, batching y cancelaci&oacute;n.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#orden" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Orden de ejecuci&oacute;n</a>
+            <a href="#combinadores" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Combinadores Promise</a>
+            <a href="#lotes" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Lotes</a>
+            <a href="#cancel" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Cancelaci&oacute;n</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+        <section id="orden" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Orden: sync, microtask, task
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">console.log('1-sync');
+setTimeout(() =&gt; console.log('4-task'), 0);
+Promise.resolve().then(() =&gt; console.log('3-microtask'));
+console.log('2-sync');
+
+// salida:
+// 1-sync
+// 2-sync
+// 3-microtask
+// 4-task</pre>
+        </section>
+
+        <section id="combinadores" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Combinadores de promesas
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const ok = (ms, v) =&gt; new Promise((r) =&gt; setTimeout(() =&gt; r(v), ms));
+const fail = (ms, e) =&gt; new Promise((_, r) =&gt; setTimeout(() =&gt; r(e), ms));
+
+await Promise.all([ok(50, 'A'), ok(30, 'B')]);       // ['A', 'B']
+await Promise.allSettled([ok(20, 'A'), fail(10, 'X')]); // [{status:'fulfilled'}, {status:'rejected'}]
+await Promise.race([ok(80, 'slow'), ok(10, 'fast')]);   // 'fast'</pre>
+        </section>
+
+        <section id="lotes" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Patr&oacute;n por lotes (concurrencia limitada)
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">async function runInBatches(items, size, worker) {
+  const out = [];
+  for (let i = 0; i &lt; items.length; i += size) {
+    const batch = items.slice(i, i + size);
+    const chunk = await Promise.all(batch.map(worker));
+    out.push(...chunk);
+  }
+  return out;
+}
+
+const ids = [1,2,3,4,5,6,7,8,9,10];
+const data = await runInBatches(ids, 3, (id) =&gt; fetch(`/api/${id}`).then(r =&gt; r.json()));</pre>
+        </section>
+
+        <section id="cancel" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Cancelaci&oacute;n con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">AbortController</code>
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const controller = new AbortController();
+const signal = controller.signal;
+
+const req = fetch('/api/search?q=js', { signal })
+  .then((r) =&gt; r.json())
+  .catch((e) =&gt; {
+    if (e.name === 'AbortError') return null;
+    throw e;
+  });
+
+// si llega una nueva b&uacute;squeda:
+controller.abort();</pre>
+        </section>
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema17-patrones-ejecucion.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-yellow-700 text-white no-underline rounded text-xs hover:bg-yellow-600">&larr; Volver al tema</a>
+        <span class="w-36"></span>
+        <span class="w-36"></span>
+    </nav>
+
+    <div data-component="footer"></div>
+</body>
+</html>

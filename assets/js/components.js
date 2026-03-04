@@ -65,9 +65,11 @@ const TEMAS_CONFIG = {
             { num: 10, slug: 'gestion-datos', titulo: 'Gestión de datos' },
             { num: 11, slug: 'componentes', titulo: 'Componentes' },
             { num: 12, slug: 'asincronia', titulo: 'Asincronía en JS' },
-            { num: 13, slug: 'poo', titulo: 'POO y Clases' },
+            { num: 13, slug: 'poo', titulo: 'POO, Clases y Prototipos' },
             { num: 14, slug: 'vite', titulo: 'Vite' },
-            { num: 15, slug: 'analisis-estatico', titulo: 'Análisis estático de código' }
+            { num: 15, slug: 'analisis-estatico', titulo: 'Análisis estático de código' },
+            { num: 16, slug: 'programacion-funcional', titulo: 'Programación funcional' },
+            { num: 17, slug: 'patrones-ejecucion', titulo: 'Patrones de ejecución' }
         ]
     },
     ts: {

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 16: Programaci&oacute;n funcional - Apuntes JavaScript</title>
+    <meta name="description" content="Programaci&oacute;n funcional en JavaScript: funciones puras, inmutabilidad, composici&oacute;n y transformaci&oacute;n declarativa de datos.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#fundamentos" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Fundamentos</a>
+            <a href="#pureza" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Funciones puras</a>
+            <a href="#inmutabilidad" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Inmutabilidad</a>
+            <a href="#composicion" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Composici&oacute;n</a>
+            <a href="#pipeline" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Pipeline</a>
+        </div>
+    </nav>
+
+    <div class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <a href="tema16-programacion-funcional-ejemplos.html" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-yellow-700 text-white rounded hover:bg-yellow-600 no-underline">
+            Ver ejemplos del tema
+        </a>
+    </div>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="fundamentos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Fundamentos
+            </h2>
+            <p class="text-sm mb-3">La <strong>programaci&oacute;n funcional</strong> construye soluciones con funciones peque&ntilde;as, composables y predecibles. En JavaScript no es exclusiva: convive con estilos imperativo y orientado a objetos.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Declarativo:</strong> describes qu&eacute; transformar, no cada paso interno.</li>
+                <li><strong>Funciones como valores:</strong> se pasan, retornan y almacenan.</li>
+                <li><strong>Composici&oacute;n:</strong> combinar piezas simples para resolver problemas complejos.</li>
+            </ul>
+        </section>
+
+        <section id="pureza" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>Funciones puras y efectos colaterales
+            </h2>
+            <p class="text-sm mb-3">Una funci&oacute;n pura siempre devuelve el mismo resultado para la misma entrada y no modifica estado externo.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// Pura
+const aplicarIVA = (importe, tipo) =&gt; importe * (1 + tipo);
+
+// Impura (depende de estado global)
+let descuentoGlobal = 0.1;
+const calcular = (precio) =&gt; precio * (1 - descuentoGlobal);
+
+// Impura (efecto colateral)
+const loguear = (msg) =&gt; console.log(msg);</pre>
+        </section>
+
+        <section id="inmutabilidad" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Inmutabilidad
+            </h2>
+            <p class="text-sm mb-3">Evita mutar arrays u objetos originales; crea nuevas estructuras con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">...</code>.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const usuario = { id: 1, nombre: 'Ana', activo: true };
+
+// mutaci&oacute;n (evitar)
+// usuario.activo = false;
+
+// inmutable (recomendado)
+const usuarioActualizado = { ...usuario, activo: false };
+
+const nums = [1, 2, 3];
+const conCuatro = [...nums, 4];</pre>
+        </section>
+
+        <section id="composicion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Composici&oacute;n de funciones
+            </h2>
+            <p class="text-sm mb-3">La composici&oacute;n encadena transformaciones peque&ntilde;as. Es la base de utilidades reutilizables.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const trim = (s) =&gt; s.trim();
+const lower = (s) =&gt; s.toLowerCase();
+const slug = (s) =&gt; s.replace(/\s+/g, '-');
+
+const toSlug = (texto) =&gt; slug(lower(trim(texto)));
+toSlug('  Curso JavaScript Moderno  '); // 'curso-javascript-moderno'</pre>
+        </section>
+
+        <section id="pipeline" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">5</span>Pipeline con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">map</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">filter</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">reduce</code>
+            </h2>
+            <p class="text-sm mb-3">Para procesar colecciones: filtras, transformas y acumulas en una secuencia legible.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const pedidos = [
+  { id: 1, total: 120, pagado: true },
+  { id: 2, total: 80, pagado: false },
+  { id: 3, total: 240, pagado: true }
+];
+
+const facturacion = pedidos
+  .filter((p) =&gt; p.pagado)
+  .map((p) =&gt; p.total)
+  .reduce((acc, total) =&gt; acc + total, 0);
+
+// facturacion = 360</pre>
+        </section>
+    </main>
+
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>

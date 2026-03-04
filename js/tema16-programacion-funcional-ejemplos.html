@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos Tema 16: Programaci&oacute;n funcional - Apuntes JavaScript</title>
+    <meta name="description" content="Ejemplos pr&aacute;cticos de programaci&oacute;n funcional en JavaScript: pureza, inmutabilidad y composici&oacute;n.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#pureza" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Pureza</a>
+            <a href="#inmutabilidad" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Inmutabilidad</a>
+            <a href="#pipeline" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Pipeline</a>
+            <a href="#compose" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Compose</a>
+        </div>
+    </nav>
+
+    <main class="flex flex-col gap-4 p-5 max-w-6xl mx-auto">
+        <section id="pureza" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">1</span>Funci&oacute;n pura vs impura
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">// pura
+const areaCirculo = (radio) =&gt; Math.PI * radio * radio;
+
+// impura
+let ultimoMensaje = '';
+const guardarMensaje = (msg) =&gt; {
+  ultimoMensaje = msg;
+  return msg.length;
+};</pre>
+        </section>
+
+        <section id="inmutabilidad" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">2</span>Actualizaci&oacute;n inmutable
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const tareas = [
+  { id: 1, texto: 'Estudiar', hecha: false },
+  { id: 2, texto: 'Practicar', hecha: false }
+];
+
+const marcarHecha = (lista, id) =&gt;
+  lista.map((t) =&gt; (t.id === id ? { ...t, hecha: true } : t));
+
+const nuevas = marcarHecha(tareas, 2);</pre>
+        </section>
+
+        <section id="pipeline" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">3</span>Pipeline declarativo
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const ventas = [
+  { tienda: 'A', importe: 100 },
+  { tienda: 'B', importe: 40 },
+  { tienda: 'A', importe: 70 }
+];
+
+const totalA = ventas
+  .filter((v) =&gt; v.tienda === 'A')
+  .map((v) =&gt; v.importe)
+  .reduce((acc, n) =&gt; acc + n, 0);
+
+// totalA = 170</pre>
+        </section>
+
+        <section id="compose" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">4</span>Composici&oacute;n utilitaria
+            </h2>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const compose = (...fns) =&gt; (x) =&gt; fns.reduceRight((v, fn) =&gt; fn(v), x);
+
+const trim = (s) =&gt; s.trim();
+const lower = (s) =&gt; s.toLowerCase();
+const shout = (s) =&gt; `${s}!`;
+
+const normalizar = compose(shout, lower, trim);
+normalizar('  HoLa  '); // 'hola!'</pre>
+        </section>
+    </main>
+
+    <nav class="flex justify-between items-center max-w-6xl mx-auto mt-5 px-5 pb-5">
+        <a href="tema16-programacion-funcional.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-yellow-700 text-white no-underline rounded text-xs hover:bg-yellow-600">&larr; Volver al tema</a>
+        <span class="w-36"></span>
+        <span class="w-36"></span>
+    </nav>
+
+    <div data-component="footer"></div>
+</body>
+</html>

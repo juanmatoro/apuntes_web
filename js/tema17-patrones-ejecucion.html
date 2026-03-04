@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 17: Patrones de ejecuci&oacute;n - Apuntes JavaScript</title>
+    <meta name="description" content="Patrones de ejecuci&oacute;n en JavaScript: call stack, event loop, microtasks, concurrencia, batching y backpressure.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" type="image/png" href="../favicon.ico">
+    <script src="../assets/js/components.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans text-sm leading-relaxed">
+
+    <div data-component="header"></div>
+    <div data-component="breadcrumb"></div>
+
+    <nav class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 mb-1.5 font-semibold uppercase tracking-wide">En este tema</p>
+        <div class="flex flex-wrap gap-1.5">
+            <a href="#modelo" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Modelo de ejecuci&oacute;n</a>
+            <a href="#colas" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Colas y prioridades</a>
+            <a href="#patrones" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Patrones cl&aacute;sicos</a>
+            <a href="#control" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Control de concurrencia</a>
+            <a href="#anti" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Antipatrones</a>
+        </div>
+    </nav>
+
+    <div class="bg-white border-b border-gray-200 px-5 py-2.5 max-w-6xl mx-auto">
+        <a href="tema17-patrones-ejecucion-ejemplos.html" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-yellow-700 text-white rounded hover:bg-yellow-600 no-underline">
+            Ver ejemplos del tema
+        </a>
+    </div>
+
+    <main class="flex flex-wrap gap-4 p-5 max-w-6xl mx-auto">
+        <section id="modelo" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">1</span>Modelo de ejecuci&oacute;n de JavaScript
+            </h2>
+            <p class="text-sm mb-3">JavaScript ejecuta c&oacute;digo principal en un hilo de ejecuci&oacute;n (main thread). El modelo se apoya en <strong>call stack</strong>, <strong>Web/Node APIs</strong>, <strong>colas de tareas</strong> y <strong>event loop</strong>.</p>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Call stack:</strong> pila de funciones que se est&aacute;n ejecutando ahora.</li>
+                <li><strong>Heap:</strong> memoria de objetos y estructuras din&aacute;micas.</li>
+                <li><strong>Task queue:</strong> callbacks de timers/eventos listos para ejecutar.</li>
+                <li><strong>Microtask queue:</strong> promesas resueltas y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">queueMicrotask</code>.</li>
+            </ul>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">console.log('inicio');
+setTimeout(() =&gt; console.log('timer'), 0);
+Promise.resolve().then(() =&gt; console.log('microtask'));
+console.log('fin');
+// salida: inicio, fin, microtask, timer</pre>
+        </section>
+
+        <section id="colas" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">2</span>Colas y prioridades: macro vs micro
+            </h2>
+            <p class="text-sm mb-3">Tras cada bloque de c&oacute;digo sincr&oacute;nico, el event loop vac&iacute;a primero microtareas y luego atiende tareas de cola principal. Esto afecta orden, fluidez y latencia percibida.</p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Tipo</th>
+                            <th class="border border-yellow-200 p-2 text-left">Ejemplos</th>
+                            <th class="border border-yellow-200 p-2 text-left">Prioridad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">Microtask</td>
+                            <td class="border border-gray-200 p-2"><code>Promise.then</code>, <code>await</code>, <code>queueMicrotask</code></td>
+                            <td class="border border-gray-200 p-2">Alta</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">Task (macro)</td>
+                            <td class="border border-gray-200 p-2"><code>setTimeout</code>, eventos UI, I/O callbacks</td>
+                            <td class="border border-gray-200 p-2">Normal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-sm mt-3">Si encadenas demasiadas microtareas puedes bloquear render y eventos de usuario aunque no uses bucles pesados.</p>
+        </section>
+
+        <section id="patrones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">3</span>Patrones cl&aacute;sicos de ejecuci&oacute;n
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div class="border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-2">Secuencial</h3>
+                    <p class="text-sm mb-2">Ejecuta una tarea y espera su final antes de iniciar la siguiente. Es simple pero lento cuando no hay dependencia real.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const a = await getA();
+const b = await getB();
+const c = await getC();</pre>
+                </div>
+                <div class="border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-2">Concurrente</h3>
+                    <p class="text-sm mb-2">Lanza varias tareas y espera resultados en conjunto. Reduce tiempo total de espera de I/O.</p>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const [a, b, c] = await Promise.all([
+  getA(), getB(), getC()
+]);</pre>
+                </div>
+            </div>
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Variantes de orquestaci&oacute;n</h3>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Promise.all</code>: falla r&aacute;pido si una promesa falla.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Promise.allSettled</code>: devuelve &eacute;xitos y fallos sin cortar flujo.</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Promise.race</code>: gana la primera (ok o error).</li>
+                <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Promise.any</code>: primera exitosa; ignora fallos hasta agotar todas.</li>
+            </ul>
+        </section>
+
+        <section id="control" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">4</span>Control de concurrencia y backpressure
+            </h2>
+            <p class="text-sm mb-3">Lanzar cientos de promesas en paralelo puede saturar red, API o navegador. El patr&oacute;n recomendado es limitar concurrencia por lotes o sem&aacute;foros.</p>
+            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">async function ejecutarEnLotes(items, size, worker) {
+  const out = [];
+  for (let i = 0; i &lt; items.length; i += size) {
+    const lote = items.slice(i, i + size);
+    const parcial = await Promise.all(lote.map(worker));
+    out.push(...parcial);
+  }
+  return out;
+}</pre>
+            <p class="text-sm mt-3">A esto se le llama <strong>backpressure</strong>: regular ritmo de producci&oacute;n para que el consumidor no colapse.</p>
+        </section>
+
+        <section id="anti" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
+                <span class="orden">5</span>Antipatrones frecuentes
+            </h2>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li><strong>Await dentro de bucle sin necesidad</strong>: vuelve secuencial una tarea paralelizable.</li>
+                <li><strong>Promesas sin captura</strong>: generan errores no controlados (<code>unhandledrejection</code>).</li>
+                <li><strong>Abusar de microtasks</strong>: puede retrasar paint y eventos de usuario.</li>
+                <li><strong>No cancelar trabajo obsoleto</strong>: respuestas viejas pisan estado reciente.</li>
+            </ul>
+            <div class="mt-3 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                <p class="text-sm text-yellow-800"><strong>Regla operativa:</strong> secuencial solo cuando hay dependencia; concurrente controlada para I/O independiente; cancelar y limitar cuando la carga crece.</p>
+            </div>
+        </section>
+    </main>
+
+    <div data-component="footer-nav"></div>
+    <div data-component="footer"></div>
+</body>
+</html>
