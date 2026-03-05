@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Mapa visual de prototipos en JavaScript</title>
+  <desc id="desc">Relaciones entre instancia, constructor, prototype, Object.prototype y null, con ejemplos de Array y User.</desc>
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+    </marker>
+    <style>
+      .bg { fill: #fffdf5; }
+      .node { fill: #ffffff; stroke: #334155; stroke-width: 2; }
+      .obj { fill: #f8fafc; }
+      .ctor { fill: #ecfeff; stroke: #0f766e; }
+      .proto { fill: #eff6ff; stroke: #1d4ed8; }
+      .root { fill: #fef2f2; stroke: #dc2626; }
+      .t { font: 15px 'Segoe UI', Tahoma, sans-serif; fill: #0f172a; }
+      .s { font: 13px 'Consolas', monospace; fill: #334155; }
+      .linkB { stroke: #1d4ed8; stroke-width: 2.5; fill: none; marker-end: url(#arrowBlue); }
+      .linkR { stroke: #dc2626; stroke-width: 2.5; fill: none; marker-end: url(#arrowRed); }
+      .lblB { fill: #1d4ed8; font: 12px 'Consolas', monospace; }
+      .lblR { fill: #dc2626; font: 12px 'Consolas', monospace; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="760" rx="16" />
+
+  <text x="40" y="42" class="t" style="font-size:22px;font-weight:700;">Cadena de prototipos (JS)</text>
+  <text x="40" y="66" class="s">Instancias -> prototype del constructor -> Object.prototype -> null</text>
+
+  <rect x="50" y="130" width="155" height="48" rx="10" class="node ctor" />
+  <text x="80" y="160" class="t">Array()</text>
+
+  <rect x="50" y="320" width="155" height="48" rx="10" class="node ctor" />
+  <text x="86" y="350" class="t">User()</text>
+
+  <rect x="240" y="130" width="170" height="48" rx="10" class="node proto" />
+  <text x="258" y="160" class="t">Array.prototype</text>
+
+  <rect x="240" y="320" width="160" height="48" rx="10" class="node proto" />
+  <text x="272" y="350" class="t">User.prototype</text>
+
+  <rect x="450" y="130" width="190" height="48" rx="10" class="node root" />
+  <text x="470" y="160" class="t">Object.prototype</text>
+
+  <circle cx="760" cy="154" r="24" class="node root" />
+  <text x="748" y="160" class="t">null</text>
+
+  <rect x="60" y="220" width="130" height="44" rx="10" class="node obj" />
+  <text x="93" y="248" class="t">arr1</text>
+
+  <rect x="60" y="410" width="130" height="44" rx="10" class="node obj" />
+  <text x="89" y="438" class="t">user1</text>
+
+  <rect x="450" y="320" width="210" height="48" rx="10" class="node ctor" />
+  <text x="484" y="350" class="t">Object constructor</text>
+
+  <path d="M 206 154 L 240 154" class="linkB" />
+  <text x="205" y="145" class="lblB">prototype</text>
+
+  <path d="M 206 344 L 240 344" class="linkB" />
+  <text x="205" y="335" class="lblB">prototype</text>
+
+  <path d="M 410 154 L 450 154" class="linkR" />
+  <text x="414" y="145" class="lblR">__proto__</text>
+
+  <path d="M 400 344 L 450 154" class="linkR" />
+  <text x="404" y="262" class="lblR">__proto__</text>
+
+  <path d="M 640 154 L 736 154" class="linkR" />
+  <text x="666" y="145" class="lblR">__proto__</text>
+
+  <path d="M 190 242 L 240 154" class="linkR" />
+  <text x="192" y="206" class="lblR">__proto__</text>
+
+  <path d="M 190 432 L 240 344" class="linkR" />
+  <text x="194" y="398" class="lblR">__proto__</text>
+
+  <path d="M 200 432 L 450 344" class="linkB" />
+  <text x="292" y="407" class="lblB">constructor</text>
+
+  <text x="250" y="112" class="s">map(), filter()</text>
+  <text x="251" y="302" class="s">greet(), countUsers()</text>
+  <text x="451" y="112" class="s">hasOwnProperty()</text>
+
+  <rect x="40" y="560" width="1110" height="150" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+  <text x="62" y="590" class="t" style="font-size:16px;font-weight:700;">Lectura rápida</text>
+  <text x="62" y="620" class="s">1) user1 es una instancia creada con new User().</text>
+  <text x="62" y="642" class="s">2) user1.__proto__ apunta a User.prototype, donde viven métodos compartidos.</text>
+  <text x="62" y="664" class="s">3) User.prototype.__proto__ apunta a Object.prototype.</text>
+  <text x="62" y="686" class="s">4) Object.prototype.__proto__ es null (fin de la cadena).</text>
+</svg>
+

@@ -58,6 +58,9 @@
             <a href="#this-objeto" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">this en objeto</a>
             <a href="#contexto" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">bind/call/apply</a>
             <a href="#clases" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Clases</a>
+            <a href="#patrones-construccion" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Construcci&oacute;n</a>
+            <a href="#metodos-nativos" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">M&eacute;todos nativos</a>
+            <a href="#prototipos-object" class="text-xs px-2.5 py-1 bg-amber-50 text-amber-900 rounded-full hover:bg-amber-100 no-underline border border-amber-200">Prototipos</a>
         </div>
     </nav>
 
@@ -190,6 +193,163 @@ c.total; // 1</pre>
 const u = Usuario.anonimo();
 u.nombre; // 'Invitado'</pre>
                 </div>
+            </div>
+        </section>
+
+        <section id="patrones-construccion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">5</span>Patrones de construcci&oacute;n: literal, funci&oacute;n constructora, factory y class
+            </h2>
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Literal</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const producto = {
+  id: 10,
+  nombre: 'Rat&oacute;n',
+  precio: 19.99
+};
+
+producto.precio; // 19.99</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Funci&oacute;n constructora</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Producto(id, nombre, precio) {
+  this.id = id;
+  this.nombre = nombre;
+  this.precio = precio;
+}
+
+const p = new Producto(10, 'Rat&oacute;n', 19.99);
+p.nombre; // 'Rat&oacute;n'</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Factory + closure</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function crearCuenta(titular, inicial = 0) {
+  let saldo = inicial; // privado
+
+  return {
+    titular,
+    ingresar(cantidad) {
+      saldo += cantidad;
+    },
+    getSaldo() {
+      return saldo;
+    }
+  };
+}
+
+const cuenta = crearCuenta('Ana', 50);
+cuenta.ingresar(25);
+cuenta.getSaldo(); // 75</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Class</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Cuenta {
+  #saldo = 0;
+
+  constructor(titular, inicial = 0) {
+    this.titular = titular;
+    this.#saldo = inicial;
+  }
+
+  ingresar(cantidad) {
+    this.#saldo += cantidad;
+  }
+
+  get saldo() {
+    return this.#saldo;
+  }
+}
+
+const c = new Cuenta('Ana', 50);
+c.ingresar(25);
+c.saldo; // 75</pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="metodos-nativos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">6</span>M&eacute;todos nativos de construcci&oacute;n de objetos
+            </h2>
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Object.create</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const base = {
+  tipo: 'usuario',
+  saludar() {
+    return `Hola ${this.nombre}`;
+  }
+};
+
+const u = Object.create(base);
+u.nombre = 'Ana';
+u.saludar(); // 'Hola Ana'</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Object.assign</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const base = { id: 1, nombre: 'Ana' };
+const extra = { activo: true };
+
+const user = Object.assign({}, base, extra);
+// { id: 1, nombre: 'Ana', activo: true }</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Spread</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const base = { id: 1, nombre: 'Ana' };
+const user = { ...base, rol: 'admin' };
+
+// copia superficial + extensi&oacute;n
+// { id: 1, nombre: 'Ana', rol: 'admin' }</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Object.fromEntries</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const pares = [
+  ['id', 7],
+  ['email', 'ana@mail.com']
+];
+
+const user = Object.fromEntries(pares);
+// { id: 7, email: 'ana@mail.com' }</pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="prototipos-object" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
+                <span class="orden">7</span><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">__proto__</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">prototype</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object</code>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">prototype en constructora</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Usuario(nombre) {
+  this.nombre = nombre;
+}
+
+Usuario.prototype.saludar = function () {
+  return `Hola ${this.nombre}`;
+};
+
+const u = new Usuario('Ana');
+u.saludar(); // 'Hola Ana'</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">Cadena de prototipos</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">Object.getPrototypeOf(u) === Usuario.prototype; // true
+u.__proto__ === Usuario.prototype;              // true
+
+Object.getPrototypeOf(Usuario.prototype) === Object.prototype; // true
+Object.getPrototypeOf(Object.prototype); // null</pre>
+                </div>
+            </div>
+            <div class="mt-3">
+                <h3 class="font-semibold text-amber-800 mb-2">Object como constructor y utilidad base</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const o1 = new Object(); // equivalente a {}
+o1.id = 1;
+
+Object.keys(o1);      // ['id']
+Object.values(o1);    // [1]
+Object.entries(o1);   // [['id', 1]]</pre>
             </div>
         </section>
 

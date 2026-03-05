@@ -28,6 +28,7 @@
         <a href="#referencia" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Referencia</a>
         <a href="#destructuring" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Destructuring</a>
         <a href="#patrones" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Patrones</a>
+        <a href="#prototipos-object" class="text-xs px-2.5 py-1 bg-yellow-50 text-yellow-700 rounded-full hover:bg-yellow-100 no-underline border border-yellow-200">Prototipos</a>
       </div>
     </nav>
 
@@ -304,15 +305,142 @@ resto; // { edad: 25 }</pre>
         <!-- PATRONES -->
         <section id="patrones" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
-                <span class="orden">6</span>Patrones de uso
+                <span class="orden">6</span>Patrones de construcci&oacute;n de objetos
             </h2>
-            <p class="text-sm mb-3">Los objetos son ideales para representar entidades y pasar configuraci&oacute;n. Ayudan a evitar listas largas de par&aacute;metros.</p>
+            <p class="text-sm mb-3">En JavaScript puedes construir objetos de varias formas. Las m&aacute;s habituales en proyectos reales son: <strong>literal</strong>, <strong>funci&oacute;n constructora</strong>, <strong>factory</strong> (apoy&aacute;ndose en <strong>closures</strong> para encapsular estado) y <strong>class</strong>.</p>
             <ul class="list-disc pl-5 space-y-1 text-sm">
-                <li>Modela entidades con propiedades consistentes y predecibles.</li>
-                <li>Pasa opciones como un objeto para extensibilidad.</li>
+                <li><strong>Literal</strong>: r&aacute;pido para valores puntuales o configuraci&oacute;n simple.</li>
+                <li><strong>Funci&oacute;n constructora</strong>: patr&oacute;n cl&aacute;sico con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">function</code> + <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new</code>.</li>
+                <li><strong>Factory</strong>: devuelve objetos con API controlada y puede ocultar datos internos.</li>
+                <li><strong>Class</strong>: ideal cuando tendr&aacute;s muchas instancias y comportamiento compartido.</li>
             </ul>
 
-            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Literal</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const usuario = {
+  id: 1,
+  nombre: 'Ana',
+  activo: true
+};
+
+usuario.nombre; // 'Ana'</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Funci&oacute;n constructora</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Usuario(nombre) {
+  this.nombre = nombre;
+  this.activo = true;
+}
+
+const u = new Usuario('Ana');
+u.nombre; // 'Ana'</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Factory + closure</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function crearContador(inicial = 0) {
+  let valor = inicial; // privado por closure
+
+  return {
+    inc() {
+      valor += 1;
+      return valor;
+    },
+    getValor() {
+      return valor;
+    }
+  };
+}
+
+const c = crearContador(2);
+c.inc(); // 3</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-600 mb-2">Class</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Contador {
+  #valor;
+
+  constructor(inicial = 0) {
+    this.#valor = inicial;
+  }
+
+  inc() {
+    this.#valor += 1;
+    return this.#valor;
+  }
+}</pre>
+                </div>
+            </div>
+
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Gu&iacute;a r&aacute;pida: cu&aacute;ndo usar cada patr&oacute;n</h3>
+<pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">Literal
+- Configuraci&oacute;n o datos simples sin mucha l&oacute;gica.
+
+Funci&oacute;n constructora
+- C&oacute;digo legacy o bases antiguas con function + new.
+- Similar a class pero sin sintaxis moderna.
+
+Factory (+ closure)
+- Encapsular estado privado sin exponerlo directamente.
+- Crear APIs peque&ntilde;as y controladas.
+
+Class
+- Muchas instancias del mismo "tipo" de objeto.
+- M&eacute;todos compartidos y modelado tipo POO.</pre>
+            </div>
+
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Funci&oacute;n constructora vs class (prototype)</h3>
+                <p class="text-sm mb-2">Ambas crean instancias y comparten m&eacute;todos en <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">prototype</code>. <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">class</code> es una sintaxis m&aacute;s moderna sobre el mismo modelo de prototipos.</p>
+                <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                    <div>
+                        <h4 class="font-semibold text-yellow-600 mb-2">Constructora + prototype</h4>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Usuario(nombre) {
+  this.nombre = nombre;
+}
+
+Usuario.prototype.saludar = function () {
+  return `Hola ${this.nombre}`;
+};</pre>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-yellow-600 mb-2">Class equivalente</h4>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Usuario {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+
+  saludar() {
+    return `Hola ${this.nombre}`;
+  }
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">M&eacute;todos nativos para construir objetos</h3>
+                <ul class="list-disc pl-5 space-y-1 text-sm mb-2">
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.create(proto)</code>: crea un objeto con un prototipo espec&iacute;fico.</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.assign(destino, ...fuentes)</code>: combina propiedades en un objeto.</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">{ ...obj }</code>: copia superficial r&aacute;pida.</li>
+                    <li><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.fromEntries(pares)</code>: construye un objeto desde pares clave-valor.</li>
+                </ul>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const base = { tipo: 'usuario' };
+const u1 = Object.create(base);
+u1.nombre = 'Ana';
+
+const u2 = Object.assign({}, u1, { activo: true });
+const u3 = { ...u2, rol: 'admin' };
+
+const u4 = Object.fromEntries([
+  ['id', 1],
+  ['email', 'ana@mail.com']
+]);</pre>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0 mt-3">
                 <div>
                     <h3 class="font-semibold text-yellow-600 mb-2">Entidad</h3>
                     <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">const task = {
@@ -328,11 +456,165 @@ resto; // { edad: 25 }</pre>
 }</pre>
                 </div>
             </div>
+
+            <div class="mt-3 overflow-x-auto">
+                <h3 class="font-semibold text-yellow-700 mb-2">Resumen comparativo de m&eacute;todos de construcci&oacute;n</h3>
+                <table class="min-w-full text-xs border border-yellow-200 rounded-lg overflow-hidden">
+                    <thead class="bg-yellow-50 text-yellow-800">
+                        <tr>
+                            <th class="text-left p-2 border-b border-yellow-200">M&eacute;todo</th>
+                            <th class="text-left p-2 border-b border-yellow-200">Ventaja</th>
+                            <th class="text-left p-2 border-b border-yellow-200">Desventaja</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr>
+                            <td class="p-2 border-b border-yellow-100">Literal</td>
+                            <td class="p-2 border-b border-yellow-100">Muy simple y legible.</td>
+                            <td class="p-2 border-b border-yellow-100">No escala bien para muchas instancias similares.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border-b border-yellow-100">Funci&oacute;n constructora</td>
+                            <td class="p-2 border-b border-yellow-100">Compatibilidad con c&oacute;digo legacy y uso directo de prototype.</td>
+                            <td class="p-2 border-b border-yellow-100">Sintaxis menos expresiva que class.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border-b border-yellow-100">Factory + closure</td>
+                            <td class="p-2 border-b border-yellow-100">Encapsulaci&oacute;n real de estado privado.</td>
+                            <td class="p-2 border-b border-yellow-100">M&eacute;todos no compartidos por defecto entre instancias.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Class</td>
+                            <td class="p-2">Sintaxis moderna y clara para POO.</td>
+                            <td class="p-2">Puede ocultar que internamente sigue siendo prototipos.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="prototipos-object" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
+            <h2 class="text-xl font-bold text-yellow-700 border-b-2 border-yellow-700 pb-1 mb-3">
+                <span class="orden">7</span><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">__proto__</code>, <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">prototype</code> y <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object</code> constructor
+            </h2>
+            <p class="text-sm mb-3">Estos tres conceptos est&aacute;n conectados y son clave para entender c&oacute;mo JavaScript resuelve propiedades y m&eacute;todos.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 [&>*]:min-w-0">
+                <div class="border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">prototype</code> (en funciones/clases)</h3>
+                    <p class="text-sm">Es el objeto que se usar&aacute; como base de las instancias creadas con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">new</code>. Ah&iacute; se ponen m&eacute;todos compartidos.</p>
+                </div>
+                <div class="border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">__proto__</code> (en objetos/instancias)</h3>
+                    <p class="text-sm">Es la referencia al prototipo real del objeto. Se usa para la b&uacute;squeda en cadena de prototipos (mejor leerlo con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object.getPrototypeOf</code>).</p>
+                </div>
+                <div class="border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                    <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">Object</code> constructor</h3>
+                    <p class="text-sm">Es la funci&oacute;n base de casi todos los objetos en JS. Sus m&eacute;todos est&aacute;ticos ayudan a crear/copiar/inspeccionar objetos.</p>
+                </div>
+            </div>
+
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Relaci&oacute;n entre ellos</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">function Usuario(nombre) {
+  this.nombre = nombre;
+}
+
+Usuario.prototype.saludar = function () {
+  return `Hola ${this.nombre}`;
+};
+
+const ana = new Usuario('Ana');
+
+Object.getPrototypeOf(ana) === Usuario.prototype; // true
+ana.__proto__ === Usuario.prototype;              // true (legacy accessor)
+Object.getPrototypeOf(Usuario.prototype) === Object.prototype; // true</pre>
+            </div>
+
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Diagrama r&aacute;pido: cadena de prototipos (ASCII)</h3>
+                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">ana (instancia)
+  |
+  | [[Prototype]]  (ana.__proto__)
+  v
+Usuario.prototype
+  |
+  | [[Prototype]]
+  v
+Object.prototype
+  |
+  | [[Prototype]]
+  v
+null</pre>
+            </div>
+
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Diagrama visual (inspirado en mapa de prototipos)</h3>
+                <svg viewBox="0 0 980 520" class="w-full h-auto rounded border border-yellow-200 bg-white" role="img" aria-label="Cadena de prototipos en JavaScript">
+                    <defs>
+                        <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0 0 L10 5 L0 10 Z" fill="#1d4ed8"></path>
+                        </marker>
+                        <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0 0 L10 5 L0 10 Z" fill="#dc2626"></path>
+                        </marker>
+                    </defs>
+
+                    <text x="24" y="36" font-size="22" font-weight="700" fill="#0f172a">Mapa de prototipos</text>
+                    <text x="24" y="58" font-size="13" fill="#334155">instance -> constructor.prototype -> Object.prototype -> null</text>
+
+                    <rect x="30" y="95" width="150" height="44" rx="10" fill="#ecfeff" stroke="#0f766e" stroke-width="2"></rect>
+                    <text x="74" y="122" font-size="14" fill="#0f172a">User()</text>
+                    <rect x="30" y="185" width="130" height="42" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"></rect>
+                    <text x="72" y="211" font-size="14" fill="#0f172a">user1</text>
+
+                    <rect x="240" y="95" width="190" height="44" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"></rect>
+                    <text x="272" y="122" font-size="14" fill="#0f172a">User.prototype</text>
+                    <text x="250" y="155" font-size="12" fill="#1d4ed8">greet(), countUsers()</text>
+
+                    <rect x="500" y="95" width="200" height="44" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"></rect>
+                    <text x="528" y="122" font-size="14" fill="#0f172a">Object.prototype</text>
+                    <text x="510" y="155" font-size="12" fill="#dc2626">hasOwnProperty()</text>
+
+                    <circle cx="790" cy="117" r="22" fill="#fef2f2" stroke="#dc2626" stroke-width="2"></circle>
+                    <text x="778" y="122" font-size="14" fill="#0f172a">null</text>
+
+                    <path d="M180 117 L240 117" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrB)" fill="none"></path>
+                    <text x="186" y="108" font-size="12" fill="#1d4ed8">prototype</text>
+
+                    <path d="M160 206 L240 117" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrR)" fill="none"></path>
+                    <text x="166" y="174" font-size="12" fill="#dc2626">__proto__</text>
+
+                    <path d="M430 117 L500 117" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrR)" fill="none"></path>
+                    <text x="438" y="108" font-size="12" fill="#dc2626">__proto__</text>
+
+                    <path d="M700 117 L768 117" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrR)" fill="none"></path>
+                    <text x="708" y="108" font-size="12" fill="#dc2626">__proto__</text>
+
+                    <rect x="30" y="290" width="150" height="44" rx="10" fill="#ecfeff" stroke="#0f766e" stroke-width="2"></rect>
+                    <text x="72" y="317" font-size="14" fill="#0f172a">Array()</text>
+                    <rect x="30" y="380" width="130" height="42" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"></rect>
+                    <text x="76" y="406" font-size="14" fill="#0f172a">arr1</text>
+
+                    <rect x="240" y="290" width="200" height="44" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"></rect>
+                    <text x="267" y="317" font-size="14" fill="#0f172a">Array.prototype</text>
+                    <text x="252" y="350" font-size="12" fill="#1d4ed8">map(), filter(), isArray</text>
+
+                    <path d="M180 312 L240 312" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrB)" fill="none"></path>
+                    <text x="188" y="303" font-size="12" fill="#1d4ed8">prototype</text>
+
+                    <path d="M160 401 L240 312" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrR)" fill="none"></path>
+                    <text x="166" y="370" font-size="12" fill="#dc2626">__proto__</text>
+
+                    <path d="M440 312 L500 140" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrR)" fill="none"></path>
+                    <text x="446" y="228" font-size="12" fill="#dc2626">__proto__</text>
+                </svg>
+            </div>
         </section>
         <!-- RECURSOS -->
         <section id="recursos" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
             <h2 class="text-xl font-bold text-yellow-900 border-b-2 border-yellow-900 pb-1 mb-3">
-                <span class="orden">7</span>Recursos y herramientas
+                <span class="orden">8</span>Recursos y herramientas
             </h2>
             <p class="text-sm mb-4">Referencias y utilidades para trabajar con calidad y eficiencia.</p>
 

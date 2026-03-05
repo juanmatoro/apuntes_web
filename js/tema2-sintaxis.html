@@ -128,6 +128,7 @@ var x = 10;</pre>
                     <thead>
                         <tr class="bg-yellow-100">
                             <th class="border border-yellow-200 p-2 text-left">Tipo</th>
+                            <th class="border border-yellow-200 p-2 text-left">C&oacute;mo se escribe</th>
                             <th class="border border-yellow-200 p-2 text-left">typeof</th>
                             <th class="border border-yellow-200 p-2 text-left">Ejemplos</th>
                         </tr>
@@ -135,36 +136,43 @@ var x = 10;</pre>
                     <tbody>
                         <tr>
                             <td class="border border-gray-200 p-2 font-semibold">string</td>
+                            <td class="border border-gray-200 p-2"><code>""</code> o <code>''</code></td>
                             <td class="border border-gray-200 p-2"><code>"string"</code></td>
                             <td class="border border-gray-200 p-2"><code>'Hola'</code>, <code>"mundo"</code>, <code>`template`</code></td>
                         </tr>
                         <tr>
                             <td class="border border-gray-200 p-2 font-semibold">number</td>
+                            <td class="border border-gray-200 p-2"><code>5</code>, <code>3.14</code></td>
                             <td class="border border-gray-200 p-2"><code>"number"</code></td>
                             <td class="border border-gray-200 p-2"><code>42</code>, <code>3.14</code>, <code>NaN</code>, <code>Infinity</code></td>
                         </tr>
                         <tr>
                             <td class="border border-gray-200 p-2 font-semibold">bigint</td>
+                            <td class="border border-gray-200 p-2"><code>9007199254740991n</code></td>
                             <td class="border border-gray-200 p-2"><code>"bigint"</code></td>
                             <td class="border border-gray-200 p-2"><code>9007199254740991n</code></td>
                         </tr>
                         <tr>
                             <td class="border border-gray-200 p-2 font-semibold">boolean</td>
+                            <td class="border border-gray-200 p-2"><code>true</code> o <code>false</code></td>
                             <td class="border border-gray-200 p-2"><code>"boolean"</code></td>
                             <td class="border border-gray-200 p-2"><code>true</code>, <code>false</code></td>
                         </tr>
                         <tr>
                             <td class="border border-gray-200 p-2 font-semibold">undefined</td>
+                            <td class="border border-gray-200 p-2"><code>undefined</code></td>
                             <td class="border border-gray-200 p-2"><code>"undefined"</code></td>
                             <td class="border border-gray-200 p-2"><code>undefined</code></td>
                         </tr>
                         <tr>
                             <td class="border border-gray-200 p-2 font-semibold">null</td>
+                            <td class="border border-gray-200 p-2"><code>null</code></td>
                             <td class="border border-gray-200 p-2"><code>"object"</code> *</td>
                             <td class="border border-gray-200 p-2"><code>null</code></td>
                         </tr>
                         <tr>
                             <td class="border border-gray-200 p-2 font-semibold">symbol</td>
+                            <td class="border border-gray-200 p-2"><code>Symbol('id')</code></td>
                             <td class="border border-gray-200 p-2"><code>"symbol"</code></td>
                             <td class="border border-gray-200 p-2"><code>Symbol('id')</code></td>
                         </tr>
@@ -172,6 +180,34 @@ var x = 10;</pre>
                 </table>
             </div>
             <p class="text-xs text-gray-500 mt-1">* <code>typeof null</code> devuelve <code>"object"</code> por un bug hist&oacute;rico de JS que se mantiene por compatibilidad.</p>
+
+            <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Tipos de referencia comunes</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse mt-2">
+                    <thead>
+                        <tr class="bg-yellow-100">
+                            <th class="border border-yellow-200 p-2 text-left">Tipo</th>
+                            <th class="border border-yellow-200 p-2 text-left">C&oacute;mo se escribe</th>
+                            <th class="border border-yellow-200 p-2 text-left">typeof</th>
+                            <th class="border border-yellow-200 p-2 text-left">C&oacute;mo comprobar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">object</td>
+                            <td class="border border-gray-200 p-2"><code>{}</code> o <code>{ clave: valor }</code></td>
+                            <td class="border border-gray-200 p-2"><code>"object"</code></td>
+                            <td class="border border-gray-200 p-2"><code>typeof valor === 'object' &amp;&amp; valor !== null &amp;&amp; !Array.isArray(valor)</code></td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-200 p-2 font-semibold">array</td>
+                            <td class="border border-gray-200 p-2"><code>[]</code> o <code>[1, 2, 3]</code></td>
+                            <td class="border border-gray-200 p-2"><code>"object"</code></td>
+                            <td class="border border-gray-200 p-2"><code>Array.isArray(valor)</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h3 class="font-semibold text-yellow-600 mt-4 mb-2">Tipo Object</h3>
             <p class="text-sm mb-2">Todo lo que no es primitivo es un <strong>objeto</strong>: colecciones de pares clave-valor. Incluyen arrays, funciones, fechas, expresiones regulares, etc.</p>
