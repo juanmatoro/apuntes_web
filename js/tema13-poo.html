@@ -246,6 +246,81 @@ rex instanceof Object;  // true  â€” todo objeto hereda de Object</pre>
 
             <p class="text-sm mb-3">La <strong>herencia</strong> permite que una clase <em>hija</em> adquiera autom&aacute;ticamente las propiedades y m&eacute;todos de una clase <em>padre</em>, pudiendo adem&aacute;s a&ntilde;adir o sobrescribir comportamiento. Se declara con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code>. El objetivo es reutilizar c&oacute;digo y expresar relaciones del tipo <em>&ldquo;es un&rdquo;</em>: un <code>Admin</code> <em>es un</em> <code>Usuario</code>.</p>
 
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Checklist r&aacute;pido de decisi&oacute;n</h3>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                    <li>Si lo puedes leer como <strong>&ldquo;A es un B&rdquo;</strong> -&gt; usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code>.</li>
+                    <li>Si lo puedes leer como <strong>&ldquo;A tiene un B&rdquo;</strong> -&gt; usa composici&oacute;n (propiedad interna).</li>
+                    <li>Si dudas, empieza por composici&oacute;n; herencia solo cuando la especializaci&oacute;n sea clara y estable.</li>
+                </ul>
+            </div>
+
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Regla mental: <em>to be</em> vs <em>to have</em></h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-yellow-100">
+                                <th class="border border-yellow-200 p-2 text-left">Tipo de relaci&oacute;n</th>
+                                <th class="border border-yellow-200 p-2 text-left">Pregunta</th>
+                                <th class="border border-yellow-200 p-2 text-left">Modelado recomendado</th>
+                                <th class="border border-yellow-200 p-2 text-left">Ejemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-200 p-2 font-semibold">To be (<em>is-a</em>)</td>
+                                <td class="border border-gray-200 p-2">&iquest;A <strong>es un</strong> B?</td>
+                                <td class="border border-gray-200 p-2"><code>class A extends B</code></td>
+                                <td class="border border-gray-200 p-2"><code>Admin</code> es un <code>Usuario</code></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-200 p-2 font-semibold">To have (<em>has-a</em>)</td>
+                                <td class="border border-gray-200 p-2">&iquest;A <strong>tiene un</strong> B?</td>
+                                <td class="border border-gray-200 p-2">Composici&oacute;n (propiedad interna)</td>
+                                <td class="border border-gray-200 p-2"><code>Coche</code> tiene un <code>Motor</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm mt-2"><strong>Resumen:</strong> usa <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code> cuando sea un tipo especializado del padre; usa composici&oacute;n cuando el objeto solo contiene/usa otro objeto.</p>
+            </div>
+
+            <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
+                <h3 class="font-semibold text-yellow-700 mb-2">Ejemplo directo: <em>is-a</em> vs <em>has-a</em></h3>
+                <div class="grid md:grid-cols-2 gap-3 [&>*]:min-w-0">
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 mb-1">To be (<em>is-a</em>) - herencia</p>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Usuario {
+  constructor(nombre) {
+    this.nombre = nombre;
+  }
+}
+
+class Admin extends Usuario {
+  borrarUsuario(id) {
+    return `Borrado ${id}`;
+  }
+}</pre>
+                    </div>
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 mb-1">To have (<em>has-a</em>) - composici&oacute;n</p>
+                        <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Motor {
+  arrancar() { return 'motor ON'; }
+}
+
+class Coche {
+  constructor() {
+    this.motor = new Motor(); // Coche tiene un Motor
+  }
+  encender() {
+    return this.motor.arrancar();
+  }
+}</pre>
+                    </div>
+                </div>
+            </div>
+
             <!-- extends bÃ¡sico -->
             <div class="mt-3 border border-yellow-200 rounded-lg bg-yellow-50/40 p-3">
                 <h3 class="font-semibold text-yellow-700 mb-2"><code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code> &mdash; heredar de una clase padre</h3>

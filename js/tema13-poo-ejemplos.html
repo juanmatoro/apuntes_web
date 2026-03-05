@@ -85,7 +85,11 @@ ana.saludar(); // 'Hola, soy Ana'</pre>
             <h2 class="text-xl font-bold text-amber-900 border-b-2 border-amber-900 pb-1 mb-3">
                 <span class="orden">2</span>Herencia con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code>
             </h2>
-            <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Empleado extends Usuario {
+            <p class="text-sm mb-3"><strong>To be</strong> (<em>is-a</em>) usa herencia con <code class="bg-gray-800 text-gray-100 px-1.5 rounded text-xs font-mono">extends</code>. <strong>To have</strong> (<em>has-a</em>) usa composici&oacute;n (una clase contiene otra).</p>
+            <div class="grid md:grid-cols-2 gap-4 [&>*]:min-w-0">
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">To be (<em>is-a</em>)</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Empleado extends Usuario {
   constructor(nombre, puesto) {
     super(nombre);
     this.puesto = puesto;
@@ -98,6 +102,29 @@ ana.saludar(); // 'Hola, soy Ana'</pre>
 
 const luis = new Empleado('Luis', 'Backend');
 luis.presentarse(); // 'Hola, soy Luis y trabajo como Backend'</pre>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-amber-800 mb-2">To have (<em>has-a</em>)</h3>
+                    <pre class="bg-gray-800 text-gray-100 p-3 rounded-md overflow-x-auto text-xs">class Motor {
+  arrancar() {
+    return 'motor ON';
+  }
+}
+
+class Coche {
+  constructor() {
+    this.motor = new Motor();
+  }
+
+  encender() {
+    return this.motor.arrancar();
+  }
+}
+
+const coche = new Coche();
+coche.encender(); // 'motor ON'</pre>
+                </div>
+            </div>
         </section>
 
         <section id="encapsulacion" class="bg-white rounded-lg p-4 shadow w-full min-w-0">
